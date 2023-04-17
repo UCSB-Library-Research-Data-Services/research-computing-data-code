@@ -20,7 +20,22 @@
         "drupal/core-recommended": "^10",
         "pantheon-systems/drupal-integrations": "^10",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11 || ^12"
+        "drush/drush": "^11 || ^12",
+        "drupal/admin_toolbar": "^3.3",
+        "drupal/asset_injector": "^2.16",
+        "drupal/block_field": "^1.0@RC",
+        "drupal/book_blocks": "^1.7",
+        "drupal/bootstrap_layouts": "^5.3",
+        "drupal/admin_content_notification": "^4.0",
+        "drupal/bootstrap_site_alert": "^2.0@beta",
+        "drupal/config_filter": "^2.4",
+        "drupal/comment_notify": "^1.4",
+        "drupal/token": "^1.11",
+        "drupal/config_split": "^2.0@RC",
+        "drupal/content_moderation_notifications": "^3.5",
+        "drupal/csv_importer": "^1.16",
+        "drupal/ctools": "^4.0",
+        "drupal/date_popup": "^1.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
