@@ -30,7 +30,8 @@
         "drupal/bootstrap_site_alert": "^2.0@beta",
         "drupal/config_filter": "^2.4",
         "drupal/comment_notify": "^1.4",
-        "drupal/token": "^1.11"
+        "drupal/token": "^1.11",
+        "drupal/config_split": "^2.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
