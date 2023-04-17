@@ -25,7 +25,8 @@
         "drupal/asset_injector": "^2.16",
         "drupal/block_field": "^1.0@RC",
         "drupal/book_blocks": "^1.7",
-        "drupal/bootstrap_layouts": "^5.3"
+        "drupal/bootstrap_layouts": "^5.3",
+        "drupal/admin_content_notification": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
