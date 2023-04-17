@@ -26,7 +26,8 @@
         "drupal/block_field": "^1.0@RC",
         "drupal/book_blocks": "^1.7",
         "drupal/bootstrap_layouts": "^5.3",
-        "drupal/admin_content_notification": "^4.0"
+        "drupal/admin_content_notification": "^4.0",
+        "drupal/bootstrap_site_alert": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

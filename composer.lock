@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec17c00ce342ff4724a199a3cf2b1a51",
+    "content-hash": "e54f915208a8ee067e34a26482f131ce",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1479,6 +1479,50 @@
             "homepage": "https://www.drupal.org/project/bootstrap_layouts",
             "support": {
                 "source": "https://git.drupalcode.org/project/bootstrap_layouts"
+            }
+        },
+        {
+            "name": "drupal/bootstrap_site_alert",
+            "version": "2.0.0-beta11",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/bootstrap_site_alert.git",
+                "reference": "8.x-2.0-beta11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_site_alert-8.x-2.0-beta11.zip",
+                "reference": "8.x-2.0-beta11",
+                "shasum": "4645d2109069dcbe709ecb2e26ef95d2423873a8"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0-beta11",
+                    "datestamp": "1672099729",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "labboy0276",
+                    "homepage": "https://www.drupal.org/user/2397942"
+                }
+            ],
+            "description": "This module is for rendering alerts site wide using the power of Bootstrap",
+            "homepage": "https://www.drupal.org/project/bootstrap_site_alert",
+            "support": {
+                "source": "https://git.drupalcode.org/project/bootstrap_site_alert"
             }
         },
         {
@@ -10556,7 +10600,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "pantheon-upstreams/upstream-configuration": 20,
-        "drupal/block_field": 5
+        "drupal/block_field": 5,
+        "drupal/bootstrap_site_alert": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
