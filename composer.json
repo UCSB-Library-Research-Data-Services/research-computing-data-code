@@ -22,7 +22,8 @@
         "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12",
         "drupal/admin_toolbar": "^3.3",
-        "drupal/asset_injector": "^2.16"
+        "drupal/asset_injector": "^2.16",
+        "drupal/block_field": "^1.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
