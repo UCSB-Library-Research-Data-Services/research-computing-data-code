@@ -23,7 +23,8 @@
         "drush/drush": "^11 || ^12",
         "drupal/admin_toolbar": "^3.3",
         "drupal/asset_injector": "^2.16",
-        "drupal/block_field": "^1.0@RC"
+        "drupal/block_field": "^1.0@RC",
+        "drupal/book_blocks": "^1.7"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
