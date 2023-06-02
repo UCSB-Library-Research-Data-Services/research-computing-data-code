@@ -11,6 +11,10 @@
         {
             "type": "path",
             "url": "upstream-configuration"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -35,7 +39,8 @@
         "drupal/content_moderation_notifications": "^3.5",
         "drupal/csv_importer": "^1.16",
         "drupal/ctools": "^4.0",
-        "drupal/date_popup": "^1.3"
+        "drupal/date_popup": "^1.3",
+        "oomphinc/composer-installers-extender": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -93,7 +98,8 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "oomphinc/composer-installers-extender": true
         }
     }
 }
