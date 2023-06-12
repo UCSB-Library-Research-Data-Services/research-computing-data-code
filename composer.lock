@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d08a4d7e8b6e96840118c4cca2550850",
+    "content-hash": "73ee695ec3c4022143596b00c6b6b0f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1346,6 +1346,15 @@
                 "source": "https://github.com/dompdf/dompdf/tree/v2.0.3"
             },
             "time": "2023-02-07T12:51:48+00:00"
+        },
+        {
+            "name": "douglascrockford/json-js",
+            "version": "2.0",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "drupal/a11y_paragraphs_tabs",
