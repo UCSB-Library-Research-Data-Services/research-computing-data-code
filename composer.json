@@ -85,7 +85,16 @@
         "npm-asset/a11y-accordion-tabs": "^1.0",
         "bower-asset/spectrum": "^1.8",
         "bower-asset/lazysizes": "^5.3",
-        "bower-asset/jquery-simple-color": "^1.2"
+        "bower-asset/jquery-simple-color": "^1.2",
+        "npm-asset/cropper": "^4.1",
+        "npm-asset/dompurify": "^3.0",
+        "npm-asset/dropzone": "^5.9",
+        "npm-asset/fakeobjects": "^4.15",
+        "npm-asset/flexslider": "^2.7",
+        "npm-asset/imagesloaded": "^5.0",
+        "npm-asset/jquery-colorbox": "^1.6",
+        "npm-asset/jquery-ui-touch-punch": "^0.2.3",
+        "npm-asset/masonry-layout": "^3.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
