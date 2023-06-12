@@ -79,7 +79,10 @@
         "drupal/jquery_ui_effects": "^2.0",
         "drupal/jquery_ui_menu": "^2.0",
         "drupal/jquery_ui_touch_punch": "^1.1",
-        "drupal/key": "^1.17"
+        "drupal/key": "^1.17",
+        "drupal/paragraphs": "^1.15",
+        "drupal/a11y_paragraphs_tabs": "^2.0@beta",
+        "npm-asset/a11y-accordion-tabs": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
