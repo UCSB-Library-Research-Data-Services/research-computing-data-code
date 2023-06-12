@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d8a39234b95d22282ec7d939b795a0a",
+    "content-hash": "305b8cfb62f253393645e2cc76c6875e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8176,6 +8176,15 @@
                 "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
+        },
+        {
+            "name": "simple_instagram_feed/jquery.instagramfeed",
+            "version": "3.0.4",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/jsanahuja/jquery.instagramFeed/blob/master/jquery.instagramFeed.min.js"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "symfony/console",
