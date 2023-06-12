@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfa84901d61c993c1e95d505fb64c686",
+    "content-hash": "a19c8baa6edd8f102e39ba70f52a6ce9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6522,6 +6522,15 @@
                 "source": "https://github.com/pel/pel/tree/0.9.12"
             },
             "time": "2022-02-18T13:20:54+00:00"
+        },
+        {
+            "name": "malsup/cycle",
+            "version": "3.0.3",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/malsup/cycle/blob/master/jquery.cycle.all.js"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "masterminds/html5",

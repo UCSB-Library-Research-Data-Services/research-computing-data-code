@@ -15,6 +15,18 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "malsup/cycle",
+                "version": "3.0.3",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/malsup/cycle/blob/master/jquery.cycle.all.js",
+                    "type": "file"
+                }
+            }
         }
     ],
     "require": {
@@ -94,7 +106,8 @@
         "npm-asset/imagesloaded": "^5.0",
         "npm-asset/jquery-colorbox": "^1.6",
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
-        "npm-asset/masonry-layout": "^3.3"
+        "npm-asset/masonry-layout": "^3.3",
+        "malsup/cycle": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -120,6 +133,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/colorbox": ["npm-asset/jquery-colorbox"],
+            "web/libraries/jquery.cycle": ["malsup/cycle"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
