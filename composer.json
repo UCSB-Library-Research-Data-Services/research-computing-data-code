@@ -27,6 +27,18 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "briancherne/jquery-hoverintent",
+                "version": "1.10.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://briancherne.github.io/jquery-hoverIntent/jquery.hoverIntent.js",
+                    "type": "file"
+                }
+            }
         }
     ],
     "require": {
@@ -107,7 +119,8 @@
         "npm-asset/jquery-colorbox": "^1.6",
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/masonry-layout": "^3.3",
-        "malsup/cycle": "^3.0"
+        "malsup/cycle": "^3.0",
+        "briancherne/jquery-hoverintent": "^1.10"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -134,6 +147,7 @@
             "web/core": ["type:drupal-core"],
             "web/libraries/colorbox": ["npm-asset/jquery-colorbox"],
             "web/libraries/jquery.cycle": ["malsup/cycle"],
+            "web/libraries/jquery.hoverIntent": ["briancherne/jquery-hoverintent"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],

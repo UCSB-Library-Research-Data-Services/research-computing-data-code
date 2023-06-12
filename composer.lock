@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a19c8baa6edd8f102e39ba70f52a6ce9",
+    "content-hash": "d08a4d7e8b6e96840118c4cca2550850",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -133,6 +133,15 @@
                 "bower-asset/jquery": ">=1.7.2"
             },
             "type": "bower-asset"
+        },
+        {
+            "name": "briancherne/jquery-hoverintent",
+            "version": "1.10.1",
+            "dist": {
+                "type": "file",
+                "url": "https://briancherne.github.io/jquery-hoverIntent/jquery.hoverIntent.js"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "caxy/php-htmldiff",
