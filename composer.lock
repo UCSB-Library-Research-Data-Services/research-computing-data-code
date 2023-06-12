@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73ee695ec3c4022143596b00c6b6b0f2",
+    "content-hash": "6d8a39234b95d22282ec7d939b795a0a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10646,6 +10646,15 @@
                 }
             ],
             "time": "2023-04-28T13:25:36+00:00"
+        },
+        {
+            "name": "tobia/pause",
+            "version": "3.0.3",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/tobia/Pause/blob/master/jquery.pause.js"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "twig/twig",

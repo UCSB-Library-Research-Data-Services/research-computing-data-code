@@ -51,6 +51,18 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "tobia/pause",
+                "version": "3.0.3",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/tobia/Pause/blob/master/jquery.pause.js",
+                    "type": "file"
+                }
+            }
         }
     ],
     "require": {
@@ -133,7 +145,8 @@
         "npm-asset/masonry-layout": "^3.3",
         "malsup/cycle": "^3.0",
         "briancherne/jquery-hoverintent": "^1.10",
-        "douglascrockford/json-js": "^2.0"
+        "douglascrockford/json-js": "^2.0",
+        "tobia/pause": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -162,6 +175,7 @@
             "web/libraries/jquery.cycle": ["malsup/cycle"],
             "web/libraries/jquery.hoverIntent": ["briancherne/jquery-hoverintent"],
             "web/libraries/json2": ["douglascrockford/json-js"],
+            "web/libraries/jquery.pause": ["tobia/pause"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
