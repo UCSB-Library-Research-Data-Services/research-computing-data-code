@@ -28,7 +28,7 @@
         "drupal/admin_toolbar": "^3.4",
         "drupal/asset_injector": "^2.17",
         "drupal/block_field": "^1.0@RC",
-        "drupal/book_blocks": "^1.8",
+        "drupal/book_blocks": "^1.11",
         "drupal/bootstrap_layouts": "^5.3",
         "drupal/admin_content_notification": "^4.1",
         "drupal/bootstrap_site_alert": "^1.10",
