@@ -75,9 +75,27 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "authorizenet/authorizenet",
+                "version": "2.0.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/AuthorizeNet/sdk-php/archive/refs/tags/2.0.2.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
+        "authorizenet/authorizenet": "^2.0",
+        "bower-asset/jquery-simple-color": "^1.2",
+        "bower-asset/lazysizes": "^5.3",
+        "bower-asset/spectrum": "^1.8",
+        "briancherne/jquery-hoverintent": "^1.10",
+        "douglascrockford/json-js": "^2.0",
         "pantheon-upstreams/upstream-configuration": "dev-main",
         "composer/installers": "^1.9",
         "drupal/core-composer-scaffold": "^10",
@@ -143,9 +161,6 @@
         "drupal/paragraphs": "^1.15",
         "drupal/a11y_paragraphs_tabs": "^2.0@beta",
         "npm-asset/a11y-accordion-tabs": "^1.0",
-        "bower-asset/spectrum": "^1.8",
-        "bower-asset/lazysizes": "^5.3",
-        "bower-asset/jquery-simple-color": "^1.2",
         "npm-asset/cropper": "^4.1",
         "npm-asset/dompurify": "^3.0",
         "npm-asset/dropzone": "^5.9",
@@ -156,8 +171,6 @@
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/masonry-layout": "^3.3",
         "malsup/cycle": "^3.0",
-        "briancherne/jquery-hoverintent": "^1.10",
-        "douglascrockford/json-js": "^2.0",
         "tobia/pause": "^3.0",
         "simple_instagram_feed/jquery.instagramfeed": "^3.0"
     },

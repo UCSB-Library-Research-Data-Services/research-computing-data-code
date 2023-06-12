@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "305b8cfb62f253393645e2cc76c6875e",
+    "content-hash": "fdfcd432c06b23fe639e4b0a97009b1d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,15 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
             },
             "time": "2022-01-18T09:12:03+00:00"
+        },
+        {
+            "name": "authorizenet/authorizenet",
+            "version": "2.0.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/AuthorizeNet/sdk-php/archive/refs/tags/2.0.2.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "bower-asset/jquery",
