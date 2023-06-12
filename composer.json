@@ -120,6 +120,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/colorbox": ["npm-asset/jquery-colorbox"],
+            "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
