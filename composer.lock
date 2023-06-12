@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86b5c1545ca013fce6a1b99a3c2ad8dd",
+    "content-hash": "e1cae0e87406e106df7c1134d293fa85",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,78 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
             },
             "time": "2022-01-18T09:12:03+00:00"
+        },
+        {
+            "name": "bower-asset/jquery",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-dist.git",
+                "reference": "b755b3e9ab895aed7f409ec48a1349f5b185f55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/b755b3e9ab895aed7f409ec48a1349f5b185f55f",
+                "reference": "b755b3e9ab895aed7f409ec48a1349f5b185f55f"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery-simple-color",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/recurser/jquery-simple-color.git",
+                "reference": "a78212bc7df313fbc3e5d839326aa3668c63edb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/recurser/jquery-simple-color/zipball/a78212bc7df313fbc3e5d839326aa3668c63edb3",
+                "reference": "a78212bc7df313fbc3e5d839326aa3668c63edb3"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/lazysizes",
+            "version": "5.3.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:aFarkas/lazysizes.git",
+                "reference": "81cf774c6a7f4d8f7f3909e225a65d8acb10cb20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aFarkas/lazysizes/zipball/81cf774c6a7f4d8f7f3909e225a65d8acb10cb20",
+                "reference": "81cf774c6a7f4d8f7f3909e225a65d8acb10cb20"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/spectrum",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:bgrins/spectrum.git",
+                "reference": "9aa028de7e8039c41ac792485a928edb97d4ac40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bgrins/spectrum/zipball/9aa028de7e8039c41ac792485a928edb97d4ac40",
+                "reference": "9aa028de7e8039c41ac792485a928edb97d4ac40"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.2"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "caxy/php-htmldiff",

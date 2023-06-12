@@ -82,7 +82,10 @@
         "drupal/key": "^1.17",
         "drupal/paragraphs": "^1.15",
         "drupal/a11y_paragraphs_tabs": "^2.0@beta",
-        "npm-asset/a11y-accordion-tabs": "^1.0"
+        "npm-asset/a11y-accordion-tabs": "^1.0",
+        "bower-asset/spectrum": "^1.8",
+        "bower-asset/lazysizes": "^5.3",
+        "bower-asset/jquery-simple-color": "^1.2"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
