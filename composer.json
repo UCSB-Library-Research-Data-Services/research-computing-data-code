@@ -243,7 +243,22 @@
         "drupal/menu_breadcrumb": "^2.0@alpha",
         "drupal/menu_trail_by_path": "^2.0",
         "drupal/pantheon_advanced_page_cache": "^2.1",
-        "drupal/svg_image": "^3.0"
+        "drupal/svg_image": "^3.0",
+        "drupal/addtoany": "^2.0",
+        "drupal/back_to_top": "^3.0",
+        "drupal/better_exposed_filters": "^6.0",
+        "drupal/bricks": "^2.1@alpha",
+        "drupal/cacheexclude": "^2.0",
+        "drupal/cas_attributes": "^2.0@beta",
+        "drupal/colorbox": "^2.0",
+        "drupal/computed_field": "^4.0@alpha",
+        "drupal/csv_serialization": "^3.0",
+        "drupal/date_all_day": "^2.0",
+        "drupal/devel": "^5.0",
+        "drupal/element_class_formatter": "^2.0@beta",
+        "drupal/entity_class_formatter": "^2.0",
+        "drupal/entity_type_clone": "^4.0",
+        "drupal/entityreference_filter": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
