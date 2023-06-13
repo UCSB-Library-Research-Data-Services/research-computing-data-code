@@ -285,7 +285,8 @@
     },
     "scripts": {
         "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
-        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"]
+        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate","php scripts/composer/install-libraries.php"],
+        "post-install-cmd": ["php scripts/composer/install-libraries.php"]
     },
     "config": {
         "preferred-install": "dist",
