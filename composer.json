@@ -232,7 +232,9 @@
         "drupal/bootstrap": "^3.28",
         "drupal/ief_table_view_mode": "^2.3",
         "drupal/webform": "^6.2@beta",
-        "drupal/webform_views": "^5.1"
+        "drupal/webform_views": "^5.1",
+        "drupal/antibot": "^2.0",
+        "drupal/captcha": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
