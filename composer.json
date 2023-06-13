@@ -234,7 +234,16 @@
         "drupal/webform": "^6.2@beta",
         "drupal/webform_views": "^5.1",
         "drupal/antibot": "^2.0",
-        "drupal/captcha": "^2.0@beta"
+        "drupal/captcha": "^2.0@beta",
+        "drupal/block_visibility_groups": "^2.0",
+        "drupal/cas": "^2.1",
+        "drupal/config_update": "^2.0@alpha",
+        "drupal/externalauth": "^2.0",
+        "drupal/imce": "^3.0",
+        "drupal/menu_breadcrumb": "^2.0@alpha",
+        "drupal/menu_trail_by_path": "^2.0",
+        "drupal/pantheon_advanced_page_cache": "^2.1",
+        "drupal/svg_image": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
