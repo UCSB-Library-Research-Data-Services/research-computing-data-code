@@ -297,7 +297,8 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/feeds_ex": "^1.0@beta",
         "drupal/field_delimiter": "^2.0",
-        "drupal/media_entity_browser": "^2.0@alpha"
+        "drupal/media_entity_browser": "^2.0@alpha",
+        "drupal/registration_role": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
