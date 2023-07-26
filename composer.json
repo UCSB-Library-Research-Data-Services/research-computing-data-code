@@ -294,7 +294,8 @@
         "drupal/features": "^3.13",
         "drupal/faq": "^1.2",
         "drupal/feeds": "^3.0@beta",
-        "drupal/feeds_tamper": "^2.0@beta"
+        "drupal/feeds_tamper": "^2.0@beta",
+        "drupal/feeds_ex": "^1.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
