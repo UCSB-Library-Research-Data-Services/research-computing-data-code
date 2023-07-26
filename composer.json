@@ -292,7 +292,8 @@
         "drupal/codesnippet": "^1.9",
         "drupal/entity_embed": "^1.4",
         "drupal/features": "^3.13",
-        "drupal/faq": "^1.2"
+        "drupal/faq": "^1.2",
+        "drupal/feeds": "^3.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
