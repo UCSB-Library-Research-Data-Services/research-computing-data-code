@@ -299,7 +299,8 @@
         "drupal/field_delimiter": "^2.0",
         "drupal/media_entity_browser": "^2.0@alpha",
         "drupal/registration_role": "^2.0",
-        "drupal/social_media": "^2.0"
+        "drupal/social_media": "^2.0",
+        "drupal/views_templates": "^1.2"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
