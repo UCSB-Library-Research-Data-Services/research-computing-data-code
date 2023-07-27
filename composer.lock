@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "144b94d4d0dd0d9042a48f030c77fa98",
+    "content-hash": "cfdc6964410dadf3574686638ffd35cf",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -25180,7 +25180,6 @@
         "drupal/captcha": 10,
         "drupal/config_update": 15,
         "drupal/menu_breadcrumb": 15,
-        "drupal/bricks": 15,
         "drupal/cas_attributes": 10,
         "drupal/computed_field": 15,
         "drupal/element_class_formatter": 10,
