@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f13925eb094d3007e20d3cd50f124fd",
+    "content-hash": "177532742039a165b9337659000f80f7",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -7080,6 +7080,83 @@
             "support": {
                 "source": "https://cgit.drupalcode.org/flexible_views",
                 "issues": "https://www.drupal.org/project/issues/flexible_views"
+            }
+        },
+        {
+            "name": "drupal/flexslider",
+            "version": "dev-2.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/flexslider.git",
+                "reference": "6d1ae5f3ba8bb65597aa0d428b1e43054d703ec3"
+            },
+            "require": {
+                "drupal/core": "^8.8.0 || ^9.0 || ^10.0",
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "dropfort/dropfort_module_build": "^2.0@beta",
+                "drupal/flexslider_fields": "*",
+                "drupal/flexslider_views": "*"
+            },
+            "suggest": {
+                "woothemes/flexslider": "~2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0+4-dev",
+                    "datestamp": "1670868643",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drupal-scaffold": {
+                    "gitignore": false,
+                    "allowed-packages": [
+                        "dropfort/dropfort_module_build"
+                    ],
+                    "locations": {
+                        "web-root": "drupal-ignore/"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "FlexSlider Module Contributors",
+                    "homepage": "https://www.drupal.org/node/1316346/committers",
+                    "role": "Contributors"
+                },
+                {
+                    "name": "ClassicCut",
+                    "homepage": "https://www.drupal.org/user/2703101"
+                },
+                {
+                    "name": "minorOffense",
+                    "homepage": "https://www.drupal.org/user/129088"
+                },
+                {
+                    "name": "ryanwebpage",
+                    "homepage": "https://www.drupal.org/user/737596"
+                },
+                {
+                    "name": "spotzero",
+                    "homepage": "https://www.drupal.org/user/657848"
+                }
+            ],
+            "description": "FlexSlider 2 integration for Drupal",
+            "homepage": "https://www.drupal.org/project/flexslider",
+            "support": {
+                "source": "https://git.drupalcode.org/project/flexslider",
+                "issues": "https://drupal.org/project/issues/flexslider"
             }
         },
         {
@@ -25378,7 +25455,8 @@
         "drupal/feeds_tamper": 10,
         "drupal/feeds_ex": 10,
         "drupal/media_entity_browser": 15,
-        "drupal/simple_gmap": 20
+        "drupal/simple_gmap": 20,
+        "drupal/flexslider": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
