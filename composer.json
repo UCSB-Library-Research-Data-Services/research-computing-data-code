@@ -305,7 +305,8 @@
         "drupal/seven": "^1.0",
         "drupal/simple_gmap": "3.0.x-dev@dev",
         "drupal/flexslider": "2.x-dev@dev",
-        "drupal/insert": "^3.0@beta"
+        "drupal/insert": "^3.0@beta",
+        "drupal/lazy": "3.x-dev@dev"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
