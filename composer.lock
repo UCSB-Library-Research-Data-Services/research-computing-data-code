@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "177532742039a165b9337659000f80f7",
+    "content-hash": "56a63e3837061212af93f6874ba7873b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -7887,6 +7887,57 @@
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "support": {
                 "source": "https://git.drupalcode.org/project/inline_entity_form"
+            }
+        },
+        {
+            "name": "drupal/insert",
+            "version": "3.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/insert.git",
+                "reference": "3.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/insert-3.0.0-beta1.zip",
+                "reference": "3.0.0-beta1",
+                "shasum": "e13d143c1f8cbd961549d514655ebdca40cabffb"
+            },
+            "require": {
+                "drupal/core": "^10"
+            },
+            "require-dev": {
+                "drupal/colorbox": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0-beta1",
+                    "datestamp": "1690890130",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "quicksketch",
+                    "homepage": "https://www.drupal.org/user/35821"
+                },
+                {
+                    "name": "Snater",
+                    "homepage": "https://www.drupal.org/user/3513717"
+                }
+            ],
+            "description": "Assists in inserting files, images, or other media into the body field as well as other editor and text areas.",
+            "homepage": "https://www.drupal.org/project/insert",
+            "support": {
+                "source": "https://git.drupalcode.org/project/insert"
             }
         },
         {
@@ -25456,7 +25507,8 @@
         "drupal/feeds_ex": 10,
         "drupal/media_entity_browser": 15,
         "drupal/simple_gmap": 20,
-        "drupal/flexslider": 20
+        "drupal/flexslider": 20,
+        "drupal/insert": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
