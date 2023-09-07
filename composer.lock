@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e3d38df02550f19c6d0fb9093a14144",
+    "content-hash": "121ae16963adad7c7d310133b9b5d9e0",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -7084,15 +7084,20 @@
         },
         {
             "name": "drupal/flexslider",
-            "version": "dev-2.x",
+            "version": "3.0.0-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/flexslider.git",
-                "reference": "6d1ae5f3ba8bb65597aa0d428b1e43054d703ec3"
+                "reference": "3.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/flexslider-3.0.0-alpha1.zip",
+                "reference": "3.0.0-alpha1",
+                "shasum": "6a2458db101bba5d1d4d4eb6c94fa2f1d88367bb"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0 || ^10.0",
-                "php": "^7.0 || ^8.0"
+                "drupal/core": "^9 || ^10"
             },
             "require-dev": {
                 "dropfort/dropfort_module_build": "^2.0@beta",
@@ -7104,15 +7109,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-2.0+4-dev",
-                    "datestamp": "1670868643",
+                    "version": "3.0.0-alpha1",
+                    "datestamp": "1694114706",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 },
                 "drupal-scaffold": {
@@ -25562,7 +25564,7 @@
         "drupal/feeds_ex": 10,
         "drupal/media_entity_browser": 15,
         "drupal/simple_gmap": 20,
-        "drupal/flexslider": 20,
+        "drupal/flexslider": 15,
         "drupal/insert": 10,
         "drupal/lazy": 20
     },

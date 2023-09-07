@@ -304,7 +304,7 @@
         "drupal/bartik": "^1.0",
         "drupal/seven": "^1.0",
         "drupal/simple_gmap": "3.0.x-dev@dev",
-        "drupal/flexslider": "2.x-dev@dev",
+        "drupal/flexslider": "^3.0@alpha",
         "drupal/insert": "^3.0@beta",
         "drupal/lazy": "3.x-dev@dev"
     },
