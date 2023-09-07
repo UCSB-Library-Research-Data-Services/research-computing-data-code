@@ -308,7 +308,8 @@
         "drupal/insert": "^3.0@beta",
         "drupal/lazy": "^3.12",
         "drupal/private_content": "^2.0",
-        "drupal/tac_lite": "^1.7"
+        "drupal/tac_lite": "^1.7",
+        "drupal/views_filters_populate": "^2.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
