@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b914504222671097e326618d9b40155",
+    "content-hash": "a3f6c58207a8ffee5b376e8e3e9232d0",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3726,6 +3726,57 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/colorbox",
                 "issues": "https://www.drupal.org/project/issues/colorbox"
+            }
+        },
+        {
+            "name": "drupal/colorbox_field_formatter",
+            "version": "dev-2.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/colorbox_field_formatter.git",
+                "reference": "76bdf4dcf44d331de954fa0f6158b02011557464"
+            },
+            "require": {
+                "drupal/colorbox": "^1.4 | ^2.0",
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.0.x": "2.0.x-dev"
+                },
+                "drupal": {
+                    "version": "2.0.2+2-dev",
+                    "datestamp": "1665743991",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jurgenhaas",
+                    "homepage": "https://www.drupal.org/user/168924"
+                },
+                {
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
+                }
+            ],
+            "description": "Colorbox Field Formatter",
+            "homepage": "https://www.drupal.org/project/colorbox_field_formatter",
+            "keywords": [
+                "Colorbox",
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/colorbox_field_formatter",
+                "issues": "http://drupal.org/project/issues/colorbox_field_formatter"
             }
         },
         {
@@ -25720,7 +25771,8 @@
         "drupal/media_entity_browser": 15,
         "drupal/simple_gmap": 20,
         "drupal/flexslider": 15,
-        "drupal/insert": 10
+        "drupal/insert": 10,
+        "drupal/colorbox_field_formatter": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

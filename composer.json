@@ -309,7 +309,8 @@
         "drupal/lazy": "^3.12",
         "drupal/private_content": "^2.0",
         "drupal/tac_lite": "^1.7",
-        "drupal/views_filters_populate": "^2.1"
+        "drupal/views_filters_populate": "^2.1",
+        "drupal/colorbox_field_formatter": "2.0.x-dev@dev"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
