@@ -67,6 +67,18 @@
         {
             "type": "package",
             "package": {
+                "name": "ckeditor-plugin/link",
+                "version": "4.17.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/link/releases/link_4.17.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "simple_instagram_feed/jquery.instagramfeed",
                 "version": "3.0.4",
                 "type": "drupal-library",
@@ -95,6 +107,7 @@
         "bower-asset/lazysizes": "^5.3",
         "bower-asset/spectrum": "^1.8",
         "briancherne/jquery-hoverintent": "^1.10",
+        "ckeditor-plugin/link": "^4.17",
         "douglascrockford/json-js": "^2.0",
         "pantheon-upstreams/upstream-configuration": "dev-main",
         "composer/installers": "^1.9",
@@ -341,6 +354,7 @@
             "web/libraries/jquery.pause": ["tobia/pause"],
             "web/libraries/jqueryinstagramfeed": ["simple_instagram_feed/jquery.instagramfeed"],
             "web/libraries/json2": ["douglascrockford/json-js"],
+            "web/libraries/link": ["ckeditor-plugin/link"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],

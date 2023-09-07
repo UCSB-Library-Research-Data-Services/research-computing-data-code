@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3d067641b571f883f370e54c0a6aa41",
+    "content-hash": "990ef5c7bbee9c399113ea8df8793aa2",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -387,6 +387,15 @@
                 "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.2.0"
             },
             "time": "2023-08-06T11:19:01+00:00"
+        },
+        {
+            "name": "ckeditor-plugin/link",
+            "version": "4.17.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/link/releases/link_4.17.1.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "composer/ca-bundle",
