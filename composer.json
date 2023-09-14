@@ -218,7 +218,6 @@
         "drupal/sitemap": "^2.0@beta",
         "drupal/smart_date": "^4.0",
         "drupal/smtp": "^1.2",
-        "drupal/socialfeed": "^2.0@beta",
         "drupal/sophron": "^2.0",
         "drupal/tamper": "^1.0@alpha",
         "drupal/taxonomy_import": "^2.0",
