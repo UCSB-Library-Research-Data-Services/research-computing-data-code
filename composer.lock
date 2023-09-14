@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2129e601fb10b188153386b834555b7c",
+    "content-hash": "e0116e1f22dfc049d3201330162c80f3",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10127,68 +10127,6 @@
             "homepage": "https://www.drupal.org/project/pdf_api",
             "support": {
                 "source": "https://git.drupalcode.org/project/pdf_api"
-            }
-        },
-        {
-            "name": "drupal/permissions_by_term",
-            "version": "3.1.26",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/permissions_by_term.git",
-                "reference": "3.1.26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/permissions_by_term-3.1.26.zip",
-                "reference": "3.1.26",
-                "shasum": "a36d9ce7369dc286900e9197bfb4aa877ffd1882"
-            },
-            "require": {
-                "drupal/core": "^9.1 || ^10",
-                "php": ">=7.1.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.1.26",
-                    "datestamp": "1692873344",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Majmesku",
-                    "homepage": "https://www.drupal.org/user/3622664",
-                    "email": "majmesku@publicplan.de"
-                },
-                {
-                    "name": "marcoliver",
-                    "homepage": "https://www.drupal.org/user/1529744"
-                },
-                {
-                    "name": "niko-",
-                    "homepage": "https://www.drupal.org/user/1409266"
-                },
-                {
-                    "name": "Peter Majmesku",
-                    "homepage": "https://www.drupal.org/user/786132"
-                },
-                {
-                    "name": "sudesh.solaskar",
-                    "homepage": "https://www.drupal.org/user/3403952"
-                }
-            ],
-            "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
-            "homepage": "https://www.drupal.org/project/permissions_by_term",
-            "support": {
-                "source": "https://git.drupalcode.org/project/permissions_by_term"
             }
         },
         {

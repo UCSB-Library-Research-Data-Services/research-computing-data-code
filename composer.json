@@ -199,7 +199,6 @@
         "drupal/override_node_options": "^2.7",
         "drupal/pathauto": "^1.11",
         "drupal/pdf_api": "^2.3",
-        "drupal/permissions_by_term": "^3.1",
         "drupal/private_files_download_permission": "^3.1",
         "drupal/protected_pages": "^1.6",
         "drupal/quick_node_clone": "^1.16",
