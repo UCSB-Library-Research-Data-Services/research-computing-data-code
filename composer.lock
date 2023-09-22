@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9302148e29eedc04a0e83c5152a6e6f1",
+    "content-hash": "6b057422fa8356341130162880d70d09",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -12753,6 +12753,58 @@
             "homepage": "https://www.drupal.org/project/toolbar_menu",
             "support": {
                 "source": "https://git.drupalcode.org/project/toolbar_menu"
+            }
+        },
+        {
+            "name": "drupal/tr_rulez",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tr_rulez.git",
+                "reference": "06a5a786be97763dc32437fcd452337d6046d0de"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/rules": "3.x-dev"
+            },
+            "require-dev": {
+                "drupal/rules": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1681016206",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": ">=9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Rohaly (tr)",
+                    "homepage": "https://www.drupal.org/u/tr",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides missing functionality and documentation for the Rules module.",
+            "homepage": "https://www.drupal.org/project/tr_rulez",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tr_rulez",
+                "issues": "https://www.drupal.org/project/issues/tr_rulez"
             }
         },
         {
@@ -25781,7 +25833,8 @@
         "drupal/insert": 10,
         "drupal/colorbox_field_formatter": 20,
         "drupal/rules": 20,
-        "drupal/scheduler_content_moderation_integration": 10
+        "drupal/scheduler_content_moderation_integration": 10,
+        "drupal/tr_rulez": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
