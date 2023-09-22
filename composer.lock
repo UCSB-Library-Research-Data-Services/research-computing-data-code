@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e496f8f1497d329bfc2ef1479b96954a",
+    "content-hash": "4ac7e6d96140e1c73f5b559d1d51ca54",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -8881,17 +8881,17 @@
         },
         {
             "name": "drupal/masonry",
-            "version": "2.0.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/masonry.git",
-                "reference": "2.0.1"
+                "reference": "4.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/masonry-2.0.1.zip",
-                "reference": "2.0.1",
-                "shasum": "4b4930cde001d05c800a4887751f7fe6c2ee072e"
+                "url": "https://ftp.drupal.org/files/projects/masonry-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "5062350d5f68d84077a393ce5b8cdc11ff66d0cd"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10"
@@ -8899,8 +8899,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.1",
-                    "datestamp": "1689927634",
+                    "version": "4.0.0",
+                    "datestamp": "1690017720",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8927,6 +8927,53 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/masonry",
                 "issues": "https://www.drupal.org/project/issues/masonry?version=8.x"
+            }
+        },
+        {
+            "name": "drupal/masonry_views",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/masonry_views.git",
+                "reference": "4.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/masonry_views-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "33ddaed80b9e339d52b81f27cf446fcba388100b"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/masonry": "^4.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0",
+                    "datestamp": "1689937603",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Dominique Clause (Dom.)",
+                    "homepage": "https://www.drupal.org/u/dom",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides a Views plugin for displaying content in a Masonry layout.",
+            "homepage": "https://www.drupal.org/project/masonry_views",
+            "support": {
+                "source": "https://git.drupalcode.org/project/masonry_views",
+                "issues": "https://www.drupal.org/project/issues/masonry_views?version=8.x"
             }
         },
         {
