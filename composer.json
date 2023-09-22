@@ -311,7 +311,8 @@
         "drupal/view_mode_page": "^4.0",
         "drupal/eca": "^1.1",
         "drupal/masonry_views": "^4.0",
-        "drupal/rules": "3.x-dev@dev"
+        "drupal/rules": "3.x-dev@dev",
+        "drupal/simple_timeline": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

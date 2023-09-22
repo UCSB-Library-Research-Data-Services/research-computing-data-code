@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c4b2ce013bfce344c14e359d237edb2",
+    "content-hash": "afb08d6dd21d0a2b95b4e0fed3c6c501",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -11809,6 +11809,66 @@
             "support": {
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
                 "issues": "https://drupal.org/project/issues/simple_sitemap"
+            }
+        },
+        {
+            "name": "drupal/simple_timeline",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/simple_timeline.git",
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/simple_timeline-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "aa34a2498238e4dfe8564f4935b473571e22b581"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0",
+                    "datestamp": "1695223312",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "alansaviolobo",
+                    "homepage": "https://www.drupal.org/user/2190830"
+                },
+                {
+                    "name": "Chandra Gowsalya Kannan",
+                    "homepage": "https://www.drupal.org/user/3752381"
+                },
+                {
+                    "name": "flocondetoile",
+                    "homepage": "https://www.drupal.org/user/2006064"
+                },
+                {
+                    "name": "Guido_S",
+                    "homepage": "https://www.drupal.org/user/3629581"
+                }
+            ],
+            "description": "Provide a views style for displaying content in a vertical timeline",
+            "homepage": "https://www.drupal.org/project/simple_timeline",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/simple_timeline",
+                "issues": "https://www.drupal.org/project/issues/simple_timeline"
             }
         },
         {
