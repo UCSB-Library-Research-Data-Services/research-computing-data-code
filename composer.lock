@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f757c091fe3ea192091e1b36a38789ac",
+    "content-hash": "e496f8f1497d329bfc2ef1479b96954a",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -18251,15 +18251,6 @@
                 }
             ],
             "time": "2023-07-27T08:12:09+00:00"
-        },
-        {
-            "name": "simple_instagram_feed/jquery.instagramfeed",
-            "version": "3.0.4",
-            "dist": {
-                "type": "file",
-                "url": "https://github.com/jsanahuja/jquery.instagramFeed/blob/master/jquery.instagramFeed.min.js"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "simshaun/recurr",
