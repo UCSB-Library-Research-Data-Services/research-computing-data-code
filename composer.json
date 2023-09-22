@@ -310,7 +310,8 @@
         "drupal/delete_all": "^3.0",
         "drupal/view_mode_page": "^4.0",
         "drupal/eca": "^1.1",
-        "drupal/masonry_views": "^4.0"
+        "drupal/masonry_views": "^4.0",
+        "drupal/rules": "3.x-dev@dev"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

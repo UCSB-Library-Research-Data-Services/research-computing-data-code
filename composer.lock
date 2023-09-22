@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ac7e6d96140e1c73f5b559d1d51ca54",
+    "content-hash": "7c4b2ce013bfce344c14e359d237edb2",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -11469,6 +11469,62 @@
             "homepage": "https://www.drupal.org/project/responsive_tables_filter",
             "support": {
                 "source": "https://git.drupalcode.org/project/responsive_tables_filter"
+            }
+        },
+        {
+            "name": "drupal/rules",
+            "version": "dev-3.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/rules.git",
+                "reference": "2d40d10351128a29c037b076c27611808398cc60"
+            },
+            "require": {
+                "drupal/core": "^9.1 || ^10",
+                "drupal/typed_data": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-alpha7+50-dev",
+                    "datestamp": "1689032348",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "fago",
+                    "homepage": "https://www.drupal.org/user/16747"
+                },
+                {
+                    "name": "klausi",
+                    "homepage": "https://www.drupal.org/user/262198"
+                },
+                {
+                    "name": "TR",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "React on events and conditionally evaluate actions.",
+            "homepage": "https://www.drupal.org/project/rules",
+            "support": {
+                "source": "https://git.drupalcode.org/project/rules",
+                "issues": "https://www.drupal.org/project/issues/rules"
             }
         },
         {
@@ -25600,7 +25656,8 @@
         "drupal/simple_gmap": 20,
         "drupal/flexslider": 15,
         "drupal/insert": 10,
-        "drupal/colorbox_field_formatter": 20
+        "drupal/colorbox_field_formatter": 20,
+        "drupal/rules": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
