@@ -199,7 +199,7 @@
         "drupal/replicate": "^1.2",
         "drupal/replicate_ui": "^1.1",
         "drupal/responsive_tables_filter": "^1.17",
-        "drupal/scheduler": "^1.5",
+        "drupal/scheduler": "^2.0",
         "drupal/simple_sitemap": "^4.1",
         "drupal/site_settings": "^1.20",
         "drupal/sitemap": "^2.0@beta",
@@ -312,7 +312,8 @@
         "drupal/eca": "^1.1",
         "drupal/masonry_views": "^4.0",
         "drupal/rules": "3.x-dev@dev",
-        "drupal/simple_timeline": "^2.0"
+        "drupal/simple_timeline": "^2.0",
+        "drupal/scheduler_content_moderation_integration": "^2.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
