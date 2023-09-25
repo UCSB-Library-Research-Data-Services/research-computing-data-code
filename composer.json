@@ -314,7 +314,8 @@
         "drupal/rules": "3.x-dev@dev",
         "drupal/simple_timeline": "^2.0",
         "drupal/scheduler_content_moderation_integration": "^2.0@beta",
-        "drupal/tr_rulez": "1.x-dev@dev"
+        "drupal/tr_rulez": "1.x-dev@dev",
+        "drupal/month_year": "2.0.x-dev@dev"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
