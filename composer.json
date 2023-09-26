@@ -314,7 +314,8 @@
         "drupal/simple_timeline": "^2.0",
         "drupal/scheduler_content_moderation_integration": "^2.0@beta",
         "drupal/tr_rulez": "1.x-dev@dev",
-        "drupal/month_year": "2.0.x-dev@dev"
+        "drupal/month_year": "2.0.x-dev@dev",
+        "npm-asset/fonticonpicker--fonticonpicker": "^3.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -340,6 +341,7 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/colorbox": ["npm-asset/jquery-colorbox"],
+            "web/libraries/fonticonpicker--fonticonpicker": ["npm-asset/fonticonpicker--fonticonpicker"],
             "web/libraries/jquery.cycle": ["malsup/cycle"],
             "web/libraries/jquery.hoverIntent": ["briancherne/jquery-hoverintent"],
             "web/libraries/jquery.pause": ["tobia/pause"],
