@@ -307,7 +307,6 @@
         "drupal/tac_lite": "^1.7",
         "drupal/views_filters_populate": "^2.1",
         "drupal/colorbox_field_formatter": "2.0.x-dev@dev",
-        "drupal/delete_all": "^3.0",
         "drupal/view_mode_page": "^4.0",
         "drupal/eca": "^1.1",
         "drupal/masonry_views": "^4.0",
