@@ -315,7 +315,8 @@
         "drupal/scheduler_content_moderation_integration": "^2.0@beta",
         "drupal/tr_rulez": "1.x-dev@dev",
         "drupal/month_year": "2.0.x-dev@dev",
-        "npm-asset/fonticonpicker--fonticonpicker": "^3.1"
+        "npm-asset/fonticonpicker--fonticonpicker": "^3.1",
+        "drupal/tvi": "^2.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
