@@ -1,0 +1,272 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Preprocess variables for html templates.
+ * @param $variables
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Url;
+use Drupal\Core\Menu\MenuTreeParameters;
+
+
+
+function _blog_topics() {
+  $vars = [];
+  $url = $_SERVER['REQUEST_URI'];
+  $url_parts = explode('/',$url);
+  if (isset($url_parts[2]) && $url_parts[2] != '' && strpos($url_parts[2], '?page=') !== false) {
+      $arr = explode('?', $url_parts[2], 2);
+      $term_stub = $arr[0];
+  } elseif (isset($url_parts[2]) && $url_parts[2] != '') {
+    $term_stub = $url_parts[2];
+  }
+  $queries = array();
+  parse_str($_SERVER['QUERY_STRING'], $queries);
+  if (isset($queries['page']) && $queries['page'] > 0) {
+    $vars['paged'] = 1;
+  }
+  $vid = 'blogs';
+  $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+  $c = 0;
+  if ($url_parts[1] == 'blog' || $url_parts[1] == 'topic') {
+    $vars['is_blog'] = 1;
+  }
+  if ($url_parts[1] == 'topic') {
+    $vars['is_topics'] = 1;
+  }
+  foreach ($terms as $term) {
+    $term_name = strtolower($term->name);
+    $term_name = str_replace(' ', '-', $term_name);
+    if (isset($term_stub) && $term_stub == $term_name) {
+      $term_id = $term->tid;
+      $blog_description = $term->description__value;
+      $blog_title = $term->name;
+    }
+    $c++;
+    if (isset($term_name) && $term_name != '') {
+      $vars['blog'][$c]['view'] = views_embed_view('blog','block_1',$term_name);
+      $vars['blog'][$c]['stub'] = $term_name;
+    }
+    $vars['blog'][$c]['term_name'] = $term->name;
+  }
+  if (isset($term_id) && $term_id != '') {
+    $vars['term_id'] = $term_id;
+    $vars['topics_filter'] = views_embed_view('topics','block_1',$term_id);
+    $vars['topics_list'] = views_embed_view('topics','block_2',$term_id);
+  }
+  if (isset($term_name) && $term_name != '') {
+    $vars['term_name'] = $term_name;
+  }
+  $vars['view_count'] = $c;
+  if (isset($term_stub) && $term_stub != '') {
+    $vars['stub'] = $term_stub;
+    $vars['featured_post'] = views_embed_view('blog','block_1',$term_stub);
+  }
+  $vars['all_topics_list'] = views_embed_view('topics','block_3');
+  if (isset($blog_description) && $blog_description != '') {
+    $vars['blog_description'] = $blog_description;
+  }
+  if (isset($blog_title) && $blog_title != '') {
+    $vars['blog_title'] = $blog_title;
+  }
+  if (isset($url_parts[3]) && $url_parts[3] != '') {
+    $vars['with_topic'] = 1;
+  }
+  return $vars;
+}
+
+function ucsbweb_preprocess_html(&$variables) {
+  $topics = _blog_topics();
+  $variables['view_count'] = $topics['view_count'];
+  $url = $_SERVER['REQUEST_URI'];
+  $url_arg = substr($url, strrpos($url, '/') + 1);
+  if ($url_arg == 'atoz') {
+    $variables['is_atoz'] = 1;
+  }
+  $variables['path_info']['args'] = FALSE;
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if (count($path_args) >= 3) {
+    $variables['path_info']['args'] = Html::cleanCssIdentifier(ltrim($path, '/'));
+  }
+}
+
+function ucsbweb_preprocess_page_title(&$variables) {
+  $nid = \Drupal::routeMatch()->getRawParameter('node');
+  if ($nid) {
+    $node = \Drupal\node\Entity\Node::load($nid);
+    $node_type = $node->getType();
+    if ($node_type == 'page') {
+      $subtitle_field = $node->get('field_subtitle');
+      if ($subtitle_field) {
+        $subtitle = $subtitle_field->value;
+        $variables['subtitle'] = $subtitle;
+      }
+      $color_field = $node->get('field_title_background_color');
+      if ($color_field) {
+        $color = $color_field->color;
+        $variables['has_background'] = 1;
+      }
+    }
+  }
+}
+
+function ucsbweb_preprocess_views_view_table(&$variables) {
+  $url = $_SERVER['REQUEST_URI'];
+  $atoz_arg = substr($url, strrpos($url, '/') + 1);
+  $atoz_header = substr($atoz_arg, 0, 1);
+  $variables['atoz_header'] = strtoupper($atoz_header);
+}
+
+function ucsbweb_preprocess_paragraph(&$variables, $hook) {
+  $variables['paragraph_id'] = rand(1,10000);
+}
+
+function ucsbweb_preprocess_field(&$variables, $hook) {
+  $variables['field_id'] = rand(1,10000);
+}
+
+function ucsbweb_preprocess_views_view(&$variables) {
+  $topics = _blog_topics();
+  $c = 1;
+  if (isset($topics) && $topics != '') {
+    while($c <= $topics['view_count']) {
+      $variables['blog'][$c]['view'] = views_embed_view('blog','block_2',$topics['blog'][$c]['stub']);
+      if (isset($topics['blog_title']) && $topics['blog_title'] != '') {
+        $variables['blog'][$c]['term_name'] = $topics['blog_title'];
+      }
+      if (isset($topics['stub']) && $topics['stub'] != '') {
+        $variables['blog'][$c]['stub'] = $topics['stub'];
+      }
+      $c++;
+    }
+    if (isset($topics['blog_title']) && $topics['blog_title'] != '') {
+      $variables['blog_title'] = $topics['blog_title'];
+    }
+    if (isset($topics['view_count']) && $topics['view_count'] != '') {
+      $variables['view_count'] = $topics['view_count'];
+    }
+    if (isset($topics['stub']) && $topics['stub'] != '') {
+      $variables['stub'] = $topics['stub'];
+      $variables['featured_post'] = views_embed_view('blog','block_1',$topics['stub']);
+    }
+    if (isset($topics['paged']) && $topics['paged'] != '') {
+      $variables['paged'] = $topics['paged'];
+    }
+    if (isset($topics['term_id']) && $topics['term_id'] != '') {
+      $variables['topics_filter'] = views_embed_view('topics','block_1',$topics['term_id']);
+      $variables['topics_list'] = views_embed_view('topics','block_2',$topics['term_id']);
+    }
+    $variables['all_topics_list'] = views_embed_view('topics','block_3');
+    if (isset($topics['blog_description']) && $topics['blog_description'] != '') {
+      $variables['blog_description'] = $topics['blog_description'];
+    }
+    if (isset($topics['with_topic']) && $topics['with_topic'] == 1) {
+      $variables['with_topic'] = 1;
+    }
+    $request = \Drupal::request();
+    if ($route = $request->attributes->get(\Drupal\Core\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+      if (isset($topics['blog_title']) && $topics['blog_title'] != '') {
+        $route->setDefault('_title', $topics['blog_title'] . ' Blog');
+      }
+    }
+  }
+}
+
+function ucsbweb_preprocess_page(&$variables, $hook) {
+  $site_settings = \Drupal::service('site_settings.loader');
+  $settings = $site_settings->loadAll();
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  if (isset($settings['footer']['social_media'][0]['uri']) && $settings['footer']['social_media'][0]['uri'] != '') {
+    $sm_count = 0;
+    $sm_total = count($settings['footer']['social_media'])-1;
+    foreach ($settings['footer']['social_media'] as $item) {
+      if($sm_count < $sm_total) {
+        $variables['social_media'][$sm_count]['uri'] = $item['uri'];
+        $variables['social_media'][$sm_count]['title'] = $item['title'];
+        $sm_count++;
+      }
+    }
+  } elseif(isset($settings['footer']['social_media']) && $settings['footer']['social_media'] != '') {
+    $variables['social_media'][0]['uri'] = $settings['footer']['social_media']['uri'];
+    $variables['social_media'][0]['title'] = $settings['footer']['social_media']['title'];
+  }
+   if (isset($variables['node']) && $variables['node'] != '') {
+     if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      $node_type = $node->getType();
+      $variables['node_teaser'] = $node->get('body')->summary;
+      $variables['node_type'] = $node_type;
+     }
+  }
+  else {
+    $topics = _blog_topics();
+    if (isset($topics['view_count']) && $topics['view_count'] != '') {
+      $variables['view_count'] = $topics['view_count'];
+    }
+    if (isset($topics['blog_title']) && $topics['blog_title'] != '') {
+      $variables['blog_title'] = $topics['blog_title'];
+    }
+    if (isset($topics['is_blog']) && $topics['is_blog'] != '') {
+      $variables['is_blog'] = $topics['is_blog'];
+    }
+    if (isset($topics['is_topics']) && $topics['is_topics'] != '') {
+      $variables['is_topics'] = $topics['is_topics'];
+    }
+    if (isset($topics['stub']) && $topics['stub'] != '') {
+      $variables['stub'] = $topics['stub'];
+    }
+    if (isset($topics['term_id']) && $topics['term_id'] != '') {
+      $variables['topics_list'] = views_embed_view('topics','block_2',$topics['term_id']);
+    }
+    $variables['all_topics_list'] = views_embed_view('topics','block_3');
+    if (isset($topics['with_topic']) && $topics['with_topic'] == 1) {
+      $variables['with_topic'] = 1;
+    }
+  }
+
+  
+  $show_quick_links = false;
+  $quick_links_menu = \Drupal\system\Entity\Menu::load('quick-links');
+  if($quick_links_menu){
+    $parameters = new MenuTreeParameters();
+    $parameters->onlyEnabledLinks();
+    $tree = \Drupal::menuTree()->load('quick-links', $parameters);
+    if(!empty($tree)){
+      $show_quick_links = true;
+    } 
+  }
+  $variables['quicklinks'] = $show_quick_links;
+}
+
+
+function ucsbweb_preprocess_node(&$variables, $hook) {
+  $node = $variables['node'];
+  $node_type = $node->getType();
+  if ($node_type == 'blog_post') {
+    if ($node->get('field_author')->value != '') {
+      $variables['author_display_name'] = $node->get('field_author')->value;
+    } elseif ($node->getOwner()->field_display_name->value != '') {
+      $variables['author_display_name'] = $node->getOwner()->field_display_name->value;
+    } else {
+      $variables['author_display_name'] = 'Staff Writer';
+    }
+  }
+}
+
+function ucsbweb_preprocess_block__system_branding_block(&$variables) {
+  $site_settings = \Drupal::service('site_settings.loader');
+  $settings = $site_settings->loadAll();
+  // print_r($settings);exit;
+  if (isset($settings['wordmark']['logo']['field_image']['uri']) && $settings['wordmark']['logo']['field_image']['uri'] != '') {
+    $svg = file_get_contents($settings['wordmark']['logo']['field_image']['uri']);
+    $variables['wordmark'] = $svg;
+  }
+}

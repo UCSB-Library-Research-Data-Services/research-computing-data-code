@@ -1,0 +1,29 @@
+//blade background image overlay
+.blade-background-image-overlay
+{
+  background-position: left!important;
+  background-repeat: no-repeat!important;
+  background-position-y: center!important;
+  background-size: cover;
+}
+
+//blade background image color overlay for when background image is present with a background color
+.blade-background-image-color-overlay {
+  height: 100%!important;
+  width: 100%!important;
+  position: absolute!important;
+  display: block!important;
+  top: 0;
+  left: 0;
+  transition: .25s!important;
+  opacity:0.75;
+  z-index: 1;
+}
+
+
+@media (min-width: 992px) {
+  .paragraph.paragraph--type--column.has-background:has(> div.has-border) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
