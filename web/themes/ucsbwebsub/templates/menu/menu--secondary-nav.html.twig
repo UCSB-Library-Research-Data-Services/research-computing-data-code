@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass('menu', 'nav', navbar_classes) }}>
+    {% elseif menu_level == 1 %}
+      <div{{ attributes.addClass('menu', 'dropdown-menu') }}><ul>
+    {% else %}
+      <div><ul>
+    {% endif %}
+    {% for item in items %}
+         
+      {%
+        set item_classes = [
+          item.in_active_trail ? 'active',
+        ]
+      %}
+
+      {% if item.below %}
+        {% if menu_level == 0 %}
+          <li {{ item.attributes.addClass(item_classes, 'dropdown') }}>
+            <a href="{{ item.url }}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title }} <span class="caret"></span></a>
+            {{ menus.menu_links(item.below, attributes.removeClass('menu', 'nav', 'navbar-nav'), menu_level + 1) }}
+          </li>
+        {% else %}
+          <li {{ item.attributes.addClass(item_classes) }}>
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            {{ menus.menu_links(item.below, attributes.removeClass('menu', 'nav', 'navbar-nav'), menu_level + 1) }}
+          </li>
+        {% endif %}
+      {% else %}
+        <li  {{ item.attributes.addClass(item_classes, 'dropdown') }} {{ item.attributes }}>{{ link(item.title, item.url) }}</li>
+      {% endif %}
+    
+    {% endfor %}
+    </ul>
+    {% if menu_level != 0 %}
+    </div>
+    {% endif %}
+  {% endif %}
+{% endmacro %}

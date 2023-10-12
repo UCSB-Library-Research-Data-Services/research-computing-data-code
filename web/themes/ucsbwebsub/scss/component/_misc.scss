@@ -1,0 +1,302 @@
+// Custom CSS classes used for building views
+
+.rounded img {border-radius: 100%;}
+
+.squared-325 img {
+    width:325px;
+    height:325px;
+    object-fit:cover;
+}
+
+.squared-480 img {
+    width:480px;
+    height:480px;
+    object-fit:cover;
+}
+
+.squared-220 img {
+    width:220px;
+    height:220px;
+    object-fit:cover;
+}
+
+.medium {
+    font-size: 18px;
+    line-height: normal;
+}
+
+.float-left {
+    float:left;
+}
+  
+.float-middle {
+    margin: 0 auto;
+}
+ 
+.float-right {
+    float: right;
+}
+ 
+.left-padding-none {
+  padding-left: 0px !important;
+}
+
+.right-padding-none {
+  padding-right: 0px !important;
+}
+
+.left-padding-1 {
+  padding-left: 15px !important;
+}
+
+.right-padding-1 {
+  padding-right: 15px !important;
+}
+
+.left-padding-2 {
+  padding-left: 30px !important;
+}
+
+.right-padding-2 {
+  padding-right: 30px !important;
+}
+
+.left-padding-3 {
+  padding-left: 45px !important;
+}
+
+.right-padding-3 {
+  padding-right: 45px !important;
+}
+
+.left-padding-4 {
+  padding-left: 60px !important;
+}
+
+.right-padding-4 {
+  padding-right: 60px !important;
+}
+
+
+.left-margin-none {
+  margin-left: 0px !important;
+}
+
+.right-margin-none {
+  margin-right: 0px !important;
+}
+
+.left-margin-1 {
+  margin-left: 15px !important;
+}
+
+.right-margin-1 {
+  margin-right: 15px !important;
+}
+
+.left-margin-2 {
+  margin-left: 30px !important;
+}
+
+.right-margin-2 {
+  margin-right: 30px !important;
+}
+
+.left-margin-3 {
+  margin-left: 45px !important;
+}
+
+.right-margin-3 {
+  margin-right: 45px !important;
+}
+
+.left-margin-4 {
+  margin-left: 60px !important;
+}
+
+.right-margin-4 {
+  margin-right: 60px !important;
+}
+
+.break-words {
+    word-break: break-word;
+}
+
+.break-words-all {
+    word-break: break-all;
+}
+
+
+
+.image-container {
+  position:relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+}
+
+
+a:focus .image-container img {
+    outline-color: rgb(77, 144, 254);
+    outline-offset: -5px;
+    outline-style: auto;
+    outline-width: 10px;
+}
+
+.text-container-item {
+  position: absolute;
+  box-shadow: 0 2px 2px 0 rgba(17,21,23,0.2);
+  padding: 4px 10px 2px 10px;
+}
+
+
+/* Item Layer */
+.layer-1 {
+  z-index: 1;
+}
+.layer-2 {
+  z-index: 2;
+}
+.layer-3 {
+  z-index: 3;
+}
+.layer-4 {
+  z-index: 4;
+}
+
+/* Item Positions */
+.position-top {
+  display: block;
+  top: 0px;
+  width: 100%;
+}
+.position-top-left {
+  display: inline-block;
+  top: 0px;
+  left: 0px;
+}
+.position-top-right {
+  display: inline-block;
+  top: 0px;
+  right: 0px;
+}
+.position-bottom {
+  display: block;
+  bottom: 0px;
+  width:100%;
+}
+.position-bottom-left {
+  display: inline-block;
+  bottom: 0px;
+  left: 0px;
+}
+.position-bottom-right {
+  display: inline-block;
+  bottom: 0px;
+  right: 0px;
+}
+
+/* Colors */
+div.background-color-ffffff {
+  background-color: #ffffff;
+}
+div.background-color-ffffff div {
+  color: #3d4952;
+}
+div.background-color-eef0f2 {
+  background-color: #eef0f2;
+}
+div.background-color-eef0f2 div {
+  color: #3d4952;
+}
+div.background-color-dce1e5 {
+  background-color: #dce1e5;
+}
+div.background-color-dce1e5 div {
+  color: #3d4952;
+}
+div.background-color-9cbebe {
+  background-color: #9cbebe;
+}
+div.background-color-9cbebe div {
+  color: #3d4952;
+}
+div.background-color-dae6e6 {
+  background-color: #dae6e6;
+}
+div.background-color-dae6e6 div {
+  color: #3d4952;
+}
+div.background-color-dcd6cc {
+  background-color: #dcd6cc;
+}
+div.background-color-dcd6cc div {
+  color: #3d4952;
+}
+div.background-color-f1eeea {
+  background-color: #f1eeea;
+}
+div.background-color-f1eeea div {
+  color: #3d4952;
+}
+div.background-color-c9bf9d {
+  background-color: #c9bf9d;
+}
+div.background-color-c9bf9d div {
+  color: #3d4952;
+}
+div.background-color-edeadf {
+  background-color: #edeadf;
+}
+div.background-color-edeadf div {
+  color: #3d4952;
+}
+div.background-color-febc11 {
+  background-color: #febc11;
+}
+div.background-color-febc11 div {
+  color: #3d4952;
+}
+div.background-color-003660 {
+  background-color: #003660;
+}
+div.background-color-003660 div {
+  color: #ffffff;
+}
+div.background-color-6d7d33 {
+  background-color: #6d7d33;
+}
+div.background-color-6d7d33 div {
+  color: #ffffff;
+}
+div.background-color-09847a {
+  background-color: #09847a;
+}
+div.background-color-09847a div {
+  color: #ffffff;
+}
+div.background-color-047c91 {
+  background-color: #047c91;
+}
+div.background-color-047c91 div {
+  color: #ffffff;
+}
+div.background-color-ef5645 {
+  background-color: #ef5645;
+}
+div.background-color-ef5645 div {
+  color: #111517;
+}
+div.background-color-c43424 {
+  background-color: #c43424;
+}
+div.background-color-c43424 div {
+  color: #ffffff;
+}
+div.background-color-000000 {
+  background-color: #000000;
+}
+div.background-color-000000 div {
+  color: #ffffff;
+}
+

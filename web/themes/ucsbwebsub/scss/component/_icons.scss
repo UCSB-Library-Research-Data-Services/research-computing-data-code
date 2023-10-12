@@ -1,0 +1,13 @@
+.ucsb-icon { 
+    display: block; 
+    padding: 10px;
+}
+
+.ucsb-icon a.ucsb-icon-lnk {
+    border-bottom: none !important;
+}
+
+.ucsb-icon .ucsb-icon-lnk:hover svg {
+    opacity: 0.5;
+}
+  

@@ -1,0 +1,170 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix', 
+  ]
+%}
+
+<style>
+  .events-newsletters .event-details-row div:nth-child(01) {
+    text-align: center;
+
+  }
+
+  .events-newsletters .equal-height {
+    padding-left: 15px; 
+    padding-right: 15px;
+  }
+
+  .events-newsletters .image-thumbnail {
+    margin-bottom: 35px;
+  }
+
+  .events-newsletters .event-content .event-description{
+    margin-top: 35px;
+  }
+</style>
+
+<article{{ attributes.addClass(classes, 'forum-forms', 'bottom-padding-none', 'events-newsletters') }}>
+
+  <div class= "view-custom-container col-sm-12" style = "padding-top: 50px">
+    <div class="col-sm-12 col-md-5 equal-height image-thumbnail">
+     
+      {% if node.field_events_newsletters_image.entity.field_media_image %}
+          <a href="{{ file_url(node.field_events_newsletters_image.entity.field_media_image.entity.uri.value) }}">{{ drupal_image(node.field_events_newsletters_image.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_events_newsletters_image.entity.field_media_image.alt, loading: "lazy"}, true) }}</a>
+      {% else %}    
+            <img style="width:100%" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background">             
+      {% endif %}  
+    </div>
+
+    <div class="col-sm-12 col-md-7 equal-height event-content">
+
+    {# Event Date #}
+    {% if node.field_events_newsletters_start.value %}
+      <div class="event-details-row row">
+        <div class="col-12 col-sm-2 col-md-2">
+          <svg style="width:45px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.58154 21.49622"><title>calendar-with-clock-icon-uc-santa-barbara</title><g><path d="M14.33612,2.36234H12.36928V4.06561a.21939.21939,0,1,1-.43877,0V2.36234H3.72434V4.06561a.21984.21984,0,1,1-.43968,0V2.36234H1.31813a.88326.88326,0,0,0-.87936.87844v14.081a.874.874,0,0,0,.25838.6201l.00092.00091a.87114.87114,0,0,0,.62006.25653H9.73424c-.03284-.071-.0649-.14257-.09507-.216a5.71411,5.71411,0,0,1-.30561-.98205H1.60485a.21964.21964,0,0,1-.21938-.21938V6.33288a.21906.21906,0,0,1,.21938-.21939H14.04946a.21909.21909,0,0,1,.21938.21939v3.82428a5.82711,5.82711,0,0,1,.62609-.03443c.10695,0,.21421.00335.32024.00853V3.24078a.87641.87641,0,0,0-.25808-.62036V2.61889a.87992.87992,0,0,0-.621-.25655ZM14.2575,16.77676a.21987.21987,0,0,1-.3111-.31079l.62616-.62555-2.57532-1.92418a.21935.21935,0,1,1,.26235-.35162l2.345,1.75263-.09477-.68591a.21914.21914,0,1,1,.4342-.05969l.10969.78765,2.72859-2.72737a.21922.21922,0,0,1,.31018.30988L15.242,15.79224l.32389.24258a.21934.21934,0,0,1-.26234.35159l-.12006-.08894.51038,3.67345a.21888.21888,0,0,1-.43359.06034l-.52012-3.73806-.48265.48356Zm-4.03544,1.42261c-.06459-.12429-.12432-.25226-.17794-.38267A5.2731,5.2731,0,0,1,9.73241,16.756v-.00183L9.7315,16.7536h0a.08641.08641,0,0,0-.00336-.02163h0l-.00091-.00183v-.00091a5.27884,5.27884,0,0,1-.07953-.91989,5.22346,5.22346,0,1,1,.64261,2.51956.184.184,0,0,0-.01554-.02864l-.00853-.01558-.00091-.00057-.00244-.0061-.00183-.00182v-.00183l-.00091-.00153-.00092-.00182-.00091-.00092-.00152-.00152v-.00183l-.00085-.00183-.001-.00091-.00091-.00153-.00092-.00182-.00061-.00183-.00091-.00156-.00092-.00088v-.00091l-.00084-.00183V18.253l-.0019-.00186-.00061-.0018-.00091-.00152-.00092-.00092v-.00186l-.00176-.00179v-.00153l-.001-.00182-.00152-.00095v-.0018l-.00183-.00152v-.00183l-.00091-.00094-.00085-.00241-.00068-.00091-.00091-.00183h0l-.00092-.00152-.00091-.00183-.00091-.00183-.00092-.00244-.00152-.00183v-.00183l-.00183-.0006V18.214l-.00183-.00335-.00061-.00183-.00183-.00339h-.00091l-.00091-.00271-.00092-.00183v-.00155Zm-.25991.44032h-8.644a1.3108,1.3108,0,0,1-.92751-.38514L.38788,18.253.387,18.25211h0A1.31846,1.31846,0,0,1,0,17.32183V3.24078A1.32121,1.32121,0,0,1,1.31813,1.92265H3.28466V.21938a.21984.21984,0,0,1,.43968,0V1.92265h8.20617V.21938a.21939.21939,0,0,1,.43877,0V1.92265h1.96684a1.31666,1.31666,0,0,1,.93116.387v.00092a1.31442,1.31442,0,0,1,.38666.93024V10.1727a5.68665,5.68665,0,1,1-5.69179,8.467Zm.91136-6.85178a5.71131,5.71131,0,0,0-1.23434,1.8474c-.02681.06669-.05271.13224-.0777.19866H8.69338V11.77664h2.1914l-.01127.01127Zm.50854-.45H8.69338V9.27963h3.13787v1.738q-.23183.149-.4492.32027Zm.88881-.57436V9.06024a.21977.21977,0,0,0-.21938-.21938H8.474a.2198.2198,0,0,0-.21938.21938v4.994a.21963.21963,0,0,0,.21938.21938h.944a5.7032,5.7032,0,0,0-.16065,2.28891H1.82424V6.55226H13.83008v3.6698a5.66,5.66,0,0,0-1.10911.33151c-.15394.06308-.30416.13407-.45011.20994ZM7.18025,13.834a.21984.21984,0,1,1,0,.43968H3.60338a.21977.21977,0,0,1-.22-.21938v-2.497a.21938.21938,0,0,1,.22-.21939H6.96086V9.27963H3.60338a.21939.21939,0,1,1,0-.43877H7.18025a.22059.22059,0,0,1,.22029.21938v2.497a.21982.21982,0,0,1-.22029.21938H3.82276V13.834Z" style="fill:#a1afba;fill-rule:evenodd"/></g></svg>
+        </div>
+        <div class="col-12 col-sm-10 col-md-10">
+        {% if node.field_events_newsletters_end.value %}       
+            <p>{{ node.field_events_newsletters_start.value|date_modify('-8 hours')|date("l, F j, Y") }}   {{ node.field_events_newsletters_start.value|date_modify('-8 hours')|date("g:i a") }} - {{ node.field_events_newsletters_end.value|date_modify('-8 hours')|date("g:i a") }} PST</p>
+        {% else %}
+            <p>{{ node.field_events_newsletters_start.value|date_modify('-8 hours')|date("l, F j, Y, g:i a") }} PST</p>
+        {% endif %} 
+
+        </div>
+      </div>
+      <br/>
+    {% endif %}
+
+
+    {# Event Location #}
+    {% if node.field_events_newsletters_loc|length > 0 %}
+      <div class="event-details-row row">
+        <div class="col-12 col-sm-2 col-md-2">
+          <svg style="width:30px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.08692 20.23905"><title>location-icon-uc-santa-barbara</title><g><path d="M7.87381,20.15892c-.63567-.74255-1.34654-1.5305-2.08-2.34131A60.73775,60.73775,0,0,1,1.465,12.67246H1.46408a8.24833,8.24833,0,0,1-1.095-2.21121A8.0447,8.0447,0,1,1,16.08692,8.04373H16.086a7.9846,7.9846,0,0,1-1.465,4.62964,60.50706,60.50706,0,0,1-4.32978,5.14577c-.73243.81111-1.444,1.59967-2.0814,2.34344a.22.22,0,0,1-.30927.02407.24987.24987,0,0,1-.02675-.02773ZM8.04315,4.48A3.56359,3.56359,0,0,0,4.47847,8.04373h0a3.56453,3.56453,0,1,0,7.12906,0h0A3.5619,3.5619,0,0,0,8.04376,4.48ZM5.2125,5.2125A3.99135,3.99135,0,0,0,4.03971,8.04373h.001a4.00326,4.00326,0,1,0,8.00652,0h0A4.00469,4.00469,0,0,0,8.04376,4.0394H8.04315A3.99167,3.99167,0,0,0,5.2125,5.2125Zm.90624,12.3123c.68063.7523,1.34122,1.4848,1.925,2.1591.58229-.67369,1.24386-1.40589,1.92357-2.15819a60.51147,60.51147,0,0,0,4.29535-5.10463,7.58061,7.58061,0,0,0,1.38608-4.37735h-.00152a7.60424,7.60424,0,0,0-15.20847,0A7.52059,7.52059,0,0,0,.78856,10.329a7.75945,7.75945,0,0,0,1.03659,2.093H1.82424A60.51306,60.51306,0,0,0,6.11874,17.5248Z" style="fill:#a1afba;fill-rule:evenodd"/></g></svg>
+        </div>
+        <div class="col-12 col-sm-10 col-md-10">
+            {% for item in node.field_events_newsletters_loc  %}
+                <p class="">{{ item.value }}</p>
+            {% endfor %}
+        </div>
+      </div>
+      <br/>
+    {% endif %}
+
+    {# Event Category #}
+    {% if node.field_events_newsletters_type %}
+      <div class="event-details-row row">
+        <div class="col-12 col-sm-2 col-md-2">&nbsp;</div>
+        <div class="col-12 col-sm-10 col-md-10">
+            
+          Category: {{ content.field_events_newsletters_type[0]['#title'] }} event
+        </div>
+      </div>
+      <br/>
+    {% endif %}
+
+    {# Event Body #}
+    <div class = "col-12 col-sm-12 col-md-12 event-description" style = "height: 100%;">
+      <div class="col-sm-12 col-md-12 has-background background-color-eef0f2" style="padding-right: 25px; padding-left:25px">
+        <p>{{node.body.value | raw}}</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</article>

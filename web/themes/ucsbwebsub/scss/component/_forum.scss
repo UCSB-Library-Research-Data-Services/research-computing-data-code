@@ -1,0 +1,98 @@
+/**
+ * Forum styling.
+ */
+// Center stuff
+
+.main-forum-content,
+.forum-container,
+.comment-comment-forum-form,
+.forum-forms,
+.node-revision-table,
+.forum-tips
+// .field--name-body 
+{
+  @include center();
+  padding-bottom: 40px;
+}
+
+li.action-links {
+  list-style-type: none;
+  margin-bottom: 40px;
+}
+
+form .form-type-textarea {
+  margin-bottom: 0px;
+}
+
+.forum-container .row {
+  margin: 0px;
+}
+
+.forum-comment .row hr {
+  border-color: #ddd;
+}
+
+.forum-container article footer {
+  font-size: small;
+}
+
+.forum .forum-comment footer, .forum-container > article footer p {
+  float: right;
+  font-size: small;
+}
+
+.forum .forum-comment footer, .forum-container > article footer p {
+  margin: 0px;
+  line-height: 20px;
+}
+
+.forum-container > article > .content > .field--name-taxonomy-forums {
+  display: none;
+}
+
+.forum .forum-comment > div.row > div.col-md-9 {
+  padding-bottom: 20px;
+}
+
+.forum .forum-comment > div.row > div > h3 {
+  display: contents;
+}
+
+.forum .forum-comment > div.row > div > mark {
+  margin: 10px;
+}
+
+.forum .forum-comment div ul.list-inline {
+  margin-left: 0px;
+}
+
+.forum-forms {
+  display: block !important;
+}
+
+.forum-forms > .node-forum-edit-form > .field--type-text-with-summary span.field-edit-link,
+.forum-forms > .node-forum-form > .field--type-text-with-summary span.field-edit-link {
+  display: flow-root;
+}
+
+
+.form-type-select select.filter-list,
+.forum-forms > .node-forum-edit-form > .field--type-text-with-summary select.filter-list,
+.forum-forms > .node-forum-form > .field--type-text-with-summary select.filter-list {
+  width: 110px;
+}
+
+.forum-forms > .node-forum-edit-form > .form-type-vertical-tabs > .tabbable > ul > li,
+.forum-forms > .node-forum-form > .form-type-vertical-tabs > .tabbable > ul > li {
+  padding-right:0px;
+}
+
+.forum-forms > .node-forum-edit-form > .form-type-vertical-tabs > .tabbable > ul > li > a,
+.forum-forms > .node-forum-form > .form-type-vertical-tabs > .tabbable > ul > li > a {
+  padding-left:10px;
+}
+
+.forum-forms > .node-forum-edit-form > .form-type-vertical-tabs > .tabbable > .vertical-tabs-panes,
+.forum-forms > .node-forum-form > .form-type-vertical-tabs > .tabbable > .vertical-tabs-panes {
+  padding-left:0px;
+}

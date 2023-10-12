@@ -1,0 +1,69 @@
+
+/* 386px */
+@media (min-width: 24.125em)
+{
+	.carousel .carousel-item .carousel-item-caption 
+	{
+	    background: rgba(0,0,0,0.4);
+	    color: #FFF;
+	    display: inline-block;
+	    padding: 1.5em 1.5em;
+	    position: absolute;
+	    transition: background-color 0.2s, color 0.2s;
+	    right: 1.5em;
+	    left: 40%;
+	    bottom: 4.5em;
+	}
+}
+
+@media (min-width: 992px)
+{    
+    .carousel {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.carousel .carousel-item .carousel-item-caption
+{
+	line-height: 1.4em;
+}
+
+/* 420px */
+@media (min-width: 26.25em)
+{
+	.carousel .carousel-item .carousel-item-caption 
+	{
+		line-height: 1.8em;
+	}
+}
+
+.carousel.slide a.left.carousel-control, .carousel.slide a.right.carousel-control 
+{
+	position: absolute !important;
+	border-bottom: 0px;
+}
+
+.carousel-indicators 
+{
+	width: 80%;
+	margin-left: -40%;
+}
+
+/*Missing keyboard focus indicators */
+.carousel a.carousel-control.left:focus, .carousel a.carousel-control.right:focus {
+    border: none !important;
+    opacity: 1;
+}
+
+/*carousel overlay links*/
+.main-container .region-content .carousel-item-caption a {
+    color: #fff;
+    text-decoration: underline;
+    border-bottom: none;
+}
+
+.main-container .region-content .carousel-item-caption a:hover, .main-container .region-content .carousel-item-caption a:focus {
+    color: #FFF;
+    text-decoration: none;
+}

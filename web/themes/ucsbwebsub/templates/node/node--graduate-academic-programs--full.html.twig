@@ -1,0 +1,261 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{%
+  set classes = [
+  node.bundle|clean_class,
+  node.isPromoted() ? 'is-promoted',
+  node.isSticky() ? 'is-sticky',
+  not node.isPublished() ? 'is-unpublished',
+  view_mode ? view_mode|clean_class,
+  node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+  node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+  'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  <div{{ content_attributes.addClass('content') }}>
+    <div class="field field--name-field-blades">
+
+      {# Blade 1 #}
+      <div class="paragraph paragraph--type--blade top-padding-1 bottom-padding-1">
+        <div class="inner">
+          <div  class="columns">
+
+            {# Description #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-8">
+              <div class="inner">
+                <p> {{ node.field_description.value|raw }}</p>
+              </div>
+            </div>
+
+            {# Address #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-4">
+              <div class="inner has-border border-color-9cbebe">
+                <p><span><img alt="Adress" src="/sites/default/files/images/pages/Dept%20Pages/icons/address%20mist.png"></span><br>
+                  <strong>Mailing Address</strong><br>
+                  {{ node.field_grad_address.value|raw }}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {# Blade 2 #}
+      <div class="paragraph paragraph--type--blade has-background background-color-eef0f2 top-padding-1 bottom-padding-2">
+        <div class="inner">
+          <div  class="columns">
+
+            {# Website #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-4">
+              <div class="inner">
+                <div>
+                  <p class="text-align-center"><img alt="Website icon" src="/sites/default/files/images/pages/Dept%20Pages/icons/website%20mist.png"></p>
+                  <p class="text-align-center"><strong>Website&nbsp;</strong><br>
+                    <a href="{{ node.field_grad_website.0.uri }}" title="{{ node.title.value }} Website">{{ node.field_grad_website.0.uri }}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {# Email #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-4">
+              <div class="inner">
+                <div>
+                  <p class="text-align-center"><img alt="Email" src="/sites/default/files/images/pages/Dept%20Pages/icons/email%20mist.png"></p>
+                  <p class="text-align-center"><strong>Email&nbsp;</strong><br><a href="mailto:{{ node.field_grad_email.value|striptags|raw }}">{{ node.field_grad_email.value|striptags|raw }}</a></p>
+                </div>
+              </div>
+            </div>
+
+            {# Phone #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-4">
+              <div class="inner">
+                <div>
+                  <p class="text-align-center"><img alt="Phone" src="/sites/default/files/images/pages/Dept%20Pages/icons/phone%20mist.png"></p>
+                  <p class="text-align-center"><strong>Department Phone Number</strong><br><a href="tel:{{ node.field_grad_phone.value|striptags|raw|preg_replace('/[^0-9]+/', '$1') }}">{{ node.field_grad_phone.value|striptags|raw }}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {# Blade 3 #}
+      <div class="paragraph paragraph--type--blade top-padding-1 bottom-padding-1">
+        <div class="inner">
+          <div  class="columns">
+
+            {# Degrees Offered #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-6">
+              <div class="inner">
+                <div>
+                  <p><span><img alt="Degree icon" src="/sites/default/files/images/pages/Dept%20Pages/icons/degree%20mist.png"></span>
+                    <strong>Degrees Offered</strong><br>
+                    {{ node.field_degrees.value|striptags|raw }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {# Deadlines #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-6">
+              <div class="inner">
+                <div class="columns columns-2">
+                  <strong><img alt="Address icon" src="/sites/default/files/images/pages/Dept%20Pages/icons/address%20mist.png">Deadlines</strong>
+                  {{ node.field_deadlines.value|raw }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      {# Blade 4 #}
+      <div class="paragraph paragraph--type--blade has-background background-color-eef0f2 top-padding-1 bottom-padding-2">
+        <div class="inner">
+          <div  class="columns">
+
+            {# Requirements #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-3">
+              <div class="inner">
+                <div>
+                  <p><span><img alt="Requirements Icon" src="/sites/default/files/images/pages/Dept%20Pages/icons/requirement%20mist.png"></span></p>
+                  <p><strong>Requirements</strong></p>
+                </div>
+              </div>
+            </div>
+
+            {# Requirements Details #}
+            <div class="paragraph paragraph--type--column col-sm-12 col-md-8">
+              <div class="inner">
+                <div class="columns columns-2">
+                  {{ node.field_requirements.value|raw }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      {# Blade 5 #}
+      {% if node.field_emphases.value %}
+        <div class="paragraph paragraph--type--blade">
+          <div class="inner">
+            <div  class="columns">
+
+              {# Emphases #}
+              <div class="paragraph paragraph--type--column col-sm-12 col-md-12">
+                <div class="inner">
+                  <div class="columns columns-2">
+                    <strong>Emphases</strong>
+                  </div>
+                  <div class="columns columns-2">&nbsp;</div>
+                  {{ node.field_emphases.value|raw }}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+
+      {# Blade 6 #}
+      {% if node.field_specializations.value %}
+        <div class="paragraph paragraph--type--blade background-color-eef0f2">
+          <div class="inner">
+            <div  class="columns">
+
+              {# Specializations #}
+              <div class="paragraph paragraph--type--column col-sm-12 col-md-12">
+                <div class="inner">
+                  <div class="columns columns-2">
+                    <strong>Specializations</strong>
+                  </div>
+                  <div class="columns columns-2">&nbsp;</div>
+                  {{ node.field_specializations.value|raw }}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+
+</article>
