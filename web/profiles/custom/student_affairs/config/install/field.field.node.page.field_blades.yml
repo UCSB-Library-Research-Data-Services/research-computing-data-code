@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blades
+    - node.type.page
+    - paragraphs.paragraphs_type.blade
+    - paragraphs.paragraphs_type.grid
+    - paragraphs.paragraphs_type.view
+  module:
+    - entity_reference_revisions
+id: node.page.field_blades
+field_name: field_blades
+entity_type: node
+bundle: page
+label: Blades
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      blade: blade
+      view: view
+      grid: grid
+    target_bundles_drag_drop:
+      accordion:
+        weight: -23
+        enabled: false
+      accordion_item:
+        weight: -22
+        enabled: false
+      article:
+        weight: -21
+        enabled: false
+      blade:
+        enabled: true
+        weight: -20
+      view:
+        enabled: true
+        weight: -19
+      grid:
+        enabled: true
+        weight: -18
+      column:
+        weight: -17
+        enabled: false
+      form:
+        weight: -16
+        enabled: false
+      grid_item:
+        weight: -15
+        enabled: false
+      slide:
+        weight: -14
+        enabled: false
+      slideshow:
+        weight: -13
+        enabled: false
+field_type: entity_reference_revisions

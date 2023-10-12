@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for the Student Affairs install profile.
+ */
+
+/**
+ * Implements hook_install_tasks().
+ */
+function student_affairs_install_tasks(&$install_state) {
+  $tasks = [
+    'student_affairs_install_content' => [
+      'display_name' => t('Install default content'),
+      'type' => 'normal',
+    ]
+  ];
+
+  return $tasks;
+}
+
+/**
+ * Callback function to install default profile content.
+ *
+ * @see student_affairs_install_tasks()
+ */
+function student_affairs_install_content() {
+
+    // Set UCSB Web Subtheme as the default theme
+    \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('default', 'ucsbwebsub')
+      ->save();
+
+    // Set Seven as the default admin theme
+    \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('admin', 'seven')
+      ->save();
+
+    // Install demo content but first enable default_content module
+    \Drupal::service('module_installer')->install(['default_content']);
+    \Drupal::service('module_installer')->install(['demo_content']);
+
+    // Install UCSB Web Theme Overlay module
+    \Drupal::service('module_installer')->install(['ucsb_web_theme_overlay']);
+
+    \Drupal::service('module_installer')->install(['ssis_core']);
+
+    \Drupal::service('module_installer')->uninstall(['demo_content']);
+    \Drupal::service('module_installer')->uninstall(['default_content']);
+    \Drupal::service('module_installer')->uninstall(['hal']);
+
+    // remove the default contact form
+    \Drupal::entityTypeManager()->getStorage('webform')->load('contact')->delete();
+
+    // flush cache to view new content
+    drupal_flush_all_caches();
+}

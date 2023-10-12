@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: utility_bar_color
+label: 'Utility bar color'
+fieldset: 'Utility bar'
+multiple: false

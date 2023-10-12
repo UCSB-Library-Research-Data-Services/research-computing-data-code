@@ -1,0 +1,136 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/admin\/structure\/site_setting_entity\/2?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/site_setting_entity\/social_media"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/site_setting_entity\/social_media\/user_id": [
+            {
+                "href": "http:\/\/default\/user\/283?_format=hal_json",
+                "lang": "en"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 2
+        }
+    ],
+    "type": [
+        {
+            "target_id": "social_media"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "903db081-e5c3-43b5-89a2-c3f45a2b2acd"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/site_setting_entity\/social_media\/user_id": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/283?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "96b0ff1a-dd22-4987-bbb1-4e635cdca8e1"
+                    }
+                ],
+                "lang": "en"
+            }
+        ]
+    },
+    "name": [
+        {
+            "value": "Social media"
+        }
+    ],
+    "fieldset": [
+        {
+            "value": "Footer"
+        }
+    ],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2020-05-18T16:22:44+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2020-05-18T16:24:19+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| SA Demo site",
+                "canonical_url": "http:\/\/default\/home"
+            }
+        }
+    ],
+    "field_link": [
+        {
+            "uri": "tel:(805) 893-8000",
+            "title": "(805) 893-8000",
+            "options": [],
+            "lang": "en"
+        },
+        {
+            "uri": "https:\/\/www.facebook.com\/ucsantabarbara",
+            "title": "Facebook",
+            "options": [],
+            "lang": "en"
+        },
+        {
+            "uri": "https:\/\/www.youtube.com\/c\/ucsantabarbara",
+            "title": "Youtube",
+            "options": [],
+            "lang": "en"
+        },
+        {
+            "uri": "mailto:youremail@ucsb.edu",
+            "title": "youremail@ucsb.edu",
+            "options": [],
+            "lang": "en"
+        },
+        {
+            "uri": "https:\/\/twitter.com\/ucsantabarbara",
+            "title": "Twitter",
+            "options": [],
+            "lang": "en"
+        },
+        {
+            "uri": "http:\/\/instagram.com\/ucsantabarbara",
+            "title": "Instagram",
+            "options": [],
+            "lang": "en"
+        }
+    ]
+}

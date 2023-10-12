@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_item.field_back
+    - field.field.paragraph.grid_item.field_background_color
+    - field.field.paragraph.grid_item.field_footer
+    - field.field.paragraph.grid_item.field_front
+    - field.field.paragraph.grid_item.field_front_alignment
+    - field.field.paragraph.grid_item.field_item_height
+    - field.field.paragraph.grid_item.field_item_width
+    - paragraphs.paragraphs_type.grid_item
+  module:
+    - color_field
+    - text
+id: paragraph.grid_item.default
+targetEntityType: paragraph
+bundle: grid_item
+mode: default
+content:
+  field_back:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_background_color:
+    weight: 0
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_footer:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_front:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_front_alignment:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_item_height:
+    weight: 6
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_item_width:
+    weight: 5
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

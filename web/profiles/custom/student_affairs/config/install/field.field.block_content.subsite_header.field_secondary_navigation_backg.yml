@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.subsite_header
+    - field.storage.block_content.field_secondary_navigation_backg
+  module:
+    - color_field
+id: block_content.subsite_header.field_secondary_navigation_backg
+field_name: field_secondary_navigation_backg
+entity_type: block_content
+bundle: subsite_header
+label: 'Secondary navigation background color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

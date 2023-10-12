@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.subsite_header
+    - field.storage.block_content.field_image_position
+  module:
+    - options
+id: block_content.subsite_header.field_image_position
+field_name: field_image_position
+entity_type: block_content
+bundle: subsite_header
+label: 'Image position'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: right
+default_value_callback: ''
+settings: {  }
+field_type: list_string

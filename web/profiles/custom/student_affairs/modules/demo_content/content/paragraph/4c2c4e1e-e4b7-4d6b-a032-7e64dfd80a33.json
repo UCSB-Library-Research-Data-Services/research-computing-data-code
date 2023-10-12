@@ -1,0 +1,127 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/blade"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/blade\/field_columns": [
+            {
+                "href": ""
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 175
+        }
+    ],
+    "uuid": [
+        {
+            "value": "4c2c4e1e-e4b7-4d6b-a032-7e64dfd80a33"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 2637
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "blade"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2018-07-02T20:56:32+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "18"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "field_blades"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": []
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "field_bottom_padding": [
+        {
+            "value": "4",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/blade\/field_columns": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/column"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "70661155-2dbb-4a6a-a745-79eb73cf9ecd"
+                    }
+                ],
+                "target_revision_id": "2636"
+            }
+        ]
+    },
+    "field_equal_height": [
+        {
+            "value": false
+        }
+    ],
+    "field_full_bleed": [
+        {
+            "value": false
+        }
+    ],
+    "field_top_border": [
+        {
+            "value": false
+        }
+    ]
+}

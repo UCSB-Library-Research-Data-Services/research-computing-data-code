@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_item.field_back
+    - field.field.paragraph.grid_item.field_background_color
+    - field.field.paragraph.grid_item.field_footer
+    - field.field.paragraph.grid_item.field_front
+    - field.field.paragraph.grid_item.field_front_alignment
+    - field.field.paragraph.grid_item.field_item_height
+    - field.field.paragraph.grid_item.field_item_width
+    - paragraphs.paragraphs_type.grid_item
+  module:
+    - text
+id: paragraph.grid_item.default
+targetEntityType: paragraph
+bundle: grid_item
+mode: default
+content:
+  field_back:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_front:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_background_color: true
+  field_footer: true
+  field_front_alignment: true
+  field_item_height: true
+  field_item_width: true

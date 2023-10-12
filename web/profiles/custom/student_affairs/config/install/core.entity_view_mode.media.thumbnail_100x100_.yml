@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.thumbnail_100x100_
+label: 'Thumbnail (100x100)'
+targetEntityType: media
+cache: true

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: article
+label: Article
+icon_uuid: null
+description: 'This blade type mimics the layout properties of the Article node type.'
+behavior_plugins: {  }

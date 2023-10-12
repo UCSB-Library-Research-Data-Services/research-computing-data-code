@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_width
+    - paragraphs.paragraphs_type.simple_gmaps
+  module:
+    - options
+id: paragraph.simple_gmaps.field_width
+field_name: field_width
+entity_type: paragraph
+bundle: simple_gmaps
+label: Width
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: '12'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

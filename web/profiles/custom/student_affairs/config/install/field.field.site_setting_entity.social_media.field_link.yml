@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_link
+    - site_settings.site_setting_entity_type.social_media
+  module:
+    - link
+id: site_setting_entity.social_media.field_link
+field_name: field_link
+entity_type: site_setting_entity
+bundle: social_media
+label: Network
+description: 'Enter the URL and name of your social network account(s). An icon will be automatically displayed for the following networks: Facebook, Flickr, Instagram, Linkedin, Medium, Pinterest, Tumblr, Twitter, Vimeo, YouTube.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

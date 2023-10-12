@@ -1,0 +1,11 @@
+name: 'Student Affairs'
+mail: emscha@ucsb.edu
+slogan: ''
+page:
+  403: /node/17
+  404: /node/16
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en

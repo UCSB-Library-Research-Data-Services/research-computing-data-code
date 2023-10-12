@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: max_3360x3360
+label: 'Max 3360x3360'
+effects:
+  2c1298be-22f4-4432-8b4d-435505542f6d:
+    uuid: 2c1298be-22f4-4432-8b4d-435505542f6d
+    id: image_scale
+    weight: 1
+    data:
+      width: 3360
+      height: 3360
+      upscale: false
+  24834b4e-8fda-4542-ab41-1e750f7ca807:
+    uuid: 24834b4e-8fda-4542-ab41-1e750f7ca807
+    id: image_convert
+    weight: 2
+    data:
+      extension: jpeg

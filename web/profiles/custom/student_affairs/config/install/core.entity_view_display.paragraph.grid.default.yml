@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid.field_background_color
+    - field.field.paragraph.grid.field_bottom_padding
+    - field.field.paragraph.grid.field_column_count
+    - field.field.paragraph.grid.field_grid_items
+    - field.field.paragraph.grid.field_top_padding
+    - paragraphs.paragraphs_type.grid
+  module:
+    - entity_reference_revisions
+id: paragraph.grid.default
+targetEntityType: paragraph
+bundle: grid
+mode: default
+content:
+  field_grid_items:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_background_color: true
+  field_bottom_padding: true
+  field_column_count: true
+  field_top_padding: true

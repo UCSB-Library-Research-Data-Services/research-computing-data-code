@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: give_link
+label: 'Give link'
+fieldset: 'Utility bar'
+multiple: false

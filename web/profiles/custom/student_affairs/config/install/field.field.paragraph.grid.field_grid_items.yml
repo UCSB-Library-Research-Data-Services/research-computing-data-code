@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_grid_items
+    - paragraphs.paragraphs_type.grid
+    - paragraphs.paragraphs_type.grid_item
+  module:
+    - entity_reference_revisions
+id: paragraph.grid.field_grid_items
+field_name: field_grid_items
+entity_type: paragraph
+bundle: grid
+label: 'Grid items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      grid_item: grid_item
+    target_bundles_drag_drop:
+      grid_item:
+        enabled: true
+        weight: -23
+      accordion:
+        weight: -22
+        enabled: false
+      accordion_item:
+        weight: -21
+        enabled: false
+      article:
+        weight: -20
+        enabled: false
+      column:
+        weight: -19
+        enabled: false
+      form:
+        weight: -18
+        enabled: false
+      grid:
+        weight: -17
+        enabled: false
+      blade:
+        weight: -16
+        enabled: false
+      slide:
+        weight: -15
+        enabled: false
+      slideshow:
+        weight: -14
+        enabled: false
+      view:
+        weight: -13
+        enabled: false
+field_type: entity_reference_revisions

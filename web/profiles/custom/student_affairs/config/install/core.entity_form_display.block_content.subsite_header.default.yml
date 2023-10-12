@@ -1,0 +1,77 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.subsite_header
+    - field.field.block_content.subsite_header.body
+    - field.field.block_content.subsite_header.field_background_color
+    - field.field.block_content.subsite_header.field_image
+    - field.field.block_content.subsite_header.field_image_position
+    - field.field.block_content.subsite_header.field_secondary_navigation_backg
+    - image.style.thumbnail
+  module:
+    - color_field
+    - content_moderation
+    - imce
+    - svg_image
+    - text
+id: block_content.subsite_header.default
+targetEntityType: block_content
+bundle: subsite_header
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  field_background_color:
+    weight: 1
+    settings:
+      default_colors: '#eef0f2,#dce1e5,#9cbebe,#dae6e6,#dcd6cc,#f1eeea,#c9bf9d,#edeadf,#febc11,#003660,#0ba89a,#6d7d33,#09847a,#048297,#047c91,#ef5645,#c43424'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_image:
+    weight: 4
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: image_image
+    region: content
+  field_image_position:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_secondary_navigation_backg:
+    weight: 2
+    settings:
+      default_colors: '#eef0f2,#dce1e5,#9cbebe,#dae6e6,#dcd6cc,#f1eeea,#c9bf9d,#edeadf,#febc11,#003660,#0ba89a,#6d7d33,#09847a,#048297,#047c91,#ef5645,#c43424'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden: {  }

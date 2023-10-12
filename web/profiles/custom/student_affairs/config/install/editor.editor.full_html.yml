@@ -1,0 +1,97 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Actions
+          items:
+            - Undo
+            - Redo
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+            - Superscript
+            - Subscript
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - '-'
+            - RemoveFormat
+            - SpecialChar
+            - '-'
+            - Outdent
+            - Indent
+        -
+          name: Linking
+          items:
+            - DrupalLink
+            - DrupalUnlink
+            - Linkit
+            - ucsbbutton
+            - ucsbicon
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - DrupalMediaLibrary
+            - video_embed
+            - Blockquote
+            - Table
+            - HorizontalRule
+      -
+        -
+          name: 'Block Formatting'
+          items:
+            - Styles
+            - Format
+        -
+          name: Tools
+          items:
+            - Cut
+            - Copy
+            - Paste
+            - PasteText
+            - PasteFromWord
+            - ShowBlocks
+            - Source
+            - Maximize
+  plugins:
+    stylescombo:
+      styles: "a.offsite|Off-site link\r\np|Paragraph\r\nh2|H2\r\nh3|H3\r\nh4|H4\r\nh5|H5\r\nh6|H6\r\nblockquote|Blockquote\r\ndiv|Div\r\nul.columns.columns-2|2 column list\r\nul.columns.columns-3|3 column list\r\ndiv.columns.columns-2|2 column div\r\ndiv.columns.columns-3|3 column div\r\n\r\np.lead|Lead copy\r\np.caption|Caption / Cite\r\np.extra-small|Extra small\r\np.label|Label\r\np.image-right|Image float right\r\np.display-extra-large|P extra large\r\nh2.display-extra-large|H2 extra large\r\np.display-large|P large\r\nh2.display-large|H2 large\r\nh3.display-large|H3 large\r\np.display-medium|P medium\r\nh2.display-medium|H2 medium\r\nh3.display-medium|H3 medium\r\np.display-small|P small\r\nh2.display-small|H2 small\r\nh3.display-small|H3 small\r\nh4.display-small|H4 small\r\nspan.serif|Serif\r\nspan.caption|Caption / Cite (inline)\r\nul.inline|Inline list\r\na.btn.btn-default|Default button\r\na.btn.btn-secondary|Secondary button\r\na.btn.btn-tertiary|Tertiary button"
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: linkit_media_documents
+    language:
+      language_list: un
+    video_embed:
+      defaults:
+        children:
+          autoplay: true
+          responsive: true
+          width: '854'
+          height: '480'
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

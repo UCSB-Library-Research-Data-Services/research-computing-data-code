@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_library
+    - field.field.media.document.field_media_document
+    - media.type.document
+  module:
+    - media
+label: 'Documents Feed Type'
+id: documents_feed_type
+description: 'Used for importing documents'
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  update_existing: 2
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    bundle: document
+custom_sources:
+  fileurl:
+    label: FileUrl
+    value: FileUrl
+    machine_name: fileurl
+  filetitle:
+    label: FileTitle
+    value: FileTitle
+    machine_name: filetitle
+  filelibrary:
+    label: FileLibrary
+    value: FileLibrary
+    machine_name: filelibrary
+  urlalias:
+    label: URLAlias
+    value: URLAlias
+    machine_name: urlalias
+mappings:
+  -
+    target: field_media_document
+    map:
+      target_id: fileurl
+      description: filetitle
+    settings:
+      existing: 2
+      reference_by: filename
+      autocreate: false
+  -
+    target: name
+    map:
+      value: filetitle
+    unique: {  }
+  -
+    target: field_library
+    map:
+      target_id: filelibrary
+    settings:
+      reference_by: name
+      autocreate: '1'
+  -
+    target: path
+    map:
+      alias: urlalias

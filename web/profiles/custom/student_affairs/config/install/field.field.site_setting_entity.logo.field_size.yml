@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_size
+    - site_settings.site_setting_entity_type.logo
+  module:
+    - options
+id: site_setting_entity.logo.field_size
+field_name: field_size
+entity_type: site_setting_entity
+bundle: logo
+label: Size
+description: 'Select the number of lines of text below "UC Santa Barbara" in the wordmark.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

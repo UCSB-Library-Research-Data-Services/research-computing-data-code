@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - color_field
+    - site_settings
+id: site_setting_entity.field_color
+field_name: field_color
+entity_type: site_setting_entity
+type: color_field_type
+settings:
+  format: hexhex
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.large_480x480_
+label: 'Large (480x480)'
+targetEntityType: media
+cache: true

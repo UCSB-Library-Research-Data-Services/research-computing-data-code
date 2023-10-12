@@ -1,0 +1,80 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_columns
+    - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.article
+    - paragraphs.paragraphs_type.blade
+    - paragraphs.paragraphs_type.column
+    - paragraphs.paragraphs_type.form
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.simple_gmaps
+    - paragraphs.paragraphs_type.slideshow
+    - paragraphs.paragraphs_type.view
+  module:
+    - entity_reference_revisions
+id: paragraph.blade.field_columns
+field_name: field_columns
+entity_type: paragraph
+bundle: blade
+label: Columns
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      column: column
+      form: form
+      view: view
+      slideshow: slideshow
+      accordion: accordion
+      article: article
+      simple_gmaps: simple_gmaps
+      from_library: from_library
+    target_bundles_drag_drop:
+      column:
+        enabled: true
+        weight: -23
+      form:
+        enabled: true
+        weight: -22
+      view:
+        enabled: true
+        weight: -21
+      slideshow:
+        enabled: true
+        weight: -20
+      accordion:
+        enabled: true
+        weight: -19
+      article:
+        enabled: true
+        weight: -18
+      accordion_item:
+        weight: -17
+        enabled: false
+      blade:
+        weight: -16
+        enabled: false
+      grid:
+        weight: -15
+        enabled: false
+      grid_item:
+        weight: -14
+        enabled: false
+      slide:
+        weight: -13
+        enabled: false
+      simple_gmaps:
+        enabled: true
+        weight: 14
+      from_library:
+        enabled: true
+        weight: 24
+field_type: entity_reference_revisions

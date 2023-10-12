@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.max_2600x2600_
+label: 'Max (2600x2600)'
+targetEntityType: media
+cache: true

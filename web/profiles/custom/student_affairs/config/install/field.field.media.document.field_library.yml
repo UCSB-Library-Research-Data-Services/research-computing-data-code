@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_library
+    - media.type.document
+    - taxonomy.vocabulary.library
+  content:
+    - 'taxonomy_term:library:092c0680-9c0b-4436-bb0e-0793021e0baa'
+id: media.document.field_library
+field_name: field_library
+entity_type: media
+bundle: document
+label: Library
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    target_uuid: 092c0680-9c0b-4436-bb0e-0793021e0baa
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      library: library
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
