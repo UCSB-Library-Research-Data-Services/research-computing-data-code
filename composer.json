@@ -226,7 +226,7 @@
         "drupal/views_taxonomy_term_name_depth": "^7.2",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/yearonly": "^9.1",
-        "drupal/bootstrap": "^3.28",
+        "drupal/bootstrap": "^3.29",
         "drupal/ief_table_view_mode": "^2.3",
         "drupal/webform": "^6.2@beta",
         "drupal/webform_views": "^5.1",

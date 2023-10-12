@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c873523212e380ac877371a1e0e2c75d",
+    "content-hash": "809bcf1ba774413e51131f7b1147b263",
     "packages": [
         {
             "name": "arthurkushman/query-path",
