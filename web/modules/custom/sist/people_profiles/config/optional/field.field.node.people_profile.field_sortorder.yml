@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sortorder
+    - node.type.people_profile
+  enforced:
+    module:
+      - people_profiles
+id: node.people_profile.field_sortorder
+field_name: field_sortorder
+entity_type: node
+bundle: people_profile
+label: SortOrder
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

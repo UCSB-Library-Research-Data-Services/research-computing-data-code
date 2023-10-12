@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.people_profile_team_grid
+label: 'People Profile Team Grid'
+targetEntityType: node
+cache: true

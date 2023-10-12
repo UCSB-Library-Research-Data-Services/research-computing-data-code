@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.site_setting_entity.utility_bar_color.field_color
+    - site_settings.site_setting_entity_type.utility_bar_color
+  module:
+    - color_field
+id: site_setting_entity.utility_bar_color.default
+targetEntityType: site_setting_entity
+bundle: utility_bar_color
+mode: default
+content:
+  field_color:
+    weight: 11
+    settings:
+      default_colors: '#003660,#FEBC11,#09847A,#047C91,#6D7D33,#C43424'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  fieldset:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

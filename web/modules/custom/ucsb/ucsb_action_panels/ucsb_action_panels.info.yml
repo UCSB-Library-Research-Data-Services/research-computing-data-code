@@ -1,0 +1,12 @@
+name: 'UCSB Action Panel'
+type: module
+description: 'Action Panel UI Component'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ucsb
+dependencies:
+  - lazy
+  - media
+  - media_library
+  - twig_tweak
+  - paragraphs

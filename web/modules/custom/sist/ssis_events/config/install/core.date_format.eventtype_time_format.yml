@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ssis_events
+id: eventtype_time_format
+label: 'Event Time'
+locked: false
+pattern: 'g:i A'

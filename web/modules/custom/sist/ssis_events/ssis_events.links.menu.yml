@@ -1,0 +1,6 @@
+ssis_events.admin:
+  title: 'Events'
+  description: 'Manage events and calendars'
+  parent: system.admin
+  route_name: ssis_events.adminevents
+  weight: -9

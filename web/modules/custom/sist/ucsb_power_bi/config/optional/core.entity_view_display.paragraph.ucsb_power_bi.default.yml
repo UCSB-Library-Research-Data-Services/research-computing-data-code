@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ucsb_power_bi.field_ucsb_power_bi_report
+    - paragraphs.paragraphs_type.ucsb_power_bi
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - ucsb_power_bi
+id: paragraph.ucsb_power_bi.default
+targetEntityType: paragraph
+bundle: ucsb_power_bi
+mode: default
+content:
+  field_power_bi_report:
+    type: ucsb_power_bi_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_ucsb_power_bi_report:
+    type: ucsb_power_bi_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

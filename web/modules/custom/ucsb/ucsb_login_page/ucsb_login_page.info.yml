@@ -1,0 +1,8 @@
+name: 'UCSB Login page'
+type: module
+description: 'Login page for UCSB accounts'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: 'ucsb'
+libraries:
+  - 'ucsb_login_page/main-styling'

@@ -1,0 +1,13 @@
+name: 'Web Theme Overlay'
+description: 'Hero Overlay feature for the UCSB Web Theme'
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+dependencies:
+  - color_field
+  - field
+  - node
+  - options
+  - text
+package: ucsb
+core_incompatible: false

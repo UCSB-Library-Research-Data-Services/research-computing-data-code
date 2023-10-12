@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for the UCSB Login page module.
+ */
+
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_install().
+ */
+
+function ucsb_login_page_install() {
+    // if CAS module is enabled, update configuration to disable link
+    if (\Drupal::moduleHandler()->moduleExists('cas')) {
+        $config_factory = \Drupal::configFactory();
+        $config = $config_factory->getEditable('cas.settings');
+        $login_link_enabled = $config->get('login_link_enabled');
+        // Uncheck the box for Place a link to log in via CAS on the standard /user/login form
+        $config->set('login_link_enabled', false);
+        $config->save(TRUE);
+    }
+    // Clear all caches.
+    drupal_flush_all_caches();
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ */
+
+function ucsb_login_page_uninstall() {
+    // if CAS module is enabled, update configuration to enable sso link
+    if (\Drupal::moduleHandler()->moduleExists('cas')) {
+        $config_factory = \Drupal::configFactory();
+        $config = $config_factory->getEditable('cas.settings');
+        $login_link_enabled = $config->get('login_link_enabled');
+        // Check the box for Place a link to log in via CAS on the standard /user/login form
+        $config->set('login_link_enabled', true);
+        $config->save(TRUE);
+    }
+    // Clear all caches.
+    drupal_flush_all_caches();
+}

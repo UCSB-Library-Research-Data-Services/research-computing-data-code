@@ -1,0 +1,249 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_events.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Url;
+
+use Drupal\Core\Template\Attribute;
+use Drupal\Component\Utility\Crypt;
+use Drupal\toolbar\Controller\ToolbarController;
+use Drupal\media\MediaInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_events_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.ssis_events':
+      $output = '';
+      $output .= '<h3>' . t('SSIS Events') . '</h3>';
+      $output .= '<p>' . t('This plugin module adds a content type named Events.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/*
+* Implements hook_toolbar_alter()
+*/
+function ssis_events_toolbar_alter(&$items) {
+  $items['administration']['#attached']['library'][] = 'ssis_events/admin-styling';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ssis_events_theme($existing, $type, $theme, $path) {
+  return [
+   'node__eventtype__full' => [
+      'template' => 'node--eventtype--full',
+      'base hook' => 'node'
+    ],
+    'node__eventtype__teaser' => [
+       'template' => 'node--eventtype--teaser',
+       'base hook' => 'node'
+     ],
+     'node__eventtype__ssis_featured' => [
+       'template' => 'node--eventtype--ssis-featured',
+       'base hook' => 'node'
+     ],
+     'node__eventtype__event_block' => [
+        'template' => 'node--eventtype--event-block',
+        'base hook' => 'node'
+      ],
+     'node__eventtype__event_block_with_summary' => [
+        'template' => 'node--eventtype--event-block-with-summary',
+        'base hook' => 'node'
+      ],
+     'node__eventtype__event_thumbnail' => [
+        'template' => 'node--eventtype--event-thumbnail',
+        'base hook' => 'node'
+      ],
+      'node__eventtype__event_block_with_summary_category' => [
+        'template' => 'node--eventtype--event-block-with-summary-category',
+        'base hook' => 'node'
+      ],
+      'node__eventtype__event_block_with_summary_categories_listed' => [
+        'template' => 'node--eventtype--event-block-with-summary-categories-listed',
+        'base hook' => 'node'
+      ],
+     'node__eventtype__event_thumbnail_with_summary' => [
+        'template' => 'node--eventtype--event-thumbnail-with-summary',
+        'base hook' => 'node'
+      ],
+  ];
+}
+
+
+  /**
+   * Implements hook_views_pre_render().
+   */
+  function ssis_events_views_pre_render(\Drupal\views\ViewExecutable $view) {
+    $viewid = $view->id();
+
+    
+    if (isset($view) && ($view->storage->id() == 'ssis_events_category_view') && ($view->current_display == 'block_ssis_events_category_buttons')) {
+      $view->element['#attached']['library'][] = 'ssis_events/ssis-category-views-style';
+    }
+
+    if (($viewid == "eventtype_events_view" || $viewid == "eventtype_categories_view")) {
+      $view->element['#attached']['library'][] = 'ssis_events/ssis-view-filtering-style';
+      
+      //assign the category coloring if present
+      if(!empty($view->args)){
+        //Get the grouping Category ID
+        $argumentid = $view->args[0];
+
+        // Check if the view is not empty and return results.
+        if (!empty($view->result)) {
+
+          // Get the results of the view and iterate through them
+          $view_results = $view->result;
+          foreach($view_results as &$row)
+          {
+
+            //Get the particular event
+            $event = $row->_entity;
+
+            //Get the particular event categories
+            $event_categories = $event->field_eventtype_category->referencedEntities();
+            $event_categories_ids = array_map(function ($element) {
+              return $element->id();
+            }, $event_categories);
+            
+            // Check if argument is present in the assigned event categories
+            if (in_array($argumentid, $event_categories_ids)) {
+
+              //If present assign it
+              $event->set('field_eventtype_category', $argumentid);
+
+            } else {
+
+              // If the argument is a parent term, load the parent tree 
+              $parent_tree = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('vocabulary_event_category', $argumentid);
+              if($parent_tree) {
+                $parent_tree_categories_ids = array_map(function ($element) {
+                  return $element->tid;
+                }, $parent_tree);
+
+                foreach ($parent_tree_categories_ids as $categoryid) {
+                  if (in_array($categoryid, $event_categories_ids)) {
+                    //If present assign it
+                    $event->set('field_eventtype_category', $categoryid);
+                    break;
+                  }
+                }
+
+              }
+
+            }
+            
+          }
+
+        }
+      }
+    }
+
+  }
+
+
+/**
+ * Implements hook_preprocess().
+ */
+function ssis_events_preprocess(&$variables, $hook) {
+  $module_relative_url = \Drupal::service('extension.list.module')->getPath('ssis_events') . '/images/ucsb-logo.png';
+  $module_absolute_url = \Drupal::service('file_url_generator')->generateAbsoluteString($module_relative_url);
+  $variables['img_path'] = $module_absolute_url;
+}
+
+
+/**
+ * Implements hook_presave().
+ */
+function ssis_events_node_presave(Drupal\Core\Entity\EntityInterface $entity) {
+    if ($entity->getType() == 'eventtype') {
+      //update event summary if missing
+      $eventSummary = $entity->get('field_eventtype_description')->summary;
+      if($eventSummary == "") {  
+        $eventDescription = $entity->get('field_eventtype_description')->value;
+        $eventSummary = get_summary($eventDescription);
+        $entity->field_eventtype_description->summary = $eventSummary;
+      }
+    } 
+}
+
+  function get_summary($description){
+    //remove the HTML tags
+    $descr = strip_tags($description);
+    //remove non breakable spaces
+    $descr = str_replace("&nbsp;", ' ', $descr);
+    //convert &amp; into &
+    $descr = str_replace("&amp;", '&', $descr);
+    //remove the new line and replace with empty space
+    $descr = trim(preg_replace('/\s+/', ' ', $descr));
+    //Get the first 450 charcters
+    $summary_temp = substr($descr, 0, 450);
+    //find the end of the last  sentence 
+    $last_sentence_pos = strrpos($summary_temp,".");
+    if ($last_sentence_pos > 0) {
+      $summary_temp = substr($summary_temp, 0, $last_sentence_pos + 1);
+    }
+
+    return $summary_temp;
+  }
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function ssis_events_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $node_type = $node->getType();
+  $node_id = $node->id();
+
+  if ($node_type == 'eventtype') {
+
+    if($variables['view_mode'] == 'full') {
+      $date_index = 0;
+      
+      //Get the date index from the url query
+      if (\Drupal::request()->get('date_index')){
+        $date_index = \Drupal::request()->get('date_index');
+      }
+      $variables['date_index'] = $date_index;
+
+    } 
+    else {
+
+      if($node->view) {
+        $view = $node->view;
+        $view_id = $view->id();
+        
+        if($view_id == 'eventtype_events_view' || $view_id == "eventtype_categories_view"){
+          $view_results = &$node->view->result;
+          
+          //find the first occurence in the results and get the date index
+          $found_key = array_search($node_id, array_column($view_results, 'nid'));
+          $date_index = $view_results[$found_key]->node__field_eventtype_event_date_delta;
+
+          // Pass the date_index and the updated URL to the front end
+          $variables['date_index'] = $date_index;
+          $variables['url'] = $variables['url'].'?date_index='.$date_index;
+          $variables['#cache']['max-age'] = 0;
+
+          unset($view_results[$found_key]);
+          $view_results = array_values($view_results);
+        }
+      }
+
+    }
+    
+  }
+}

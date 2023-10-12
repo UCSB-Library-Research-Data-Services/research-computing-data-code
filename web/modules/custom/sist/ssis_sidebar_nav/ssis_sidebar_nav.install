@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for SSIS Sidebar Navigation module.
+ */
+
+use Drupal\Core\Config\FileStorage;
+use Drupal\block\Entity\Block;
+use Drupal\block_content\Entity\BlockContent;
+
+/**
+  * Implements hook_install().
+  */
+function ssis_sidebar_nav_install() {
+
+  // Create a block instance of the custom sidebar_navigation block entity
+  $block_content = BlockContent::create([
+    'type' => 'sidebar_navigation',
+    'info' => 'Sidebar Nav Menu Block',
+  ]);
+  $block_content->set('body', 'Sidebar Navigation Menu Block.');
+  $block_content->save();
+
+  // Add the block to the sidebar_first (Primary) region
+  $block = Block::create([
+    'id' => 'sidebarnavmenublock',
+    'plugin' => 'block_content:' . $block_content->uuid(),
+    'region' => 'sidebar_first',
+    'provider' => 'block_content',
+    'weight' => -100,
+    'theme' => \Drupal::config('system.theme')->get('default'),
+    'visibility' => array(),
+    'settings' => [
+      'label' => 'Sidebar Nav Menu Block',
+      'label_display' => FALSE,
+    ],
+  ]);
+  $block->save();
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ */
+
+function ssis_sidebar_nav_uninstall() {
+
+  // Delete all blocks of sidebar nav type.
+  $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('block_content');
+  $blocks = $storage_handler->loadByProperties(['type' => 'sidebar_navigation']);
+  $storage_handler->delete($blocks);
+  \Drupal::configFactory()->getEditable('block.block.sidebarnavmenublock')->delete();
+  \Drupal::messenger()->addStatus(t('Blocks of type "Sidebar Navigation" have been deleted.'));
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+
+}

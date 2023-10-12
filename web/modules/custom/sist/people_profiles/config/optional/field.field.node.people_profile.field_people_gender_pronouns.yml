@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_people_gender_pronouns
+    - node.type.people_profile
+  enforced:
+    module:
+      - people_profiles
+id: node.people_profile.field_people_gender_pronouns
+field_name: field_people_gender_pronouns
+entity_type: node
+bundle: people_profile
+label: 'Gender Pronouns'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.youtube_video.field_video_image_thumbnail
+    - field.field.paragraph.youtube_video.field_video_name
+    - field.field.paragraph.youtube_video.field_video_title
+    - field.field.paragraph.youtube_video.field_youtube_id
+    - field.field.paragraph.youtube_video.field_youtube_video_description
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.youtube_video
+  module:
+    - lazy
+    - media
+    - text
+id: paragraph.youtube_video.default
+targetEntityType: paragraph
+bundle: youtube_video
+mode: default
+content:
+  field_video_image_thumbnail:
+    type: media_thumbnail
+    weight: 3
+    label: visually_hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings:
+      lazy:
+        placeholder_style: ''
+        lazy_image: '0'
+        data_uri: false
+    region: content
+  field_video_name:
+    weight: 0
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_video_title:
+    weight: 1
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_youtube_id:
+    weight: 4
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_youtube_video_description:
+    weight: 2
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

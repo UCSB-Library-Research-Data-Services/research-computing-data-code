@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eventtype_link
+    - node.type.eventtype
+  module:
+    - link
+  enforced:
+    module:
+      - ssis_events
+id: node.eventtype.field_eventtype_link
+field_name: field_eventtype_link
+entity_type: node
+bundle: eventtype
+label: Link
+description: 'Use this field to assign an external link to website or internal page (for example to Register, get More Info or Apply)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

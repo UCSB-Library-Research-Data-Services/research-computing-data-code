@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.dsp_people_profiles
+label: 'DSP People Profiles'
+targetEntityType: node
+cache: true

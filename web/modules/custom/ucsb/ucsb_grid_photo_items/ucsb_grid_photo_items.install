@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for SSIS YouTube Gallery module.
+ */
+
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ * See https://www.drupal.org/node/2404447 how to enforce dependency for config
+ */
+
+function ucsb_grid_photo_items_uninstall() {
+
+
+  // Delete the Grid Photo Items
+  $paragraph_grid_photo_items = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'grid_photo_item')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  if ($paragraphs = $storage->loadMultiple($paragraph_grid_photo_items)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "Grid Photo Items" have been deleted.'));
+  }
+
+    // Remove the Grid Photo Item to the Grid
+    $config_factory = \Drupal::configFactory();
+  
+    $config = $config_factory->getEditable('field.field.paragraph.grid.field_grid_items');
+  
+    $dependencies = $config->get('dependencies.config');
+    $dependencies = \array_filter($dependencies, static function ($element) {
+        return $element !== "paragraphs.paragraphs_type.grid_photo_item";
+    });
+  
+    $config->set('dependencies.config', $dependencies);
+    $config->clear('settings.handler_settings.target_bundles.grid_photo_item');
+    $config->clear('settings.handler_settings.target_bundles_drag_drop.grid_photo_item.weight');
+    $config->clear('settings.handler_settings.target_bundles_drag_drop.grid_photo_item.enabled');
+    $config->clear('settings.handler_settings.target_bundles_drag_drop.grid_photo_item');
+  
+    $config->save(TRUE);
+
+
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+}
+
+
+/**
+ * Implements hook_install().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ * See https://www.drupal.org/node/2404447 how to enforce dependency for config
+ */
+
+function ucsb_grid_photo_items_install() {
+
+    // Configure and add the Grid Photo Item to the Grid
+    $config_factory = \Drupal::configFactory();
+  
+    $config = $config_factory->getEditable('field.field.paragraph.grid.field_grid_items');
+  
+    $dependencies = $config->get('dependencies.config');
+    array_push($dependencies, 'paragraphs.paragraphs_type.grid_photo_item');
+  
+    $config->set('dependencies.config', $dependencies);
+    $config->set('settings.handler_settings.target_bundles.grid_photo_item', 'grid_photo_item');
+    $config->set('settings.handler_settings.target_bundles_drag_drop.grid_photo_item.weight', 15);
+    $config->set('settings.handler_settings.target_bundles_drag_drop.grid_photo_item.enabled', true);
+  
+    $config->save(TRUE);
+}

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_avatar
+    - media.type.image
+    - node.type.people_profile
+  enforced:
+    module:
+      - people_profiles
+id: node.people_profile.field_avatar
+field_name: field_avatar
+entity_type: node
+bundle: people_profile
+label: Avatar
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

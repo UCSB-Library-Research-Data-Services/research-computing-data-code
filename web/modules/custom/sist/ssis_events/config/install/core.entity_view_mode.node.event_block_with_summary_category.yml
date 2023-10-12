@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ssis_events
+id: node.event_block_with_summary_category
+label: 'Event Block With Summary & Category'
+targetEntityType: node
+cache: true

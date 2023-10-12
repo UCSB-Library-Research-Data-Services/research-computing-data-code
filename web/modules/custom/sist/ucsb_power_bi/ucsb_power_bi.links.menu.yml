@@ -1,0 +1,11 @@
+ucsb_power_bi.admin_config_ucsb_power_bi:
+  title: UCSB PowerBI integration 
+  parent: system.admin_config
+  route_name: ucsb_power_bi.admin_config_ucsb_power_bi
+
+ucsb_power_bi_settings.admin_config_ucsb_power_bi:
+  title: USCB PowerBI settings
+  description: 'Settings for PowerBI.'
+  parent: ucsb_power_bi.admin_config_ucsb_power_bi
+  route_name: ucsb_power_bi_settings.admin_config_ucsb_power_bi
+  weight: -10

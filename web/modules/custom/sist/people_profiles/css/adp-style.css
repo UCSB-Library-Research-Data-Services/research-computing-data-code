@@ -1,0 +1,170 @@
+.adp-people-profiles h2,
+.adp-people-profiles p {
+  color: #3d4952;
+}
+
+.adp-people-profiles .header {
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+
+}
+
+.adp-people-profiles .profile-row {
+  padding-bottom: 40px;
+  padding: 36px 0 36px 0
+}
+
+.adp-people-profiles .profile-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.adp-people-profiles .picture {
+  float: left;
+
+  padding: 20px;
+  margin: auto
+}
+
+.adp-people-profiles .title {
+  font-weight: bold;
+  padding-top: 20px;
+  float: left;
+
+}
+
+.adp-people-profiles .description {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  float: left;
+
+}
+
+/* @media screen and (max-width: 1050px) {
+  .picture,
+  .title, .description {
+    width: 100%;
+  }
+  .row { display: flex; flex-flow: column; }
+    .title { order: 1; }
+    .picture { order: 2; }
+    .description{ order: 3; }
+} */
+
+.adp-people-profiles img.ack {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.adp-people-profiles ul.gilist {
+  list-style-type: none;
+  margin: auto;
+  padding: 0px;
+  max-width: 300px;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.adp-people-profiles ul.gilist:hover {
+  text-decoration: none;
+}
+
+.adp-people-profiles li.gilist a {
+  text-align: center;
+  display: block;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.adp-people-profiles li.gilist {
+  text-decoration: none;
+  padding-top: 20px;
+}
+
+.adp-people-profiles li.gilist:last-child {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.adp-people-profiles li.gilist a:hover {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  transform: scale(1.05) perspective(1px);
+}
+
+.adp-people-profiles .flip-box {
+  background-color: transparent;
+  width: 100%;
+  max-width: 260px;
+  max-height: 370px;
+  perspective: 1000px;
+}
+
+.adp-people-profiles .flip-box img {
+  object-fit: contain;
+}
+
+.adp-people-profiles .flip-box-inner {
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+  max-height: 370px;
+  display: block;
+
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.adp-people-profiles .flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.adp-people-profiles .flip-box-front,
+.adp-people-profiles .flip-box-back {
+  width: 100%;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.adp-people-profiles .flip-box-back {
+  position: absolute;
+  top: 0px;
+}
+
+.adp-people-profiles .flip-box-front {
+  color: black;
+}
+
+.adp-people-profiles .flip-box-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.adp-people-profiles #parent-btn {
+  display: flex;
+}
+
+.adp-people-profiles #right-btn {
+  flex: 1;
+}
+
+
+@media screen and (max-width: 1050px) {
+
+  .adp-people-profiles #left-btn {
+    margin: 0 auto;
+    float: none;
+  }
+
+  .adp-people-profiles #right-btn {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+.adp-people-profiles .text-content {
+  padding: 0px 15px 0px 15px;
+}

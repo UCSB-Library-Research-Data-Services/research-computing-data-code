@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Module install and update procedures.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\pathauto\Entity\PathautoPattern;
+use Drupal\user\Entity\Role;
+use Drupal\user\RoleInterface;
+
+
+
+/**
+ * Implements hook_install().
+ */
+function people_profiles_install()
+{
+  // Add the necessary Content Editor permissions
+  $role_object = Role::load('content_editor');
+  if (!empty($role_object)) {
+    $role_object->grantPermission('create people_profile content');
+    $role_object->grantPermission('edit any people_profile content');
+    $role_object->grantPermission('edit own people_profile content');
+    $role_object->grantPermission('revert people_profile revisions');
+    $role_object->grantPermission('view people_profile revisions');
+    $role_object->grantPermission('create terms in team');
+    $role_object->grantPermission('edit terms in team');
+    $role_object->save();
+
+  }
+
+  //Add the People Profiles content type to the workflow
+  /** @var \Drupal\workflows\WorkflowInterface $workflow */
+  $storage_handler = \Drupal::entityTypeManager()->getStorage("workflow");
+  if (!empty($storage_handler)) {
+    $workflow = $storage_handler->loadByProperties(["id" => "editorial"])["editorial"];
+    $config = $workflow->getTypePlugin()->getConfiguration();
+    $config["entity_types"]["node"][] = "people_profile";
+    $workflow->getTypePlugin()->setConfiguration($config);
+    $workflow->save();
+
+  }
+}
+
+
+
+ 
+/**
+ * Implements hook_uninstall().
+ */
+function people_profiles_uninstall() {
+    
+    // Delete all people profile nodes.
+    $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+    $nodes = $storage_handler->loadByProperties(['type' => 'people_profile']);
+    $storage_handler->delete($nodes);
+
+    // Clear book data out of the cache.
+    \Drupal::cache('data')->deleteAll();
+  }
+  

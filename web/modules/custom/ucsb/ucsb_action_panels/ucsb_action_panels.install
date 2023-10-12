@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for UCSB Action Panels module.
+ */
+
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_install().
+ */
+
+function ucsb_action_panels_install() {
+
+    // Configure and add the Action Panel Container to the Blades columns
+    $config_factory = \Drupal::configFactory();
+  
+    $config = $config_factory->getEditable('field.field.paragraph.blade.field_columns');
+  
+    $dependencies = $config->get('dependencies.config');
+    array_push($dependencies, 'paragraphs.paragraphs_type.action_panel_container');
+  
+    $config->set('dependencies.config', $dependencies);
+    $config->set('settings.handler_settings.target_bundles.action_panel_container','action_panel_container');
+    $config->set('settings.handler_settings.target_bundles_drag_drop.action_panel_container.weight', 15);
+    $config->set('settings.handler_settings.target_bundles_drag_drop.action_panel_container.enabled', true);
+  
+    $config->save(TRUE);
+
+}
+
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ * See https://www.drupal.org/node/2404447 how to enforce dependency for config
+ */
+
+function ucsb_action_panels_uninstall() {
+
+  // Remove the parent panel first
+  $paragraph_action_panel_container = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'action_panel_container')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  if ($paragraphs = $storage->loadMultiple($paragraph_action_panel_container)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "Action Panel Container" have been deleted.'));
+  }
+
+  // Delete the orphan action panels
+  $paragraph_action_panel_item = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'action_panel_item')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  if ($paragraphs = $storage->loadMultiple($paragraph_action_panel_item)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "Action Panel Item" have been deleted.'));
+  }
+
+  // Remove the Action Panel Container from the Blades columns
+  $config_factory = \Drupal::configFactory();
+
+  $config = $config_factory->getEditable('field.field.paragraph.blade.field_columns');
+
+  $dependencies = $config->get('dependencies.config');
+  $dependencies = array_filter($dependencies, static function ($element) {
+      return $element !== "paragraphs.paragraphs_type.action_panel_container";
+  });
+
+  $config->set('dependencies.config', $dependencies);
+  $config->clear('settings.handler_settings.target_bundles.action_panel_container');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.action_panel_container.weight');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.action_panel_container.enabled');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.action_panel_container');
+
+  $config->save(TRUE);
+
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+
+}

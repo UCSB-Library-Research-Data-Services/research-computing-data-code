@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eventtype_event_date
+    - node.type.eventtype
+  module:
+    - smart_date
+    - smart_date_recur
+  enforced:
+    module:
+      - ssis_events
+third_party_settings:
+  smart_date_recur:
+    allow_recurring: true
+    month_limit: 3
+id: node.eventtype.field_eventtype_event_date
+field_name: field_eventtype_event_date
+entity_type: node
+bundle: eventtype
+label: 'Event Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_duration: 60
+    default_duration_increments: "30\r\n60|1 hour\r\n90\r\n120|2 hours\r\ncustom"
+    default_date_type: now
+    default_date: ''
+default_value_callback: ''
+settings: {  }
+field_type: smartdate

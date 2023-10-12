@@ -1,0 +1,17 @@
+name: 'Utility bar and footer'
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+dependencies:
+  - color_field
+  - field
+  - file
+  - image
+  - imce
+  - link
+  - options
+  - site_settings
+  - svg_image
+  - user
+package: ucsb
+description: 'Settings for the utility bar and footer'

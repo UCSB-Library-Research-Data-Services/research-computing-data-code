@@ -1,0 +1,40 @@
+name: 'SSIS Events Module'
+type: module
+description: 'This plugin module adds a content type named Event'
+package: ITS
+dependencies:
+  - color_field
+  - content_moderation
+  - datetime
+  - entity_browser
+  - filter
+  - lazy
+  - link
+  - media
+  - media_library
+  - menu_ui
+  - node
+  - options
+  - path
+  - pathauto
+  - scheduler
+  - simple_gmap
+  - smart_date
+  - smart_date_recur
+  - system
+  - taxonomy
+  - text
+  - toolbar
+  - tvi
+  - twig_tweak
+  - user
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+libraries:
+  - ssis_events/main-styling
+  - ssis_events/block-styling
+  - ssis_events/full-view-styling
+  - ssis_events/thumbnail-view-styling
+  - ssis_events/thumbnail-summary-styling
+  - ssis_events/admin-styling
+  - ssis_events/featured-event-styling

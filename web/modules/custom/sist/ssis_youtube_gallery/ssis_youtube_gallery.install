@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for SSIS YouTube Gallery module.
+ */
+
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Config\FileStorage;
+
+
+/**
+ * Implements hook_install().
+ */
+
+function ssis_youtube_gallery_install() {
+
+  // Configure and add the YouTube Gallery to the Blades columns
+  $config_factory = \Drupal::configFactory();
+
+  $config = $config_factory->getEditable('field.field.paragraph.blade.field_columns');
+
+  $dependencies = $config->get('dependencies.config');
+  array_push($dependencies, 'paragraphs.paragraphs_type.youtube_video_gallery');
+
+  $config->set('dependencies.config', $dependencies);
+  $config->set('settings.handler_settings.target_bundles.youtube_video_gallery','youtube_video_gallery');
+  $config->set('settings.handler_settings.target_bundles_drag_drop.youtube_video_gallery.weight', 36);
+  $config->set('settings.handler_settings.target_bundles_drag_drop.youtube_video_gallery.enabled', true);
+
+  $config->save(TRUE);
+
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clean up all the config provided by the module so that we can re-install if we want to
+ * See https://www.drupal.org/node/2404447 how to enforce dependency for config
+ */
+
+function ssis_youtube_gallery_uninstall() {
+
+  // Remove the parent gallery first
+  $paragraph_youtube_video_gallery_ids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'youtube_video_gallery')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  if ($paragraphs = $storage->loadMultiple($paragraph_youtube_video_gallery_ids)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "YouTube Video Gallery" have been deleted.'));
+  }
+
+  // Delete the orphan videos
+  $paragraph_youtube_video_ids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'youtube_video')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  if ($paragraphs = $storage->loadMultiple($paragraph_youtube_video_ids)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "YouTube Video" have been deleted.'));
+  }
+
+  
+  // Remove the YouTube Gallery from the Blades columns
+  $config_factory = \Drupal::configFactory();
+
+  $config = $config_factory->getEditable('field.field.paragraph.blade.field_columns');
+
+  $dependencies = $config->get('dependencies.config');
+  $dependencies = array_filter($dependencies, static function ($element) {
+      return $element !== "paragraphs.paragraphs_type.youtube_video_gallery";
+  });
+
+  $config->set('dependencies.config', $dependencies);
+  $config->clear('settings.handler_settings.target_bundles.youtube_video_gallery');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.youtube_video_gallery.weight');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.youtube_video_gallery.enabled');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.youtube_video_gallery');
+
+  $config->save(TRUE);
+
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+
+}

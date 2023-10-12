@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eventtype_map_location
+    - node.type.eventtype
+  enforced:
+    module:
+      - ssis_events
+id: node.eventtype.field_eventtype_map_location
+field_name: field_eventtype_map_location
+entity_type: node
+bundle: eventtype
+label: 'Map Location'
+description: 'Use this field to render a map with the exact location. You can use either a point of interest from Google map or latitude, longitude coordinates'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

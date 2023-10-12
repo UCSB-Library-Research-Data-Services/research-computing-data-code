@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ssis_events
+id: eventtype_short_datetime_format
+label: 'Event Short Date and Time'
+locked: false
+pattern: 'm/d/Y g:i A'

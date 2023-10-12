@@ -1,0 +1,116 @@
+{{ attach_library('ssis_youtube_gallery/ssis_youtube_gallery') }}
+
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  'playlist'
+]
+%}
+
+{% block paragraph %}
+
+  {% if is_admin_route %}
+    {{ content }}
+  {% else %}
+
+
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {% set paragraph_name = content.field_youtube_videos %}
+
+      {# Playback section #}
+      <div class="paragraph--type--column col-sm-12 col-md-8">
+        <div class="inner">
+          <div id="youtube-gallery-main-wrapper">
+            <div id="img_placeholder">
+              <div id="img_wrapper">
+                {% if paragraph.field_default_video_image is not empty %}
+                  <img src="{{ file_url(paragraph.field_default_video_image.entity.field_media_image.entity.fileuri) }}" alt="Default image" data-entity-type="" data-entity-uuid="">
+                  <div id="img_placeholder_overlay">Click a thumbnail to the right to play a video.</div>
+                {% endif %}
+              </div>
+              <div class="img_placeholder-caption">{{ content.field_youtube_description }}</div>
+            </div>
+
+            <div id="player_placeholder" style="display:none;">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="embed-responsive-item" frameborder="0" id="main_video" src="https://www.youtube.com/embed/-yMS-z--1zE?enablejsapi=1&amp;modestbranding=1&amp;rel=0"></iframe>
+              </div>
+
+              <div class="img_placeholder-caption">
+                <h3 class="speaker-name">&nbsp;</h3>
+                <p class="speaker-title">&nbsp;</p>
+                <p class="speaker-desc">&nbsp;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {# Playlist section #}
+      <div class="paragraph--type--column col-sm-12 col-md-4">
+        <div class="inner">
+          <div id="playlist">
+            {% for item in paragraph_name['#items'] %}
+              <div class="playlist-item">
+                <a class="play-link" href="#/" id="{{ item.entity.field_youtube_id.value }}" onclick="playVideo('{{ item.entity.field_youtube_id.value }}', '{{ item.entity.field_video_name.value|e('js')|raw }}', '{{ item.entity.field_video_title.value|e('js')|raw }}', '{{ item.entity.field_youtube_video_description.value|e('js')|raw }}')">
+                  <div class="speaker-thumbnail">
+                    {% if item.entity.field_video_image_thumbnail is not empty %}
+                      <img src="{{ file_url(item.entity.field_video_image_thumbnail.entity.field_media_image.entity.fileuri) }}" alt="{{ item.entity.field_video_name.value }}">
+                    {% else %}
+                      <svg x="1" y="10" width="100" height="100" viewBox="0 0 50 40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.888 14.154c-.288 0-.535.184-.717.405v-1.893h-.814v5.88h.814v-.333c.225.28.471.388.766.388.537 0 .737-.417.737-.954v-2.406c0-.588-.195-1.087-.786-1.087zm-.044 3.376c0 .138-.023.238-.07.299-.089.116-.281.111-.413.045l-.191-.153v-2.703l.167-.132c.141-.071.323-.058.421.071.058.076.086.187.086.333v2.24zm-2.716-8.53v-2.119c0-.25.115-.434.353-.434.26 0 .371.179.371.434v2.119c0 .248-.126.431-.354.431-.235 0-.37-.191-.37-.431zm-1.849 4.52h-.94v5.027h-.908v-5.027h-.94v-.854h2.788v.854zm1.484.688h.807v4.338h-.807v-.479c-.148.176-.303.311-.464.403-.435.249-1.031.244-1.031-.636v-3.626h.806v3.325c0 .175.042.292.215.292.157 0 .376-.202.474-.325v-3.292zm-10.763-14.208v24h24v-24h-24zm13.434 5.62h.847v3.491c0 .184.044.307.226.307.165 0 .395-.212.498-.341v-3.457h.847v4.555h-.847v-.504c-.367.436-.723.569-.979.569-.454 0-.591-.364-.591-.813v-3.807zm-1.937-.038c.687 0 1.217.511 1.217 1.224v2.233c0 .765-.536 1.22-1.217 1.22-.821 0-1.241-.417-1.241-1.22v-2.233c0-.731.495-1.224 1.241-1.224zm-3.435-1.582l.658 2.468.611-2.468h.969l-1.11 3.67v2.504h-.954v-2.504l-1.134-3.67h.96zm8.493 15.912c-1.735.118-7.377.118-9.11 0-1.878-.128-2.097-1.267-2.111-4.245.014-2.983.235-4.116 2.111-4.245 1.733-.118 7.375-.118 9.11 0 1.878.128 2.097 1.267 2.111 4.245-.014 2.983-.235 4.116-2.111 4.245zm-.047-5.813c-.728 0-1.225.522-1.225 1.275v1.947c0 .781.394 1.342 1.164 1.342.85 0 1.208-.506 1.208-1.342v-.326h-.83v.301c0 .378-.02.607-.36.607-.325 0-.352-.282-.352-.607v-.818h1.542v-1.104c0-.783-.373-1.275-1.147-1.275zm.317 1.707h-.712v-.439c0-.298.062-.508.36-.508.29 0 .352.215.352.508v.439z"/>
+                      </svg>
+                    {% endif %}
+                  </div>
+                  <div class="speaker-details">
+                    <div class="speaker-name">{{ item.entity.field_video_name.value }}</div>
+                    <div class="speaker-title">{{ item.entity.field_video_title.value }}</div>
+                    <div class="play-video">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                          viewBox="0 0 24.63 18.63" style="enable-background:new 0 0 24.63 18.63;height: 10px;" xml:space="preserve">
+                          <title>video icon</title>
+                        <style type="text/css">
+                          .st0{fill-rule:evenodd;clip-rule:evenodd;}
+                        </style>
+                        <path class="uc-santa-barbara-icon" d="M5.37,18.05h13.88V0.53H5.37V18.05z M0.58,15.19h4.21v-3.56H0.58V15.19z M4.79,15.78H0.58v1.11
+                        c0,0.64,0.52,1.16,1.17,1.17h3.04L4.79,15.78z M0.58,11.05h4.21V7.53H0.58V11.05z M0.58,6.95h4.21V3.41H0.58
+                        C0.58,3.41,0.58,6.95,0.58,6.95z M0.58,2.83h4.21v-2.3H1.75c-0.31,0-0.6,0.12-0.82,0.34l0,0C0.71,1.09,0.59,1.39,0.58,1.7L0.58,2.83
+                        L0.58,2.83z M19.84,15.19h4.21v-3.56h-4.21V15.19z M24.05,15.78h-4.21v2.27h3.04c0.31,0,0.61-0.12,0.82-0.34l0,0
+                        c0.22-0.22,0.34-0.51,0.34-0.82L24.05,15.78L24.05,15.78z M19.84,11.05h4.21V7.53h-4.21V11.05z M19.84,6.95h4.21V3.41h-4.21
+                        C19.84,3.41,19.84,6.95,19.84,6.95z M19.84,2.83h4.21V1.7c0-0.64-0.52-1.16-1.17-1.17h-3.04V2.83L19.84,2.83z M9,4.74l8.4,4.14
+                        c0.14,0.07,0.2,0.25,0.13,0.39c-0.03,0.06-0.07,0.1-0.13,0.13l-8.42,4.15c-0.14,0.07-0.32,0.01-0.39-0.13
+                        c-0.02-0.04-0.03-0.08-0.03-0.13l0,0v-8.3c0-0.16,0.13-0.29,0.29-0.29C8.9,4.7,8.95,4.71,9,4.74z M16.61,9.14l-7.47,3.68V5.46
+                        L16.61,9.14L16.61,9.14z M19.55,18.63H1.75C0.78,18.63,0,17.85,0,16.88V1.63l0,0V1.61l0,0V1.59l0,0V1.57l0,0V1.55l0,0V1.52l0,0V1.5
+                        l0,0V1.48l0,0V1.46l0,0V1.44l0,0V1.42l0,0V1.4l0,0V1.38l0,0V1.36l0,0V1.34l0,0V1.32l0,0V1.3l0,0V1.28l0,0l0.06-0.03l0,0l0.01-0.02
+                        l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0L0.1,1.12l0,0L0.11,1.1l0,0l0.01-0.02l0,0l0.01-0.02l0.01-0.02l0,0
+                        l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.03l0,0l0.01-0.02l0,0l0.01-0.02l0,0L0.2,0.89l0,0l0.01-0.02
+                        l0,0l0.01-0.02l0,0l0.01-0.02l0.01-0.02l0,0L0.25,0.8l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0L0.3,0.73l0,0l0.01-0.02
+                        l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0l0.01-0.02l0,0L0.4,0.59l0,0l0.01-0.02l0,0l0.01-0.02l0,0
+                        l0.01-0.02l0,0l0.01-0.01l0,0l0.01-0.02l0,0L0.48,0.5l0,0L0.5,0.48l0,0l0.01-0.01l0,0l0,0l0,0l0.02-0.02l0,0l0.02-0.01l0,0
+                        l0.01-0.02l0,0l0.01-0.01l0,0l0.02-0.01l0,0l0.01-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0
+                        L0.7,0.3l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0L0.85,0.2l0,0
+                        l0.02-0.01l0,0l0.02-0.01l0,0L0.9,0.17l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01H1l0.01-0.01l0,0
+                        l0.02-0.01l0,0L1.05,0.1l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0
+                        l0.02-0.01l0,0l0.02-0.01l0,0l0.02-0.01l0,0h0.02l0,0h0.02l0,0h0.02l0,0L1.34,0l0,0h0.02l0,0h0.02l0,0h0.02l0,0h0.02l0,0h0.02l0,0
+                        h0.02l0,0h0.02l0,0H1.5l0,0h0.02l0,0h0.02h0.02h0.02h0.02h0.02h0.03h0.02h21.2c0.95,0,1.72,0.75,1.75,1.7v15.18
+                        c0,0.46-0.19,0.91-0.51,1.24l0,0c-0.33,0.33-0.77,0.51-1.24,0.51H19.55L19.55,18.63z"/>
+                      </svg>
+                      play video
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+  
+  {% endif %}
+{% endblock paragraph %}

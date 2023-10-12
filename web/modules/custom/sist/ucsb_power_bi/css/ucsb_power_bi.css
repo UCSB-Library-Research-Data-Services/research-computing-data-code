@@ -1,0 +1,24 @@
+.paragraphs-subform .field--type-ucsb-power-bi input {
+	max-width: 500px;
+}
+
+.paragraph--type--ucsb-power-bi .field--type-ucsb-power-bi {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.paragraph--type--ucsb-power-bi .field--type-ucsb-power-bi .field--label {
+	display: none;
+}
+
+.paragraph--type--ucsb-power-bi .field--type-ucsb-power-bi .field--item--label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 22px;
+}
+
+.system-modules-uninstall a.pbi-uninstall {
+  text-decoration: underline;
+  font-weight: bold;
+}

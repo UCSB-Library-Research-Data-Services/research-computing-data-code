@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: footer_links
+label: 'Footer links'
+fieldset: Footer
+multiple: true

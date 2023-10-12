@@ -1,0 +1,131 @@
+#playlist {
+/* scrollbar */
+  max-height:480px;
+  height: 550px;
+  padding-right: 10px;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+.playlist-item {
+  clear: both;
+  border-bottom: 1px solid gray;
+  padding: 15px;
+}
+.playlist-item:hover, .playlist-item:focus{
+  background-color: #dce1e5;
+}
+.playlist-item:first-child {
+  padding-top: 7px;
+}
+.playlist-item:last-child {
+  border-bottom: none;
+}
+.playlist-item.active {
+  background-color: #dce1e5 !important;
+  color: #005aa3;
+}
+.playlist-item .speaker-thumbnail {
+  float: left;
+  padding: 0 10px 0 0;
+  width: 80px;
+  height: 80px;
+}
+.playlist-item .speaker-thumbnail img {
+  width: 68px;
+  height: auto;
+}
+
+
+.playlist-item a.play-link {
+  text-decoration: none !important;
+  /* color: #3d4952 !important; */
+}
+
+.playlist-item a.play-link .speaker-name {
+
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-weight: 500;
+}
+
+.playlist-item a.play-link .play-video {
+  text-transform: uppercase;
+  font-size: 12px;
+  text-decoration: none !important;
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-weight: 500;
+  background-repeat: no-repeat;
+  background-position: left top;
+  display: inline;
+  /* color: #005aa3 !important; */
+  /* background-image: url("../images/video-icon.svg"); */
+  /* padding-left:28px; */
+}
+.playlist-item a.play-link:hover .play-video, .playlist-item a.play-link:focus .play-video {
+  text-decoration: underline !important;
+}
+.speaker-details {
+  overflow: hidden;
+}
+.speaker-name {
+  font-family: avenir-heavy;
+}
+.speaker-title {
+  font-size: 12px;
+}
+#img_wrapper {
+  position: relative;
+  text-align: center;
+}
+#img_wrapper #img_placeholder_overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  background-color: #003660;
+  width: 100%;
+  color: #fff;
+  font-size: 1.1em;
+  opacity: 0;
+  transition: .5s ease;
+}
+#img_wrapper:hover #img_placeholder_overlay {
+  opacity: 1;
+}
+
+.img_placeholder-caption, .video-caption {
+  margin-top: 20px;
+  line-height: 28px;
+}
+.img_placeholder-caption h3.speaker-name {
+  margin-bottom: 0;
+}
+#player_placeholder .img_placeholder-caption {
+  line-height: 22px;
+}
+@media (max-width: 768px) {
+  #img_placeholder #img_wrapper {display: none;}
+  .img_placeholder-caption {margin-top:12px;}
+  #curator-feed-ucsb2020-layout {overflow-x: hidden;}
+}
+noscript div {
+  color: red;
+}
+/* scrollbar */
+/* width */
+#playlist::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#playlist::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+#playlist::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+#playlist::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

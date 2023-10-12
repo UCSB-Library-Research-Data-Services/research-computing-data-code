@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            .ucsb-icon { 
+                display: block; 
+                width: 100px;
+                height: 100px;
+                border-width: 1pt; 
+                border-color: #004d89; 
+                border-style: dotted; 
+            }
+
+            .ucsb-icon:focus { 
+                border-color: RED; 
+                border-style: SOLID; 
+            }
+
+            .ucsb-icon.resizable { 
+                background: cyan; 
+                position: relative; 
+            }
+
+            .ucsb-icon .resizer { 
+                width: 10px; 
+                height: 10px; 
+                background: blue; 
+                position:absolute; 
+                right: 0; 
+                bottom: 0; 
+                cursor: se-resize; 
+            }
+
+        </style>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+        <script>
+           $(document).ready(function (){
+                $(".ucsb-icon").resizable({
+                aspectRatio: 1/1
+                });
+           });	
+        </script>
+    </head>
+    <body>
+        <div class="ucsb-icon" >
+            <svg viewbox="0 0 16.42361 18.43859" xmlns="http://www.w3.org/2000/svg">
+            <title aria-label="cale-icon-uc-santa-barbara"></title>
+            <g id="ICONS"><path d="M15.10548,18.43859H1.31813A1.32121,1.32121,0,0,1,0,17.12046V1.31813A1.31682,1.31682,0,0,1,.387.387V.38605H.38788L.38971.38418A1.31522,1.31522,0,0,1,1.31813,0H15.10548a1.31963,1.31963,0,0,1,1.31813,1.31813V17.12046a1.3107,1.3107,0,0,1-.387.9302l-.00091.001a1.31307,1.31307,0,0,1-.93025.387ZM6.29578,3.08173H7.42461V4.74539a.2203.2203,0,0,0,.4406,0v-1.884a.22045.22045,0,0,0-.2203-.21939H6.29578a.21987.21987,0,1,0,0,.43973Zm2.68615.94152h.9266V4.526H8.77908a.21969.21969,0,0,0,0,.43937h1.34883a.22.22,0,0,0,.22037-.22v-1.884a.21993.21993,0,0,0-.22037-.21939H8.77908a.21987.21987,0,0,0,0,.43973H9.90853v.5018h-.9266a.21986.21986,0,0,0,0,.43972ZM8.43172,5.72378H12.049a.22061.22061,0,0,0,.21938-.2203V2.103a.21944.21944,0,0,0-.21938-.21939H4.37488a.21925.21925,0,0,0-.21939.21939V5.50348a.22042.22042,0,0,0,.21939.2203H7.992v8.2043a.21988.21988,0,1,0,.43975,0V5.72378Zm3.39794-3.40136H4.59426V5.2841h7.2354V2.32242ZM1.31813,17.99982H15.10548a.87825.87825,0,0,0,.621-.25838v-.00061a.87574.87574,0,0,0,.25838-.62037V1.31813a.88218.88218,0,0,0-.87936-.87936H1.31813A.87221.87221,0,0,0,.69807.69624L.69624.69715a.87724.87724,0,0,0-.25656.621V17.12046a.88326.88326,0,0,0,.87845.87936Z" style="fill: rgb(165, 196, 196); fill-rule: evenodd;"></path></g></svg>            
+           
+        
+        </div>
+            
+            <p>&nbsp;</p>
+            
+    </body>
+</html>

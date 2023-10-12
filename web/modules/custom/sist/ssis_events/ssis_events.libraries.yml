@@ -1,0 +1,46 @@
+main-styling:
+  css:
+    theme:
+      css/main.css: {} 
+admin-styling:
+  version: 1.0
+  css:
+    theme:
+      css/icons.css: {}
+full-view-styling:
+  css:
+    theme:
+      css/full-view.css: {}
+block-summary-styling:
+  css:
+    theme:
+      css/block-summary-view.css: {}
+thumbnail-view-styling:
+  css:
+    theme:
+      css/thumbnail-view.css: {}
+thumbnail-summary-styling:
+  css:
+    theme:
+      css/thumbnail-summary-view.css: {}
+block-scripts:
+  js:
+    js/event-blocks.js: {}
+form-scripts:
+  css:
+    component:
+      css/form-styling.css: {}
+  js:
+    js/validation.js: {}
+featured-event-styling:
+  css:
+    theme:
+      css/featured-event-style.css: {}
+ssis-category-views-style:
+  css:
+    theme:
+      css/category-views-style.css: {}
+ssis-view-filtering-style:
+  css:
+    theme:
+      css/view-filtering-style.css: {}

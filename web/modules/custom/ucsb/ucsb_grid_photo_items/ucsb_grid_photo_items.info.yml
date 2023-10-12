@@ -1,0 +1,15 @@
+name: UCSB Grid Photo Item
+description: Grid Photo Item module adds an additional paragraph type for the Grid and enables users to add photos to the front side of the grid cards
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ucsb
+dependencies:
+  - color_field
+  - media
+  - media_library
+  - options
+  - paragraphs
+  - text
+libraries:
+  - 'ucsb_grid_photo_items/main-styling'

@@ -1,0 +1,59 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\media\Entity\Media;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\file\Entity\File;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help()
+ */
+function mediatodocument_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        case 'help.page.mediatodocument':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('This is module that redirects users from media document page to the file url.') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+
+function mediatodocument_preprocess_page(&$variables)
+{
+    $route_name = \Drupal::routeMatch()->getRouteName();
+
+    //If the route is pointing to a media 
+    if ($route_name == 'entity.media.canonical') {
+
+        //get the route object 
+        $route_obj = \Drupal::routeMatch()->getRouteObject();
+        $path = $route_obj->getPath();
+
+        //If the path points to media page 
+        if ($path == '/media/{media}') {
+            //Get the media parameter
+            $param = \Drupal::routeMatch()->getRawParameter('media');
+
+            //and load the media entity
+            $media = Media::load($param);
+
+            //If there is a media document 
+            if ($media->field_media_document !== NULL) {
+                //get the file URL
+                $file_uri = $media->field_media_document->entity->getFileUri();
+                $file_id = $media->field_media_document->target_id;
+                $file = File::load($file_id);
+                $file_downloadable_link = $file->createFileUrl();
+
+                //and redirect to the File itself
+                $response = new RedirectResponse($file_downloadable_link);
+                $response->send();
+                return;
+            }
+        }
+    }
+}

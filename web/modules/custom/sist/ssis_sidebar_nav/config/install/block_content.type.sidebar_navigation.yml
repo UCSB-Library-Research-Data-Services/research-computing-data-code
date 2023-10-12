@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ssis_sidebar_nav
+id: sidebar_navigation
+label: 'Sidebar Navigation'
+revision: 0
+description: 'Custom sidebar navigation block.'

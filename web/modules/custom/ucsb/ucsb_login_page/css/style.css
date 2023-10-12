@@ -1,0 +1,18 @@
+.login-footer-border {
+    margin-top: 25px;
+    border-color: #e0e0e0;
+    border-style: solid;
+    border-width: 1px 0 0 0;
+}
+
+.ucsb-button {
+    font-size:14px;
+}
+
+.user-login-form {
+    margin: 0 !important;
+}
+
+.ucsb-user-login-forms {
+    padding-top: 50px;
+}

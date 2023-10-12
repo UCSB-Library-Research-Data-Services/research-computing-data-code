@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebar_navigation
+    - field.storage.block_content.field_sidebar_navigation_menu
+  module:
+    - block_field
+id: block_content.sidebar_navigation.field_sidebar_navigation_menu
+field_name: field_sidebar_navigation_menu
+entity_type: block_content
+bundle: sidebar_navigation
+label: 'Sidebar Navigation Menu'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    plugin_id: 'menu_block:main'
+    settings: {  }
+default_value_callback: ''
+settings:
+  selection: blocks
+  selection_settings:
+    plugin_ids:
+      'menu_block:main': 'menu_block:main'
+field_type: block_field

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_eventtype_featured
+    - node.type.eventtype
+  enforced:
+    module:
+      - ssis_events
+id: node.eventtype.field_eventtype_featured
+field_name: field_eventtype_featured
+entity_type: node
+bundle: eventtype
+label: Featured
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

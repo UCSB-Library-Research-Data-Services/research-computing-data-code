@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ucsb_grid_photo_items
+id: grid_photo_item
+label: 'Grid Photo item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,8 @@
+action_panels:
+  version: 1.x
+  css:
+    theme:
+      css/action_panels_colors.css: { }
+      css/action_panels.css: { }
+  js:
+    js/action_panels.js: {}

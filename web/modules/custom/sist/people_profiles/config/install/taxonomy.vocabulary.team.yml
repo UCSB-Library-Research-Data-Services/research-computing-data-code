@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - people_profiles
+name: Team
+vid: team
+description: 'Used for organizing people profiles into teams'
+weight: 0

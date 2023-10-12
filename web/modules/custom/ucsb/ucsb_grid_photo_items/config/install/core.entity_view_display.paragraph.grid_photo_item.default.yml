@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_photo_item.field_back
+    - field.field.paragraph.grid_photo_item.field_background_color
+    - field.field.paragraph.grid_photo_item.field_front
+    - field.field.paragraph.grid_photo_item.field_front_alignment
+    - field.field.paragraph.grid_photo_item.field_item_height
+    - field.field.paragraph.grid_photo_item.field_item_image
+    - field.field.paragraph.grid_photo_item.field_item_width
+    - paragraphs.paragraphs_type.grid_photo_item
+  module:
+    - text
+  enforced:
+    module:
+      - ucsb_grid_photo_items
+id: paragraph.grid_photo_item.default
+targetEntityType: paragraph
+bundle: grid_photo_item
+mode: default
+content:
+  field_back:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_front:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_item_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: medium_220x220_
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_background_color: true
+  field_front_alignment: true
+  field_item_height: true
+  field_item_width: true

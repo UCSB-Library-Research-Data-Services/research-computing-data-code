@@ -1,0 +1,140 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.eventtype.body
+    - field.field.node.eventtype.field_eventtype_category
+    - field.field.node.eventtype.field_eventtype_description
+    - field.field.node.eventtype.field_eventtype_event_date
+    - field.field.node.eventtype.field_eventtype_featured
+    - field.field.node.eventtype.field_eventtype_image
+    - field.field.node.eventtype.field_eventtype_link
+    - field.field.node.eventtype.field_eventtype_location
+    - field.field.node.eventtype.field_eventtype_location_link
+    - field.field.node.eventtype.field_eventtype_map_location
+    - node.type.eventtype
+  module:
+    - link
+    - simple_gmap
+    - smart_date
+    - text
+    - user
+  enforced:
+    module:
+      - ssis_events
+id: node.eventtype.default
+targetEntityType: node
+bundle: eventtype
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_eventtype_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_eventtype_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_eventtype_event_date:
+    type: smartdate_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_eventtype_featured:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_eventtype_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_eventtype_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_eventtype_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_eventtype_location_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_eventtype_map_location:
+    type: simple_gmap
+    label: above
+    settings:
+      include_map: true
+      include_static_map: false
+      include_link: false
+      include_text: false
+      iframe_height: '200'
+      iframe_width: '200'
+      iframe_title: ''
+      static_scale: 1
+      zoom_level: 14
+      link_text: 'View larger map'
+      map_type: m
+      langcode: en
+      apikey: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true

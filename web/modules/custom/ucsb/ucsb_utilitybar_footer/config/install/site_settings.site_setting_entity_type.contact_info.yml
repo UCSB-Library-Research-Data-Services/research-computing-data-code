@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contact_info
+label: 'Contact info'
+fieldset: Footer
+multiple: false

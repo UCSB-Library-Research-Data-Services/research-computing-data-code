@@ -1,0 +1,94 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.people_profile.body
+    - field.field.node.people_profile.field_address
+    - field.field.node.people_profile.field_avatar
+    - field.field.node.people_profile.field_cv
+    - field.field.node.people_profile.field_email
+    - field.field.node.people_profile.field_people_gender_pronouns
+    - field.field.node.people_profile.field_people_profile_featured
+    - field.field.node.people_profile.field_phone
+    - field.field.node.people_profile.field_photo
+    - field.field.node.people_profile.field_sortorder
+    - field.field.node.people_profile.field_subtitle
+    - field.field.node.people_profile.field_team
+    - field.field.node.people_profile.field_title
+    - field.field.node.people_profile.field_website
+    - node.type.people_profile
+  module:
+    - telephone
+    - user
+  enforced:
+    module:
+      - people_profiles
+_core:
+id: node.people_profile.teaser
+targetEntityType: node
+bundle: people_profile
+mode: teaser
+content:
+  field_address:
+    type: string
+    weight: 3
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_email:
+    type: basic_string
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_link
+    weight: 4
+    region: content
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+  field_photo:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_title:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_website:
+    type: string
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  links:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_avatar: true
+  field_cv: true
+  field_people_gender_pronouns: true
+  field_people_profile_featured: true
+  field_sortorder: true
+  field_subtitle: true
+  field_team: true

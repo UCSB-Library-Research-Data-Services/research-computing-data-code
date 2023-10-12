@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_youtube_gallery.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_youtube_gallery_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ssis_youtube_gallery module.
+    case 'help.page.ssis_youtube_gallery':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YouTube Playlist Video Player') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ssis_youtube_gallery_theme() {
+  return [
+    'paragraph__youtube_video_gallery' => [
+      'render element' => 'element',
+      'template' => 'paragraph--youtube-video-gallery',
+      'base hook' => 'paragraph'
+    ],
+    'field__youtube_videos' => [
+      'render element' => 'element',
+      'template' => 'fields/field--paragraph--field-youtube-videos',
+      'base hook' => 'field'
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function ssis_youtube_gallery_preprocess_paragraph(&$variables) {
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  $variables['is_admin_route'] = $is_admin;
+}
+
+
+/**
+ * Implements hook_paragraphs_preprocess_paragraph__paragraph_type().
+ */
+function ssis_youtube_gallery_paragraphs_preprocess_paragraph__youtube_video_gallery(&$variables) {
+  // Add .playlist class.
+  $variables['attributes']['class'][] = 'playlist';
+}

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+id: youtube_video_gallery
+label: 'YouTube Video Gallery'
+icon_uuid: null
+icon_default: null
+description: 'YouTube Playlist Video Player.'
+behavior_plugins: {  }
+dependencies:
+  enforced:
+    module:
+      - ssis_youtube_gallery

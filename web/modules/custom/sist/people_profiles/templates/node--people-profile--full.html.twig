@@ -1,0 +1,60 @@
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix', 
+  ]
+%}
+
+<article{{ attributes.addClass(classes, 'forum-forms', 'bottom-padding-none') }}>
+  <div class= "col-sm-12" style = "padding-top: 50px">
+    <div class="col-sm-12 col-md-3" style = "padding-left: 15px; padding-right: 15px;">
+     
+      {% if node.field_photo.entity.field_media_image %}
+            {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy", style: "width:270px;"}, true) }}   
+      {% else %}    
+            <img style="width: 270px;" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background">             
+      {% endif %}  
+    </div>
+    <div class="col-sm-12 col-md-9" style = "padding-left: 25px;">
+      {% if node.field_title is not empty %}
+      <h4>{{ node.field_title.value }}</h4>
+      {% endif %}
+
+      {% if node.field_people_gender_pronouns is not empty %}
+      <h6>{{ node.field_people_gender_pronouns.value }}</h6>
+      {% endif %}
+
+      {% if node.field_subtitle is not empty %}
+      <h5>{{ node.field_subtitle.value }}</h5>
+      {% endif %}
+
+      {% if node.field_email is not empty %}
+      <p><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></p>
+      {% endif %}
+
+      {% if node.field_address is not empty %}
+      <p>{{ node.field_address.value }}</p>
+      {% endif %}
+
+      {% if node.field_phone is not empty %}
+      <p>{{ node.field_phone.value }}</p>
+      {% endif %}
+      
+      {% if node.field_cv.value == true %}
+      <p><a href="{{ file_url(node.field_cv.entity.field_media_file.entity.uri.value) }}" title = "CV">See {{ node.title.value }}'s CV</a></p>
+      {% endif %}
+    </div>
+  </div>
+    <div class = "col-sm-12" style = "padding-top: 36px">
+      <div class="col-sm-12 col-md-12 has-background background-color-eef0f2" style="padding-right: 25px; padding-left:25px">
+        <p>{{node.body.value | raw}}</p>
+      </div>
+    </div>
+
+</article>

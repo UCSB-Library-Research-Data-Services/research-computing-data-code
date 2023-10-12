@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.action_panel_item.field_action_panel_image
+    - field.field.paragraph.action_panel_item.field_action_panel_subtitle
+    - field.field.paragraph.action_panel_item.field_action_panel_title
+    - field.field.paragraph.action_panel_item.field_action_panel_url
+    - paragraphs.paragraphs_type.action_panel_item
+  module:
+    - link
+id: paragraph.action_panel_item.default
+targetEntityType: paragraph
+bundle: action_panel_item
+mode: default
+content:
+  field_action_panel_image:
+    type: entity_reference_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_action_panel_subtitle:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_action_panel_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_action_panel_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }
