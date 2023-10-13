@@ -8,7 +8,6 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
-  - 'access site-wide contact form'
   - 'never autoplay videos'
   - 'search content'
   - 'view media'
