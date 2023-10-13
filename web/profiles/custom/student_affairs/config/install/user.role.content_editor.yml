@@ -59,7 +59,6 @@ permissions:
   - 'update any media'
   - 'update media'
   - 'use menu link attributes'
-  - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view all media revisions'
   - 'view all revisions'
