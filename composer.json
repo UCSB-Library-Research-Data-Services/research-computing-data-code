@@ -228,7 +228,7 @@
         "drupal/yearonly": "^9.1",
         "drupal/bootstrap": "^3.29",
         "drupal/ief_table_view_mode": "^2.3",
-        "drupal/webform": "^6.2@beta",
+        "drupal/webform": "^6.2@RC",
         "drupal/webform_views": "^5.1",
         "drupal/antibot": "^2.0",
         "drupal/captcha": "^2.0@beta",

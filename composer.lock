@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "809bcf1ba774413e51131f7b1147b263",
+    "content-hash": "c04fa4e29a0a00a886b42e921fe74c0c",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -14484,20 +14484,21 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.2.0-rc1",
+            "version": "6.2.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.2.0-rc1"
+                "reference": "6.2.0-rc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.2.0-rc1.zip",
-                "reference": "6.2.0-rc1",
-                "shasum": "66dbff946292e7e196c733fc6f8a4b0d63a3d9cc"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.2.0-rc2.zip",
+                "reference": "6.2.0-rc2",
+                "shasum": "2f6c6b693dc4af73c81d2290b4e82a669f0aa2dc"
             },
             "require": {
-                "drupal/core": "^9.4 || ^10"
+                "drupal/core": "^9.4 || ^10",
+                "php": ">=8.1"
             },
             "require-dev": {
                 "drupal/address": "1.x-dev",
@@ -14505,16 +14506,16 @@
                 "drupal/captcha": "^1 || ^2",
                 "drupal/chosen": "3.0.x-dev",
                 "drupal/ckeditor": "1.0.x-dev",
-                "drupal/clientside_validation": "*",
+                "drupal/clientside_validation": "^3 || ^4",
                 "drupal/clientside_validation_jquery": "*",
-                "drupal/devel": "*",
+                "drupal/devel": "5.x-dev",
                 "drupal/entity": "1.x-dev",
-                "drupal/entity_print": "*",
+                "drupal/entity_print": "2.x-dev",
                 "drupal/group": "1.x-dev",
                 "drupal/hal": "1 - 2",
                 "drupal/jquery_ui": "1.x-dev",
-                "drupal/jquery_ui_checkboxradio": "*",
-                "drupal/jquery_ui_datepicker": "*",
+                "drupal/jquery_ui_checkboxradio": "2.x-dev",
+                "drupal/jquery_ui_datepicker": "2.x-dev",
                 "drupal/mailsystem": "4.x-dev",
                 "drupal/metatag": "1.x-dev",
                 "drupal/paragraphs": "1.x-dev",
@@ -14522,7 +14523,7 @@
                 "drupal/smtp": "1.x-dev",
                 "drupal/styleguide": "^1 || ^2",
                 "drupal/telephone_validation": "2.x-dev",
-                "drupal/token": "*",
+                "drupal/token": "1.x-dev",
                 "drupal/variationcache": "1.x-dev",
                 "drupal/webform_access": "*",
                 "drupal/webform_attachment": "*",
@@ -14542,8 +14543,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.2.0-rc1",
-                    "datestamp": "1696976940",
+                    "version": "6.2.0-rc2",
+                    "datestamp": "1697463934",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -26035,7 +26036,7 @@
         "drupal/inline_entity_form": 5,
         "drupal/typed_data": 10,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10,
+        "drupal/webform": 5,
         "drupal/captcha": 10,
         "drupal/config_update": 15,
         "drupal/menu_breadcrumb": 15,
