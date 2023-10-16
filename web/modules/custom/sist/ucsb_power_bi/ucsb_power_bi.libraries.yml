@@ -11,7 +11,7 @@ ucsb_power_bi-client:
   dependencies:
     - core/jquery
     - core/drupalSettings
-    - core/jquery.once
+    - core/once
 
 ucsb_power_bi-customizer:
   header: true
@@ -25,6 +25,5 @@ ucsb_power_bi-customizer:
     theme:
       css/ucsb_power_bi.css: {}
   dependencies:
-    - core/jquery
     - core/drupalSettings
-    - core/jquery.once
+    - core/once
