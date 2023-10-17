@@ -107,12 +107,12 @@
             "options": []
         },
         {
-            "uri": "https:\/\/www.ucsb.edu\/people",
+            "uri": "https:\/\/www.ucsb.edu\/directory",
             "title": "Campus Directory",
             "options": []
         },
         {
-            "uri": "http:\/\/www.aw.id.ucsb.edu\/maps\/",
+            "uri": "http:\/\/www.map.ucsb.edu",
             "title": "Campus Maps",
             "options": []
         }
