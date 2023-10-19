@@ -6,14 +6,14 @@ core_version_requirement: ^9 || ^10
 package: ITS
 
 default_content:
+  user:
+    - 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+    - 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
   node:
     - 13edbba2-88b3-4b2d-b5bb-f5210cba74c8
     - 829e5648-395d-4b0f-8b6e-26839e9e940d
     - 117b7188-0f66-4a2f-8dde-1b670c106ac4
     - 3f8b54f7-7d86-49ad-8d79-ac13d95eb85a
-  user:
-    - 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
-    - 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
   menu_link_content:
     - 1d9f9031-8b5c-4be4-b393-87a1c656a522
     - 89b47f26-11aa-4d87-98fa-f2be013a2f6a

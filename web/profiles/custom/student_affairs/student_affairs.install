@@ -54,12 +54,6 @@ function student_affairs_install_content() {
     // remove the default contact form
     \Drupal::entityTypeManager()->getStorage('webform')->load('contact')->delete();
 
-       // Display node 1 as default frontpage.
-      \Drupal::configFactory()
-      ->getEditable('system.site')
-      ->set('page.front', '/node/1')
-      ->save();
-
     // flush cache to view new content
     drupal_flush_all_caches();
 }
