@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: 'blog/[node:field_blog:entity]/[node:title]'
 selection_criteria:
   8db54c94-0f4f-49b4-83ae-f77fde0c8551:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       blog_post: blog_post
     negate: false
