@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  name:
+    -
+      value: emscha
+  mail:
+    -
+      value: emscha@ucsb.edu
+  timezone:
+    -
+      value: America/Los_Angeles
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1587171023
+  access:
+    -
+      value: 1589812858
+  login:
+    -
+      value: 1589812858
+  roles:
+    -
+      target_id: administrator
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0

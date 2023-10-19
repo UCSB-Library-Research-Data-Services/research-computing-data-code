@@ -1,10 +1,10 @@
-name: 'Student Affairs'
-mail: emscha@ucsb.edu
+name: 'Demo Site'
+mail: no-reply@sa.ucsb.edu
 slogan: ''
 page:
-  403: /node/17
-  404: /node/16
-  front: /node/1
+  403: /node/3
+  404: /node/1
+  front: /node/2
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en

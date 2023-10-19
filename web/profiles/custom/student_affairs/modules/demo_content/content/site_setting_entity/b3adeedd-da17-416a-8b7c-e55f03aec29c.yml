@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: site_setting_entity
+  uuid: b3adeedd-da17-416a-8b7c-e55f03aec29c
+  bundle: give_link
+  default_langcode: en
+  depends:
+    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+default:
+  user_id:
+    -
+      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+  name:
+    -
+      value: 'Give link'
+  fieldset:
+    -
+      value: 'Utility bar'
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1589819295
+  field_display_give_link:
+    -
+      value: 1
+  field_link_text:
+    -
+      value: Give
+  field_url:
+    -
+      uri: 'https://giving.ucsb.edu/'
+      title: ''
+      options: {  }

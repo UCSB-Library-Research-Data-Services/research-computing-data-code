@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: site_setting_entity
+  uuid: 1fdbfec1-1ef6-442c-9467-7922e79a1325
+  bundle: footer_links
+  default_langcode: en
+  depends:
+    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+default:
+  user_id:
+    -
+      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+  name:
+    -
+      value: 'Footer links'
+  fieldset:
+    -
+      value: Footer
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1589819133
+  field_label:
+    -
+      value: 'Links and Resources'
+  field_link:
+    -
+      uri: 'https://www.ucsb.edu/policies-and-disclosures'
+      title: 'Policies and Disclosures'
+      options: {  }
+    -
+      uri: 'https://www.ucsb.edu/directory'
+      title: 'Campus Directory'
+      options: {  }
+    -
+      uri: 'https://www.map.ucsb.edu'
+      title: 'Campus Maps'
+      options: {  }

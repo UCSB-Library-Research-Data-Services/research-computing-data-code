@@ -1,0 +1,122 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3f8b54f7-7d86-49ad-8d79-ac13d95eb85a
+  bundle: page
+  default_langcode: en
+  depends:
+    90258b4a-1df7-4be9-8cb5-ba00bb963e3f: user
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
+  title:
+    -
+      value: 'Website Accessibility'
+  created:
+    -
+      value: 1697770800
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /accessibility
+      langcode: en
+      pathauto: 0
+  field_blades:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 4c2c4e1e-e4b7-4d6b-a032-7e64dfd80a33
+          bundle: blade
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1530564992
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_bottom_padding:
+            -
+              value: '4'
+          field_columns:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 70661155-2dbb-4a6a-a745-79eb73cf9ecd
+                  bundle: column
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1530564992
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_body:
+                    -
+                      value: "<p class=\"lead\">If any of the material on this website is not accessible to you, please contact us by phone at (805) 893-7962 or&nbsp;<a href=\"mailto:support@sa.ucsb.edu\">send us an email</a>&nbsp;so that we can provide alternatives.</p>\r\n"
+                      format: full_html
+                  field_image_position:
+                    -
+                      value: left
+                  field_mobile_width:
+                    -
+                      value: '12'
+                  field_width:
+                    -
+                      value: '8'
+          field_equal_height:
+            -
+              value: false
+          field_full_bleed:
+            -
+              value: false
+          field_top_border:
+            -
+              value: false
+  field_hide_title:
+    -
+      value: false
+  field_overlay_width:
+    -
+      value: '6'
+  field_sortorder:
+    -
+      value: 999999.0
+  field_top_padding:
+    -
+      value: none

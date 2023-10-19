@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: site_setting_entity
+  uuid: 6fcaef01-387f-409e-b113-367e7f7b8b57
+  bundle: contact_info
+  default_langcode: en
+  depends:
+    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+default:
+  user_id:
+    -
+      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+  name:
+    -
+      value: 'Contact info'
+  fieldset:
+    -
+      value: Footer
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1589818892
+  field_address:
+    -
+      value: 'University of California, Santa Barbara'
+    -
+      value: 'Santa Barbara, CA 93106-2036'
+    -
+      value: 'Visit Us | Mon-Fri 8-12 & 1-5'

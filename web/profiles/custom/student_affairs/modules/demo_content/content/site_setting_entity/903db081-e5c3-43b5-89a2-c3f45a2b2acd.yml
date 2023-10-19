@@ -1,0 +1,49 @@
+_meta:
+  version: '1.0'
+  entity_type: site_setting_entity
+  uuid: 903db081-e5c3-43b5-89a2-c3f45a2b2acd
+  bundle: social_media
+  default_langcode: en
+  depends:
+    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+default:
+  user_id:
+    -
+      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+  name:
+    -
+      value: 'Social media'
+  fieldset:
+    -
+      value: Footer
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1589818964
+  field_link:
+    -
+      uri: 'tel:(805) 893-8000'
+      title: '(805) 893-8000'
+      options: {  }
+    -
+      uri: 'https://www.facebook.com/ucsantabarbara'
+      title: Facebook
+      options: {  }
+    -
+      uri: 'https://www.youtube.com/c/ucsantabarbara'
+      title: Youtube
+      options: {  }
+    -
+      uri: 'mailto:youremail@ucsb.edu'
+      title: youremail@ucsb.edu
+      options: {  }
+    -
+      uri: 'https://twitter.com/ucsantabarbara'
+      title: Twitter
+      options: {  }
+    -
+      uri: 'http://instagram.com/ucsantabarbara'
+      title: Instagram
+      options: {  }
