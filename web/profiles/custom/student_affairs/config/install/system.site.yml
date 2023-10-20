@@ -2,9 +2,9 @@ name: 'Demo Site'
 mail: no-reply@sa.ucsb.edu
 slogan: ''
 page:
-  403: /node/3
-  404: /node/2
-  front: /node/1
+  403: /403-forbidden
+  404: /404-page-not-found
+  front: /home
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en
