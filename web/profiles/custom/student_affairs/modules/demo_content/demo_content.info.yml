@@ -27,4 +27,4 @@ default_content:
     - 903db081-e5c3-43b5-89a2-c3f45a2b2acd
     - b3adeedd-da17-416a-8b7c-e55f03aec29c
 dependencies:
-  - default_content
+  - default_content:default_content
