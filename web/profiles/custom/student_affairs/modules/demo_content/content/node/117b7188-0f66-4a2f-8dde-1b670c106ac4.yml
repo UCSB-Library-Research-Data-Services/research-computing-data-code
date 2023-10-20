@@ -5,7 +5,8 @@ _meta:
   bundle: page
   default_langcode: en
   depends:
-    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+    90258b4a-1df7-4be9-8cb5-ba00bb963e3f: user
+    3f8b54f7-7d86-49ad-8d79-ac13d95eb85a: node
 default:
   revision_uid:
     -
@@ -15,13 +16,13 @@ default:
       value: true
   uid:
     -
-      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+      entity: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
   title:
     -
-      value: '403 Forbidden'
+      value: 'Website Accessibility'
   created:
     -
-      value: 1696345200
+      value: 1697731200
   promote:
     -
       value: false
@@ -36,16 +37,16 @@ default:
       value: published
   path:
     -
-      alias: /403-forbidden
+      alias: /accessibility
       langcode: en
-      pathauto: 1
+      pathauto: 0
   field_blades:
     -
       entity:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: a1221eaf-8200-4618-82d3-21300b8db4ad
+          uuid: 4c2c4e1e-e4b7-4d6b-a032-7e64dfd80a33
           bundle: blade
           default_langcode: en
         default:
@@ -54,7 +55,7 @@ default:
               value: true
           created:
             -
-              value: 1530514819
+              value: 1530564992
           behavior_settings:
             -
               value: {  }
@@ -70,7 +71,7 @@ default:
                 _meta:
                   version: '1.0'
                   entity_type: paragraph
-                  uuid: 9021a543-3142-4169-8ebc-e647b21d2929
+                  uuid: 70661155-2dbb-4a6a-a745-79eb73cf9ecd
                   bundle: column
                   default_langcode: en
                 default:
@@ -79,7 +80,7 @@ default:
                       value: true
                   created:
                     -
-                      value: 1530514819
+                      value: 1530564992
                   behavior_settings:
                     -
                       value: {  }
@@ -88,7 +89,7 @@ default:
                       value: true
                   field_body:
                     -
-                      value: '<p class="lead">You are not authorized to access this page.</p>'
+                      value: "<p class=\"lead\">If any of the material on this website is not accessible to you, please contact us by phone at (805) 893-7962 or&nbsp;<a href=\"mailto:support@sa.ucsb.edu\">send us an email</a>&nbsp;so that we can provide alternatives.</p>\r\n"
                       format: full_html
                   field_image_position:
                     -

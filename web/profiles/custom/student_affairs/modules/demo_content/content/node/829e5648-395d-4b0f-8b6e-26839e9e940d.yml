@@ -5,7 +5,8 @@ _meta:
   bundle: page
   default_langcode: en
   depends:
-    96b0ff1a-dd22-4987-bbb1-4e635cdca8e1: user
+    90258b4a-1df7-4be9-8cb5-ba00bb963e3f: user
+    13edbba2-88b3-4b2d-b5bb-f5210cba74c8: node
 default:
   revision_uid:
     -
@@ -15,7 +16,7 @@ default:
       value: true
   uid:
     -
-      entity: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+      entity: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
   title:
     -
       value: '404 page not found'
