@@ -16,7 +16,7 @@ function demo_content_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.demo_content':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Demo content for Student Affairs Websites.') . '</p>';
+      $output .= '<p>' . t('Demo content for Information Technology Services (ITS) Websites.') . '</p>';
       return $output;
 
     default:

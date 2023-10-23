@@ -1,6 +1,6 @@
 name: 'Demo content'
 type: module
-description: 'Demo content for Student Affairs Websites.'
+description: 'Demo content for Information Technology Services (ITS) Websites.'
 version: '1.0.0'
 core_version_requirement: ^9 || ^10
 package: ITS
