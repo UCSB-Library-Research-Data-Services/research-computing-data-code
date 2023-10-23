@@ -321,7 +321,8 @@
         "drupal/hal": "^2.0",
         "drupal/color": "^1.0",
         "drupal/classy": "^1.0",
-        "drupal/stable": "^2.0"
+        "drupal/stable": "^2.0",
+        "drupal/feeds_log": "^2.0@alpha"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

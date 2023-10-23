@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b5973c69bf8b11de780409d7bc7c7a9",
+    "content-hash": "5d8d8f9d4d6769ece848e216bb8cb40d",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -6853,6 +6853,63 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/feeds_ex",
                 "issues": "http://drupal.org/project/issues/feeds_ex"
+            }
+        },
+        {
+            "name": "drupal/feeds_log",
+            "version": "2.0.0-alpha5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/feeds_log.git",
+                "reference": "2.0.0-alpha5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/feeds_log-2.0.0-alpha5.zip",
+                "reference": "2.0.0-alpha5",
+                "shasum": "e71e3e67a024cec2f37aa88b2e7f7eb883a9db0a"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "drupal/feeds": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha5",
+                    "datestamp": "1698049331",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "Grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "PunamShelke",
+                    "homepage": "https://www.drupal.org/user/3509619"
+                },
+                {
+                    "name": "thomas.frobieter",
+                    "homepage": "https://www.drupal.org/user/409335"
+                }
+            ],
+            "description": "Feeds Unimpotred Reocrds Log.",
+            "homepage": "https://www.drupal.org/project/feeds_log",
+            "support": {
+                "source": "https://git.drupalcode.org/project/feeds_log"
             }
         },
         {
@@ -26171,7 +26228,8 @@
         "drupal/scheduler_content_moderation_integration": 10,
         "drupal/tr_rulez": 20,
         "drupal/month_year": 20,
-        "drupal/tvi": 15
+        "drupal/tvi": 15,
+        "drupal/feeds_log": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
