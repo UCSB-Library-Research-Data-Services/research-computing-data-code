@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.wellness_people_profiles
+label: 'Wellness People Profiles'
+targetEntityType: node
+cache: true

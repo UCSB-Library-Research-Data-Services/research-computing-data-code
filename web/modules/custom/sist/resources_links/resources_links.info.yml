@@ -1,0 +1,21 @@
+name: Resources Links
+type: module
+description: This plugin module adds a content type named Resources Links
+package: ITS
+dependencies:
+  - link
+  - media_library
+  - path
+  - scheduler
+  - text
+  - link
+  - text
+  - user
+  - node
+  - taxonomy
+  - media
+  - menu_ui
+  - scheduler
+  - content_moderation
+version: '1.0.0'
+core_version_requirement: ^9 || ^10

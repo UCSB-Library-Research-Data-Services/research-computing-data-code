@@ -1,0 +1,71 @@
+
+{% if allow_view_bi %}
+  {% if token is not empty %}
+  <div id="pbi-{{ field_name }}-{{ report_id }}"></div>
+    {% if route != 'entity.node.edit_form' %}
+      <script>
+      (function ($) {
+        var models = window["powerbi-client"].models;
+        var report = powerbi.embed($("#pbi-{{ field_name }}-{{ report_id }}").get(0), {
+          type: "report",
+          id: "{{ report_id }}",
+          tokenType: models.TokenType.Embed,
+          embedUrl: "{{ embed_url }}",
+          accessToken:"{{ token }}",
+          {% if dataset_id %}
+            datasetId:"{{ dataset_id }}",
+          {% endif %}
+        });
+        ucsb_power_bi_customizeReportEmbed('pbi-{{ field_name }}-{{ report_id }}',{{ report_width }},{{ report_height }},'{{ report_title }}');
+      })(jQuery);
+      </script>
+    {% else %}
+      <div class="placeholder">
+        <p>Placeholder for embedded Power BI Report with the following values:</p>
+        <ul>
+          {% if report_id %}
+            <li>Report ID: {{ report_id }}</li>
+          {% endif %}
+          {% if workspace_id %}
+            <li>Workspace ID: {{ workspace_id }}</li>
+          {% endif %}
+          {% if dataset_id %}
+            <li>Dataset ID: {{ dataset_id }}</li>
+          {% endif %}
+          {% if role %}
+            <li>Role: {{ role }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="power-access">
+      <div aria-label="Status message" class="alert alert-danger alert-dismissible" role="status">
+        <p>You cannot see the content of this report because you do not have permission to the underlying data. Please contact the data owner to request access.</p>
+      </div>
+    </div>
+  {% endif %}
+{% else %}
+  {% if logged_in %}
+    <div class="field--item--label">Report ID: {{ report_id }}</div>
+    <div class="power-access">
+      <p>You cannot see the content of this report because you do not have permission to the underlying data. Please contact the data owner to request access.</p></div>
+  {% else %}
+    <div class="power-access">
+      <div class="paragraph paragraph--type--blade paragraph--view-mode--default top-padding-none bottom-padding-none">
+        <div class="inner">
+          <div class="columns">
+            <div class="paragraph paragraph--type--column paragraph--view-mode--default col-sm-12 col-md-12">
+              <div class="inner">
+                <div class="field field--name-field-body field--type-text-long field--label-hidden field--item">
+                  <p>Please log-in with your UCSBnetID and Password to view the report.</p>
+                  <p><a class="ucsb-button btn  btn-secondary" href="/caslogin?returnto={{ url('<current>')|render }}">LOGIN</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

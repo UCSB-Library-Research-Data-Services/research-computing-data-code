@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains resources_links.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function resources_links_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        case 'help.page.resources_links':
+            $output = '';
+            $output .= '<h3>' . t('Resources Links') . '</h3>';
+            $output .= '<p>' . t('This plugin module adds a content type named Resources Links.') . '</p>';
+            return $output;
+
+        default:
+    }
+}

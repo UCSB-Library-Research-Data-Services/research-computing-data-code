@@ -1,0 +1,12 @@
+langcode: en
+status: true
+id: action_panel_item
+label: 'Action Panel Item'
+icon_uuid: null
+icon_default: null
+description: 'Action Panel Item'
+behavior_plugins: {  }
+dependencies:
+  enforced:
+    module:
+      - ucsb_action_panels

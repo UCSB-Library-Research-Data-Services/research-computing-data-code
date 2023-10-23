@@ -1,0 +1,20 @@
+{
+    "name": "sist-ucsb/ucsbwebsub",
+    "description": "UCSB subtheme for Drupal",
+    "keywords": [
+        "UCSB", "SSIS", "subtheme", "Drupal"
+    ],
+    "type": "drupal-theme",
+    "license": "BSD‌-3-Clause",
+    "version": "0.12",
+    "authors": [
+        {
+            "name": "Alex Sokolov",
+            "email": "asokolov@ucsb.edu"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "../../../../vendor/composer/installers":"^1.0.25"
+    }
+}

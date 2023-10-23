@@ -1,0 +1,29 @@
+ucsb_power_bi-client:
+  remote: https://cdn.jsdelivr.net/npm/powerbi-client@2.7.1/dist/powerbi.min.js
+  header: true
+  version: 2.7.1
+  license:
+    name: MIT
+    url: https://cdn.jsdelivr.net/npm/powerbi-client@2.7.1/LICENSE
+    gpl-compatible: true
+  js:
+    https://cdn.jsdelivr.net/npm/powerbi-client@2.7.1/dist/powerbi.min.js: { type: external, minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/once
+
+ucsb_power_bi-customizer:
+  header: true
+  version: 1.0.0
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    js/ucsb_power_bi-customizer.js: { preprocess: false, minified: false }
+  css:
+    theme:
+      css/ucsb_power_bi.css: {}
+  dependencies:
+    - core/drupalSettings
+    - core/once

@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.site_setting_entity.highlighted_link.field_color
+    - field.field.site_setting_entity.highlighted_link.field_link_address
+    - site_settings.site_setting_entity_type.highlighted_link
+  module:
+    - color_field
+    - link
+id: site_setting_entity.highlighted_link.default
+targetEntityType: site_setting_entity
+bundle: highlighted_link
+mode: default
+content:
+  field_color:
+    weight: 12
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_link_address:
+    weight: 13
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  fieldset:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

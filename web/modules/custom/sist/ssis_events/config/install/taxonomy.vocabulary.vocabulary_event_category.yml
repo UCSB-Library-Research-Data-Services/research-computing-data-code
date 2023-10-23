@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ssis_events
+name: 'Event Categories'
+vid: vocabulary_event_category
+description: 'Vocabulary to be used for organizing events into categories'
+weight: 0

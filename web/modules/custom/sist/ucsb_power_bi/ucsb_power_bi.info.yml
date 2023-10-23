@@ -1,0 +1,14 @@
+name: 'UCSB Power BI'
+description: 'PowerBi/Drupal row-level security integration using Service Principal.<!-- To uninstall this module, you must <a href="/admin/structure/paragraphs_type/ucsb_power_bi/fields/paragraph.ucsb_power_bi.field_ucsb_power_bi_report/delete?destination=/admin/modules/uninstall" class="pbi-uninstall" target="_blank">delete this field</a> first.-->'
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ITS
+configure: ucsb_power_bi.admin_config_ucsb_power_bi
+dependencies:
+  - cas
+  - user
+  - field
+  - node
+  - text
+  - paragraphs

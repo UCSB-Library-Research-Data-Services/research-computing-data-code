@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.simple_gmaps.field_google_map
+    - field.field.paragraph.simple_gmaps.field_width
+    - paragraphs.paragraphs_type.simple_gmaps
+  module:
+    - simple_gmap
+id: paragraph.simple_gmaps.default
+targetEntityType: paragraph
+bundle: simple_gmaps
+mode: default
+content:
+  field_google_map:
+    weight: 0
+    label: hidden
+    settings:
+      include_map: true
+      apikey: ''
+      iframe_width: 100%
+      iframe_height: '400'
+      static_scale: 1
+      link_text: 'View larger map'
+      zoom_level: 14
+      map_type: m
+      langcode: en
+      include_static_map: false
+      include_link: false
+      include_text: false
+    third_party_settings: {  }
+    type: simple_gmap
+    region: content
+hidden:
+  field_width: true

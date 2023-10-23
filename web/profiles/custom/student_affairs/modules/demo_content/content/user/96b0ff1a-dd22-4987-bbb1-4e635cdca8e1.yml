@@ -1,0 +1,44 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: asokolov
+  mail:
+    -
+      value: asokolov@ucsb.edu
+  timezone:
+    -
+      value: America/Los_Angeles
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1550254918
+  access:
+    -
+      value: 1589819207
+  login:
+    -
+      value: 1586549456
+  init:
+    -
+      value: asokolov@ucsb.edu
+  roles:
+    -
+      target_id: administrator
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0

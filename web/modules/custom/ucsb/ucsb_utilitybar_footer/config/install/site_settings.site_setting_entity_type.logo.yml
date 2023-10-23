@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: logo
+label: 'Wordmark Lock-Up'
+fieldset: Wordmark
+multiple: false

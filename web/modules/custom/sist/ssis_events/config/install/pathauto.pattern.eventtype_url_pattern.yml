@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ssis_events
+id: eventtype_url_pattern
+label: 'Event Type URL Alias'
+type: 'canonical_entities:node'
+pattern: '/events/[node:field_eventtype_category:entity:name]/[node:title]'
+selection_criteria:
+  fd962918-5d4e-4198-a2e2-d4e617f4ec77:
+    id: entity_bundle:node
+    negate: false
+    uuid: fd962918-5d4e-4198-a2e2-d4e617f4ec77
+    context_mapping:
+      node: node
+    bundles:
+      eventtype: eventtype
+selection_logic: and
+weight: -5
+relationships: {  }

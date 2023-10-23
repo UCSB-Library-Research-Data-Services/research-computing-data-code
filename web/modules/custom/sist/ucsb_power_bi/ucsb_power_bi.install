@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * Install utilities for ucsb_power_bi.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+use Drupal\user\Entity\Role;
+use Drupal\user\RoleInterface;
+
+define('POWER_BI_PERMISSION', 'view power bi reports');
+
+/**
+ * Delete the paragraph field.
+ */
+function ucsb_power_bi_uninstall() {
+
+  // Delete the UCSB Power BI Report field storage, which should also delete field.
+  $field_storage = FieldStorageConfig::loadByName('paragraph', 'field_ucsb_power_bi_report');
+  if ($field_storage) {
+    $field_storage->delete();
+  }
+
+  // Remove View Power BI Permission
+  $role_object = Role::load(RoleInterface::AUTHENTICATED_ID);
+  $role_object->revokePermission(POWER_BI_PERMISSION);
+  $role_object->save();
+
+  // Remove UCSB Power BI Paragraphs
+  $paragraph_ucsb_power_bi_ids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'ucsb_power_bi')
+    ->execute();
+  $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  if ($paragraphs = $storage->loadMultiple($paragraph_ucsb_power_bi_ids)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "Power BI" have been deleted.'));
+  }
+
+  // Remove the UCSB Power BI Paragraph type from the Blades columns
+  $config_factory = \Drupal::configFactory();
+
+  $config = $config_factory->getEditable('field.field.paragraph.blade.field_columns');
+
+  $dependencies = $config->get('dependencies.config');
+  $dependencies = array_filter($dependencies, static function ($element) {
+      return $element !== "paragraphs.paragraphs_type.ucsb_power_bi";
+  });
+
+  $config->set('dependencies.config', $dependencies);
+  $config->clear('settings.handler_settings.target_bundles.ucsb_power_bi');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.ucsb_power_bi.weight');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.ucsb_power_bi.enabled');
+  $config->clear('settings.handler_settings.target_bundles_drag_drop.ucsb_power_bi');
+
+  $config->save(TRUE);
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+
+}
+
+/**
+ * Add the paragraph field.
+ */
+function ucsb_power_bi_install() {
+  $role_object = Role::load(RoleInterface::AUTHENTICATED_ID);
+  $role_object->grantPermission(POWER_BI_PERMISSION);
+  $role_object->save();
+
+  \Drupal::messenger()->addMessage(t('Before you can begin using the UCSB Power BI module, you must add a Client ID, Tenant ID and PowerBI secret in the <a href="/admin/config/ucsb_power_bi/ucsb_power_bi">UCSB Power BI settings</a>.'));
+
+  // Configure and add the UCSB Power BI Paragraph type to the Blades columns
+  $config = \Drupal::service('config.factory')->getEditable('field.field.paragraph.blade.field_columns');
+  $dependencies = $config->get('dependencies.config');
+  array_push($dependencies, 'paragraphs.paragraphs_type.ucsb_power_bi');
+  $config->set('dependencies.config', $dependencies);
+
+  $target_bundles = $config->get('settings.handler_settings.target_bundles');
+  $target_bundles['ucsb_power_bi'] = 'ucsb_power_bi';
+  $config->set('settings.handler_settings.target_bundles', $target_bundles);
+  $config->set('settings.handler_settings.target_bundles_drag_drop.ucsb_power_bi.weight', 50);
+  $config->set('settings.handler_settings.target_bundles_drag_drop.ucsb_power_bi.enabled', true);
+
+  $config->save(TRUE);
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+
+}

@@ -1,0 +1,14 @@
+ucsb_power_bi.admin_config_ucsb_power_bi:
+  path: '/admin/config/ucsb_power_bi'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'USCB Power BI'
+  requirements:
+    _permission: 'administer power bi'
+ucsb_power_bi_settings.admin_config_ucsb_power_bi:
+  path: '/admin/config/ucsb_power_bi/ucsb_power_bi'
+  defaults:
+    _title: 'UCSB PowerBI Integration'
+    _form: '\Drupal\ucsb_power_bi\Form\UCSBPowerBISettingsForm'
+  requirements:
+    _permission: 'administer power bi'

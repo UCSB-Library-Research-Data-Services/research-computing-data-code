@@ -1,0 +1,8 @@
+name: 'SSIS Redirect'
+type: module
+description: 'Custom module for drupal websites to change the redirect code for external URL redirects'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+dependencies:
+ - redirect
+package: ITS

@@ -1,0 +1,12 @@
+name: 'YouTube Video Gallery'
+type: module
+description: 'YouTube Playlist Video Player'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ITS
+dependencies:
+  - lazy
+  - media
+  - media_library
+  - twig_tweak
+  - paragraphs

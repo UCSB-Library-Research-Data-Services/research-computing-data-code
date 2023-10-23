@@ -1,0 +1,8 @@
+ssis_youtube_gallery:
+  version: 1.x
+  css:
+    theme:
+      css/ssis_youtube_colors.css: { }
+      css/ssis_youtube_gallery.css: { }
+  js:
+    js/ssis_youtube_gallery.js: {}

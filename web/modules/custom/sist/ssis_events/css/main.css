@@ -1,0 +1,410 @@
+.row.display-tiles {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+    .row.display-tiles [class*='row'] {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .row.display-tiles [class*='col-'] {
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 100%;
+        display: block;
+    }
+
+a:focus > .blk-template {
+    outline-color: rgb(77, 144, 254);
+    outline-offset: -5px;
+    outline-style: auto;
+    outline-width: 10px;
+}
+    a:focus > .blk-template > .gradient,
+    a:hover > .blk-template > .gradient {
+        opacity: 1 !important;
+        background: none rgba(0,54,96,0.8) !important;
+        height: 100% !important;
+    }
+
+    a:focus > .blk-template .blk-caption,
+    a:hover > .blk-template .blk-caption {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        background-color: #003660;
+    }
+
+
+    .blk-template {   
+        margin: 0 auto; 
+        display: block;
+        height: 100%;
+        position: relative;
+        min-height: 270px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: pointer;
+    }
+
+    .blk-template .gradient {
+        bottom: 0px;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 50%;
+        background: -moz-linear-gradient(top,transparent 0%,rgba(0,0,0,0.8) 100%);
+        background: -webkit-linear-gradient(top,transparent 0%,rgba(0,0,0,0.8) 100%);
+        background: linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.8) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#000000',GradientType=0);
+    }
+
+    .blk-template .blk-caption {
+        box-shadow: 0 2px 2px 0 rgba(17,21,23,0.2);
+        padding: 8px;
+        top: 25px;
+        left: 25px;
+        position: relative;
+        text-align: center;
+        width: 60px;
+        z-index: 3;
+    }
+
+        .blk-template .blk-caption .month {
+            font-size: 14px;
+        }
+
+        .blk-template .blk-caption .day {
+            font-family: avenir-black,sans-serif;
+            font-size: 27px;
+        }
+
+                .blk-template .blk-caption-category {
+                  box-shadow: 0 2px 2px 0 rgba(17, 21, 23, 0.2);
+                  padding: 8px 12px;
+                  top: 25px;
+                  left: 25px;
+                  position: relative;
+                  text-align: center;
+                  max-width: 80%;
+                  width: fit-content;
+                  z-index: 3;
+                }
+
+    .blk-template .blk-container {
+        bottom: 0px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        font-family: avenir-book, sans-serif;
+        font-size: 16px;
+        left: 0px;
+        line-height: 1.42857;
+        padding-bottom: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-top: 32px;
+        position: absolute;
+        right: 0px;
+        text-size-adjust: 100%;
+        z-index: 2;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+        .blk-template .blk-container .blk-event {
+            padding-bottom: 10px;
+            color:white;
+        }
+        .blk-template .blk-container .blk-description {
+            color:white;
+        }
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.event-teaser {
+  padding: 36px 0 36px 0;
+}
+
+.event-blocks-article {width:100%;}
+
+
+.column-teser-text {
+  padding: 0 15px 0 15px;
+}
+
+div.background-color-ffffff {
+  background-color: #ffffff;
+}
+div.background-color-ffffff div.month, div.background-color-ffffff div.day {
+  color: #3d4952;
+}
+div.background-color-eef0f2 {
+  background-color: #eef0f2;
+}
+div.background-color-eef0f2 div.month, div.background-color-eef0f2 div.day {
+  color: #3d4952;
+}
+div.background-color-dce1e5 {
+  background-color: #dce1e5;
+}
+div.background-color-dce1e5 div.month, div.background-color-dce1e5 div.day {
+  color: #3d4952;
+}
+div.background-color-9cbebe {
+  background-color: #9cbebe;
+}
+div.background-color-9cbebe div.month, div.background-color-9cbebe div.day {
+  color: #3d4952;
+}
+div.background-color-dae6e6 {
+  background-color: #dae6e6;
+}
+div.background-color-dae6e6 div.month, div.background-color-dae6e6 div.day {
+  color: #3d4952;
+}
+div.background-color-dcd6cc {
+  background-color: #dcd6cc;
+}
+div.background-color-dcd6cc div.month, div.background-color-dcd6cc div.day {
+  color: #3d4952;
+}
+div.background-color-f1eeea {
+  background-color: #f1eeea;
+}
+div.background-color-f1eeea div.month, div.background-color-f1eeea div.day {
+  color: #3d4952;
+}
+div.background-color-c9bf9d {
+  background-color: #c9bf9d;
+}
+div.background-color-c9bf9d div.month, div.background-color-c9bf9d div.day {
+  color: #3d4952;
+}
+div.background-color-edeadf {
+  background-color: #edeadf;
+}
+div.background-color-edeadf div.month, div.background-color-edeadf div.day {
+  color: #3d4952;
+}
+div.background-color-febc11 {
+  background-color: #febc11;
+}
+div.background-color-febc11 div.month, div.background-color-febc11 div.day {
+  color: #3d4952;
+}
+div.background-color-003660 {
+  background-color: #003660;
+}
+div.background-color-003660 div.month, div.background-color-003660 div.day {
+  color: #ffffff;
+}
+div.background-color-6d7d33 {
+  background-color: #6d7d33;
+}
+div.background-color-6d7d33 div.month, div.background-color-6d7d33 div.day {
+  color: #ffffff;
+}
+div.background-color-09847a {
+  background-color: #09847a;
+}
+div.background-color-09847a div.month, div.background-color-09847a div.day {
+  color: #ffffff;
+}
+div.background-color-047c91 {
+  background-color: #047c91;
+}
+div.background-color-047c91 div.month, div.background-color-047c91 div.day {
+  color: #ffffff;
+}
+div.background-color-ef5645 {
+  background-color: #ef5645;
+}
+div.background-color-ef5645 div.month, div.background-color-ef5645 div.day {
+  color: #111517;
+}
+div.background-color-c43424 {
+  background-color: #c43424;
+}
+div.background-color-c43424 div.month, div.background-color-c43424 div.day {
+  color: #ffffff;
+}
+div.background-color-000000 {
+  background-color: #000000;
+}
+div.background-color-000000 div.month, div.background-color-000000 div.day {
+  color: #ffffff;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-ffffff,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ffffff {
+  background-color: #ffffff;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-eef0f2,
+a:hover>div.blk-template>div.blk-container.background-hover-color-eef0f2 {
+  background-color: #eef0f2;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-dce1e5,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dce1e5 {
+  background-color: #dce1e5;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-9cbebe,
+a:hover>div.blk-template>div.blk-container.background-hover-color-9cbebe {
+  background-color: #9cbebe;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-dae6e6,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dae6e6 {
+  background-color: #dae6e6;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-dcd6cc,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dcd6cc {
+  background-color: #dcd6cc;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-f1eeea,
+a:hover>div.blk-template>div.blk-container.background-hover-color-f1eeea {
+  background-color: #f1eeea;
+}
+
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-c9bf9d,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c9bf9d {
+  background-color: #c9bf9d;
+}
+
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-edeadf,
+a:hover>div.blk-template>div.blk-container.background-hover-color-edeadf {
+  background-color: #edeadf;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-febc11,
+a:hover>div.blk-template>div.blk-container.background-hover-color-febc11 {
+  background-color: #febc11;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-ffffff .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-ffffff .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ffffff .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ffffff .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-eef0f2 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-eef0f2 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-eef0f2 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-eef0f2 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dce1e5 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dce1e5 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dce1e5 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dce1e5 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-9cbebe .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-9cbebe .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-9cbebe .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-9cbebe .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dae6e6 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dae6e6 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dae6e6 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dae6e6 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dcd6cc .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-dcd6cc .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dcd6cc .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-dcd6cc .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-f1eeea .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-f1eeea .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-f1eeea .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-f1eeea .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-c9bf9d .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-c9bf9d .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c9bf9d .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c9bf9d .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-edeadf .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-edeadf .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-edeadf .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-edeadf .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-febc11 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-febc11 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-febc11 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-febc11 .blk-description {
+  color: #3d4952;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-003660,
+a:hover>div.blk-template>div.blk-container.background-hover-color-003660 {
+  background-color: #003660;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-6d7d33,
+a:hover>div.blk-template>div.blk-container.background-hover-color-6d7d33 {
+  background-color: #6d7d33;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-09847a,
+a:hover>div.blk-template>div.blk-container.background-hover-color-09847a {
+  background-color: #09847a;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-047c91,
+a:hover>div.blk-template>div.blk-container.background-hover-color-047c91 {
+  background-color: #047c91;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-c43424,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c43424 {
+  background-color: #c43424;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-000000,
+a:hover>div.blk-template>div.blk-container.background-hover-color-000000 {
+  background-color: #000000;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-003660 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-003660 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-003660 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-003660 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-6d7d33 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-6d7d33 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-6d7d33 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-6d7d33 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-09847a .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-09847a .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-09847a .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-09847a .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-047c91 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-047c91 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-047c91 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-047c91 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-c43424 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-c43424 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c43424 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-c43424 .blk-description,
+a:focus>div.blk-template>div.blk-container.background-hover-color-000000 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-000000 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-000000 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-000000 .blk-description {
+  color: #ffffff;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-ef5645,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ef5645 {
+  background-color: #ef5645;
+}
+
+a:focus>div.blk-template>div.blk-container.background-hover-color-ef5645 .blk-event,
+a:focus>div.blk-template>div.blk-container.background-hover-color-ef5645 .blk-description,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ef5645 .blk-event,
+a:hover>div.blk-template>div.blk-container.background-hover-color-ef5645 .blk-description {
+  color: #111517;
+}

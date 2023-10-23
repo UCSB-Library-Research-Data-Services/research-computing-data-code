@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * @file
+ * Contains ucsb_login_page.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Implements hook_help().
+ */
+function ucsb_login_page_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ucsb_login_page module.
+    case 'help.page.ucsb_login_page':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Login page for UCSB accounts') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ * Removes the breadcrumbs
+ */
+function ucsb_login_page_preprocess_breadcrumb(&$variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if($route_name == 'user.login' || $route_name == 'user.pass' || $route_name == 'user.register') {
+      $variables['hidetitle'] = true;
+  }     
+}
+
+
+/**
+ * Implements hook_form_alter().
+ * to get form details for LogIn, Reset and Create forms
+ */
+function ucsb_login_page_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if($form_id == 'user_login_form' || $form_id == 'user_pass' || $form_id == 'user_register_form') {
+
+    $route_provider = \Drupal::service('router.route_provider');
+
+    // Cached form must be busted if we enable/disable CAS module.
+    $config = Drupal::config('core.extension');
+    $form['#cache']['tags'] = array_merge($form['#cache']['tags'], $config->getCacheTags());
+
+    // Cached form must be busted if we enable/disable Account registration.
+    $config = Drupal::config('user.settings');
+    $form['#cache']['tags'] = array_merge($form['#cache']['tags'], $config->getCacheTags());
+    
+    $cas_enabled = false;  
+    $caslogin_url = '';
+    if (\Drupal::moduleHandler()->moduleExists('cas')) {
+      $cas_enabled = true;
+      $caslogin_url = $route_provider->getRouteByName('cas.login')->getPath();
+      
+      if(array_key_exists('cas_login_link', $form)) {
+        $form['cas_login_link']['#access'] = false;
+      }
+    } 
+
+    //check if Account registration is enabled
+    $register_enabled = false;
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->getEditable('user.settings');
+    if ($config->get('register') != 'admin_only') {
+      $register_enabled = true;
+    }
+
+    $login_url = $route_provider->getRouteByName('user.login')->getPath();
+    $register_url = $route_provider->getRouteByName('user.register')->getPath();
+    $reset_url = $route_provider->getRouteByName('user.pass')->getPath();
+
+    $form['cas_enabled'] = array(
+      '#type' => 'value',
+      '#value' => $cas_enabled,
+    );
+    $form['caslogin_url'] = array(
+      '#type' => 'value',
+      '#value' => $caslogin_url,
+    );
+    $form['login_url'] = array(
+      '#type' => 'value',
+      '#value' => $login_url,
+    );
+    $form['reset_url'] = array(
+      '#type' => 'value',
+      '#value' => $reset_url,
+    );
+    $form['register_enabled'] = array(
+      '#type' => 'value',
+      '#value' => $register_enabled,
+    );
+    $form['register_url'] = array(
+      '#type' => 'value',
+      '#value' => $register_url,
+    );
+
+
+    $form['#theme'] = 'ucsb_login_page';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ucsb_login_page_theme($existing, $type, $theme, $path) {
+
+  return [
+	'ucsb_login_page' => [
+      '#param' => 'value', 
+      'render element' => 'form'
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ * Remove all tabs from user login form
+ */
+function ucsb_login_page_menu_local_tasks_alter(&$data, $route_name) {
+    if(($route_name == 'user.login' || $route_name == 'user.pass' || $route_name == 'user.register') && isset($data['tabs'][0])) {
+        foreach ($data['tabs'][0] as $key => $tab){
+            $data['tabs'][0][$key]['#access'] = FALSE;
+        }
+    }
+}

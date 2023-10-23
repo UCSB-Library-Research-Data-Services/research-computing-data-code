@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_display_give_link
+    - site_settings.site_setting_entity_type.give_link
+  module:
+    - options
+id: site_setting_entity.give_link.field_display_give_link
+field_name: field_display_give_link
+entity_type: site_setting_entity
+bundle: give_link
+label: 'Display give link'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

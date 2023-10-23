@@ -1,0 +1,221 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.ssis_basic_page
+    - field.field.node.page.body
+    - field.field.node.page.feeds_item
+    - field.field.node.page.field_blades
+    - field.field.node.page.field_bottom_padding
+    - field.field.node.page.field_hero_image
+    - field.field.node.page.field_hero_image_media
+    - field.field.node.page.field_hero_video
+    - field.field.node.page.field_hide_title
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_overlay
+    - field.field.node.page.field_overlay_background_color
+    - field.field.node.page.field_overlay_position
+    - field.field.node.page.field_overlay_width
+    - field.field.node.page.field_publication
+    - field.field.node.page.field_sortorder
+    - field.field.node.page.field_subtitle
+    - field.field.node.page.field_title_background_color
+    - field.field.node.page.field_title_block_image
+    - field.field.node.page.field_top_padding
+    - node.type.page
+    - workflows.workflow.editorial
+  module:
+    - color_field
+    - content_moderation
+    - media_library
+    - metatag
+    - paragraphs
+    - path
+    - scheduler
+    - text
+id: node.page.ssis_basic_page
+targetEntityType: node
+bundle: page
+mode: ssis_basic_page
+content:
+  created:
+    type: datetime_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_blades:
+    weight: 21
+    settings:
+      title: Blade
+      title_plural: Blades
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: blade
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_bottom_padding:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_hero_image_media:
+    type: media_library_widget
+    weight: 14
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_hero_video:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_hide_title:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_meta_tags:
+    weight: 13
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_overlay:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_overlay_background_color:
+    weight: 17
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_overlay_position:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_overlay_width:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_title_background_color:
+    weight: 3
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_top_padding:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 24
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  feeds_item: true
+  field_hero_image: true
+  field_publication: true
+  field_sortorder: true
+  field_title_block_image: true

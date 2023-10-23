@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.eventtype
+    - taxonomy.vocabulary.vocabulary_event_category
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - entity_browser
+    - filter
+    - media
+    - node
+    - smart_date_recur
+    - system
+    - taxonomy
+    - toolbar
+  enforced:
+    module:
+      - ssis_events
+id: eventtype_content_editor
+label: 'Events Content Editor'
+weight: 5
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access media overview'
+  - 'access media_entity_browser entity browser pages'
+  - 'access media_entity_browser_media_library entity browser pages'
+  - 'access media_entity_browser_modal entity browser pages'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer taxonomy'
+  - 'create audio media'
+  - 'create document media'
+  - 'create eventtype content'
+  - 'create image media'
+  - 'create media'
+  - 'create remote_video media'
+  - 'create terms in vocabulary_event_category'
+  - 'create video media'
+  - 'edit any eventtype content'
+  - 'edit own audio media'
+  - 'edit own document media'
+  - 'edit own eventtype content'
+  - 'edit own image media'
+  - 'edit own remote_video media'
+  - 'edit own video media'
+  - 'edit terms in vocabulary_event_category'
+  - 'revert eventtype revisions'
+  - 'update media'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view eventtype revisions'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view the administration theme'
+  - 'cancel smart date recur instances'
+  - 'make smart dates recur'
+  - 'reschedule smart date recur instances'

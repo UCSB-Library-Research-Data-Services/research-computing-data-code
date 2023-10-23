@@ -1,0 +1,8 @@
+administer power bi:
+  title: 'Administer Power BI settings'
+  description: 'Allow to access the Power BI Report'
+  restrict access: TRUE
+
+view power bi reports:
+  title: 'View Power BI Reports'
+  description: 'Allow to access view embedded Power BI Reports'

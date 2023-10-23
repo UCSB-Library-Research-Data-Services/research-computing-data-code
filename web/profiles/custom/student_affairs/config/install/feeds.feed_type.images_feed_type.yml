@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_library
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - media
+label: 'Images Feed Type'
+id: images_feed_type
+description: 'Used for importing images'
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  update_existing: 0
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    bundle: image
+custom_sources:
+  imageurl:
+    label: ImageUrl
+    value: ImageUrl
+    machine_name: imageurl
+  imagealttext:
+    label: ImageAltText
+    value: ImageAltText
+    machine_name: imagealttext
+  imagetitle:
+    label: ImageTitle
+    value: ImageTitle
+    machine_name: imagetitle
+  imagealbum:
+    label: ImageAlbum
+    value: ImageAlbum
+    machine_name: imagealbum
+  urlalias:
+    label: URLAlias
+    value: URLAlias
+    machine_name: urlalias
+mappings:
+  -
+    target: field_media_image
+    map:
+      target_id: imageurl
+      alt: imagealttext
+      title: imagetitle
+    settings:
+      existing: 2
+      reference_by: filename
+      autocreate: false
+  -
+    target: name
+    map:
+      value: imagetitle
+    unique: {  }
+  -
+    target: field_library
+    map:
+      target_id: imagealbum
+    settings:
+      reference_by: name
+      autocreate: '1'
+  -
+    target: path
+    map:
+      alias: urlalias

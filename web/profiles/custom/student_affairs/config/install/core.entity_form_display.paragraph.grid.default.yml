@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid.field_background_color
+    - field.field.paragraph.grid.field_bottom_padding
+    - field.field.paragraph.grid.field_column_count
+    - field.field.paragraph.grid.field_grid_items
+    - field.field.paragraph.grid.field_top_padding
+    - paragraphs.paragraphs_type.grid
+  module:
+    - color_field
+    - paragraphs
+id: paragraph.grid.default
+targetEntityType: paragraph
+bundle: grid
+mode: default
+content:
+  field_background_color:
+    weight: 0
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_bottom_padding:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_column_count:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_grid_items:
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: grid_item
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_top_padding:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

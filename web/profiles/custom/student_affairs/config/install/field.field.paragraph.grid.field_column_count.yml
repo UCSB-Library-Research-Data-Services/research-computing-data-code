@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_count
+    - paragraphs.paragraphs_type.grid
+  module:
+    - options
+id: paragraph.grid.field_column_count
+field_name: field_column_count
+entity_type: paragraph
+bundle: grid
+label: 'Number of columns'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '4'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

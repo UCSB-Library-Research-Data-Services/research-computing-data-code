@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.eventtype.body
+    - field.field.node.eventtype.field_eventtype_category
+    - field.field.node.eventtype.field_eventtype_description
+    - field.field.node.eventtype.field_eventtype_event_date
+    - field.field.node.eventtype.field_eventtype_featured
+    - field.field.node.eventtype.field_eventtype_image
+    - field.field.node.eventtype.field_eventtype_link
+    - field.field.node.eventtype.field_eventtype_location
+    - field.field.node.eventtype.field_eventtype_location_link
+    - field.field.node.eventtype.field_eventtype_map_location
+    - node.type.eventtype
+  module:
+    - text
+    - user
+  enforced:
+    module:
+      - ssis_events
+id: node.eventtype.teaser
+targetEntityType: node
+bundle: eventtype
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_eventtype_category: true
+  field_eventtype_description: true
+  field_eventtype_event_date: true
+  field_eventtype_featured: true
+  field_eventtype_image: true
+  field_eventtype_link: true
+  field_eventtype_location: true
+  field_eventtype_location_link: true
+  field_eventtype_map_location: true

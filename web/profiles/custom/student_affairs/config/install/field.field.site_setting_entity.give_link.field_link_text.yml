@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_link_text
+    - site_settings.site_setting_entity_type.give_link
+id: site_setting_entity.give_link.field_link_text
+field_name: field_link_text
+entity_type: site_setting_entity
+bundle: give_link
+label: 'Link text'
+description: 'Limit 20 characters'
+required: true
+translatable: false
+default_value:
+  -
+    value: Give
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_item_height
+    - paragraphs.paragraphs_type.grid_photo_item
+  enforced:
+    module:
+      - ucsb_grid_photo_items
+id: paragraph.grid_photo_item.field_item_height
+field_name: field_item_height
+entity_type: paragraph
+bundle: grid_photo_item
+label: Height
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: 4
+  prefix: ''
+  suffix: ''
+field_type: integer

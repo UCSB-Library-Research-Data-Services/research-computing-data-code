@@ -1,0 +1,27 @@
+name: Blog
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+dependencies:
+  - color_field
+  - comment
+  - easy_breadcrumb
+  - field
+  - image
+  - imce
+  - link
+  - menu_ui
+  - node
+  - path
+  - pathauto
+  - rdf
+  - scheduler
+  - simple_sitemap
+  - svg_image
+  - taxonomy
+  - text
+  - user
+  - views
+package: ucsb
+description: 'UCSB blog configuration'
+core_incompatible: false

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Blog post'
+type: blog_post
+description: 'Use blog post for entries to existing blogs. Blogs are best utilized to provide and organize frequent content updates on a particular topic.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

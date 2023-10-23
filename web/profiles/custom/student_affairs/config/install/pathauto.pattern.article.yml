@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: article
+label: Article
+type: 'canonical_entities:node'
+pattern: 'news/[node:title]'
+selection_criteria:
+  de46250f-29a5-4550-8e14-085c837774ea:
+    id: entity_bundle:node
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: de46250f-29a5-4550-8e14-085c837774ea
+selection_logic: and
+weight: -5
+relationships: {  }

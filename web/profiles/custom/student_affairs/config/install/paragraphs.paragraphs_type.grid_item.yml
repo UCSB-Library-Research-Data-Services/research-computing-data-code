@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: grid_item
+label: 'Grid item'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

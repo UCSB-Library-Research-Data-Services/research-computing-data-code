@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_eventtype_categorycolor
+    - taxonomy.vocabulary.vocabulary_event_category
+  module:
+    - color_field
+  enforced:
+    module:
+      - ssis_events
+id: taxonomy_term.vocabulary_event_category.field_eventtype_categorycolor
+field_name: field_eventtype_categorycolor
+entity_type: taxonomy_term
+bundle: vocabulary_event_category
+label: 'Category Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

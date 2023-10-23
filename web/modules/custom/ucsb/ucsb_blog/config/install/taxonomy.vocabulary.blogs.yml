@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Blogs
+vid: blogs
+description: ' Add blog name here, as well as a description that will appear on the main blog landing page. '
+weight: 0

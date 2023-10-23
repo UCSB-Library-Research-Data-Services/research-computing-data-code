@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resources_links.body
+    - field.field.node.resources_links.field_resources_links_category
+    - field.field.node.resources_links.field_resources_links_image
+    - field.field.node.resources_links.field_resources_links_url
+    - field.field.node.resources_links.field_resources_sortorder
+    - node.type.resources_links
+  enforced:
+    module:
+      - resources_links
+  module:
+    - text
+    - user
+id: node.resources_links.teaser
+targetEntityType: node
+bundle: resources_links
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_resources_links_category: true
+  field_resources_links_image: true
+  field_resources_links_url: true
+  field_resources_sortorder: true

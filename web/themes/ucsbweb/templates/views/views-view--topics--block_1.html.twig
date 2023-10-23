@@ -1,0 +1,12 @@
+<form id="blog-topic-filter">
+  <label>{{ blog_title }} Topics: </label>
+  <div class="select-wrapper">
+    <select name="topic" id="topic-select" class="form-select form-control">
+      <option value="">Select topic...</option>
+      {{ rows }}
+    </select>
+  </div>
+  <div class="form-actions">
+    <button class="button--primary form-submit btn btn-default btn-sm" data-drupal-selector="edit-actions-submit" type="submit" id="edit-actions-submit" name="op" value="Submit">Go</button>
+  </div>
+</form>

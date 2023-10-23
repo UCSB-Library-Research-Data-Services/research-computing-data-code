@@ -1,0 +1,60 @@
+.dsp-people-profiles .text-content {
+    padding: 0px 15px 0px 15px;
+}
+
+.dsp-people-profiles .image-holder {
+    margin: 0 auto;
+    margin-bottom: 35px;
+    display: block;
+}
+
+.dsp-people-profiles .image-holder img {
+    /* width: 285px;
+    height: 355px; */
+    max-width: 285px;
+    max-height: 355px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.dsp-people-profiles .image-holder .image-main {
+    display: block;
+}
+
+.dsp-people-profiles .image-holder .image-hover {
+    display: none;
+}
+
+
+.dsp-people-profiles a:hover span.image-main {
+    display:none;
+} 
+
+.dsp-people-profiles a:hover span.image-hover {
+    display:block;
+} 
+
+.dsp-people-profiles a:focus span.image-main {
+    display:none;
+} 
+
+.dsp-people-profiles a:focus {
+    
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: 1px;
+}
+
+.dsp-people-profiles a:focus span.image-hover {
+    display:block;
+} 
+
+
+.view-content .row, .view-people-profiles .view-content .row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.view-people-profiles {
+    margin-bottom:25px;
+}

@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Check requirements for the CKEditor UCSB Icon module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function ckeditor_ucsbicon_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'install' || $phase == 'runtime') {
+    // $plugin_detected = file_exists(DRUPAL_ROOT . '/libraries/ucsbicon/plugin.js');
+    $plugin_detected = file_exists(\Drupal::service('extension.list.module')->getPath('ckeditor_ucsbicon') . '/ucsbicon/plugin.js');
+
+    if ($plugin_detected) {
+      $requirements['ucsbicon'] = [
+        'title' => t('CKEditor UCSB Icon'),
+        'value' => t('Plugin detected'),
+        'severity' => REQUIREMENT_OK,
+      ];
+    }
+    else {
+      $requirements['ucsbicon'] = [
+        'title' => t('CKEditor UCSB Icon'),
+        'value' => t('Plugin not detected'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t('Before you can use the CKEditor UCSB Icon module, you need to download the ucsbicon plugin from ckeditor.com and place it in /libraries/ucsbbutton. Check the README.txt for more information. <a href=":plugin_url">Get the plugin here</a>.', [':plugin_url' => 'https://ckeditor.com/cke4/addon/ucsbicon']),
+      ];
+    }
+  }
+
+  return $requirements;
+}

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_top_padding
+    - paragraphs.paragraphs_type.blade
+  module:
+    - options
+id: paragraph.blade.field_top_padding
+field_name: field_top_padding
+entity_type: paragraph
+bundle: blade
+label: 'Top padding'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

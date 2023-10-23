@@ -1,0 +1,37 @@
+cdn_provider: ''
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://ucsbwebtheme.lndo.site/themes/ucsbweb/favicon.ico'
+  use_default: true
+schemas:
+  bootstrap: 8000
+  ucsbweb: 8000
+logo:
+  path: themes/ucsbweb/images/ucsb-logo.svg
+  url: ''
+  use_default: false
+breadcrumb_home: 1
+breadcrumb_title: 0
+navbar_position: fixed-top
+fluid_container: 1
+table_responsive: '-1'
+tooltip_enabled: 0
+table: ''
+region_wells:
+  navigation: ''
+  navigation_collapsible: ''
+  navigation_quicklinks: ''
+  secondary_navigation: ''
+  header: ''
+  highlighted: ''
+  help: ''
+  content: ''
+  sidebar_first: ''
+  sidebar_second: ''
+  footer: ''
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_link
+    - site_settings.site_setting_entity_type.footer_links
+  module:
+    - link
+id: site_setting_entity.footer_links.field_link
+field_name: field_link
+entity_type: site_setting_entity
+bundle: footer_links
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

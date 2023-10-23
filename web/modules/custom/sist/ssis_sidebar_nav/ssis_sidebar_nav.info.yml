@@ -1,0 +1,9 @@
+name: 'Sidebar Navigation'
+type: module
+description: 'Custom block type to display a sidebar navigation'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ITS
+dependencies:
+  - block
+  - block_field

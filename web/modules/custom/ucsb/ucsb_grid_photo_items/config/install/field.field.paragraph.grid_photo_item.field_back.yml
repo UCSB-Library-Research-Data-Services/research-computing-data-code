@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_back
+    - paragraphs.paragraphs_type.grid_photo_item
+  module:
+    - text
+  enforced:
+    module:
+      - ucsb_grid_photo_items
+id: paragraph.grid_photo_item.field_back
+field_name: field_back
+entity_type: paragraph
+bundle: grid_photo_item
+label: Back
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

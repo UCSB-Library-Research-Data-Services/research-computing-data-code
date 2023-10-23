@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ssis_events
+id: eventtype_long_datetime_format
+label: 'Event Long Date and Time'
+locked: false
+pattern: 'l\, F jS\, Y - g:ia'

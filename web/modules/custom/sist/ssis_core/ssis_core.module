@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_core.module.
+ */
+
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\system\Entity\Menu;
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Menu\MenuLinkTree;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\StringTranslation\TranslationInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_core_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ssis_core module.
+    case 'help.page.ssis_core':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module for Student Affairs sites.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_form_display_alter().
+ */
+function ssis_core_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context) {
+  // use our custom form display for basic pages
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'page') {
+    /** @var \Drupal\Core\Entity\EntityDisplayRepository $entity_display_repo */
+    $entity_display_repo = \Drupal::service('entity_display.repository');
+    $form_display = $entity_display_repo->getFormDisplay($context['entity_type'], $context['bundle'], 'ssis_basic_page') ?: $form_display;
+  }
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+
+  /*
+    This code rewrites the functionality for obtaining the main navigation while creating editing a page. 
+    It avoids the use of the 'menu.default_tree_manipulators:checkAccess' manipulator when transforms the menu tree.
+    We found that above-mentioned manipulator cuts off menu links to draft pages. 
+    
+    The code comes from the following two locations: 
+    - \web\core\modules\menu_ui\menu_ui.module 
+       Functions: menu_ui_form_node_form_alter
+    - \web\core\lib\Drupal\Core\Menu\MenuParentFormSelector.php
+       Functions: parentSelectElement, getParentSelectOptions, parentSelectOptionsTreeWalk
+ 
+  */
+  function ssis_core_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if ($form_id == 'node_page_form' || $form_id == 'node_page_edit_form') {
+      $route_name = \Drupal::routeMatch()->getRouteName();
+      $roles = \Drupal::currentUser()->getRoles();
+      if(in_array('content_editor', $roles)) {
+
+
+        $node = $form_state->getFormObject()->getEntity();
+        $node_type = $node->type->entity;
+        $defaults = menu_ui_get_menu_link_defaults($node);
+        $type_menus_ids = $node_type->getThirdPartySetting('menu_ui', 'available_menus', ['main']);
+        $type_menus = Menu::loadMultiple($type_menus_ids);
+        $available_menus = [];
+        foreach ($type_menus as $menu) {
+          $available_menus[$menu->id()] = $menu->label();
+        }
+        if ($defaults['id']) {
+          $default = $defaults['menu_name'] . ':' . $defaults['parent'];
+        }
+        else {
+          $default = $node_type->getThirdPartySetting('menu_ui', 'parent', 'main:');
+        }
+
+        /** @var \Drupal\Core\Menu\MenuParentFormSelectorInterface $menu_parent_selector */
+        $menu_parent_selector = \Drupal::service('menu.parent_form_selector');
+
+        $options = [];
+        $depth_limit = 1000; # $menu_parent_selector->getParentDepthLimit($defaults['id']);
+        $options_cacheability = new CacheableMetadata();
+        foreach ($available_menus as $menu_name => $menu_title) {
+          $options[$menu_name . ':'] = '<' . $menu_title . '>';
+
+          $parameters = new MenuTreeParameters();
+          $parameters->setMaxDepth($depth_limit);
+          $tree = \Drupal::menuTree()->load($menu_name, $parameters);
+              
+          $manipulators = [
+            ['callable' => 'menu.default_tree_manipulators:checkNodeAccess'],
+            ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+          ];
+          $tree = \Drupal::menuTree()->transform($tree, $manipulators);
+          parentSelectOptionsTreeWalk($tree, $menu_name, '--', $options, $defaults['id'], $depth_limit, $options_cacheability);
+        }
+        
+        $menu_parent= $default;
+        // If no options were found, there is nothing to select.
+        if ($options) {
+          $element = [
+            '#type' => 'select',
+            '#options' => $options,
+          ];
+          if (!isset($options[$menu_parent])) {
+            // The requested menu parent cannot be found in the menu anymore. Try
+            // setting it to the top level in the current menu.
+            [$menu_name] = explode(':', $menu_parent, 2);
+            $menu_parent = $menu_name . ':';
+          }
+          if (isset($options[$menu_parent])) {
+            // Only provide the default value if it is valid among the options.
+            $element += ['#default_value' => $menu_parent];
+          }
+          $options_cacheability->applyTo($element);
+
+          $form['menu']['link']['menu_parent'] = $element;
+          $form['menu']['link']['menu_parent']['#title'] = 'Parent link';
+          $form['menu']['link']['menu_parent']['#attributes']['class'][] = 'menu-parent-select';
+        }
+      }
+    }
+  }
+
+function parentSelectOptionsTreeWalk(array $tree, $menu_name, $indent, array &$options, $exclude, $depth_limit, CacheableMetadata &$cacheability = NULL) {
+  foreach ($tree as $element) {
+    if ($element->depth > $depth_limit) {
+      // Don't iterate through any links on this level.
+      break;
+    }
+
+    // Collect the cacheability metadata of the access result, as well as the
+    // link.
+    if ($cacheability) {
+      $cacheability = $cacheability
+        ->merge(CacheableMetadata::createFromObject($element->access))
+        ->merge(CacheableMetadata::createFromObject($element->link));
+    }
+    $link = $element->link;
+      $title = $indent . ' ' . Unicode::truncate($link->getTitle(), 30, TRUE, FALSE);
+      if (!$link->isEnabled()) {
+        $title .= ' (disabled)';
+      }
+      $options[$menu_name . ':' . $link->getPluginId()] = $title;
+      if (!empty($element->subtree)) {
+        parentSelectOptionsTreeWalk($element->subtree, $menu_name, $indent . '--', $options, $exclude, $depth_limit, $cacheability);
+      }
+  }
+}

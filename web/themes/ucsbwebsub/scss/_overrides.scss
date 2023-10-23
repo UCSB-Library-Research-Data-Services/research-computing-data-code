@@ -1,0 +1,206 @@
+// @todo these should be their own CSS files and only included when
+// specific Drupal libraries are used.
+@import "component/forum";
+@import "component/carousel";
+@import "component/buttons";
+@import "component/icons";
+@import "component/misc";
+@import "component/improvements";
+
+@media (max-width: 767px){
+    .navbar .navbar-header .region-navigation .logo.logo-size-2 img, .navbar .navbar-header .region-navigation .logo.logo-size-2 svg, .navbar .navbar-header .region-navigation .logo.logo-size-0.logo-size-2 img, .navbar .navbar-header .region-navigation .logo.logo-size-0.logo-size-2 svg {
+        width: 75%;
+        height: auto;
+    }
+    .navbar .navbar-header .region-navigation .logo svg path {
+        fill: #ffffff;
+    }
+
+    .navbar .block-search-form-block {
+        margin-top: 15px;
+    }
+  
+    .search-block-form .forum-forms {
+      padding-bottom:0;
+    } 
+}
+
+@media (min-width: 768px){
+  .dropdown-menu ul:nth-child(1) {
+    font-weight: inherit !important;
+  }
+
+  .dropdown-menu > ul:nth-child(1) {
+    font-weight: 500 !important;
+  }
+
+  .dropdown-menu > ul > li > a {
+    color: #005aa3;
+    display: inline-block;
+    font-size: 16px;
+    padding-bottom: 1px;
+  } 
+  
+  .dropdown-menu ul li div li a {
+    color: #005aa3;
+    font-size: 14px;
+  }
+
+  .dropdown-menu > ul > li {
+    list-style-type: none;
+    padding: 11px 0 10px 0;
+    white-space: nowrap;
+  }
+  
+  .dropdown-menu > ul > li > div li {
+    list-style-type: none;
+    padding: 3px 0 2px 0;
+    white-space: nowrap;
+  }
+}
+
+
+/*add focus for nav rollover effect*/
+.nav>li>a:focus {
+    background-color: transparent !important;
+    border-bottom: 3px solid #003660;
+    color: #003660;
+    margin-bottom: -1px;
+    padding-bottom: 10px;
+} 
+
+/*form accessibility fixes*/
+form .form-required:after {
+    display: inline-block;
+}
+
+.form-item--error-message:before {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    content: "";
+    vertical-align: sub;
+    background: url(/core/misc/icons/e32700/error.svg) no-repeat;
+    background-size: contain;
+}
+
+.messages--error{
+    color: #a51b00;
+    border-color: #f9c9bf #f9c9bf #f9c9bf transparent;
+    background-color: #fcf4f2;
+    background-image: url(/core/misc/icons/e32700/error.svg);
+    box-shadow: -8px 0 0 #e62600;
+}
+
+@media all and (max-width: $screen-sm) {
+  .navbar {
+    .region-navigation-collapsible {
+      .nav li {
+        &>a {
+          &:after {
+            background: none !important;
+          }
+        }
+      }  
+      .nav>li.open>a:after {
+        -webkit-transform: none !important;
+        transform: none !important;
+      }
+      .nav>li {
+        &>a.dropdown-toggle {
+          &:after {
+            background: url("data:image/svg+xml;utf8,<svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M6.35355339,8.64644661 C6.15829124,8.45118446 5.84170876,8.45118446 5.64644661,8.64644661 C5.45118446,8.84170876 5.45118446,9.15829124 5.64644661,9.35355339 L11.6464466,15.3535534 C11.8417088,15.5488155 12.1582912,15.5488155 12.3535534,15.3535534 L18.3535534,9.35355339 C18.5488155,9.15829124 18.5488155,8.84170876 18.3535534,8.64644661 C18.1582912,8.45118446 17.8417088,8.45118446 17.6464466,8.64644661 L12,14.2928932 L6.35355339,8.64644661 Z' style='fill: rgba(94,112,126,0.5);'></path></svg>") no-repeat 100% 50% !important;          
+          }
+        }
+      }  
+      .nav>li.open>a.dropdown-toggle:after {
+        -webkit-transform: rotate(180deg) !important;
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+}
+
+
+
+.nav > li {
+  padding-right: 5px;
+}
+body:not(.toolbar-tray-open) .nav > li.dropdown.open .dropdown-menu.multi-level {
+  display: none;
+}
+
+body:not(.toolbar-tray-open) .nav > li.dropdown.open  li.expanded.open > .dropdown-menu.multi-level {
+  display: table;
+}
+
+body:not(.toolbar-tray-open) .nav > li.dropdown.open .dropdown-menu:not(.multi-level) {
+  // display: table;
+}
+
+
+.navbar #eyebrow > .inner .items .item:nth-child(2) > .inner div.highlighted {
+    
+}
+
+.navbar #eyebrow > .inner .items .item:nth-child(2) > .inner div.highlighted > a { 
+  font-size: 14px;
+  font-weight: bolder; 
+}
+
+.nav > li.highlighted > a {
+  color: #EF5645 !important;
+  font-weight: bolder;
+}
+
+iframe {
+  border-width: 0px;
+}
+
+// Fix for the image alignment, for images added within the CK Editor
+
+.align-center img {
+  margin: 0 auto;
+}
+
+.path-frontpage h1.page-header {
+  display: block;
+}
+
+.breadcrumb {
+  margin-bottom: 50px;
+}
+
+// Override the table left padding and border override in the main theme to restore default Bootstrap functionality
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  border-bottom: 1px solid #eef0f2;
+  padding: 8px 30px 8px 30px;
+}
+
+// Override the table table row background color striping override in the main theme to restore default Bootstrap functionality
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+// Correction for vertical table lines to have the same border color. It was disabled before and wasn;t noticable
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
+  border: 1px solid #eef0f2;
+}
+
+@media (min-width: 992px) {
+  .field--name-field-blades .paragraph--type--blade .border {
+      padding: 0 30px 30px 30px;
+  }
+}
+
+.paragraph--type--column.col-md-12 form {
+    float: left;
+    margin: 40px 0 15px 0;
+    padding-left: 15px;
+    padding-right: 15px;
+      width: 60%;
+      @media all and (max-width: $screen-sm) {
+        width: 100%;
+      }
+}

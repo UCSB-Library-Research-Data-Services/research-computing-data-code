@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ssis_events
+id: node.event_block
+label: 'Event Block'
+targetEntityType: node
+cache: true

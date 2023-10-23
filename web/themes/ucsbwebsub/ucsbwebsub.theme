@@ -1,0 +1,108 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Preprocess variables for html templates.
+ * @param $variables
+ */
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+
+ 
+function ucsbwebsub_preprocess_page_title(&$variables) {
+    $nid = \Drupal::routeMatch()->getRawParameter('node');
+    if ($nid) {
+      $node = \Drupal\node\Entity\Node::load($nid);
+      $node_type = $node->getType();
+      if ($node_type == 'page') {
+        $field_hide_title = $node->get('field_hide_title');
+        if ($field_hide_title) {
+          $hidetitle = $field_hide_title->value;
+          $variables['hidetitle'] = $hidetitle;
+        }
+      }
+    }
+  }
+
+  function ucsbwebsub_preprocess_breadcrumb(&$variables) {
+      $nid = \Drupal::routeMatch()->getRawParameter('node');
+      if ($nid) {
+        $node = \Drupal\node\Entity\Node::load($nid);
+        $node_type = $node->getType();
+        if ($node_type == 'page') {
+          $field_hide_title = $node->get('field_hide_title');
+          if ($field_hide_title) {
+            $hidetitle = $field_hide_title->value;
+            $variables['hidetitle'] = $hidetitle;
+          }
+        }
+      }
+    }
+
+    function ucsbwebsub_preprocess_node(&$variables) {
+      // Remove article ARIA role.
+      unset($variables['attributes']['role']);
+  }
+
+
+  function ucsbwebsub_preprocess_maintenance_page(&$variables) {
+    $site_settings = \Drupal::service('site_settings.loader');
+    $settings = $site_settings->loadAll();
+    // print_r($settings);exit;
+    if (isset($settings['wordmark']['logo']['field_image']['uri']) && $settings['wordmark']['logo']['field_image']['uri'] != '') {
+      $svg = file_get_contents($settings['wordmark']['logo']['field_image']['uri']);
+      $variables['wordmark'] = $svg;
+    }
+    
+    if (isset($settings['footer']['social_media'][0]['uri']) && $settings['footer']['social_media'][0]['uri'] != '') {
+      $sm_count = 0;
+      $sm_total = count($settings['footer']['social_media'])-1;
+      foreach ($settings['footer']['social_media'] as $item) {
+          if ($sm_count < $sm_total) {
+              $variables['social_media'][$sm_count]['uri'] = $item['uri'];
+              $variables['social_media'][$sm_count]['title'] = $item['title'];
+              $sm_count++;
+          }
+      }
+    } elseif(isset($settings['footer']['social_media']) && $settings['footer']['social_media'] != '') {
+      $variables['social_media'][0]['uri'] = $settings['footer']['social_media']['uri'];
+      $variables['social_media'][0]['title'] = $settings['footer']['social_media']['title'];
+    }
+  }
+ 
+  //Fixes the ext-prod domain name in the search results
+  function ucsbwebsub_preprocess_item_list__search_results(&$variables){
+    foreach ($variables['items'] as &$value) {
+      $link = &$value['value']['#result'];
+      $link['link'] = str_replace(".ext-prod.", ".", $link['link']);
+    }
+  }
+  
+  /**
+   * Implements hook_preprocess_block().
+   */
+  function ucsbwebsub_preprocess_block(&$variables){
+    $block = \Drupal\block\Entity\Block::load($variables["elements"]["#id"]);
+    $variables['parent_region'] = $block->getRegion();
+  }
+
+  
+  /**
+   * Implements hook_theme().
+   */
+  function ucsbwebsub_nav_theme() {
+    return [
+      'menu__secondary_nav' => [
+        'render element' => 'element',
+        'template' => 'menu--secondary-nav',
+        'base hook' => 'menu'
+      ],
+    ];
+  }

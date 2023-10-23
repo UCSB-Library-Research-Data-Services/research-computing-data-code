@@ -1,0 +1,160 @@
+.wellness-people-profiles h2, .wellness-people-profiles p {
+  color: #3d4952;
+}
+
+.wellness-people-profiles .header {
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  
+}
+
+.wellness-people-profiles .profile-row {
+  padding-bottom: 40px;
+  padding: 36px 0 36px 0
+}
+
+.wellness-people-profiles .profile-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.wellness-people-profiles .picture {
+  float: left;
+  width: 40%;
+  
+  padding: 20px;
+  margin:auto
+}
+
+.wellness-people-profiles .title{
+  font-weight: bold;
+  padding-top: 20px;
+  float: left;
+  
+}
+
+.wellness-people-profiles .description{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  float: left;
+  
+}
+
+/* @media screen and (max-width: 1050px) {
+  .picture,
+  .title, .description {
+    width: 100%;
+  }
+  .row { display: flex; flex-flow: column; }
+    .title { order: 1; }
+    .picture { order: 2; }
+    .description{ order: 3; }
+} */
+
+.wellness-people-profiles img.ack {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.wellness-people-profiles ul.gilist {
+  list-style-type: none;
+  margin: auto;
+  padding: 0px;
+  max-width: 300px;
+  background-color: transparent;
+  text-decoration: none;
+}
+.wellness-people-profiles ul.gilist:hover {
+  text-decoration: none;
+}
+
+.wellness-people-profiles li.gilist a {
+  text-align: center;
+  display: block;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.wellness-people-profiles li.gilist {
+  text-decoration: none;
+  padding-top: 20px;
+}
+
+.wellness-people-profiles li.gilist:last-child {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.wellness-people-profiles li.gilist a:hover {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  transform: scale(1.05) perspective(1px);
+}
+
+.wellness-people-profiles .flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 410px;
+  perspective: 1000px;
+}
+.wellness-people-profiles .flip-box img{
+  max-width: 260px;
+  max-height: 370px;
+  object-fit: contain;
+}
+
+.wellness-people-profiles .flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.wellness-people-profiles .flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.wellness-people-profiles .flip-box-front,.wellness-people-profiles  .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.wellness-people-profiles .flip-box-front {
+  color: black;
+}
+
+.wellness-people-profiles .flip-box-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+.wellness-people-profiles #parent-btn{
+  display: flex;
+}
+
+.wellness-people-profiles #right-btn {
+  flex: 1;
+}
+
+
+@media screen and (max-width: 1050px) {
+  
+  .wellness-people-profiles #left-btn {
+    margin: 0 auto;
+    float: none;
+  }
+  .wellness-people-profiles #right-btn {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+.wellness-people-profiles .text-content {
+  padding: 0px 15px 0px 15px;
+}

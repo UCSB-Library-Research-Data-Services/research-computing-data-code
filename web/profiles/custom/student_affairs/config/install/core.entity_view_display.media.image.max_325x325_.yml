@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.max_325x325_
+    - field.field.media.image.feeds_item
+    - field.field.media.image.field_library
+    - field.field.media.image.field_media_image
+    - image.style.max_325x325
+    - media.type.image
+  module:
+    - lazy
+    - svg_image
+id: media.image.max_325x325_
+targetEntityType: media
+bundle: image
+mode: max_325x325_
+content:
+  field_media_image:
+    label: visually_hidden
+    settings:
+      image_style: max_325x325
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      lazy:
+        lazy_image: '1'
+    type: image
+    weight: 0
+    region: content
+hidden:
+  created: true
+  feeds_item: true
+  field_library: true
+  name: true
+  thumbnail: true
+  uid: true

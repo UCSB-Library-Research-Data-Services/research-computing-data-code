@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_redirect.module.
+ */
+
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\redirect\Entity\Redirect;
+use Drupal\redirect\RedirectRepository;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_redirect_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ssis_redirect module.
+    case 'help.page.ssis_redirect':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module for drupal websites to change the redirect code for external URL redirects.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_presave().
+ */
+function ssis_redirect_redirect_presave(Redirect $redirect){
+  
+  $statusCode  = $redirect->getStatusCode();
+  $redirectUrl = $redirect->getRedirectUrl();
+  if($redirectUrl->isExternal()) {
+    $redirect->setStatusCode(302);
+  } else {
+    $redirect->setStatusCode(301);
+  }
+}
+
+
+
+/**
+ * Implements hook_install().
+ */
+function ssis_redirect_install() {
+  $repository = \Drupal::service('redirect.repository');
+  $allRedirects = $repository->loadMultiple();
+  foreach ($allRedirects as &$obj) {
+    $redirectUrl = $obj->getRedirectUrl();
+    if($redirectUrl->isExternal()) {
+      $obj->setStatusCode(302);
+    } else {
+      $obj->setStatusCode(301);
+    }
+    $obj->save();
+  }
+}
+
+
+

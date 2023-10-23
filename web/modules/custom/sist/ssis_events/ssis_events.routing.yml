@@ -1,0 +1,2 @@
+ssis_events.adminevents:
+  path: '/admin/events'

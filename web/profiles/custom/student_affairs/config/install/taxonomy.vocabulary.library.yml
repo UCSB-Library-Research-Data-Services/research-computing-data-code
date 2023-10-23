@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Library
+vid: library
+description: 'Used for grouping the media entities'
+weight: 0

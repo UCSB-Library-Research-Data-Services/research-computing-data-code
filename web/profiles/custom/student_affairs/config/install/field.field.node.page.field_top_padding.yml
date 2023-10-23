@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_top_padding
+    - node.type.page
+  module:
+    - options
+id: node.page.field_top_padding
+field_name: field_top_padding
+entity_type: node
+bundle: page
+label: 'Top padding'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

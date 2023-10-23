@@ -1,0 +1,8 @@
+name: Media to Document
+description: Media to Document module used to redirect users from Media Document page to the File URL
+type: module
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ITS
+dependencies:
+  - media

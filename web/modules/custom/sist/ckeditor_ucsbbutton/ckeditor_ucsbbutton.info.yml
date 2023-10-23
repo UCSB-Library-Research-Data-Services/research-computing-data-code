@@ -1,0 +1,8 @@
+name: CKEditor UCSB Button
+type: module
+description: This plugin module adds a UCSB button feature to CKEditor
+package: ITS
+dependencies:
+  - ckeditor
+version: '1.0.0'
+core_version_requirement: ^9 || ^10

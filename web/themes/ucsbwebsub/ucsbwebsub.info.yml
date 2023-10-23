@@ -1,0 +1,30 @@
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+type: theme
+base theme: ucsbweb
+dependencies:
+  - twig_tweak
+
+name: 'UCSB Web Subtheme'
+description: 'Sub Theme for Student Affairs websites'
+
+regions:
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  navigation_quicklinks: 'Navigation (Quick links)'
+  secondary_navigation: 'Secondary navigation'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  forum: 'Forum Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+ckeditor_stylesheets:
+  - css/style.css
+libraries:
+  - 'ucsbwebsub/ucsbwebsub-styling'
+  - 'ucsbwebsub/ucsbwebsub-scripts'

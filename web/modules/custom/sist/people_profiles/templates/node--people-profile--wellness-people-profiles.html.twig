@@ -1,0 +1,92 @@
+{{ attach_library('people_profiles/wellness-people-styling') }}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix',
+    'paragraph--type--column', 
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+<div class="profile-row">
+     <div class="inner">
+        <div class="col-md-3 col-sm-5 col-xs-12">
+          <div class="flip-box picture">
+            <div class="flip-box-inner">
+              {# If avatar and profile photo exist #}
+              {% if node.field_avatar.entity.field_media_image and node.field_photo.entity.field_media_image %}
+                <div class="flip-box-front">{{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}</div>
+                <div class="flip-box-back">{{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}</div> 
+              {% else %} 
+              
+                  {# If no avatar or profile photo exist #}
+                  {% if (not node.field_avatar.entity.field_media_image) and (not node.field_photo.entity.field_media_image) %}
+                        <div class="flip-box-front"><img style="width: 270px;" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background"></div> 
+                        <div class="flip-box-back"><img style="width: 270px;" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background"></div> 
+                  {% endif %} 
+
+                  {# If only avatar exists #}
+                  {% if node.field_avatar.entity.field_media_image %}
+                        {{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}
+                  {% endif %}   
+
+                  {# If only profile proto exists #}
+                  {% if node.field_photo.entity.field_media_image %}
+                        {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}                   
+                  {% endif %}
+
+              {% endif %}     
+            </div>
+          </div>
+        </div>
+
+    
+    <div class="text-content col-md-9 col-sm-7 col-xs-12">
+          
+      <div class="title">
+        {% if node.title is not empty %}
+        <h3>{{ node.title.value }}{% if node.field_people_gender_pronouns is not empty %} | {{ node.field_people_gender_pronouns.value }}{% endif %}</h3>
+        {% endif %}
+
+        {% if node.field_title is not empty %}
+        <h4>{{ node.field_title.value }}</h4>
+        {% endif %}
+
+        {% if node.field_subtitle is not empty %}
+        <h5><em><strong>{{ node.field_subtitle.value }}</strong></em></h5>
+        {% endif %}
+      </div>
+
+      <div class="description">
+        {% if node.body is not empty %}
+        <p>{{node.body.value | raw}}</p>
+        {% endif %}
+        <div id="row parent-btn">
+          <div id="left-btn" class="col-6 col-md-6 col-sm-6 col-xs-12">
+            {% if node.field_email is not empty %}
+            <ul class="gilist">
+              <li class="gilist"><a href="mailto:{{ node.field_email.value }}">Email {{ node.title.value }}</a></li>
+            </ul>
+            {% endif %}
+          </div>
+
+          <div id="right-btn" class="col-6 col-md-6 col-sm-6 col-xs-12">
+            {% if node.field_phone is not empty %}
+            <ul class="gilist">
+              <li class="gilist"><a href="tel:{{ node.field_phone.value }}">Call {{ node.title.value }}</a></li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+</article>

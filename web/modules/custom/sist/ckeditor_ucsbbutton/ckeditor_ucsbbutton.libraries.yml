@@ -1,0 +1,9 @@
+style:
+    css:
+      theme:
+        ucsbbutton/css/style.css: {}
+
+button-style:
+    css:
+      theme:
+        css/style.css: {}

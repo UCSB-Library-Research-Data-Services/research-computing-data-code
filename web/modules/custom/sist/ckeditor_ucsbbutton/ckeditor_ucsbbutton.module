@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Contains ckeditor_ucsbbutton.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function ckeditor_ucsbbutton_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        case 'help.page.ckeditor_ucsbbutton':
+            $output = '';
+            $output .= '<h3>' . t('CKEditor UCSB Button') . '</h3>';
+            $output .= '<p>' . t('The module adds a UCSB Button button to the editor toolbar.') . '</p>';
+            $output .= '<h3>' . t('Uses') . '</h3>';
+            $output .= '<dl>';
+            $output .= '<dt>' . t('Settings') . '</dt>';
+            $output .= '<dd>' . t('In the <a href=":text-formats">text formats</a> that use ckeditor, move the UCSB Button icon into the active toolbar.', [':text-formats' => Url::fromRoute('filter.admin_overview')->toString()]) . '</dd>';
+            $output .= '</dl>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ckeditor_ucsbbutton_views_pre_render(ViewExecutable $view)
+{
+    if (isset($view)) {
+        $view->element['#attached']['library'][] = 'ckeditor_ucsbbutton/button-style';
+    }
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function ckeditor_ucsbbutton_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+    $form['#attached']['library'][] = 'ckeditor_ucsbbutton/button-style';
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function ckeditor_ucsbbutton_page_attachments(array &$page)
+{
+    $page['#attached']['library'][] = 'ckeditor_ucsbbutton/button-style';
+}

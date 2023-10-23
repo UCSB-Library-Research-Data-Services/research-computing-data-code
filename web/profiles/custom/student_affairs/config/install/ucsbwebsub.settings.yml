@@ -1,0 +1,18 @@
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'https://dev-template-sa-ucsb-edu-v01.pantheonsite.io/themes/ucsbweb/favicon.ico'
+  use_default: true
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: themes/ucsbweb/images/ucsb-logo.svg
+  url: ''
+  use_default: false
+schemas:
+  bootstrap: 8000
+  ucsbweb: 8000
+  ucsbwebsub: 8000

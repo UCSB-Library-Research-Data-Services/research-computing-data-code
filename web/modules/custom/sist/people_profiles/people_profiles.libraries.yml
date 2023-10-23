@@ -1,0 +1,14 @@
+dsp-people-styling:
+    css:
+      theme:
+        css/dsp-style.css: {}
+
+wellness-people-styling:
+  css:
+    theme:
+      css/wellness-style.css: {}
+
+adp-people-styling:
+  css:
+    theme:
+      css/adp-style.css: {}

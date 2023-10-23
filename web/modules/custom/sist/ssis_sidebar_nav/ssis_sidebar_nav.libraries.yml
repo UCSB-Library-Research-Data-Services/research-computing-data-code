@@ -1,0 +1,7 @@
+ssis_sidebar_nav:
+  version: 1.x
+  css:
+    theme:
+      css/ssis_sidebar_nav.css: { }
+  js:
+    js/ssis_sidebar_nav.js: { }

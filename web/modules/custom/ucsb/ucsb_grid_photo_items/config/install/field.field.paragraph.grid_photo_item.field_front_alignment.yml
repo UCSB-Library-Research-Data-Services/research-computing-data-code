@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_front_alignment
+    - paragraphs.paragraphs_type.grid_photo_item
+  module:
+    - options
+  enforced:
+    module:
+      - ucsb_grid_photo_items
+id: paragraph.grid_photo_item.field_front_alignment
+field_name: field_front_alignment
+entity_type: paragraph
+bundle: grid_photo_item
+label: 'Front alignment'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: middle_center
+default_value_callback: ''
+settings: {  }
+field_type: list_string

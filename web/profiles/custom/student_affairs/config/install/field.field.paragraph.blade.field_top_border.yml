@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_top_border
+    - paragraphs.paragraphs_type.blade
+id: paragraph.blade.field_top_border
+field_name: field_top_border
+entity_type: paragraph
+bundle: blade
+label: 'Top border'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

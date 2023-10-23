@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Contains ucsb_action_panels.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ucsb_action_panels_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ucsb_action_panels module.
+    case 'help.page.ucsb_action_panels':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Action Panel UI Component') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function ucsb_action_panels_preprocess_paragraph(&$variables) {
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  $variables['is_admin_route'] = $is_admin;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ucsb_action_panels_theme() {
+  return [
+      'paragraph__action_panel_container' => [
+          'render element' => 'element',
+          'template' => 'paragraph--action-panel-container',
+          'base hook' => 'paragraph'
+      ],
+  ];
+}
+/**
+ * Implements hook_paragraphs_preprocess_paragraph__paragraph_type().
+ */
+function ucsb_action_panels_paragraphs_preprocess_paragraph__action_panel_container(&$variables) {
+    // Add .action-panel class.
+    $variables['attributes']['class'][] = 'action-panel';
+}

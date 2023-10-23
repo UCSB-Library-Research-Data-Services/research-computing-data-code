@@ -1,0 +1,123 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3f8b54f7-7d86-49ad-8d79-ac13d95eb85a
+  bundle: page
+  default_langcode: en
+  depends:
+    90258b4a-1df7-4be9-8cb5-ba00bb963e3f: user
+    829e5648-395d-4b0f-8b6e-26839e9e940d: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
+  title:
+    -
+      value: '403 Forbidden'
+  created:
+    -
+      value: 1696345200
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /403-forbidden
+      langcode: en
+      pathauto: 1
+  field_blades:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: a1221eaf-8200-4618-82d3-21300b8db4ad
+          bundle: blade
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1530514819
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_bottom_padding:
+            -
+              value: '4'
+          field_columns:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 9021a543-3142-4169-8ebc-e647b21d2929
+                  bundle: column
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1530514819
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_body:
+                    -
+                      value: '<p class="lead">You are not authorized to access this page.</p>'
+                      format: full_html
+                  field_image_position:
+                    -
+                      value: left
+                  field_mobile_width:
+                    -
+                      value: '12'
+                  field_width:
+                    -
+                      value: '8'
+          field_equal_height:
+            -
+              value: false
+          field_full_bleed:
+            -
+              value: false
+          field_top_border:
+            -
+              value: false
+  field_hide_title:
+    -
+      value: false
+  field_overlay_width:
+    -
+      value: '6'
+  field_sortorder:
+    -
+      value: 999999.0
+  field_top_padding:
+    -
+      value: none

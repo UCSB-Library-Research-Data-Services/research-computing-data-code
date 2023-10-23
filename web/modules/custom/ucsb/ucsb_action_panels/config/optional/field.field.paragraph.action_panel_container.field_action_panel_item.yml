@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_action_panel_item
+    - paragraphs.paragraphs_type.action_panel_container
+    - paragraphs.paragraphs_type.action_panel_item
+  module:
+    - entity_reference_revisions
+id: paragraph.action_panel_container.field_action_panel_item
+field_name: field_action_panel_item
+entity_type: paragraph
+bundle: action_panel_container
+label: 'Action Panel Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      action_panel_item: action_panel_item
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 17
+        enabled: false
+      accordion_item:
+        weight: 18
+        enabled: false
+      action_panel_container:
+        weight: 19
+        enabled: false
+      action_panel_item:
+        weight: 20
+        enabled: true
+      article:
+        weight: 21
+        enabled: false
+      blade:
+        weight: 22
+        enabled: false
+      column:
+        weight: 23
+        enabled: false
+      form:
+        weight: 24
+        enabled: false
+      from_library:
+        weight: 25
+        enabled: false
+      grid:
+        weight: 26
+        enabled: false
+      grid_item:
+        weight: 27
+        enabled: false
+      passport_side_menu:
+        weight: 28
+        enabled: false
+      simple_gmaps:
+        weight: 29
+        enabled: false
+      slide:
+        weight: 30
+        enabled: false
+      slideshow:
+        weight: 31
+        enabled: false
+      view:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

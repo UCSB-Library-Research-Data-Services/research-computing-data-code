@@ -1,0 +1,71 @@
+{{ attach_library('ucsb_login_page/main-styling') }}
+
+{%
+  set classes = [
+      'col-sm-12',
+      form.cas_enabled['#value'] ? 'col-md-6' : 'col-md-12'
+  ]
+%}
+
+
+<div class="content ucsb-user-login-forms">
+    <div class="field field--name-field-blades bottom-padding-1">
+        <div class="inner">  
+            <div class="columns">
+                {# If CAS is enabled show the SSO login link #} 
+                {% if form.cas_enabled['#value'] %}                                               
+                <div {{ attributes.addClass(classes) }}>
+                    <div class="inner">  
+                        <h2>UCSB Account</h2>
+                        <p>Log in with your campus credentials (NetID and Password)</p>
+                        <p><a class="ucsb-button btn btn-sm btn-primary" href="{{ form.caslogin_url['#value'] }}">Log in with UCSB Net ID</a></p>
+                    </div>
+                </div>               
+                {% endif %}
+
+                {# Native login form START #}
+                <div {{ attributes.addClass(classes) }}>
+                    <div class="inner">  
+                                
+                        {% if form.cas_enabled['#value'] %}  
+                            <h2>Other Account</h2>       
+                        {% endif %}
+
+                        {% if form['#form_id'] =='user_login_form' %}
+                            <p>Log in with your username and password</p> 
+                        {% endif %} 
+                        
+                        <div style="display: table;width: 100%;">   
+                            <!--BEGIN FORM-->
+                            {{ form }}
+                            <!--END FORM-->
+                        </div>
+
+                        <div class="login-footer-border">&nbsp;</div>
+                        <p>
+                            {# Render Links #}
+                            {% if form['#form_id'] == 'user_login_form' %}
+                                <a href="{{ form.reset_url['#value'] }}">Forgot Password</a> 
+                                {% if form.register_enabled['#value'] %}
+                                    | <a href="{{ form.register_url['#value'] }}">Create an Account</a>
+                                {% endif %}
+
+                            {% elseif form['#form_id'] == 'user_pass' %}
+                                <a href="{{ form.login_url['#value'] }}">Log In</a> 
+                                {% if form.register_enabled['#value'] %}
+                                    | <a href="{{ form.register_url['#value'] }}">Create an Account</a>
+                                {% endif %}
+
+                            {% elseif form['#form_id'] == 'user_register_form' %}
+                                <a href="{{ form.login_url['#value'] }}">Log In</a> | <a href="{{ form.reset_url['#value'] }}">Forgot Password</a>
+                            {% endif %}
+                            
+                        </p>
+                    </div>
+                </div>     
+                {# Native login form END #}
+               
+            </div>
+        </div>
+    </div>
+</div>

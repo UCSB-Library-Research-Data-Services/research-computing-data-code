@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bottom_padding
+    - node.type.page
+  module:
+    - options
+id: node.page.field_bottom_padding
+field_name: field_bottom_padding
+entity_type: node
+bundle: page
+label: 'Bottom padding'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

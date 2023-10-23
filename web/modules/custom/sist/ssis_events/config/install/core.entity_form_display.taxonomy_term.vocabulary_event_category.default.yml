@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.vocabulary_event_category.field_eventtype_categorycolor
+    - taxonomy.vocabulary.vocabulary_event_category
+  module:
+    - color_field
+    - path
+    - text
+  enforced:
+    module:
+      - ssis_events
+id: taxonomy_term.vocabulary_event_category.default
+targetEntityType: taxonomy_term
+bundle: vocabulary_event_category
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_eventtype_categorycolor:
+    type: color_field_widget_box
+    weight: 1
+    region: content
+    settings:
+      default_colors: '#eef0f2,#dce1e5,#9cbebe,#dae6e6,#dcd6cc,#f1eeea,#c9bf9d,#edeadf,#febc11,#003660,#6d7d33,#09847a,#047c91,#ef5645,#c43424,#000000'
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

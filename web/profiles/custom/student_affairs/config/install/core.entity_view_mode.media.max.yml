@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.max
+label: 'Max (1300x1300)'
+targetEntityType: media
+cache: true

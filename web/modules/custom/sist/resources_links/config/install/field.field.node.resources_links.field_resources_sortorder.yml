@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resources_sortorder
+    - node.type.resources_links
+id: node.resources_links.field_resources_sortorder
+field_name: field_resources_sortorder
+entity_type: node
+bundle: resources_links
+label: SortOrder
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

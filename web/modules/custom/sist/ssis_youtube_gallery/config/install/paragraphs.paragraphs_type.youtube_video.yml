@@ -1,0 +1,12 @@
+langcode: en
+status: true
+id: youtube_video
+label: 'YouTube Video'
+icon_uuid: null
+icon_default: null
+description: 'YouTube Video Item.'
+behavior_plugins: {  }
+dependencies:
+  enforced:
+    module:
+      - ssis_youtube_gallery

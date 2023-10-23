@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebar_navigation
+    - field.field.block_content.sidebar_navigation.field_sidebar_navigation_menu
+  module:
+    - block_field
+id: block_content.sidebar_navigation.default
+targetEntityType: block_content
+bundle: sidebar_navigation
+mode: default
+content:
+  field_sidebar_navigation_menu:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: block_field
+    region: content
+hidden: {  }

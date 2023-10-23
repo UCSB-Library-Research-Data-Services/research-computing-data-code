@@ -1,0 +1,13 @@
+<?php
+
+function ucsb_web_theme_overlay_install()
+{
+  // Get new config
+  $cfg = \Drupal::configFactory()->getEditable('ucsb_web_theme_overlay.core.entity_form_display.node.page.default');
+  // Get Config object
+  $settings = \Drupal::configFactory()->getEditable('core.entity_form_display.node.page.default');
+  // Override all data that can be overridden
+  $settings->setData($cfg->get())->save();
+  // Get rid of your custom config
+  $cfg->delete();
+}

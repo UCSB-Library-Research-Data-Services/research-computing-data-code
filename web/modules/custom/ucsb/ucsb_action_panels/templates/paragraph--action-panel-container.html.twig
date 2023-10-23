@@ -1,0 +1,63 @@
+{{ attach_library('ucsb_action_panels/action_panels') }}
+
+{%
+    set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    'actionpanel'
+]
+%}
+
+{% set backgroundImageUrl = img_path %}
+{% if node.field_action_panel_image.entity.field_media_image is not empty %}
+      {% set backgroundImageUrl = file_url(item.entity.field_action_panel_image.entity.field_media_image.entity.fileuri) %}
+{% endif %}
+
+
+{% block paragraph %}
+
+  {% if is_admin_route %}
+    {{ content }}
+  {% else %}
+
+    <div {{ attributes.addClass(classes, paragraph.field_text_orientation.0.value) }}>
+        {% block content %}
+            {% set paragraph_name = content.field_action_panel_item %}
+
+            <ul class="actionpanel_list">
+                {% for item in paragraph_name['#items'] %}
+
+                {% set backgroundImageUrl = img_path %}
+                {% if item.entity.field_action_panel_image.entity.field_media_image is not empty %}
+                    {% set backgroundImageUrl = file_url(item.entity.field_action_panel_image.entity.field_media_image.entity.fileuri) %}
+                {% endif %}
+
+                <li class="actionpanel_item">
+                    <a class="actionpanel_link" href="{{ item.entity.field_action_panel_url.0.url }}">
+                        <div class="actionpanel_bg" style="background-image: url('{{ backgroundImageUrl }}');">
+                            <div class="actionpanel_overlay has-background background-color-{{ paragraph.field_background_color.0.color }}" style="opacity:0.75;">
+
+                                
+                            </div>    
+                            <div class="actionpanel_detail">
+                                <div class="actionpanel_caption">
+                                    <span class="actionpanel_title">{{ item.entity.field_action_panel_title.value }}</span>            
+                                    <span class="actionpanel_subtitle">{{ item.entity.field_action_panel_subtitle.value }}</span>
+                                </div>
+                                {# PLUS ICON CAN BE USED IF NEEDED #}
+                                {# <span class="actionpanel_icon"><span class="action_icon" aria-hidden="true"></span></span> #}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </ul>
+
+        {% endblock %}
+    </div>
+  
+  {% endif %}
+
+{% endblock paragraph %}
+

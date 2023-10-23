@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - ucsb_power_bi
+id: paragraph.field_ucsb_power_bi_report
+field_name: field_ucsb_power_bi_report
+entity_type: paragraph
+type: ucsb_power_bi
+settings: {  }
+module: ucsb_power_bi
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

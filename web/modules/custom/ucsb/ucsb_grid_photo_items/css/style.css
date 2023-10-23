@@ -1,0 +1,56 @@
+div.grid-photo-item>div.inner.inner-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+div.grid-photo-item>div.inner .image-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+div.grid-photo-item>div.inner.inner-container .field--name-field-front.image-container .overlay {
+    position: absolute;
+    opacity: 0.75;
+    height: 100%;
+    z-index: 1;
+    width: 100%;
+}
+
+div.grid-photo-item>div.inner.inner-container .field--name-field-front.image-container .has-backside::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-width: 16px 16px 0 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5) #fff !important;
+    transition-delay: 250ms;
+    transition-property: border;
+}
+
+div.grid-photo-item.open>div.inner.inner-container .field--name-field-front.image-container .has-backside::after {
+    border: none;
+}
+
+div.grid-photo-item>div.inner.inner-container .field--name-field-front.image-container .item-inner {
+    position: relative;
+    opacity: 1;
+    z-index: 2;
+}
+
+div.grid-photo-item div.inner .field--name-field-back {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+
+.paragraph--type--grid .grid-photo-item.read-more::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border-width: 16px 16px 0 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5) #fff !important;
+}

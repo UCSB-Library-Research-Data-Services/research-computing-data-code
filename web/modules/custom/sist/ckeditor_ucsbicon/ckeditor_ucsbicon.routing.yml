@@ -1,0 +1,7 @@
+ckeditor_ucsbicon.loadicons:
+  path: '/ckeditorucsbicon/loadicons'
+  defaults:
+    _controller: '\Drupal\ckeditor_ucsbicon\Controller\IconController::loadicons'
+    _title: 'Load Icons'
+  requirements:
+    _permission: 'access content'

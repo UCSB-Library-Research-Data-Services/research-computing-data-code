@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_sidebar_nav.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_sidebar_nav_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ssis_sidebar_nav module.
+    case 'help.page.ssis_sidebar_nav':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom block to display a sidebar menu') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ssis_sidebar_nav_theme() {
+  return [
+    'menu__sidebar_nav' => [
+      'render element' => 'element',
+      'template' => 'menu--sidebar-nav',
+      'base hook' => 'menu'
+    ],
+    'page__subnav' => [
+      'render element' => 'element',
+      'template' => 'page--subnav',
+      'base hook' => 'page'
+    ],
+    'page__webtheme' => [
+      'render element' => 'element',
+      'template' => 'page--webtheme',
+      'base hook' => 'page'
+    ],
+  ];
+}
+
+/**
+ * Implements hook__theme_suggestions_HOOK_alter().
+ */
+function ssis_sidebar_nav_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+    // Replace theme page.html.twig template with the one from custom module based on default theme
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $theme = \Drupal::theme()->getActiveTheme()->getName();
+    if(!empty($node)){
+        $type = $node->getType();
+        // If using ucsbwebsub theme, use their page.html.twig file with modifications for the sidebar nav
+        if (($type == 'page') && ($theme == 'ucsbwebsub') ){
+            $suggestions[] = 'page__subnav';
+        }
+        // If using ucsbweb theme, use their page.html.twig file with modifications for the sidebar nav
+        if (($type == 'page') && ($theme == 'ucsbweb') ){
+            $suggestions[] = 'page__webtheme';
+        }
+        // if any other themes, do not display the sidebar nav
+    }
+}

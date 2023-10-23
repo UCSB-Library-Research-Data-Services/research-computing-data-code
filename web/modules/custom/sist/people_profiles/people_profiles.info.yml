@@ -1,0 +1,24 @@
+name: People Profiles
+type: module
+description: This plugin module adds a content type named People Profiles
+package: ITS
+dependencies:
+  - node
+  - user
+  - lazy
+  - media
+  - media_library
+  - path
+  - pathauto
+  - telephone
+  - text
+  - menu_ui
+  - taxonomy
+  - twig_tweak
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+
+libraries:
+  - 'people_profiles/adp-people-styling'
+  - 'people_profiles/dsp-people-styling'
+  - 'people_profiles/wellness-people-styling'

@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Module install and update procedures.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\pathauto\Entity\PathautoPattern;
+use Drupal\user\Entity\Role;
+use Drupal\user\RoleInterface;
+
+
+
+/**
+ * Implements hook_install().
+ */
+function resources_links_install()
+{
+    // Add the necessary Content Editor permissions
+    $role_object = Role::load('content_editor');
+    $role_object->grantPermission('create resources_links content');
+    $role_object->grantPermission('edit any resources_links content');
+    $role_object->grantPermission('edit own resources_links content');
+    $role_object->grantPermission('revert resources_links revisions');
+    $role_object->grantPermission('view resources_links revisions');
+    $role_object->grantPermission('create terms in resource_categories');
+    $role_object->grantPermission('edit terms in resource_categories');
+    $role_object->save();
+
+    //Add the Resources Links content type to the workflow
+    /** @var \Drupal\workflows\WorkflowInterface $workflow */
+    $storage_handler = \Drupal::entityTypeManager()->getStorage("workflow");
+    $workflow = $storage_handler->loadByProperties(["id" => "editorial"])["editorial"];
+    $config = $workflow->getTypePlugin()->getConfiguration();
+    $config["entity_types"]["node"][] = "resources_links";
+    $workflow->getTypePlugin()->setConfiguration($config);
+    $workflow->save();
+}
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function resources_links_uninstall()
+{
+
+    // Delete all people profile nodes.
+    $storage_handler = \Drupal::entityTypeManager()
+        ->getStorage('node');
+    $nodes = $storage_handler->loadByProperties(['type' => 'resources_links']);
+    $storage_handler->delete($nodes);
+
+    // Clear book data out of the cache.
+    \Drupal::cache('data')->deleteAll();
+}

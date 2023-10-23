@@ -1,0 +1,31 @@
+.blk-template .blk-caption-bottom-position {
+    box-shadow: 0 2px 2px 0 rgba(17, 21, 23, 0.2);
+    padding: 8px;
+    bottom: -35px;
+    left: 25px;
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    z-index: 3;
+}
+
+.blk-template .blk-caption-bottom-position .month {
+    font-size: 14px;
+}
+
+.blk-template .blk-caption-bottom-position .day {
+    font-family: avenir-black, sans-serif;
+    font-size: 27px;
+}
+
+.event-thumbnail-with-summary {
+    border: 1px solid #707070;
+}
+
+.event-details {
+    padding: 50px 25px 35px 25px;
+}
+
+.event-details p {
+    color: #3d4952;
+}

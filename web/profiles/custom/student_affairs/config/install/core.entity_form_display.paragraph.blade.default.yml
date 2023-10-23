@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.blade.field_background_color
+    - field.field.paragraph.blade.field_block
+    - field.field.paragraph.blade.field_bottom_padding
+    - field.field.paragraph.blade.field_columns
+    - field.field.paragraph.blade.field_css_classes
+    - field.field.paragraph.blade.field_equal_height
+    - field.field.paragraph.blade.field_full_bleed
+    - field.field.paragraph.blade.field_image
+    - field.field.paragraph.blade.field_image_media
+    - field.field.paragraph.blade.field_top_border
+    - field.field.paragraph.blade.field_top_padding
+    - paragraphs.paragraphs_type.blade
+  module:
+    - color_field
+    - media_library
+    - paragraphs
+id: paragraph.blade.default
+targetEntityType: paragraph
+bundle: blade
+mode: default
+content:
+  field_background_color:
+    weight: 5
+    settings:
+      default_colors: '#EEF0F2,#DCE1E5,#9CBEBE,#DAE6E6,#DCD6CC,#F1EEEA,#C9BF9D,#EDEADF,#FEBC11,#003660,#6D7D33,#09847A,#047C91,#EF5645,#C43424,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_block:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_bottom_padding:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_columns:
+    weight: 8
+    settings:
+      title: Column
+      title_plural: Columns
+      edit_mode: preview
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: column
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_css_classes:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_equal_height:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_full_bleed:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_image_media:
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_top_border:
+    weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_top_padding:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  field_image: true
+  status: true
+  uid: true

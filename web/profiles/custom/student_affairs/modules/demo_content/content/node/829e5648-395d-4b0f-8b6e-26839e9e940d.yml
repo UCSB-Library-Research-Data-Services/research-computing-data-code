@@ -1,0 +1,126 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 829e5648-395d-4b0f-8b6e-26839e9e940d
+  bundle: page
+  default_langcode: en
+  depends:
+    90258b4a-1df7-4be9-8cb5-ba00bb963e3f: user
+    13edbba2-88b3-4b2d-b5bb-f5210cba74c8: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
+  title:
+    -
+      value: '404 page not found'
+  created:
+    -
+      value: 1696426600
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /404-page-not-found
+      langcode: en
+      pathauto: 1
+  field_blades:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 5915991f-57e9-4a33-9088-87aa116c4313
+          bundle: blade
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1530514707
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_bottom_padding:
+            -
+              value: none
+          field_columns:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 2fa3b1fc-259d-4096-aa03-8ac65c6c8902
+                  bundle: column
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1530514707
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  field_body:
+                    -
+                      value: "<p class=\"lead\">The page you are looking for could not be found.</p>\r\n"
+                      format: full_html
+                  field_image_position:
+                    -
+                      value: left
+                  field_mobile_width:
+                    -
+                      value: '12'
+                  field_width:
+                    -
+                      value: '12'
+          field_equal_height:
+            -
+              value: false
+          field_full_bleed:
+            -
+              value: false
+          field_top_border:
+            -
+              value: false
+  field_bottom_padding:
+    -
+      value: '4'
+  field_hide_title:
+    -
+      value: false
+  field_overlay_width:
+    -
+      value: '6'
+  field_sortorder:
+    -
+      value: 999999.0
+  field_top_padding:
+    -
+      value: none

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.event_block_with_summary_categories_listed
+label: 'Event Block with Summary & Categories Listed'
+targetEntityType: node
+cache: true

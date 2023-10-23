@@ -1,0 +1,121 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.people_profile_team_grid
+    - field.field.node.people_profile.body
+    - field.field.node.people_profile.field_address
+    - field.field.node.people_profile.field_avatar
+    - field.field.node.people_profile.field_cv
+    - field.field.node.people_profile.field_email
+    - field.field.node.people_profile.field_people_gender_pronouns
+    - field.field.node.people_profile.field_phone
+    - field.field.node.people_profile.field_photo
+    - field.field.node.people_profile.field_sortorder
+    - field.field.node.people_profile.field_subtitle
+    - field.field.node.people_profile.field_team
+    - field.field.node.people_profile.field_title
+    - field.field.node.people_profile.field_website
+    - node.type.people_profile
+  module:
+    - telephone
+    - user
+  enforced:
+    module:
+      - people_profiles
+id: node.people_profile.people_profile_team_grid
+targetEntityType: node
+bundle: people_profile
+mode: people_profile_team_grid
+content:
+  content_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_avatar:
+    type: entity_reference_entity_view
+    weight: 9
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_email:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_people_gender_pronouns:
+    type: string
+    weight: 10
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_phone:
+    weight: 7
+    label: visually_hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_photo:
+    type: entity_reference_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_sortorder:
+    weight: 8
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_subtitle:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_team:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_title:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_address: true
+  field_cv: true
+  field_website: true

@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Contains people_profiles.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function people_profiles_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.people_profiles':
+      $output = '';
+      $output .= '<h3>' . t('People Profiles') . '</h3>';
+      $output .= '<p>' . t('This plugin module adds a content type named People Profiles.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function people_profiles_theme($existing, $type, $theme, $path) {
+  return [
+   'node__people_profile__full' => [
+      'template' => 'node--people-profile--full',
+      'base hook' => 'node'
+    ],
+    'node__people_profile__teaser' => [
+       'template' => 'node--people-profile--teaser',
+       'base hook' => 'node'
+     ],
+     'node__people_profile__dsp_people_profiles' => [
+        'template' => 'node--people-profile--dsp-people-profiles',
+        'base hook' => 'node'
+      ],
+      'node__people_profile__wellness_people_profiles' => [
+         'template' => 'node--people-profile--wellness-people-profiles',
+         'base hook' => 'node'
+       ],
+      'node__people_profile__grad_div_featured_staff' => [
+        'template' => 'node--people-profile--grad-div-featured-staff',
+        'base hook' => 'node'
+      ],
+      'node__people_profile__people_profile_team_grid' => [
+        'template' => 'node--people-profile--people-profile-team-grid',
+        'base hook' => 'node'
+      ],
+      'node__people_profile__adp_people_profiles' => [
+         'template' => 'node--people-profile--adp-people-profiles',
+         'base hook' => 'node'
+       ],
+  ];
+}
+
+
+/**
+ * Implements hook_preprocess().
+ */
+function people_profiles_preprocess(&$variables, $hook) {
+  $module_relative_url = \Drupal::service('extension.list.module')->getPath('people_profiles') . '/images/ucsb-logo.png';
+  $module_absolute_url = \Drupal::service('file_url_generator')->generateAbsoluteString($module_relative_url);
+  $variables['img_path'] = $module_absolute_url;
+}
+

@@ -1,0 +1,30 @@
+name: 'Demo content'
+type: module
+description: 'Demo content for Information Technology Services (ITS) Websites.'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ITS
+
+default_content:
+  user:
+    - 96b0ff1a-dd22-4987-bbb1-4e635cdca8e1
+    - 90258b4a-1df7-4be9-8cb5-ba00bb963e3f
+  node:
+    - 13edbba2-88b3-4b2d-b5bb-f5210cba74c8
+    - 829e5648-395d-4b0f-8b6e-26839e9e940d
+    - 117b7188-0f66-4a2f-8dde-1b670c106ac4
+    - 3f8b54f7-7d86-49ad-8d79-ac13d95eb85a
+  menu_link_content:
+    - 1d9f9031-8b5c-4be4-b393-87a1c656a522
+    - 89b47f26-11aa-4d87-98fa-f2be013a2f6a
+    - c5274c48-17e3-4816-8135-3730d4d9d182
+    - d2cf2545-d78f-465a-a0af-64ea76b9d91a
+  taxonomy_term:
+    - 6dd8c2f8-c3a9-48a3-859d-d88eb88358cf
+  site_setting_entity:
+    - 1fdbfec1-1ef6-442c-9467-7922e79a1325
+    - 6fcaef01-387f-409e-b113-367e7f7b8b57
+    - 903db081-e5c3-43b5-89a2-c3f45a2b2acd
+    - b3adeedd-da17-416a-8b7c-e55f03aec29c
+dependencies:
+  - default_content:default_content

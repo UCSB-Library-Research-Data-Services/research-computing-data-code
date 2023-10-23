@@ -1,0 +1,38 @@
+.event-header {
+    height: 500px;
+}
+
+.event-hero {
+    display: block;
+    height: 100%;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    -webkit-transition: background-position 500ms ease;
+    -moz-transition: background-position 500ms ease;
+    -o-transition: background-position 500ms ease;
+}
+
+.event-header .event-title-wrapper {
+    height: 100%;
+}
+
+.event-title {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    opacity: 1;
+    padding: 90px 20% !important;
+    /* font-weight: 100; */
+}
+
+.event-title p {
+    margin-bottom: 0px;
+}
+
+.event-title h2 {
+    margin-top: 20px;
+}

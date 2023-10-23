@@ -1,0 +1,5 @@
+enable_override: true
+view: eventtype_categories_view
+view_display: page_eventtype_category
+inherit_settings: true
+pass_arguments: true

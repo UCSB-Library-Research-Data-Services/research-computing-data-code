@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: people_profile
+label: 'People Profile'
+type: 'canonical_entities:node'
+pattern: '/people/[node:title]'
+selection_criteria:
+  bf5f923d-cf2f-4c4d-ba97-f0be7e721e89:
+    id: entity_bundle:node
+    bundles:
+      people_profile: people_profile
+    negate: false
+    context_mapping:
+      node: node
+    uuid: bf5f923d-cf2f-4c4d-ba97-f0be7e721e89
+selection_logic: and
+weight: -5
+relationships: {  }

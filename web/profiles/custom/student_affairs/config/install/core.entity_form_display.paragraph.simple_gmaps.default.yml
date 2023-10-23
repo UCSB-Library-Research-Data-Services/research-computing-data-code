@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.simple_gmaps.field_google_map
+    - field.field.paragraph.simple_gmaps.field_width
+    - paragraphs.paragraphs_type.simple_gmaps
+id: paragraph.simple_gmaps.default
+targetEntityType: paragraph
+bundle: simple_gmaps
+mode: default
+content:
+  field_google_map:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_width:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

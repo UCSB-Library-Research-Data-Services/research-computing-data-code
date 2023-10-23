@@ -1,0 +1,191 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# get the parent type of the paragraph, set the width to the nested paragraphs to always be 12 #}
+{% set parent_type = paragraph.parent_type.value %}
+{# get the bundle, if the bundle is 'from_library' get the child element #}
+{% set from_library = 0 %}
+{% if paragraph.bundle == 'from_library' %}
+  {% set paragraph = paragraph.field_reusable_paragraph.entity.paragraphs.0.entity %}
+  {% set from_library = 1 %}
+{% endif %}
+{% set image_width = paragraph.field_image.width %}
+{% set image_position = paragraph.field_image_position.value %}
+{% set background_color = paragraph.field_background_color.color %}
+{% if paragraph.field_mobile_width %}
+  {% set mobile_width = paragraph.field_mobile_width.value %}
+{% else %}  
+  {% set mobile_width = 12 %}
+{% endif %}
+{% if paragraph.bundle == 'article' %}
+  {% set is_article = 1 %}
+{% endif %}
+{% if (paragraph.bundle == 'blade') and paragraph.field_image_media.entity.field_media_image.entity.uri.value %}
+  {% set background_image = 1 %}
+  
+  {% set background_image_width = paragraph.field_image_media.entity.field_media_image.width %}
+  {% set background_image_height = paragraph.field_image_media.entity.field_media_image.height %}
+
+  {% if background_image_width > 1680 %}
+    {% set is_retina = 1 %}
+  {% endif %}
+  {% if background_image_width > 1680 %}
+    {% set image_height = background_image_height / 2 %}
+  {% else %}
+    {% set image_height = background_image_height %}
+  {% endif %}
+{% endif %}
+{% if paragraph.field_equal_height.value == 1 %}
+  {% set equal_height = 1 %}
+{% endif %}
+{% set autoscroll = '' %}
+{% if paragraph.bundle == 'slideshow' %}
+  {% if paragraph.field_autoscroll.value == 1 %}
+    {% set autoscroll = 'carousel-autoscroll' %}
+  {% else %}
+    {% set autoscroll = 'carousel-static' %}
+  {% endif %}
+{% endif %}
+
+{% set bundle = paragraph.bundle %}
+{% if paragraph.bundle == 'view' %}
+  {% set bundle = 'column' %}
+{% endif %}
+{% if paragraph.bundle == 'form' %}
+  {% set bundle = 'column' %}
+{% endif %}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    paragraph.field_background_color.color ? 'has-background background-color-' ~ paragraph.field_background_color.color,
+    background_image ? 'has-background background-image height-' ~ image_height,
+    is_retina ? 'is-retina',
+    paragraph.field_top_padding.value ? 'top-padding-' ~ paragraph.field_top_padding.value,
+    paragraph.field_bottom_padding.value ? 'bottom-padding-' ~ paragraph.field_bottom_padding.value,
+    equal_height ? 'equal-height',
+    paragraph.field_css_classes.value ? paragraph.field_css_classes.value,
+    is_article ? 'article',
+    autoscroll,
+  ]
+%}
+
+{% if parent_type == 'paragraph' %}
+  {% set classes = classes|merge([
+    mobile_width ? 'col-sm-' ~ mobile_width,
+    paragraph.field_width ? 'col-md-' ~ paragraph.field_width.value]) %}
+{% endif %}
+
+
+{% set inner_attribute = create_attribute() %}
+
+{% set inner_classes = ['inner'] %}
+
+{% if (from_library == 0) and (paragraph.bundle == 'column') %} 
+  {%
+    set inner_classes = inner_classes|merge([
+      paragraph.field_border_color.color ? 'has-border border-color-' ~ paragraph.field_border_color.color,
+    ])
+  %}  
+{% endif %} 
+
+
+{% if paragraph.bundle == 'view' %}
+  {%
+    set inner_classes = inner_classes|merge(['paragraph--type--view',
+    ])
+  %} 
+{% endif %}
+
+
+{% block paragraph %}
+
+  {% if background_image %}
+  
+    {% if background_image and background_color and (paragraph.bundle == 'blade')  %}
+      {% set classes = classes|merge(['blade-background-image-overlay']) %}
+    {% endif %}
+
+    <div{{ attributes.addClass(classes) }} style="background-image: url({{ file_url(paragraph.field_image_media.entity.field_media_image.entity.uri.value) }});">
+    
+    {% if background_image and background_color and (paragraph.bundle == 'blade')  %}
+      <div{{ attributes.addClass(classes, "blade-background-image-color-overlay").removeClass("blade-background-image-overlay") }}>
+      </div>
+    {% endif %}
+    
+  {% else %}
+    {% if (paragraph.bundle != 'blade') and paragraph.field_image_media.entity.field_media_image.entity.uri.value %}
+      <div{{ attributes.addClass(classes,"no-padding") }}>
+    {% else %}
+      <div{{ attributes.addClass(classes) }}>
+    {% endif %}
+  {% endif %}
+
+    {% if paragraph.field_top_border.value == 1 %}
+      <div class="border"><div class="inner"></div></div> 
+    {% endif %}
+
+    {% if paragraph.field_full_bleed.value != 1 %}
+      <div{{ inner_attribute.addClass(inner_classes) }}>  
+    {% endif %}
+    
+    {% if paragraph.field_image_media.entity.field_media_image.entity.uri.value  and (paragraph.bundle != 'blade') and (paragraph.bundle != 
+    'slide') %}
+      <div style="padding-left: 15px; padding-right: 15px;">
+    {% endif %}
+    
+          {% block content %}
+            {{ content }}
+          {% endblock %}
+    {% if paragraph.field_image_media.entity.field_media_image.entity.uri.value and (paragraph.bundle != 'blade') and (paragraph.bundle != 
+    'slide') %}
+      </div>
+      {# <img style="width:100%" src="{{ file_url(paragraph.field_image_media.entity.field_media_image.entity.uri.value) }}" alt="{{ paragraph.field_image_media.entity.field_media_image.alt }}"> #}
+      
+      {{ drupal_image(paragraph.field_image_media.entity.field_media_image.entity.uri.value, 'wide', {alt: paragraph.field_image_media.entity.field_media_image.alt, title: paragraph.field_image_media.entity.name.value}, true) }}
+    {% endif %} 
+    {% if paragraph.field_full_bleed.value != 1 %}
+    </div>
+    {% endif %}
+
+  </div>
+{% endblock paragraph %}

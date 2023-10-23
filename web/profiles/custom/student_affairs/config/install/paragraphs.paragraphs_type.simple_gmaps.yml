@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: simple_gmaps
+label: 'Simple GMaps'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

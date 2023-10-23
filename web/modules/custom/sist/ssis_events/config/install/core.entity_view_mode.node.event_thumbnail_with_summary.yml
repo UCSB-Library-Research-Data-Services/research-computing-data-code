@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ssis_events
+id: node.event_thumbnail_with_summary
+label: 'Event Thumbnail With Summary'
+targetEntityType: node
+cache: true

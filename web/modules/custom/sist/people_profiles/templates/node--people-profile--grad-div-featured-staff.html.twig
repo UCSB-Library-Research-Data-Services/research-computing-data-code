@@ -1,0 +1,47 @@
+{%
+  set classes = [
+  node.bundle|clean_class,
+  node.isPromoted() ? 'is-promoted',
+  node.isSticky() ? 'is-sticky',
+  not node.isPublished() ? 'is-unpublished',
+  view_mode ? view_mode|clean_class,
+  node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+  node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+  'clearfix',
+]
+%}
+
+<article{{ attributes.addClass(classes, 'bottom-padding-none') }}>
+  <div class= "col-sm-12" style = "padding-top: 50px">
+    <div class="col-sm-12 col-md-3">
+      {% if node.field_photo.entity.field_media_image %}
+        <a href="{{ url }}">
+          {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}
+        </a>
+        {% else %}
+        <a href="{{ url }}"><img src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background"></a>
+      {% endif %}
+    </div>
+    <div class="col-sm-12 col-md-9" style = "padding-left: 25px;">
+      {% if node.title is not empty %}
+        <div class="display-small">{{ node.title.value }}</div>
+      {% endif %}
+      {% if node.field_title is not empty %}
+        <div class="lead">{{ node.field_title.value }}</div>
+      {% endif %}
+{#      {% if node.field_subtitle is not empty %}#}
+{#        <div class="lead">{{ node.field_subtitle.value }}</div>#}
+{#      {% endif %}#}
+
+      <div>
+          {{node.body.value | raw}}
+      </div>
+
+      {% if node.field_email is not empty %}
+        <div class="lead"><a href="mailto:{{ node.field_email.value }}">Contact {{ node.title.value }}</a></div>
+      {% endif %}
+
+    </div>
+  </div>
+
+</article>

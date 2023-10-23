@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ucsb_power_bi_report
+    - paragraphs.paragraphs_type.ucsb_power_bi
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - ucsb_power_bi
+id: paragraph.ucsb_power_bi.field_ucsb_power_bi_report
+field_name: field_ucsb_power_bi_report
+entity_type: paragraph
+bundle: ucsb_power_bi
+label: 'Power BI Report'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    report_id: ''
+    report_width: '0'
+    report_height: '0'
+    report_title: ''
+default_value_callback: ''
+settings: {  }
+field_type: ucsb_power_bi

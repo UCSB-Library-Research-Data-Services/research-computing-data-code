@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.feeds_item
+    - field.field.node.page.field_blades
+    - field.field.node.page.field_bottom_padding
+    - field.field.node.page.field_hero_image
+    - field.field.node.page.field_hero_image_media
+    - field.field.node.page.field_hero_video
+    - field.field.node.page.field_hide_title
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_overlay
+    - field.field.node.page.field_overlay_background_color
+    - field.field.node.page.field_overlay_position
+    - field.field.node.page.field_overlay_width
+    - field.field.node.page.field_publication
+    - field.field.node.page.field_sortorder
+    - field.field.node.page.field_subtitle
+    - field.field.node.page.field_title_background_color
+    - field.field.node.page.field_title_block_image
+    - field.field.node.page.field_top_padding
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_blades:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  feeds_item: true
+  field_bottom_padding: true
+  field_hero_image: true
+  field_hero_image_media: true
+  field_hero_video: true
+  field_hide_title: true
+  field_meta_tags: true
+  field_overlay: true
+  field_overlay_background_color: true
+  field_overlay_position: true
+  field_overlay_width: true
+  field_publication: true
+  field_sortorder: true
+  field_subtitle: true
+  field_title_background_color: true
+  field_title_block_image: true
+  field_top_padding: true
+  links: true

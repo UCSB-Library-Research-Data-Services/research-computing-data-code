@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resources_links_category
+    - node.type.resources_links
+    - taxonomy.vocabulary.resource_categories
+  enforced:
+    module:
+      - resources_links
+id: node.resources_links.field_resources_links_category
+field_name: field_resources_links_category
+entity_type: node
+bundle: resources_links
+label: 'Resource Categories'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_categories: resource_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

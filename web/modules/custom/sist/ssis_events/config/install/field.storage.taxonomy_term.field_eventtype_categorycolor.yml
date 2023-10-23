@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - color_field
+    - taxonomy
+  enforced:
+    module:
+      - ssis_events
+id: taxonomy_term.field_eventtype_categorycolor
+field_name: field_eventtype_categorycolor
+entity_type: taxonomy_term
+type: color_field_type
+settings:
+  format: '#hexhex'
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
