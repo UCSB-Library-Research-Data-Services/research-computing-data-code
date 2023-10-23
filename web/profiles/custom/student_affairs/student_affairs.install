@@ -49,7 +49,6 @@ function student_affairs_install_content() {
 
     \Drupal::service('module_installer')->uninstall(['demo_content']);
     \Drupal::service('module_installer')->uninstall(['default_content']);
-    \Drupal::service('module_installer')->uninstall(['hal']);
 
     // remove the default contact form
     \Drupal::entityTypeManager()->getStorage('webform')->load('contact')->delete();

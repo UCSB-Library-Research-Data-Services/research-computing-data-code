@@ -51,7 +51,6 @@ install:
   - file
   - filter
   - google_analytics
-  - hal
   - help
   - history
   - honeypot
