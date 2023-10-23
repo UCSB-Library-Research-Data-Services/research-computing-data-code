@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d8d8f9d4d6769ece848e216bb8cb40d",
+    "content-hash": "07f688e00fa6f02c7c7bd2034f2f2e3f",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -11973,6 +11973,60 @@
             "homepage": "https://www.drupal.org/project/search_exclude",
             "support": {
                 "source": "https://git.drupalcode.org/project/search_exclude"
+            }
+        },
+        {
+            "name": "drupal/semanticviews",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/semanticviews.git",
+                "reference": "3.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/semanticviews-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "b0f26c3de06f63075161746f37b8634f70a92735"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0",
+                    "datestamp": "1696258640",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "jpamental",
+                    "homepage": "https://www.drupal.org/user/174960"
+                },
+                {
+                    "name": "nicxvan",
+                    "homepage": "https://www.drupal.org/user/531480"
+                },
+                {
+                    "name": "Scyther",
+                    "homepage": "https://www.drupal.org/user/613694"
+                }
+            ],
+            "description": "Views plugins for UI management of output markup.",
+            "homepage": "https://drupal.org/project/semanticviews",
+            "support": {
+                "source": "https://git.drupalcode.org/project/semanticviews",
+                "issues": "https://www.drupal.org/project/issues/semanticviews",
+                "docs": "https://www.drupal.org/docs/contributed-modules/semantic-views"
             }
         },
         {
