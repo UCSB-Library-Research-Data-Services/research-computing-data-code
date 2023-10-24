@@ -395,7 +395,7 @@
         "preferred-install": "dist",
         "sort-packages": false,
         "platform": {
-            "php": "8.2.0"
+            "php": "8.1"
         },
         "allow-plugins": {
             "composer/installers": true,
