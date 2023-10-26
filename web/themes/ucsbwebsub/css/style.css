@@ -207,6 +207,11 @@ form .form-type-textarea {
   margin: 4px 4px 4px 0px;
 }
 
+a.ucsb-button.btn {
+  text-wrap: wrap;
+  white-space: normal;
+}
+
 .light-light-gray-btn {
   background-color: #EEF0F2 !important;
   color: #3D4952 !important;

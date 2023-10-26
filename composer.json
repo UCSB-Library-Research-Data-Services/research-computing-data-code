@@ -323,7 +323,8 @@
         "drupal/classy": "^1.0",
         "drupal/stable": "^2.0",
         "drupal/feeds_log": "^2.0@alpha",
-        "drupal/semanticviews": "^3.0"
+        "drupal/semanticviews": "^3.0",
+        "drupal/upgrade_status": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
