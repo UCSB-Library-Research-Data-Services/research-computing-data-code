@@ -66,14 +66,17 @@
         <span class="eventdate">{{ event_dates.value|date("l\\, F jS\\, Y") }}  {{ event_dates.value|date("g:ia") }} - {{ event_dates.end_value|date("g:ia") }}</span>
         {% if node.field_eventtype_event_date|length > 1 %}
           <div class="other-event-dates">
-            <p>Other Dates:</p>
-            <ul>
-            {% for key, event_date  in node.field_eventtype_event_date  %}
-              {% if key != date_index %}
-                <li>{{ event_date.value|date("l\\, F jS\\, Y") }}  {{ event_date.value|date("g:ia") }} - {{ event_date.end_value|date("g:ia") }}</li>
-              {% endif %}
-            {% endfor %}
-            </ul>
+            {# <p>Other Dates ({{ node.field_eventtype_event_date | length - 1 }}):</p> #}
+            <a role="button" class="serif collapsed" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" href="#more-event-dates" aria-controls="">Other Dates ({{ node.field_eventtype_event_date | length - 1 }}):</a>
+            <div id="more-event-dates" class="panel-collapse collapse" role="tabpanel" aria-labelledby="" aria-expanded="false" >
+              <ul>
+              {% for key, event_date  in node.field_eventtype_event_date  %}
+                {% if key != date_index %}
+                  <li>{{ event_date.value|date("l\\, F jS\\, Y") }}  {{ event_date.value|date("g:ia") }} - {{ event_date.end_value|date("g:ia") }}</li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+            </div>
           </div>
         {% endif %}
       </div>
@@ -97,6 +100,17 @@
             {% endif %}
           </span>
         </div>
+      {% endif %}
+
+
+      {# Button #}
+      {% if node.field_eventtype_description.0.value | length > 500 %}
+        {# Button #}
+        {% if node.field_eventtype_link.0.url is not empty %}
+          <div class="event-details-row col-xs-12 col-12 col-sm-12 col-md-12">
+            <a class="ucsb-button btn btn-primary float-right" href="{{ node.field_eventtype_link.0.url }}" title="{{ node.field_eventtype_link.0.title }}">{{ node.field_eventtype_link.0.title }}</a>
+          </div>
+        {% endif %}
       {% endif %}
       
       {# Event Body #}
