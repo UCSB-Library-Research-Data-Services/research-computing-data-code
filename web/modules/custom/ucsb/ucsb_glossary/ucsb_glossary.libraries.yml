@@ -1,0 +1,4 @@
+view-styles:
+  css:
+    theme:
+      css/view-filter-styles.css: { }

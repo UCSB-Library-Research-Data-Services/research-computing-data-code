@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ucsb_glossary_terms.field_ucsb_glossary_t_definition
+    - field.field.paragraph.ucsb_glossary_terms.field_ucsb_glossary_term
+    - paragraphs.paragraphs_type.ucsb_glossary_terms
+  module:
+    - text
+id: paragraph.ucsb_glossary_terms.default
+targetEntityType: paragraph
+bundle: ucsb_glossary_terms
+mode: default
+content:
+  field_ucsb_glossary_t_definition:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_ucsb_glossary_term:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

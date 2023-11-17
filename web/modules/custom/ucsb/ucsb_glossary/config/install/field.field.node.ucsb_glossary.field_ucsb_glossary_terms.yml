@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ucsb_glossary_terms
+    - node.type.ucsb_glossary
+    - paragraphs.paragraphs_type.ucsb_glossary_terms
+  module:
+    - entity_reference_revisions
+id: node.ucsb_glossary.field_ucsb_glossary_terms
+field_name: field_ucsb_glossary_terms
+entity_type: node
+bundle: ucsb_glossary
+label: 'Glossary Terms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      ucsb_glossary_terms: ucsb_glossary_terms
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: false
+      accordion_item:
+        weight: 19
+        enabled: false
+      action_panel_container:
+        weight: 20
+        enabled: false
+      action_panel_item:
+        weight: 21
+        enabled: false
+      article:
+        weight: 22
+        enabled: false
+      blade:
+        weight: 23
+        enabled: false
+      column:
+        weight: 24
+        enabled: false
+      form:
+        weight: 25
+        enabled: false
+      from_library:
+        weight: 26
+        enabled: false
+      grid:
+        weight: 27
+        enabled: false
+      grid_item:
+        weight: 28
+        enabled: false
+      grid_photo_item:
+        weight: 29
+        enabled: false
+      simple_gmaps:
+        weight: 30
+        enabled: false
+      slide:
+        weight: 31
+        enabled: false
+      slideshow:
+        weight: 32
+        enabled: false
+      ucsb_glossary_terms:
+        weight: 33
+        enabled: true
+      view:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions
