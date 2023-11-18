@@ -44,6 +44,7 @@ function ssis_youtube_gallery_uninstall() {
 
   // Remove the parent gallery first
   $paragraph_youtube_video_gallery_ids = \Drupal::entityQuery('paragraph')
+    ->accessCheck(FALSE)
     ->condition('type', 'youtube_video_gallery')
     ->execute();
   $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
@@ -55,6 +56,7 @@ function ssis_youtube_gallery_uninstall() {
 
   // Delete the orphan videos
   $paragraph_youtube_video_ids = \Drupal::entityQuery('paragraph')
+    ->accessCheck(FALSE)
     ->condition('type', 'youtube_video')
     ->execute();
   $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
