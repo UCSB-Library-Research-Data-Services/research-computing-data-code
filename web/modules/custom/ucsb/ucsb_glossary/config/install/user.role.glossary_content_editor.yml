@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.ucsb_glossary
+  module:
+    - node
+  enforced:
+    module:
+      - ucsb_glossary
+id: glossary_content_editor
+label: 'Glossary Content Editor'
+weight: 6
+is_admin: null
+permissions:
+  - 'create ucsb_glossary content'
+  - 'delete ucsb_glossary revisions'
+  - 'edit any ucsb_glossary content'
+  - 'edit own ucsb_glossary content'
+  - 'revert ucsb_glossary revisions'
+  - 'view ucsb_glossary revisions'

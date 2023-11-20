@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Module install and update procedures.
+ */
+
+use Drupal\user\RoleInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Config\FileStorage;
+
+
+/**
+ * Implements hook_install().
+ */
+function ucsb_glossary_install()
+{
+  //Add the Glossary of Terms content type to the workflow
+  /** @var \Drupal\workflows\WorkflowInterface $workflow */
+  $storage_handler = \Drupal::entityTypeManager()->getStorage("workflow");
+  if (!empty($storage_handler)) {
+    $workflow = $storage_handler->loadByProperties(["id" => "editorial"])["editorial"];
+    $config = $workflow->getTypePlugin()->getConfiguration();
+    $config["entity_types"]["node"][] = "ucsb_glossary";
+    $workflow->getTypePlugin()->setConfiguration($config);
+    $workflow->save();
+
+  }
+}
+ 
+/**
+ * Implements hook_uninstall().
+ */
+function ucsb_glossary_uninstall() {
+    // Delete the terms first
+    $paragraph_ucsb_glossary_ids = \Drupal::entityQuery('paragraph')
+    ->accessCheck(FALSE)
+    ->condition('type', 'ucsb_glossary_terms')
+    ->execute();
+    $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+    if ($paragraphs = $storage->loadMultiple($paragraph_ucsb_glossary_ids)) {
+    $storage->delete($paragraphs);
+    \Drupal::messenger()->addStatus(t('Paragraphs of type "Glossary of Terms" have been deleted.'));
+    }
+
+    // Delete all Glossary nodes.
+    $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+    $nodes = $storage_handler->loadByProperties(['type' => 'ucsb_glossary']);
+    $storage_handler->delete($nodes);
+
+  // Clear all caches.
+  drupal_flush_all_caches();
+}
+  

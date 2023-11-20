@@ -1,0 +1,21 @@
+name: 'UCSB Glossary of Terms'
+type: module
+description: 'Glossary of Terms module allows you to create different Glossaries of terms with definitions.'
+version: '1.0.0'
+core_version_requirement: ^9 || ^10
+package: ucsb
+dependencies:
+  - better_exposed_filters
+  - content_moderation
+  - ief_table_view_mode
+  - node
+  - path
+  - scheduler
+  - scheduler_content_moderation_integration
+  - taxonomy
+  - twig_tweak
+  - user
+  - views
+  - paragraphs
+libraries:
+  - ucsb_glossary/view-styles

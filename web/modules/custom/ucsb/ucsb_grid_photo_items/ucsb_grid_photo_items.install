@@ -21,6 +21,7 @@ function ucsb_grid_photo_items_uninstall() {
 
   // Delete the Grid Photo Items
   $paragraph_grid_photo_items = \Drupal::entityQuery('paragraph')
+    ->accessCheck(FALSE)
     ->condition('type', 'grid_photo_item')
     ->execute();
   $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
