@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ucsb_glossary_t_definition
+    - paragraphs.paragraphs_type.ucsb_glossary_terms
+  module:
+    - text
+id: paragraph.ucsb_glossary_terms.field_ucsb_glossary_t_definition
+field_name: field_ucsb_glossary_t_definition
+entity_type: paragraph
+bundle: ucsb_glossary_terms
+label: Definition
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

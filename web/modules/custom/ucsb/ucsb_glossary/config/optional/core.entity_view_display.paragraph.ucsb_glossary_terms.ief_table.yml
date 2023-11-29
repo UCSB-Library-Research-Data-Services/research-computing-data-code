@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.ief_table
+    - field.field.paragraph.ucsb_glossary_terms.field_ucsb_glossary_t_definition
+    - field.field.paragraph.ucsb_glossary_terms.field_ucsb_glossary_term
+    - paragraphs.paragraphs_type.ucsb_glossary_terms
+  module:
+    - text
+id: paragraph.ucsb_glossary_terms.ief_table
+targetEntityType: paragraph
+bundle: ucsb_glossary_terms
+mode: ief_table
+content:
+  field_ucsb_glossary_t_definition:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_ucsb_glossary_term:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  label: true

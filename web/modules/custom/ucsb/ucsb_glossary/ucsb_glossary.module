@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains ucsb_glossary.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ucsb_glossary_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ucsb_glossary module.
+    case 'help.page.ucsb_glossary':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('UCSB Glossary of Terms module allows the creation of unlimited Glossary of Terms pages that can be displayed as individual pages or embedded as view blocks within a Basic page.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ucsb_glossary_theme() {
+  return [
+    'ucsb_glossary' => [
+      'render element' => 'children',
+    ],
+   'node__ucsb_glossary__full' => [
+      'template' => 'node--ucsb-glossary--full',
+      'base hook' => 'node'
+    ],
+  ];
+}
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ucsb_glossary_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  
+  $viewid = $view->id();
+  
+  if (isset($view) && ($view->storage->id() == 'ucsb_glossary_view')) {
+    $view->element['#attached']['library'][] = 'ucsb_glossary/view-styles';
+  }
+
+}

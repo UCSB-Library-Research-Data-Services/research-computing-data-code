@@ -31,6 +31,7 @@ function ucsb_power_bi_uninstall() {
 
   // Remove UCSB Power BI Paragraphs
   $paragraph_ucsb_power_bi_ids = \Drupal::entityQuery('paragraph')
+    ->accessCheck(FALSE)
     ->condition('type', 'ucsb_power_bi')
     ->execute();
   $storage = \Drupal::entityTypeManager()->getStorage('paragraph');

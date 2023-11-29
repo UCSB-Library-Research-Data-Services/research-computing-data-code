@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ucsb_glossary.body
+    - field.field.node.ucsb_glossary.field_ucsb_glossary_terms
+    - node.type.ucsb_glossary
+  module:
+    - entity_reference_revisions
+    - user
+id: node.ucsb_glossary.default
+targetEntityType: node
+bundle: ucsb_glossary
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_ucsb_glossary_terms:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true

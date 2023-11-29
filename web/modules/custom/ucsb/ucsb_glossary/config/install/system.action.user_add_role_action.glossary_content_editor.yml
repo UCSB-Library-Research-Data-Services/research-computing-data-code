@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.glossary_content_editor
+  module:
+    - user
+  enforced:
+    module:
+      - ucsb_glossary
+id: user_add_role_action.glossary_content_editor
+label: 'Add the Glossary Content Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: glossary_content_editor

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ucsb_glossary
+id: ucsb_glossary_terms
+label: 'Glossary Terms'
+icon_uuid: null
+icon_default: null
+description: 'Create terms and definitions for a Glossary content entity.'
+behavior_plugins: {  }
