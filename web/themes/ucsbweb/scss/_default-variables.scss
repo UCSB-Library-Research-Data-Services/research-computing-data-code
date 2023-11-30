@@ -65,16 +65,7 @@ $icon-font-path: '../bootstrap/assets/fonts/bootstrap/';
 }
 
 // Typography
-@font-face {
-  font-family: 'weather';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
-  url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
-  url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
-  url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 $base-font-size: 1.6rem;
 $p-line-height: 2.8rem;
 $small-font-size: 1.4rem;
