@@ -113,6 +113,8 @@ web/sites/example.settings.local.php
 /web/sites/example.settings.local.php
 /web/sites/example.sites.php
 /web/themes/README.txt
+/.editorconfig
+/.gitattributes
 /.drush-lock-update
 
 # The drupal/core-composer-scaffold component will write .gitignore
