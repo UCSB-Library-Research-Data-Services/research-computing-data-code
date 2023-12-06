@@ -18,7 +18,7 @@ INSTALLATION
 ------------
 
  * Install the Sidebar Navigation module as you would normally install a
-   Drupal module. Enabling module enables the Block Field and Block Cache modules
+   Drupal module. Enabling module enables the Block Field module
    before installing the Sidebar Navigation module.
 
 
@@ -43,9 +43,8 @@ Steps to activate:
 6- Edit the custom "Sidebar Nav Menu Block" block under the Primary region (/admin/structure/block/manage/sidebarnavmenublock)
 7- Click Page tab and hide for the listed pages: <front>, /accessibility; or display for a selected number of pages.
 Each site might use different settings based on their functional requirements.
-8- Click Block Cache and select the option to disable cache
-9- Save the block
-10- Clear cache to view the new block
+8- Save the block
+9- Clear cache to view the new block
 
 UNINSTALL
 ------------
