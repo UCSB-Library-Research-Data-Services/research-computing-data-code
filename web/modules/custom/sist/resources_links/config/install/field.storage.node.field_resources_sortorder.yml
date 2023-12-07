@@ -1,6 +1,9 @@
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - resources_links
   module:
     - node
 id: node.field_resources_sortorder

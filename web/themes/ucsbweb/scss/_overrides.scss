@@ -2237,8 +2237,12 @@ $hero-image-height: (480,500,600,720,780,960,1200,1440,1560,1920);
   }
 }
 
-
-
+.page-node-type-page .paragraph--type--blade.background-image {
+  @media all and (max-width:$screen-sm) {
+    background-size: cover !important;
+    height: unset;
+  }
+}
 
 // Forms
 form {
@@ -2491,7 +2495,14 @@ form {
   .field--name-field-image {
     margin-bottom: 36px;
   }
-
+}
+.page-node-type-article .field--name-field-article-date {
+  margin: 10px 0 1.5rem 0;
+  font-weight: 400;
+  font-size: 1.6rem;
+  font-family: $produkt-font-stack;
+  border-left: 4px solid #003660;
+  padding-left: 5px;
 }
 
 .paragraph.article > .inner {
@@ -3768,7 +3779,15 @@ form.search-form {
     }
   }
 }
-
+.forum-forms {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1230px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+}
 .grid-table {
   table {
     position: relative;
