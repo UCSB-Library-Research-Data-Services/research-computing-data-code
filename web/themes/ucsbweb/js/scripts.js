@@ -408,7 +408,7 @@
   $.fn.eventFormat = function() {
     $('#lw .lwn span.lwn0').each(function() {
       var theDate = ($(this).text().trim().split(' '));
-      $(this).html('<div class="month">' + theDate[1] + '</div><div class="day">' + theDate[2].replace(",","") + '</div>');
+      $(this).html('<div class="month">' + theDate[0] + '</div><div class="day">' + theDate[1].replace(",","") + '</div>');
     });
     $('#lw li.lwe').each(function() {
       var imgSrc = $(this).find('img').attr('src');
