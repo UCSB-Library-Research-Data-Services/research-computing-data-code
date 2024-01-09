@@ -348,6 +348,7 @@
         "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
+            "web/libraries/authorizenet/{$name}": ["authorizenet/authorizenet"],
             "web/libraries/colorbox": ["npm-asset/jquery-colorbox"],
             "web/libraries/fonticonpicker--fonticonpicker": ["npm-asset/fonticonpicker--fonticonpicker"],
             "web/libraries/jquery.cycle": ["malsup/cycle"],
@@ -403,7 +404,8 @@
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "php-http/discovery": true
         }
     }
 }
