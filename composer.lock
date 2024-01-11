@@ -2725,6 +2725,10 @@
             ],
             "authors": [
                 {
+                    "name": "DamienMcKenna",
+                    "homepage": "https://www.drupal.org/user/108450"
+                },
+                {
                     "name": "joelpittet",
                     "homepage": "https://www.drupal.org/user/160302"
                 },
@@ -16900,16 +16904,16 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6"
+                "reference": "a5a001a71b3b7ba99d552fc9490d31e0cc27422b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6",
-                "reference": "57b2cc67fb4416e8484db37a3d8502ac8fb3c0d6",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/a5a001a71b3b7ba99d552fc9490d31e0cc27422b",
+                "reference": "a5a001a71b3b7ba99d552fc9490d31e0cc27422b",
                 "shasum": ""
             },
             "require": {
@@ -16984,7 +16988,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.4"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.5"
             },
             "funding": [
                 {
@@ -17000,7 +17004,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-14T22:47:32+00:00"
+            "time": "2024-01-10T16:56:53+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -23635,16 +23639,16 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.25.1",
+            "version": "v3.25.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "1fb247e72df401c863ed239c1660f981644af5db"
+                "reference": "83ea4c147718666ce6a9b9332ac2aa588c9211eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/1fb247e72df401c863ed239c1660f981644af5db",
-                "reference": "1fb247e72df401c863ed239c1660f981644af5db",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/83ea4c147718666ce6a9b9332ac2aa588c9211eb",
+                "reference": "83ea4c147718666ce6a9b9332ac2aa588c9211eb",
                 "shasum": ""
             },
             "require": {
@@ -23673,9 +23677,9 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.25.1"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.25.2"
             },
-            "time": "2023-11-15T21:36:03+00:00"
+            "time": "2024-01-09T22:12:32+00:00"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -23915,16 +23919,16 @@
         },
         {
             "name": "open-telemetry/api",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/api.git",
-                "reference": "78bf7615fa0504b5b9ac632cc79bb83ffe7ebb90"
+                "reference": "401d04c6afe349afa78250ac862db2f89dbf94f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/78bf7615fa0504b5b9ac632cc79bb83ffe7ebb90",
-                "reference": "78bf7615fa0504b5b9ac632cc79bb83ffe7ebb90",
+                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/401d04c6afe349afa78250ac862db2f89dbf94f6",
+                "reference": "401d04c6afe349afa78250ac862db2f89dbf94f6",
                 "shasum": ""
             },
             "require": {
@@ -23936,7 +23940,7 @@
                 "symfony/polyfill-php82": "^1.26"
             },
             "conflict": {
-                "open-telemetry/sdk": "<=1.0.1"
+                "open-telemetry/sdk": "<=1.0.4"
             },
             "type": "library",
             "extra": {
@@ -23978,20 +23982,20 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2023-12-13T02:03:10+00:00"
+            "time": "2024-01-10T13:04:59+00:00"
         },
         {
             "name": "open-telemetry/context",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/context.git",
-                "reference": "99f3d54fa9f9ff67421774feeef5e5b1f209ea21"
+                "reference": "40a1f8941b7e8578bf3780d61e445bca5e9fbe5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/99f3d54fa9f9ff67421774feeef5e5b1f209ea21",
-                "reference": "99f3d54fa9f9ff67421774feeef5e5b1f209ea21",
+                "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/40a1f8941b7e8578bf3780d61e445bca5e9fbe5a",
+                "reference": "40a1f8941b7e8578bf3780d61e445bca5e9fbe5a",
                 "shasum": ""
             },
             "require": {
@@ -24039,7 +24043,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2023-09-05T03:38:44+00:00"
+            "time": "2024-01-09T00:33:41+00:00"
         },
         {
             "name": "open-telemetry/exporter-otlp",
@@ -24170,16 +24174,16 @@
         },
         {
             "name": "open-telemetry/sdk",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/sdk.git",
-                "reference": "550ea6e9a14bef8b5fc522b88687b57306013fe8"
+                "reference": "57d2a1a2b4a5beb70ffed4642068686146b9d2e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/550ea6e9a14bef8b5fc522b88687b57306013fe8",
-                "reference": "550ea6e9a14bef8b5fc522b88687b57306013fe8",
+                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/57d2a1a2b4a5beb70ffed4642068686146b9d2e5",
+                "reference": "57d2a1a2b4a5beb70ffed4642068686146b9d2e5",
                 "shasum": ""
             },
             "require": {
@@ -24249,7 +24253,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2023-12-28T22:10:34+00:00"
+            "time": "2024-01-10T13:04:59+00:00"
         },
         {
             "name": "open-telemetry/sem-conv",
@@ -24780,16 +24784,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.7.3",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419"
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/fad452781b3d774e3337b0c0b245dd8e5a4455fc",
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc",
                 "shasum": ""
             },
             "require": {
@@ -24832,9 +24836,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.3"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.0"
             },
-            "time": "2023-08-12T11:01:26+00:00"
+            "time": "2024-01-11T11:49:22+00:00"
         },
         {
             "name": "phpspec/prophecy",
