@@ -129,7 +129,7 @@
         "drupal/default_content": "2.0.x-dev@dev",
         "drupal/diff": "^1.1",
         "drupal/dropzonejs": "^2.8",
-        "drupal/ds": "^5.0@alpha",
+        "drupal/ds": "^3.16",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/editor_advanced_link": "^2.1",
         "drupal/embed": "^1.6",
