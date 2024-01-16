@@ -372,14 +372,14 @@
             "drupal/core": "-p2"
         },
         "patches": {
-            "drupal/ds": {
-                "Error using ds_devel": "https://www.drupal.org/files/issues/2023-04-04/3338860-5-d10-compatible_0.patch"
-            },
             "drupal/tac_lite": {
                 "TypeError: count(): Argument #1 ($value) must be of type Countable": "https://www.drupal.org/files/issues/2022-09-05/tac_lite-3307744-5.patch"
             },
             "drupal/default_content": {
                 "Null references in dependencies": "https://www.drupal.org/files/issues/2021-04-19/default-content-check-null-reference-3209506-3.patch"
+            },
+            "drupal/view_mode_page": {
+                "Context exception when trying to create url (Drupal 10 is broken!)": "https://www.drupal.org/files/issues/2023-05-01/3300706-17-context_exception_when_trying_to_create_url_0.patch"
             }
         },
         "enable-patching": true
