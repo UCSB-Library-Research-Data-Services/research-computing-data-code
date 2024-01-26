@@ -264,7 +264,7 @@
         "drupal/media_bulk_upload": "^3.0",
         "drupal/migrate_plus": "^6.0",
         "drupal/migrate_tools": "^6.0",
-        "drupal/nodeaccess": "^2.0@alpha",
+        "drupal/nodeaccess": "2.0.x-dev@dev",
         "drupal/quicklink": "^2.0",
         "drupal/quicktabs": "^3.0@alpha",
         "drupal/search_exclude": "^3.0@beta",
@@ -383,6 +383,9 @@
             },
             "drupal/view_mode_page": {
                 "Context exception when trying to create url (Drupal 10 is broken!)": "https://www.drupal.org/files/issues/2023-05-01/3300706-17-context_exception_when_trying_to_create_url_0.patch"
+            },
+            "drupal/nodeaccess": {
+                "Unpublished content can be viewed by anonymous": "https://www.drupal.org/files/issues/2023-06-22/3169490-13.patch"
             }
         },
         "enable-patching": true
