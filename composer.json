@@ -201,7 +201,7 @@
         "drupal/responsive_tables_filter": "^1.17",
         "drupal/scheduler": "^2.0",
         "drupal/simple_sitemap": "^4.1",
-        "drupal/site_settings": "^1.20",
+        "drupal/site_settings": "1.x-dev@dev",
         "drupal/sitemap": "^2.0@beta",
         "drupal/smart_date": "^4.0",
         "drupal/smtp": "^1.2",

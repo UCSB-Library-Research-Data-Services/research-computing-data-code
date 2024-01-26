@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7bc503c10c241c071523705ba31cae9",
+    "content-hash": "7accb20033e4f65640a3d0e28a106c8e",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -12316,29 +12316,26 @@
         },
         {
             "name": "drupal/site_settings",
-            "version": "1.20.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/site_settings.git",
-                "reference": "8.x-1.20"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/site_settings-8.x-1.20.zip",
-                "reference": "8.x-1.20",
-                "shasum": "b1e3b07437ef0ff7a907b7b6319f16db3942fb1c"
+                "reference": "1bf2cdc17efe2489a00cf4be1d3fef6aa02204c6"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.20",
-                    "datestamp": "1669790573",
+                    "version": "8.x-1.20+13-dev",
+                    "datestamp": "1699427550",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -27606,6 +27603,7 @@
         "drupal/a11y_paragraphs_tabs": 10,
         "drupal/linkit": 5,
         "drupal/rabbit_hole": 10,
+        "drupal/site_settings": 20,
         "drupal/sitemap": 10,
         "drupal/tamper": 15,
         "drupal/inline_entity_form": 5,
