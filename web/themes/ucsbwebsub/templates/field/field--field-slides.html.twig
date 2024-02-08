@@ -101,12 +101,10 @@
             ]
           %}
           <div{{ item_attribute.addClass(item_classes) }}>
-            {# <img style="width:100%"  loading="lazy" class="img-responsive lazyloaded" typeof="foaf:Image" 
-            data-src="{{ file_url(item_image.entity.field_media_image.entity.uri.value) }}"
-            alt="{{ item_image.entity.field_media_image.alt }}"/>  #}
+            <img style="width:100%"  loading="lazy" class="img-responsive" typeof="foaf:Image" src="{{ file_url(item_image.entity.field_media_image.entity.uri.value) }}" alt="{{ item_image.entity.field_media_image.alt }}"/> 
 
 
-            {{ drupal_image(item_image.entity.field_media_image.entity.uri.value, 'wide', {alt: item_image.entity.field_media_image.alt, title: item_image.entity.name.value}, true) }}
+            {# {{ drupal_image(item_image.entity.field_media_image.entity.uri.value, 'wide', {alt: item_image.entity.field_media_image.alt, title: item_image.entity.name.value}, true) }} #}
             
             {% if item.content['#paragraph'].field_body.value %}
               <div class="carousel-item-caption">{{ item.content['#paragraph'].field_body.value|raw }}</div>
