@@ -1,0 +1,19 @@
+ssis_news.default_news_page_form:
+  path: '/admin/config/ssis_news'
+  defaults:
+    _form: '\Drupal\ssis_news\Form\DefaultNewsPageForm'
+    _title: 'DefaultNewsPageForm'
+  requirements:
+    _permission: 'administer site configuration'
+ssis_news.autocomplete.load_pages:
+  path: '/admin/config/ssis_news/autocomplete/load_pages'
+  defaults:
+    _controller: '\Drupal\ssis_news\Controller\PagesAutocompleteController::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'administer site configuration'
+ssis_news.admin_ssis_news_articles:
+  path: 'admin/ssis_news/articles'
+  requirements: 
+    _permission: 'create ssis_news content' 
+  

@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.news_announcement
+    - field.field.node.ssis_news.body
+    - field.field.node.ssis_news.feeds_item
+    - field.field.node.ssis_news.field_ssis_author
+    - field.field.node.ssis_news.field_ssis_categories
+    - field.field.node.ssis_news.field_ssis_featured
+    - field.field.node.ssis_news.field_ssis_guid
+    - field.field.node.ssis_news.field_ssis_hero_image
+    - field.field.node.ssis_news.field_ssis_old_link
+    - field.field.node.ssis_news.field_ssis_source_name
+    - field.field.node.ssis_news.field_ssis_sourcesite
+    - field.field.node.ssis_news.field_ssis_tags
+    - field.field.node.ssis_news.field_ssis_thumbnail
+    - node.type.ssis_news
+  module:
+    - user
+  enforced:
+    module:
+      - ssis_news
+id: node.ssis_news.news_announcement
+targetEntityType: node
+bundle: ssis_news
+mode: news_announcement
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  feeds_item: true
+  field_ssis_author: true
+  field_ssis_categories: true
+  field_ssis_featured: true
+  field_ssis_guid: true
+  field_ssis_hero_image: true
+  field_ssis_old_link: true
+  field_ssis_source_name: true
+  field_ssis_sourcesite: true
+  field_ssis_tags: true
+  field_ssis_thumbnail: true

@@ -1,0 +1,27 @@
+ssis-news-styling:
+  css:
+    theme:
+      css/styles.css: {}
+  js:
+    js/scripts.js: {}
+ssis-featured-article-styling:
+  css:
+    theme:
+      css/featured-article-style.css: {}
+ssis-grid-article-styling:
+  css:
+    theme:
+      css/grid-article-style.css: {}
+ssis-view-filtering-style:
+  css:
+    theme:
+      css/view-filtering-style.css: {}
+admin-styling:
+  version: 1.0
+  css:
+    theme:
+      css/icons.css: {}
+ssis-category-views-style:
+  css:
+    theme:
+      css/category-views-style.css: {}

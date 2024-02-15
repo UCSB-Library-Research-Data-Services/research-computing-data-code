@@ -1,0 +1,115 @@
+/* View Styling START */
+
+.past-articles-block form.views-exposed-form {
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 10px 0;
+}
+
+.past-articles-block form.views-exposed-form select {
+    padding-right: 25px;
+}
+
+.past-articles-block form.views-exposed-form .select-wrapper:after {
+    margin-right: 4px;
+}
+
+.past-articles-block .view-filters {
+    /* margin: 0 -15px; */
+}
+
+.past-articles-block .view-background-sandstone .view-filters {
+    background-color: #C9BF9D;
+}
+
+@media all and (max-width: 767px) {
+
+    .past-articles-block .view-filters {
+        margin: 0 0px;
+    }
+
+    .past-articles-block .view-filters .forum-forms {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .past-articles-block .view-filters .forum-forms .form-actions {
+        float: right;
+    }
+
+}
+
+@media all and (min-width: 768px) {
+
+    .past-articles-block .view-filters .forum-forms {
+        padding-bottom: 0px;
+    }
+
+    .past-articles-block .view-filters input[name="field_issue_volume_value"] {
+        width: 120px;
+    }
+
+}
+
+.past-articles-block .view-filters .forum-forms {
+    display: table !important;
+}
+
+.past-articles-block .view-background-sandstone .view-filters .forum-forms {
+    background-color: #C9BF9D;
+}
+
+.past-articles-block .view-filters button.btn.btn-info {
+    padding: 17px 35px;
+    background-color: #003660;
+}
+
+
+
+.past-articles-block .view-content,
+.past-articles-block .view-empty {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1230px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.past-articles-block .view-content .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.past-articles-block .view-content .row .authors-name {
+    padding-top: 15px;
+}
+
+
+.past-articles-block .view-filters .forum-forms .form-item,
+.past-articles-block .view-filters .forum-forms .form-actions {
+    margin: 8px 10px 8px 0px;
+}
+
+@media (max-width: 767px) {
+    .past-articles-block .view-filters .forum-forms form label {
+            display: block;
+        }
+}
+
+@media (min-width: 768px) {
+    .past-articles-block .form-inline .form-group {
+        padding: 0 15px;
+    }
+}
+
+@media all and (min-width: 992px) {
+
+    .past-articles-block .view-content {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+}

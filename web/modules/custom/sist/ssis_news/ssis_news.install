@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Module install and update procedures.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\pathauto\Entity\PathautoPattern;
+use Drupal\user\Entity\Role;
+use Drupal\user\RoleInterface;
+
+
+
+/**
+ * Implements hook_install().
+ */
+function ssis_news_install()
+{
+
+  //Add the News content type to the workflow
+  /** @var \Drupal\workflows\WorkflowInterface $workflow */
+  $storage_handler = \Drupal::entityTypeManager()->getStorage("workflow");
+  if (!empty($storage_handler)) {
+    $workflow = $storage_handler->loadByProperties(["id" => "editorial"])["editorial"];
+    $config = $workflow->getTypePlugin()->getConfiguration();
+    $config["entity_types"]["node"][] = "ssis_news";
+    $workflow->getTypePlugin()->setConfiguration($config);
+    $workflow->save();
+
+  }
+}
+
+
+
+ 
+/**
+ * Implements hook_uninstall().
+ */
+function ssis_news_uninstall() {
+    
+    // Delete all events nodes.
+    $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+    $nodes = $storage_handler->loadByProperties(['type' => 'ssis_news']);
+    $storage_handler->delete($nodes);
+
+    // Delete the module configuration
+    Drupal::configFactory()->getEditable('ssis_news.settings')->delete();
+
+    // Clear book data out of the cache.
+    \Drupal::cache('data')->deleteAll();
+  }
+  

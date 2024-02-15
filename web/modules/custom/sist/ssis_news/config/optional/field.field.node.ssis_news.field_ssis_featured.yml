@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ssis_featured
+    - node.type.ssis_news
+  enforced:
+    module:
+      - ssis_news
+id: node.ssis_news.field_ssis_featured
+field_name: field_ssis_featured
+entity_type: node
+bundle: ssis_news
+label: Featured
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

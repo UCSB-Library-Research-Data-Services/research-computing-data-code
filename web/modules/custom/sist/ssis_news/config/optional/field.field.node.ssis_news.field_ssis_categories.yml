@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ssis_categories
+    - node.type.ssis_news
+    - taxonomy.vocabulary.ssis_categories_vocabulary
+  enforced:
+    module:
+      - ssis_news
+id: node.ssis_news.field_ssis_categories
+field_name: field_ssis_categories
+entity_type: node
+bundle: ssis_news
+label: Categories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ssis_categories_vocabulary: ssis_categories_vocabulary
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

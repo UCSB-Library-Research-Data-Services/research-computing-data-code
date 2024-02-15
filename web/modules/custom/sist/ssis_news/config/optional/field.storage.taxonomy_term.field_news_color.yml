@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - color_field
+    - taxonomy
+  enforced:
+    module:
+      - ssis_news
+id: taxonomy_term.field_news_color
+field_name: field_news_color
+entity_type: taxonomy_term
+type: color_field_type
+settings:
+  format: hexhex
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

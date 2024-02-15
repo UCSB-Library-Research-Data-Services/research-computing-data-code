@@ -1,0 +1,91 @@
+@media all and (max-width: 768px) {
+
+    .container>.row {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.container.ssis-news {
+    padding-bottom: 40px;
+} 
+
+.ssis-news .category {
+    color: #3D4952;
+}
+
+.ssis-news .summary {
+    color: #666;
+    margin: 15px 0;
+}
+
+.ssis-news .content {
+    margin: 30px 0;
+}
+
+.ssis-news figure.img-float-right,
+.ssis-news .align-right img,
+.ssis-news img.float-right {
+    float:right;
+    margin: 20px 0 20px 20px !important;
+}
+
+.ssis-news figure.img-float-left,
+.ssis-news .align-left img,
+.ssis-news img.float-left {
+    float:left;
+    margin: 20px 20px 20px 0 !important;
+}
+
+.ssis-news .tags {
+    margin: 20px 0;
+}
+
+
+.ssis-news > a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.ssis-news .teaser-summary {
+    padding: 0 20px;
+}
+
+.ssis-news .teaser-summary h2 {
+    margin-top: 0px;
+}
+
+.ssis-news .topic {
+    padding: 20px;
+    /* font-family: avenir-roman, sans-serif; */
+    font-size: 14px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    /* text-transform: uppercase; */
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.ssis-news .topic .topic-caption {
+    display: inline-block;
+    padding: 3px 10px;
+    overflow: hidden;
+    line-height: initial;
+}
+
+.ssis-news p.read-more-lnk {
+    float:right;
+}
+
+.ssis-news .article-thumbnail-holder{
+    aspect-ratio: 3/2;
+    min-width:250px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+

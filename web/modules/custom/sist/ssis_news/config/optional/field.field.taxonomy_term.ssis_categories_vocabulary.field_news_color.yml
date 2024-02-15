@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_news_color
+    - taxonomy.vocabulary.ssis_categories_vocabulary
+  module:
+    - color_field
+  enforced:
+    module:
+      - ssis_news
+id: taxonomy_term.ssis_categories_vocabulary.field_news_color
+field_name: field_news_color
+entity_type: taxonomy_term
+bundle: ssis_categories_vocabulary
+label: Color
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    color: '#003660'
+    opacity: !!float 1
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

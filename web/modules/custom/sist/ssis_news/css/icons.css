@@ -1,0 +1,43 @@
+/**
+ * @file
+ * Styling for Events & Calendars toolbar icons.
+ */
+
+/* Bar formatting, not implemented, but we may want this in the future. */
+.toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:before {
+    background-image: url("../icons/bebebe/news.svg");
+}
+
+.no-svg .toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:before {
+    background-image: url("../icons/bebebe/news.png");
+}
+
+.toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:active:before,
+.toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news.is-active:before {
+    background-image: url("../icons/ffffff/news.svg");
+}
+
+.no-svg .toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:active:before,
+.no-svg .toolbar-bar .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news.is-active:before {
+    background-image: url("../icons/ffffff/news.png");
+}
+
+
+/* Tray formatting, shown in screenshots. */
+.toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:before {
+    background-image: url("../icons/787878/news.svg");
+}
+
+.no-svg .toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:before {
+    background-image: url("../icons/787878/news.png");
+}
+
+.toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:active:before,
+.toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news.is-active:before {
+    background-image: url("../icons/000000/news.svg");
+}
+
+.no-svg .toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news:active:before,
+.no-svg .toolbar-tray .toolbar-icon.toolbar-icon-ssis-news-admin-ssis-news.is-active:before {
+    background-image: url("../icons/000000/news.png");
+}

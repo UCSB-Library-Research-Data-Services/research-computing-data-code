@@ -1,0 +1,12 @@
+ssis_news.admin:
+  title: 'SSIS News settings'
+  description: 'Specify which view_mode (template) to use for rendering the full content of the news article.'
+  parent: system.admin_config_content
+  route_name: ssis_news.default_news_page_form
+  weight: 100
+ssis_news.admin_ssis_news:
+  title: 'News'
+  description: 'Manage news articles'
+  parent: system.admin
+  route_name: ssis_news.admin_ssis_news_articles
+  weight: -9

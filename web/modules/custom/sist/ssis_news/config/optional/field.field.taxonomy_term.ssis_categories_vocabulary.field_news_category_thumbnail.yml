@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_news_category_thumbnail
+    - media.type.image
+    - taxonomy.vocabulary.ssis_categories_vocabulary
+  enforced:
+    module:
+      - ssis_news
+id: taxonomy_term.ssis_categories_vocabulary.field_news_category_thumbnail
+field_name: field_news_category_thumbnail
+entity_type: taxonomy_term
+bundle: ssis_categories_vocabulary
+label: Thumbnail
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

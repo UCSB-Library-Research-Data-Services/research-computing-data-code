@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_list_item
+label: 'News List Item'
+targetEntityType: node
+cache: true

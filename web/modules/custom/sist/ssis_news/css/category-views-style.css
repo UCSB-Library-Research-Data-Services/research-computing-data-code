@@ -1,0 +1,19 @@
+.ssis-news-category-view-buttons {
+    padding-bottom:15px;
+}
+
+.ssis-news-category-view-buttons .view-content ul {
+    margin: 0 auto !important;
+    /* display: flex !important; */
+    justify-content: center ;
+    list-style-type: none;
+}
+
+h2 {
+    color:blue;
+}
+
+.ssis-news-category-view-buttons .view-content ul li .btn {
+    font-size: 1.3rem;
+    padding: 14px 40px;
+}

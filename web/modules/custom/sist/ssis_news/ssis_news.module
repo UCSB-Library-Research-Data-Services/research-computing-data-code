@@ -1,0 +1,374 @@
+<?php
+
+/**
+ * @file
+ * Contains ssis_news.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\views\query;
+use Drupal\Core\Database\Query\Condition;
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function ssis_news_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ssis_news module.
+    case 'help.page.ssis_news':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module that installs News content type') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+
+/*
+* Implements hook_toolbar_alter()
+*/
+function ssis_news_toolbar_alter(&$items)
+{
+  $items['administration']['#attached']['library'][] = 'ssis_news/admin-styling';
+}
+
+/**
+ * Implements hook_entity_form_display_alter().
+ */
+function ssis_news_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context)
+{
+  // use our custom form display for ssis_news
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'ssis_news') {
+
+    // Get the default_news_page_view_mode setting from the configuration 
+    $view_mode = \Drupal::config('ssis_news.settings')->get('default_news_form_display_mode');
+
+    if ($view_mode != null) {
+
+      /** @var \Drupal\Core\Entity\EntityDisplayRepository $entity_display_repo */
+      $entity_display_repo = \Drupal::service('entity_display.repository');
+      $form_display = $entity_display_repo->getFormDisplay($context['entity_type'], $context['bundle'], $view_mode) ?: $form_display;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ssis_news_theme($existing, $type, $theme, $path) {
+
+  //From the configuration get the default view mode
+  $view_mode = \Drupal::config('ssis_news.settings')->get('default_news_page_view_mode');
+  $template = 'node--ssis-news--'. $view_mode;
+
+  return [
+    'node__ssis_news__full' => [
+      'template' => $template,
+      'base hook' => 'node'
+    ],
+    'node__ssis_news__ssis_featured' => [
+      'template' => 'node--ssis-news--ssis_featured',
+      'base hook' => 'node'
+    ],
+    'node__ssis_news__teaser' => [
+      'template' => 'node--ssis-news--teaser',
+      'base hook' => 'node'
+    ],
+    'node__ssis_news__grid' => [
+      'template' => 'node--ssis-news--grid',
+      'base hook' => 'node'
+    ],
+    'node__ssis_news__news_announcement' => [
+      'template' => 'node--ssis-news--news_announcement',
+      'base hook' => 'node'
+    ],
+    'node__ssis_news__news_list_item' => [
+      'template' => 'node--ssis-news--news-list-item',
+      'base hook' => 'node'
+    ]
+  ];
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function ssis_news_preprocess(&$variables, $hook) {
+  $module_relative_url = \Drupal::service('extension.list.module')->getPath('ssis_news') . '/images/ucsb-logo.png';
+  $module_absolute_url = \Drupal::service('file_url_generator')->generateAbsoluteString($module_relative_url);
+  $variables['img_path'] = $module_absolute_url;
+}
+
+/**
+ * Implements template_preprocess_node()
+ */
+function ssis_news_preprocess_node(&$variables, $hook)
+{
+  $node = $variables['node'];
+  $default_news_page_view_mode = \Drupal::config('ssis_news.settings')->get('default_news_page_view_mode');
+
+  if ($node->bundle() == 'ssis_news' && $variables['view_mode'] == 'full' && $variables['view_mode'] != $default_news_page_view_mode) {
+    $variables['hidetitle'] = true;
+  }
+
+
+  if ($node->bundle() == 'ssis_news') {
+    $default_parent_page_url = \Drupal::config('ssis_news.settings')->get('default_parent_page');
+    $variables['ssis_news_url'] = $default_parent_page_url;
+  }
+
+  if($node->bundle() == 'ssis_news' && \Drupal::service('router.admin_context')->isAdminRoute()) {
+    $variables['is_admin_route'] = true;
+  }
+}
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ssis_news_views_pre_render(ViewExecutable $view)
+{
+  if (isset($view) && ($view->storage->id() == 'ssis_news_views') && (($view->current_display == 'block_ssis_news_articles_3_col') || ($view->current_display == 'block_ssis_news_articles_4_col') || ($view->current_display == 'block_ssis_news_recent_3_col') || ($view->current_display == 'block_ssis_news_recent_4_col'))) {
+    $view->element['#attached']['library'][] = 'ssis_news/ssis-view-filtering-style';
+  }
+
+
+  if (isset($view) && ($view->storage->id() == 'ssis_news_taxonomy_pages') && ($view->current_display == 'page_ssis_news_category')) {
+    $view->element['#attached']['library'][] = 'ssis_news/ssis-view-filtering-style';
+  } 
+  
+  if (isset($view) && ($view->storage->id() == 'ssis_news_category_view') && ($view->current_display == 'block_ssis_news_category_buttons')) {
+    $view->element['#attached']['library'][] = 'ssis_news/ssis-category-views-style';
+  }
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ssis_news_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if (isset($form['#id']) && (($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-3-col') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-4-col') || ($form['#id'] == 'views-exposed-form-ssis-news-articles-view-page-ssis-news-admin') || ($form['#id'] == 'views-exposed-form-ssis-news-taxonomy-pages-page-ssis-news-category'))) {
+
+    $options = &drupal_static(__FUNCTION__);
+    if (is_null($options)) {
+
+      $cid = 'ssis_news:bulletin:year';
+      $data = \Drupal::cache()->get($cid);
+
+      if (!$data) {
+        $options = [];
+        $options['all'] = new TranslatableMarkup('- All -');
+
+        //Manually filter out the oldest article
+        $database = \Drupal::database();
+        $query_str = "SELECT nid FROM node_field_data ";
+        $query_str .= "WHERE type = 'ssis_news' ";
+        $query_str .= "ORDER BY created ASC ";
+        $query_str .= "LIMIT 1 ";
+        $db_query = $database->query($query_str);
+        $result = $db_query->fetchAll();
+
+        if ($result) {
+
+          $first_id = reset($result)->nid;
+          $first_artcle = Node::load($first_id);
+          $date = $first_artcle->getCreatedTime();
+          $first_date = DrupalDateTime::createFromTimestamp($date)->format('Y');
+          $current_date = DrupalDateTime::createFromTimestamp(time())->format('Y');
+
+          $years = range($first_date,$current_date);
+          rsort($years);
+
+          foreach ($years as $year) {
+              if (!isset($options[$year])) {
+                $options[$year] = $year;
+              }
+          }
+        }
+
+        $cache_tags = ['node:bulletin:year'];
+        \Drupal::cache()->set($cid, $options, CacheBackendInterface::CACHE_PERMANENT, $cache_tags);
+      } else {
+        $options = $data->data;
+      }
+    }
+
+    $field_date_value_get = \Drupal::request()->query->get('year');
+
+    $form['year'] = [
+      '#title' => new TranslatableMarkup('Year'),
+      '#type' => 'select',
+      '#options' => $options,
+      '#size' => NULL,
+      '#default_value' => $field_date_value_get,
+      '#weight' => 100,
+    ];
+
+    if(isset($form['items_per_page'])){
+      $form['items_per_page']['#weight'] = 101;
+    }
+    $form['actions']['#weight'] = 102;
+
+
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function ssis_news_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
+{
+
+  //Check if this is SSIS News View
+  if ($view->id() == 'ssis_news_views' || $view->id() == 'ssis_news_articles_view' || $view->id() == 'ssis_news_taxonomy_pages') {
+
+    // Check if there is year parameter in the request
+    $filter_year = \Drupal::request()->query->get('year');
+    if ($filter_year != null && $filter_year != 'all') {
+
+      // Compose the first and last dates (integer format)
+      $first_date = strtotime(date($filter_year . '-01-01'));
+      $last_date = strtotime(date($filter_year . '-12-31'));
+
+      // Add the new condition based on the dates
+      $query->addWhere([], 'node_field_data.created', [$first_date, $last_date], 'BETWEEN');
+    }
+
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function ssis_news_taxonomy_term_update(EntityInterface $entity) {
+  $bundle = $entity->bundle();
+  if ($bundle == 'ssis_categories_vocabulary') {
+
+    // Get the news articles for the category 
+    $tid = $entity->id();
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['field_ssis_categories' => $tid]);
+
+    if(count($nodes)) {
+      // Invalidate their cache tags
+      foreach($nodes as $node) {
+        Cache::invalidateTags(array('node:' . $node->id()));
+      } 
+    } 
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function ssis_news_node_presave(EntityInterface $entity)
+{
+  $bundle = $entity->bundle();
+  if ($bundle == 'ssis_news') {
+    $cid = 'ssis_news:bulletin:year';
+    $data = \Drupal::cache()->get($cid);
+    if ($data) {
+      $options = $data->data;
+      $year = DrupalDateTime::createFromTimestamp(time())->format('Y');
+      if (!isset($options[$year])) {
+        Cache::invalidateTags(['node:bulletin:year']);
+      }
+    }
+
+    // Get the moderation states
+    $moderation_state = $entity->get('moderation_state')->getString();
+    $moderation_state_original = '';
+    $revisionIds = \Drupal::entityTypeManager()->getStorage('node')->revisionIds($entity);
+    if (count($revisionIds) > 0) {
+        $lastRevisionId = end($revisionIds);
+        $lastRevisionNode = \Drupal::entityTypeManager()->getStorage('node')->loadRevision($lastRevisionId);
+        $moderation_state_original = $lastRevisionNode->get('moderation_state')->getString();
+    }
+
+    // If the article is getting published update the created time so it gets sorted accordingly
+    If(($moderation_state == 'published') && ($moderation_state != $moderation_state_original)){
+      $entity->setCreatedTime(time());
+    }
+  }
+}
+
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ *
+ *
+ * @param \Drupal\Core\Breadcrumb\Breadcrumb $breadcrumb
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ * @param array $context
+ */
+function ssis_news_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+
+  
+  if ($breadcrumb) {
+    $route_name = $route_match->getRouteName();
+
+    // attach dashboard to breadcrumb for student letters
+    if ($route_name == 'entity.node.canonical') {
+      $node = \Drupal::request()->get('node');
+      if($node && $node->bundle() == 'ssis_news'){
+
+        //Get the taxonomy term from the url path
+        $term = null;
+        $currentUri = \Drupal::request()->getRequestUri();
+        $currentUriarray = explode("/", $currentUri);
+        array_pop($currentUriarray);
+        $taxonomy_url = implode("/", $currentUriarray);
+        
+        $taxonomy_node_path = \Drupal::service('path_alias.manager')->getPathByAlias($taxonomy_url);
+        // If the taxonomy path exists 
+        if($taxonomy_node_path){
+          if (preg_match('/\/taxonomy\/term\/(\d+)/', $taxonomy_node_path, $matches)) {
+            $term = reset(\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['tid' => $matches[1]]));
+          }
+        }
+
+        // If a taxonomy term exists proceed by adding the breadcrumb for it 
+        if($term !=null) {
+
+          $links = $breadcrumb->getLinks();
+          if (!empty($links)) {
+            //Take out the Article part of the route
+            $node_link = array_pop($links);
+      
+            //Create the Year breadcrumb link
+            $news_category_link = Link::fromTextAndUrl($term->name->value, \Drupal\Core\Url::fromUserInput($taxonomy_url));
+            
+            array_push($links, $news_category_link, $node_link);
+
+            //Get the cachable dependency 
+            $cacheability = \Drupal\Core\Cache\CacheableMetadata::createFromObject($breadcrumb);
+            
+            //Recreate the breadcrumbs
+            $breadcrumb = new Breadcrumb();
+            $breadcrumb->setLinks($links);
+            $breadcrumb->addCacheableDependency($cacheability);
+            $breadcrumb->addCacheContexts(['route']);
+          }
+        }
+
+      }
+
+    }
+
+  }
+}
