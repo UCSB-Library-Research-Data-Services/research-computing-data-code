@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.ssis_categories_vocabulary.field_news_category_thumbnail
+    - field.field.taxonomy_term.ssis_categories_vocabulary.field_news_color
+    - taxonomy.vocabulary.ssis_categories_vocabulary
+  module:
+    - text
+  enforced:
+    module:
+      - ssis_news
+id: taxonomy_term.ssis_categories_vocabulary.default
+targetEntityType: taxonomy_term
+bundle: ssis_categories_vocabulary
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_news_category_thumbnail: true
+  field_news_color: true

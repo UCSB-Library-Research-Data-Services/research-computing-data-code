@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.ssis_categories_vocabulary.field_news_category_thumbnail
+    - field.field.taxonomy_term.ssis_categories_vocabulary.field_news_color
+    - taxonomy.vocabulary.ssis_categories_vocabulary
+  module:
+    - color_field
+    - media_library
+    - path
+    - text
+  enforced:
+    module:
+      - ssis_news
+id: taxonomy_term.ssis_categories_vocabulary.default
+targetEntityType: taxonomy_term
+bundle: ssis_categories_vocabulary
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_news_category_thumbnail:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_news_color:
+    type: color_field_widget_box
+    weight: 1
+    region: content
+    settings:
+      default_colors: '#eef0f2,#dce1e5,#9cbebe,#dae6e6,#dcd6cc,#f1eeea,#c9bf9d,#edeadf,#febc11,#003660,#6d7d33,#09847a,#047c91,#ef5645,#c43424,#000000'
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  tvi:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

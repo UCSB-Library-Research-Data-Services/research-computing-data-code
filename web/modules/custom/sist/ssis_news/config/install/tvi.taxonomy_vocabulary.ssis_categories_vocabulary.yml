@@ -1,0 +1,5 @@
+enable_override: true
+view: ssis_news_taxonomy_pages
+view_display: page_ssis_news_category
+inherit_settings: true
+pass_arguments: true

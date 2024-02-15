@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.feeds_item
+    - node.type.ssis_news
+  module:
+    - feeds
+  enforced:
+    module:
+      - ssis_news
+id: node.ssis_news.feeds_item
+field_name: feeds_item
+entity_type: node
+bundle: ssis_news
+label: 'Feeds item'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings: {  }
+field_type: feeds_item

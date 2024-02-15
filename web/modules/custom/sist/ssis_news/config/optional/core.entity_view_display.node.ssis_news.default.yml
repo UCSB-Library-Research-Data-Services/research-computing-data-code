@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ssis_news.body
+    - field.field.node.ssis_news.field_ssis_author
+    - field.field.node.ssis_news.field_ssis_categories
+    - field.field.node.ssis_news.field_ssis_featured
+    - field.field.node.ssis_news.field_ssis_guid
+    - field.field.node.ssis_news.field_ssis_hero_image
+    - field.field.node.ssis_news.field_ssis_old_link
+    - field.field.node.ssis_news.field_ssis_source_name
+    - field.field.node.ssis_news.field_ssis_sourcesite
+    - field.field.node.ssis_news.field_ssis_tags
+    - field.field.node.ssis_news.field_ssis_thumbnail
+    - node.type.ssis_news
+  module:
+    - text
+    - user
+  enforced:
+    module:
+      - ssis_news
+id: node.ssis_news.default
+targetEntityType: node
+bundle: ssis_news
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_ssis_author: true
+  field_ssis_categories: true
+  field_ssis_featured: true
+  field_ssis_guid: true
+  field_ssis_hero_image: true
+  field_ssis_old_link: true
+  field_ssis_source_name: true
+  field_ssis_sourcesite: true
+  field_ssis_tags: true
+  field_ssis_thumbnail: true

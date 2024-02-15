@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - ssis_news
+id: ssis_news_pattern
+label: 'SSIS News Pattern'
+type: 'canonical_entities:node'
+pattern: '[ssis_news:default-parent-page]/[node:field_ssis_categories]/[node:created:html_year]/[node:created:html_month]/[node:title]'
+selection_criteria:
+  fde2178f-ce28-4750-994c-fb6111631f07:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: fde2178f-ce28-4750-994c-fb6111631f07
+    context_mapping:
+      node: node
+    bundles:
+      ssis_news: ssis_news
+selection_logic: and
+weight: -5
+relationships: {  }
