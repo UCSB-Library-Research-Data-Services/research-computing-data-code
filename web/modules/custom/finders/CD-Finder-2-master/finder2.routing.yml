@@ -1,0 +1,40 @@
+finder2.content:
+  path: '/data-storage-finder'
+  defaults:
+    _controller: '\Drupal\finder2\Controller\FinderController::content'
+    _title: 'Data Storage Finder'
+  requirements:
+    _permission: 'access content'
+finder2.facettree:
+  path: '/rest/facet2tree'
+  defaults:
+    _controller: '\Drupal\finder2\Controller\FinderController::facettree'
+  requirements:
+    _permission: 'access content'
+finder2.servicelist:
+  path: '/rest/servicelist2'
+  defaults:
+    _controller: '\Drupal\finder2\Controller\FinderController::servicelist'
+  requirements:
+    _permission: 'access content'
+finder2.sendemail:
+  path: '/rest/sendemail'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\finder2\Controller\FinderController::send_email'
+  requirements:
+    _permission: 'access content'
+finder2.configuration:
+  path: '/rest/finder2_settings'
+  defaults:
+    _controller: '\Drupal\finder2\Controller\FinderController::configuration'
+  requirements:
+    _permission: 'access content'
+finder2.settings:
+#  path: '/admin/structure/finder/settings'
+  path: '/admin/config/content/data-storage-finder'
+  defaults:
+    _form: '\Drupal\finder2\Form\finderSettingsForm'
+    _title: 'Finder Configuration 2'
+  requirements:
+    _permission: 'administer site configuration'
