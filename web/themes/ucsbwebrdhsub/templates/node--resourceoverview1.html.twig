@@ -1,0 +1,39 @@
+{# some copy and paste from node--community.html.twig in the begining #}
+
+{% set background_color = node.field_background_color.color ? node.field_background_color.color : ''%}
+{% set text_color = node.field_text_color.color %}
+{% set style = 'color: #'~ text_color ~';' %} 
+
+{# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    white_text ? 'white-text',
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    'resource' 
+  ]
+%}
+
+{% if view_mode == "default" or view_mode == "full" %}
+    <div{{ attributes.addClass('resource-overview', classes) }}>
+        <div class="resource-overview-card">
+            <div class="resource-overview-image">
+                <a href={{ content.field_desination_url.0['#url'] }}>
+                    {{ content.field_resourceoverview1_image.0 }}
+                </a>
+            </div>
+            <div class="resource-overview-content">
+                <h3>{{ node.title.value }}</h3>
+                <div class="resource-overview-summary">
+                    {{ content.field_resourceoverview1_summary.0 }}
+                </div>
+                <a href={{ content.field_desination_url.0['#url'] }}>{{ 'Visit the Series' }}</a>
+            </div>
+        </div>
+    </div>
+{% endif %}

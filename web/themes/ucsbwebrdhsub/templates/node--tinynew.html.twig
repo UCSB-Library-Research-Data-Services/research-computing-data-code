@@ -1,0 +1,51 @@
+{# some copy and paste from node--community.html.twig in the begining #}
+
+{% set background_color = node.field_background_color.color ? node.field_background_color.color : ''%}
+{% set text_color = node.field_text_color.color %}
+{% set style = 'color: #'~ text_color ~';' %} 
+
+{# How to use PHP For statement within Twig: #}
+{% if content.field_partner_label[0] %}
+  {% set labelList = content.field_partner_label[0]['#title'] %}
+  {% for item in content.field_partner_label %}
+    {% if loop.index0 > 0 %}
+      {% set labelList = labelList ~ ', ' ~ item['#title'] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+{# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    white_text ? 'white-text',
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    'partner-container'
+    
+  ]
+%}
+
+{% if view_mode =="default" or view_mode=="full" %}
+    <div class="news-card">
+        <div class="news-card-header" id="heading{{ node.id }}">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ node.id }}" aria-expanded="false" aria-controls="collapse{{ node.id }}">
+                    {{ node.field_news_name.value }}
+                </button>
+                <span class="expand-icon" data-toggle="collapse" data-target="#collapse{{ node.id }}">{{ drupal_image('public://2023-08/expand.png', 'thumbnail', {alt: 'Expand Icon'}) }}</span>
+            </h2>
+        </div>
+        <div id="collapse{{ node.id }}" class="collapse" aria-labelledby="heading{{ node.id }}" data-parent="#newsAccordion">
+            <div class="news-card-body">
+                {{ node.field_news_description.value | raw }}
+            </div>
+        </div>
+    </div>
+{% endif %}
+

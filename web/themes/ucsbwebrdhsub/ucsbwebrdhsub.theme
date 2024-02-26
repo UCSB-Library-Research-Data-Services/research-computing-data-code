@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Preprocess variables for html templates.
+ * @param $variables
+ */
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+
+function ucsbwebrdhsub_preprocess_page(&$variables){
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($route_name === 'entity.node.canonical' && $node->getTitle() === 'Data Literacy Series') {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/data-literacy-series';
+  }
+
+  // Check if the current path starts with "/data-literacy-series/".
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/data-literacy-series/') === 0) {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/data-literacy-series';
+  }
+
+  if ($route_name === 'entity.node.canonical' && $node->getTitle() === 'Our Members') {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/our-members';
+  }
+
+  // Check if the current path starts with "/our-members/".
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/our-members/') === 0) {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/our-members';
+  }
+
+
+  if ($route_name === 'entity.node.canonical' && $node->getTitle() === 'Events') {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/calendar';
+  }
+
+}
+
+function ucsbwebrdhsub_preprocess_node(&$variables) {
+  if ($variables['node']->getType() == 'partner') {
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'partner')
+      ->condition('status', 1)
+      ->accessCheck(TRUE);
+    $nids = $query->execute();
+    $variables['partners'] = \Drupal\node\Entity\Node::loadMultiple($nids);
+  }
+}
+
+function mytheme_preprocess_node(&$variables) {
+  if ($variables['node']->getType() == 'resource') {
+    $alias = $variables['node']->path->alias;
+    try {
+      $url = \Drupal\Core\Url::fromUri('internal:' . $alias);
+      $variables['url'] = $url->toString();
+    }
+    catch (\Exception $e) {
+      // Log the exception to watchdog.
+      \Drupal::logger('mytheme')->error($e->getMessage());
+      // Assign a default value to url for debugging.
+      $variables['url'] = '/debug-url';
+    }
+  }
+}

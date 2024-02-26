@@ -1,0 +1,60 @@
+{# some copy and paste from node--community.html.twig in the begining #}
+
+{% set background_color = node.field_background_color.color ? node.field_background_color.color : ''%}
+{% set text_color = node.field_text_color.color %}
+{% set style = 'color: #'~ text_color ~';' %} 
+
+{# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    white_text ? 'white-text',
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    'resource' 
+  ]
+%}
+
+{# {% if view_mode == "default" or view_mode == "full" %}
+    <div{{ attributes.addClass('resource-overview2') }}>
+        <div class="resource-overview2-card">
+            <h3>{{ node.title.value }}</h3>
+            <a href="{{ content.field_mainpageurl.0['#url'] }}">{{ 'Visit Main Page' }}</a>
+
+            <div class="resource-overview2-sub-section">
+                {% for i in 1..5 %}
+                    <div class="resource-overview2-sub">
+                        <h4>{{ content['field_subtitle' ~ i].0 }}</h4>
+                        <a href="{{ content['field_suburl' ~ i].0['#url'] }}">{{ 'More Details' }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %} #}
+
+{% if view_mode == "default" or view_mode == "full" %}
+    <div{{ attributes.addClass('resource-overview2') }}>
+        <div class="resource-overview2-card">
+            <h3>{{ node.title.value }}</h3>
+            <a href="{{ content.field_mainpageurl.0['#url'] }}" class="view-main-page">View Main Page</a>
+
+            <div class="resource-overview2-sub-section">
+                {% for i in 1..5 %}
+                    {% if content['field_subtitle' ~ i].0 %}
+                        <div class="resource-overview2-sub">
+                            <h4>{{ content['field_subtitle' ~ i].0 }}</h4>
+                            {% if content['field_suburl' ~ i].0 %}
+                                <a href="{{ content['field_suburl' ~ i].0['#url'] }}">{{ 'More Details' }}</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

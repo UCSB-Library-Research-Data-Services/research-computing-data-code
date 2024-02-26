@@ -1,0 +1,24 @@
+name: UCSB Web RDH Sub Theme
+type: theme
+base theme: ucsbweb
+description: Custom Sub Theme for UCSB Research Data Hub Website.
+package: Other
+core_version_requirement: ^9 || ^10
+regions:
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  navigation_quicklinks: 'Navigation (Quick links)'
+  secondary_navigation: 'Secondary navigation'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  forum: 'Forum Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+libraries:
+  - 'ucsbwebrdhsub/ucsbwebrdhsub-styling'
+  - 'ucsbwebrdhsub/bootstrap'

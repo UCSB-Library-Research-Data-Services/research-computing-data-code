@@ -1,0 +1,28 @@
+ucsbwebrdhsub-styling:
+  css:
+    theme:
+      css/style.css: {}
+
+data-literacy-series:
+  version: 9
+  js:
+    js/data-literacy-series.js: {}
+
+calendar:
+  version: 9
+  js:
+    js/calendar.js: {}
+  
+  dependencies:
+    - core/jquery
+
+
+our-members:
+  version: 9
+  js:
+    js/our-members.js: {}
+
+bootstrap:
+  js:
+    https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js: { type: external, minified: true }
+
