@@ -1,0 +1,12 @@
+name: Finder
+description: Creates a page showing the Resource Finder.
+package: Custom
+
+type: module
+core_version_requirement: ^9 || ^10
+dependencies:
+  - paragraphs:paragraphs
+libraries:
+  - finder/finder
+configure: finder.settings
+
