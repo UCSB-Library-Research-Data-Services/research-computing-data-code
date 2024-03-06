@@ -326,7 +326,10 @@
         "drupal/upgrade_status": "^4.0",
         "drupal/image_url_formatter": "^1.1",
         "spatie/pdf-to-image": "^2.2",
-        "drupal/media_pdf_thumbnail": "^6.1@beta"
+        "drupal/media_pdf_thumbnail": "^6.1@beta",
+        "drupal/blazy": "^2.22",
+        "drupal/big_pipe_sessionless": "^2.2",
+        "drupal/colorbox_inline": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
