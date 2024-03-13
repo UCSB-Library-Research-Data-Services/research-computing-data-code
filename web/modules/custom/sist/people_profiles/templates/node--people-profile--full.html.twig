@@ -47,7 +47,7 @@
       {% endif %}
       
       {% if node.field_cv.value == true %}
-      <p><a href="{{ file_url(node.field_cv.entity.field_media_file.entity.uri.value) }}" title = "CV">See {{ node.title.value }}'s CV</a></p>
+      <p><a href="{{ node.field_cv|file_url }}" title = "CV">See {{ node.title.value }}'s CV</a></p>
       {% endif %}
     </div>
   </div>
