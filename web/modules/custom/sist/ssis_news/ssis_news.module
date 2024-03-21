@@ -97,9 +97,17 @@ function ssis_news_theme($existing, $type, $theme, $path) {
       'template' => 'node--ssis-news--news_announcement',
       'base hook' => 'node'
     ],
+    'node__ssis_news__news_announcement_w_date_in_box' => [
+      'template' => 'node--ssis-news--news-announcement-w-date-in-box',
+      'base hook' => 'node'
+    ],
     'node__ssis_news__news_list_item' => [
       'template' => 'node--ssis-news--news-list-item',
       'base hook' => 'node'
+    ],
+    'views_view__ssis_news_views__block_ssis_news_last_4_articles' => [
+      'template' => 'views-view--ssis-news-views--block-ssis-news-last-4-articles',
+      'base hook' => 'views-view'
     ]
   ];
 }
@@ -147,7 +155,7 @@ function ssis_news_views_pre_render(ViewExecutable $view)
   }
 
 
-  if (isset($view) && ($view->storage->id() == 'ssis_news_taxonomy_pages') && ($view->current_display == 'page_ssis_news_category')) {
+  if (isset($view) && ($view->storage->id() == 'ssis_news_taxonomy_pages') && (($view->current_display == 'page_ssis_news_category') || ($view->current_display == 'page_ssis_news_category_announcements'))) {
     $view->element['#attached']['library'][] = 'ssis_news/ssis-view-filtering-style';
   } 
   
@@ -162,7 +170,7 @@ function ssis_news_views_pre_render(ViewExecutable $view)
  */
 function ssis_news_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  if (isset($form['#id']) && (($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-3-col') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-4-col') || ($form['#id'] == 'views-exposed-form-ssis-news-articles-view-page-ssis-news-admin') || ($form['#id'] == 'views-exposed-form-ssis-news-taxonomy-pages-page-ssis-news-category'))) {
+  if (isset($form['#id']) && (($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-3-col') || ($form['#id'] == 'views-exposed-form-ssis-news-views-block-ssis-news-articles-4-col') || ($form['#id'] == 'views-exposed-form-ssis-news-articles-view-page-ssis-news-admin') || ($form['#id'] == 'views-exposed-form-ssis-news-taxonomy-pages-page-ssis-news-category') || ($form['#id'] == 'views-exposed-form-ssis-news-taxonomy-pages-page-ssis-news-category-announcements'))) {
 
     $options = &drupal_static(__FUNCTION__);
     if (is_null($options)) {
