@@ -329,7 +329,8 @@
         "drupal/media_pdf_thumbnail": "^6.1@beta",
         "drupal/blazy": "^2.22",
         "drupal/big_pipe_sessionless": "^2.2",
-        "drupal/colorbox_inline": "^2.0"
+        "drupal/colorbox_inline": "^2.0",
+        "drupal/node_revision_delete": "^2.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
