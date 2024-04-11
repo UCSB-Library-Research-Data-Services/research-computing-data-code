@@ -1,0 +1,62 @@
+{# some copy and paste from node--community.html.twig in the begining #}
+
+{% set background_color = node.field_background_color.color ? node.field_background_color.color : ''%}
+{% set text_color = node.field_text_color.color %}
+{% set style = 'color: #'~ text_color ~';' %} 
+
+{# How to use PHP For statement within Twig: #}
+{% set labelList = '' %}
+{% if content.field_partner_label[0] %}
+  {% set labelList = content.field_partner_label[0]['#title'] %}
+  {% for key, item in content.field_partner_label %}
+    {% if key|first != '#' and key != 0 %}
+      {% set labelList = labelList ~ ', ' ~ item['#title'] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+{# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    white_text ? 'white-text',
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    'partner-container'
+    
+  ]
+%}
+
+
+{% if view_mode == "default" or view_mode == "full" %}
+<div class="learning-resource-type-card"{{ attributes }}>
+    <div class="learning-resource-row">
+        <!-- Icon on the left with the link below it -->
+        <div class="learning-resource-icon-container">
+            <div class="learning-resource-icon">
+                {{ content.field_resourcetypeicon }}
+            </div>
+            <a href="{{ node.field_learningresourcestypelink.uri }}" class="learning-resource-link" target="_blank" rel="noopener noreferrer">
+                Learn More
+            </a>
+        </div>
+
+        <!-- Content on the right -->
+        <div class="learning-resource-content">
+            {# btw i didnt type the title wrong here, i initialized it in drupal with a typo so just keep it like titl here #}
+            <h3 class="learning-resource-title">{{ node.field_learningresourcestypetitl.value }}</h3>
+            <div class="learning-resource-description">
+                {{ content.body }}
+            </div>
+            <div class="learning-resource-date">
+                <small>Date: {{ node.field_learningresourcestypedate.value}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
