@@ -1289,3 +1289,48 @@ select {
   width: 18px; 
   height: 18px; 
 }
+
+/* css for learning resources page */
+.learning-resource-type-card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1165px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.learning-resource-row {
+  display: flex;
+  align-items: start;
+}
+
+.learning-resource-icon-container {
+  flex-basis: 20%;
+  text-align: center; /* Center aligns the icon and the link */
+}
+
+.learning-resource-icon {
+  width: 150px; /* Fixed width for icons */
+  height: 150px; /* Fixed height for icons */
+  overflow: hidden; /* Ensures no overflow if the icon is larger */
+  display: flex;
+  justify-content: center; /* Center horizontally in case the icon is smaller */
+  align-items: center; /* Center vertically */
+}
+
+.learning-resource-content {
+  flex-basis: 80%;
+  padding-left: 20px; 
+}
+
+.learning-resource-link {
+  display: block; /* Make the link take the full width of the container */
+  background-color: #09847A;
+  color: #ffffff !important;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px; /* Added space between the icon and the link */
+}
+
