@@ -17,8 +17,6 @@
         $('body').equalHeightItems();
         $('body').equalHeightSlides();
         $('body').initializeCarousel();
-        $('body').topOffset();
-        $('body').classChangeObserver();
         $('body').equalHeightPeopleProfiles();
     })
 
@@ -46,39 +44,6 @@
                 element.children('.dropdown-menu').css('padding-left', offset.left);
             }
         });
-    }
-
-
-    $.fn.classChangeObserver = function () {
-        var $div = $(this);
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                    setTimeout(function(){ $('body').topOffset(); }, 200);
-                }
-            });
-        });
-        observer.observe($div[0], {
-            attributes: true
-        });
-
-    }
-
-    // this function is overriden from the ucsbweb\js\scripts.js 
-    // purpose for overriding it is to simplify the breadcrumbs positioning
-    $.fn.topOffset = function() {
-        if($(window).width() > 767) {
-            var navheight = $('#navbar').outerHeight();
-            var bodytopmargin = parseInt($('#body').css('margin-top'));
-            $('#body').css('margin-top', navheight); 
-
-        } else {
-            var navheight = parseInt($('#navbar .navbar-header').outerHeight());
-            $('#body').css('margin-top', navheight);
-            var toolbar = parseInt($('#toolbar-administration #toolbar-bar').outerHeight());
-            $('.navbar-header').css('margin-top', toolbar);
-        }
     }
 
     // Set active main nav item

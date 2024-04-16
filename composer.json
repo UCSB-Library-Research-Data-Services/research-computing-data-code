@@ -226,7 +226,7 @@
         "drupal/views_taxonomy_term_name_depth": "^7.2",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/yearonly": "^9.1",
-        "drupal/bootstrap": "^3.29",
+        "drupal/bootstrap": "^3.30",
         "drupal/ief_table_view_mode": "^2.3",
         "drupal/webform": "^6.2@RC",
         "drupal/webform_views": "^5.1",
@@ -326,7 +326,11 @@
         "drupal/upgrade_status": "^4.0",
         "drupal/image_url_formatter": "^1.1",
         "spatie/pdf-to-image": "^2.2",
-        "drupal/media_pdf_thumbnail": "^6.1@beta"
+        "drupal/media_pdf_thumbnail": "^6.1@beta",
+        "drupal/blazy": "^2.22",
+        "drupal/big_pipe_sessionless": "^2.2",
+        "drupal/colorbox_inline": "^2.0",
+        "drupal/node_revision_delete": "^2.0@RC"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
