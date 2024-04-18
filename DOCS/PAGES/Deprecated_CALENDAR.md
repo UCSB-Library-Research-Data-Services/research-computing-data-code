@@ -1,5 +1,7 @@
 # Editing the Calendar Page.
 
+## We are no longer using this page, but we keep it here for future reference if in need.
+
 ## Change the Calendar Tags:
 - The calendar dashboard is at https://campuscalendar.ucsb.edu/rds_405/home.  
 - Build a new embed widget
@@ -43,4 +45,3 @@ they also have all the data for all the events for the calendar.  This means it 
 - It first has to edit the HTML created from the original javascript file so that the "onclick" functions are changed to use the functions that we have in calendar.js.  It also changes some other things in the HTML, like the names of the calendar buttons.
 - Then, the minicalendar object is mostly copy and paste from the original javascript file they use.  The main differences is that we have to grab the minicalendar id as well as the start month from the original javascript file in order for ours to work and overwrite the original one. 
 - Then, the choose Today button is changed to be a choose Month button, and the choose week button is changed to be choose Past events button.  And finally, if a single day is selected, the code will change it so at least a week is always selected so that selecting a day will show the events for that whole week.
-

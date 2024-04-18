@@ -8,7 +8,7 @@ First, navigate to the code for the web subtheme.  (Open SFTP Connection with Cy
 ### An example of how to do this is already here.
 The files you need to look at for an example are: ucsbwebrdhsub.theme, js/data-literacy-series.js, ucsbwenrdhsub.libraries.yml.
 #### How it works:
-- First, look at what's in js/data-literacy-series.js.  My code is wrapped in two function definitions: The first one starts with "(function ($){..." .   You can think of this as a requirement of drupal for you to wrap all your code in this function in order for Drupal to use your script.  Then inside that function is another definition: 
+- First, look at what's in js/data-literacy-series.js.  My code is wrapped in two function definitions: The first one starts with "(function($){..." .   You can think of this as a requirement of drupal for you to wrap all your code in this function in order for Drupal to use your script.  Then inside that function is another definition: 
 "$(document).ready(function() {....})".  This is defined by Drupal for to have your script render after the document is rendered.  In this example, after the document is rendered, the script finds all anchor tags of a certain description, and sets their attributes so that the link on the anchor tag opens in a new page.
 - Finally, take a look at ucsbwebrdhsub.theme.  There is a preprocessing function for the website that has a conditional that searches for our page with title "Data Literacy Series," and then it adds the library we created to the library that renders for that page.  
 #### How to implement your own:

@@ -4,7 +4,7 @@
 ## Add a new DLS Post:
 - Go to Manage >> Content >> Add Content >> DLS Post
 - Title: Enter Name of DLS Post
-- Body: Enter brief description
+- Body: Enter brief description, also a Perma Link (for more details about perma links, check below)
 - DLS Tags: Add any tags for your DLS Post.  If the tag exists, Drupal should display it with its id number in parantheses.  To add multiple tags, click "Add Another Item" button
 - - If you want to add a tag to the DLS post, but there is no existing tag of the same name, you will have to create a new tag.  This is very easy and it is showed how to do so below.
 - DLS MEDIA PDF: This is the main PDF that will have its thumbnail displayed.  Click Add Media -> Choose File Then after uploading your file, you should be able to select the thumbnail for the PDF you uploaded.
@@ -39,3 +39,16 @@
 
 ## Edit Data Literacy Series Content Type / Node:
 - Structure >> Content Types >> DLS Post
+ 
+## URL problems in the thumbnail
+- When clicking the thumbnail images, it will guide us to somewhere such as https://rcd.ucsb.edu/sites/default/files/2024-01/DLS-202401-Binder-navy.pdf.
+- If the url doesn't start with https://rcd.ucsb.edu/sites, rebuild the site's cache and force the setting of any new database queries.
+- If it doesn't work, then try see if any aggregation is turned on/off and re-configure that, especially if the module or theme uses a lot of javascript calls.
+- If that still not working, it could be due to the module's code not properly redirecting the links once the page is saved.
+
+## Perma Links
+- Go to https://perma.cc/manage/create?folder=147717-227797, select UCSB Research Data Services -> Data Literacy Series - live branch
+- Clone your latest content to the live branch. Clicking the image to go to the pdf of that file in the live branch, then copy the url and input to perma and click "create perma link."
+- Make this perma link you just created visible to public.
+- Copy the url of this perma link back to the content of that data literacy in the multi branch u were working on
+- Clone to live branch again and you are now all set

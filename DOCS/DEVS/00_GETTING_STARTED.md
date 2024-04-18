@@ -3,8 +3,16 @@
 ## In this document, you will review all the requirements and training for developing the Research Data Hub Website.
 
 ## Firstly, you will have to review UCSB's Brand Guidelines to know what restrictions are in place for how to design a UCSB website. 
+
 https://brand.ucsb.edu/our-story
+
 https://ucsb.app.box.com/v/visual-identity-guidelines
+
+https://webtheme.brand.ucsb.edu/docs/content-editors/menus-utility-bar-footer
+
+https://webtheme.brand.ucsb.edu/support
+
+https://webtheme.brand.ucsb.edu/pre-launch-checklist
 
 ## As a dev for the Research Data Hub website, you will need to learn the basics of Drupal.  
 
@@ -36,6 +44,14 @@ If you do not need a very customized content display, and you are using a view t
 
 ### Clear Caches
 When editing the code using SFTP mode, the changes will most likely not appear right away because the website is cached.  In order to clear caches, the fastest way to do this is with Devel.  It should be a tab in the Drupal toolbar "Devel" and "Cache Clear" is the first option after you click on Devel.  
+
+### Upstream Update
+Swtich to Git if you were in SFTP mode. And then update in Pantheon. Do not update directly in drupal, which will cause the website (that branch) be blank. As usual, update in the test branch to make sure it work well before updating directly in the dev.
+
+### Content/code Update after live
+Since the website is live now, after changing the content or code, we need to clone in the following sequence: multidev -> dev -> test -> live. Check in every step to make sure everything looks fine before we make the changes live!
+
+
 
 ### Other Resources
 - https://selwynpolit.github.io/d9book/ is a very recent resource we came across that would be good for advanced Drupal development.

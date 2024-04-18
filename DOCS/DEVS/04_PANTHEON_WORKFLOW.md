@@ -13,7 +13,8 @@
 - When you use drupal to add content / edit pages etc., the database/files are automatically updated on the site that you are making edits on.  This means that you do NOT have to make any code pushes etc.  The changes you make are live for the site that you are editing.
 - Changes you make on drupal are only seen for YOUR site.  For example, if you add content to the Dev site, that content is not yet on the Test, multidevs or Live sites.  Furthermore, if you add content to a MultiDev site, that content will not be seen on any other multi-dev nor the dev site etc.
 - To push your content changes from one site to another, you can only do this by copying the entire site's database/files to overwrite the other site's database/files.  So if you added content to the wrong site, and you do not want that site's content to completely overwite the site you want to push your changes to, then you must redo all the changes you've made on the other site.
-- To push content changes to a site, on Pantheon, go to the desired site that you want the changes pushed to.  Then go to Database / Files, choose the site you want to copy the content from.  Then click "Clone database / files".  This does NOT transfer over code changes.  
+- To push content changes to a site, on Pantheon, go to the desired site that you want the changes pushed to.  Then go to Database / Files, choose the site you want to copy the content from.  Then click "Clone database / files".  This does NOT transfer over code changes.
+- (This one might seem irreverent, but it took a while for me so I wanna document it for future reference) For changing the names in the navigation bar, you might notice that when you hover on the nav bar, there is a pencil (edit) part in the very right, but when you move to there, it is gone. Try right click in a random name in nav bar, and then go to the right side to click the pencil. In this case, you can edit it easily.
 
 ## Transfer code changes on Pantheon:
 - Make sure the two sites you want to transfer from are on GIT mode.  
@@ -35,10 +36,12 @@ If you are installing a new module on drupal, then make sure that the website is
 ## Status Errors and Updates
 - From time to time there may be errors that show up in "System Status."  Common ones include: Public files directory / Error / Not fully protected and Webform: External libraries / Error / 19 libraries (2 installed; 1 excluded; 16 CDN)
 - These ones are usually harmless, and they are fixed once upstream updates appear for the version of Drupal 9 / UCSB Web Theme (in the Code Tab of Panbtheon).  Once these updates are ready, and after you install them, they will update the drupal core for you and usually fix the System Status errors.  
-- For this reason, you should not have to worry about updating the Drupal Core manually, even if you get an error telling you to do so.  I have had problems before where the drupal would not install the updates correctly.  Usually it is just better to wait for the upstream updates to appear for new version of  Drupal 9 / UCSB Web Theme, and installing those updates will update the Drupal Core for you. 
-
+- For this reason, you should not have to worry about updating the Drupal Core manually, even if you get an error telling you to do so.  I have had problems before where the drupal would not install the updates correctly.  Usually it is just better to wait for the upstream updates to appear for new version of  Drupal 9 / UCSB Web Theme, and installing those updates will update the Drupal Core for you.
+  
 ## Visual Studio Code
-- In terminal of vs code, clone the git to your local environment (if it's from github: ; if it's from patheon:)
+- In terminal of vs code, clone the git to your local environment (if it's from github: click code and copy the address, and then git clone +addressUJustCopied ; if it's from patheon: click clone with git and copy the command line)
+- Besides, if u need to remove the old one to restart it (which happended a lot), make sure you already saved the change to somewhere else, such as a new random branch here. and then:  Remove-Item researchdata-ucsb-edu-v01 -Recurse -Force
+- now you should be fine with the clone part
 - Do the change you need in vs code
 - cd "file_name" (open the file)
 - git checkout -b "branch_name" (go to the branch to do the modify work. need to make sure that it work well in branch, and then merge it to the master one later to be safe)
