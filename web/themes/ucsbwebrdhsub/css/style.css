@@ -1308,36 +1308,47 @@ select {
 .learning-resource-row {
   display: flex;
   align-items: start;
+  width: 100%;
 }
 
 .learning-resource-icon-container {
-  flex-basis: 20%;
-  text-align: center; /* Center aligns the icon and the link */
+  flex-basis: 5%;
+  text-align: center;
 }
 
 .learning-resource-icon {
-  width: 150px; /* Fixed width for icons */
-  height: 150px; /* Fixed height for icons */
-  overflow: hidden; /* Ensures no overflow if the icon is larger */
+  height: 100%; 
+  overflow: hidden; 
   display: flex;
-  justify-content: center; /* Center horizontally in case the icon is smaller */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center; 
+  padding-top: 20px;
 }
 
 .learning-resource-content {
-  flex-basis: 80%;
-  padding-left: 20px; 
+  flex-basis: 85%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px !important;
+}
+
+.learning-resource-link-container {
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .learning-resource-link {
-  display: block; /* Make the link take the full width of the container */
+  display: block;
   background-color: #09847A;
   color: #ffffff !important;
   padding: 10px 15px;
   text-decoration: none;
   border-radius: 5px;
-  margin-top: 10px; /* Added space between the icon and the link */
+  padding-top: 20px;
 }
+
 
 
 

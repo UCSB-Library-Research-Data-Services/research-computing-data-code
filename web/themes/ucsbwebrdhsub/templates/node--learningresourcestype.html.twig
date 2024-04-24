@@ -36,17 +36,14 @@
 {% if view_mode == "default" or view_mode == "full" %}
 <div class="learning-resource-type-card"{{ attributes }}>
     <div class="learning-resource-row">
-        <!-- Icon on the left with the link below it -->
+        <!-- Icon on the left (10%) -->
         <div class="learning-resource-icon-container">
             <div class="learning-resource-icon">
                 {{ content.field_resourcetypeicon }}
             </div>
-            <a href="{{ node.field_learningresourcestypelink.uri }}" class="learning-resource-link" target="_blank" rel="noopener noreferrer">
-                Learn More
-            </a>
         </div>
 
-        <!-- Content on the right -->
+        <!-- Content in the middle (80%) -->
         <div class="learning-resource-content">
             {# btw i didnt type the title wrong here, i initialized it in drupal with a typo so just keep it like titl here #}
             <h3 class="learning-resource-title">{{ node.field_learningresourcestypetitl.value }}</h3>
@@ -57,6 +54,14 @@
                 <small>Date: {{ node.field_learningresourcestypedate.value}}</small>
             </div>
         </div>
+
+        <!-- Learn More button on the right (10%) -->
+        <div class="learning-resource-link-container">
+            <a href="{{ node.field_learningresourcestypelink.uri }}" class="learning-resource-link" target="_blank" rel="noopener noreferrer">
+                Learn More
+            </a>
+        </div>
     </div>
 </div>
+
 {% endif %}
