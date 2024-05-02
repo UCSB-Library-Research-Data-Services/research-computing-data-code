@@ -5,16 +5,28 @@
 {% set style = 'color: #'~ text_color ~';' %} 
 
 {# How to use PHP For statement within Twig: #}
+{# for the tags #}
 {% set labelList = '' %}
-{% if content.field_partner_label[0] %}
-  {% set labelList = content.field_partner_label[0]['#title'] %}
-  {% for key, item in content.field_partner_label %}
+{% if content.field_learningresourcestags[0] %}
+  {% set labelList = content.field_learningresourcestags[0]['#title'] %}
+  {% for key, item in content.field_learningresourcestags %}
     {% if key|first != '#' and key != 0 %}
       {% set labelList = labelList ~ ', ' ~ item['#title'] %}
     {% endif %}
   {% endfor %}
 {% endif %}
 
+{# for the types #}
+
+{% set labelList1 = '' %}
+{% if content.field_learningresourcestype[0] %}
+  {% set labelList1 = content.field_learningresourcestype[0]['#title'] %}
+  {% for key, item in content.field_learningresourcestype %}
+    {% if key|first != '#' and key != 0 %}
+      {% set labelList1 = labelList1 ~ ', ' ~ item['#title'] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
 {%
@@ -36,27 +48,52 @@
 {% if view_mode == "default" or view_mode == "full" %}
 <div class="learning-resource-type-card"{{ attributes }}>
     <div class="learning-resource-row">
-        <!-- Icon on the left with the link below it -->
+        <!-- Icon on the left (5%) -->
         <div class="learning-resource-icon-container">
             <div class="learning-resource-icon">
                 {{ content.field_resourcetypeicon }}
             </div>
-            <a href="{{ node.field_learningresourcestypelink.uri }}" class="learning-resource-link" target="_blank" rel="noopener noreferrer">
-                Learn More
-            </a>
         </div>
 
-        <!-- Content on the right -->
+        <!-- Content right (95%) -->
         <div class="learning-resource-content">
-            {# btw i didnt type the title wrong here, i initialized it in drupal with a typo so just keep it like titl here #}
-            <h3 class="learning-resource-title">{{ node.field_learningresourcestypetitl.value }}</h3>
+            
+            <a href="{{ node.field_learningresourcestypelink.uri }}" target="_blank" rel="noopener noreferrer" class="learning-resource-title-link">
+                <h3 class="learning-resource-title">{{ node.field_learningresourcestypetitl.value }}</h3>
+                <img src="{{ file_url('public://2024-04/linkGreen.jpg') }}" alt="Link Icon" class="link-icon"/>
+            </a>
+
             <div class="learning-resource-description">
                 {{ content.body }}
             </div>
+
             <div class="learning-resource-date">
-                <small>Date: {{ node.field_learningresourcestypedate.value}}</small>
+                <h6>
+                    <b>Date: </b> {{ node.field_learningresourcestypedate.value}}
+                </h6>
             </div>
+
+            <div class="learning-resource-tags">
+                {% if node.field_learningresourcestype[0] %}
+                    <h6>
+                        <b>Topics: </b>
+                        {{labelList1}}
+                    </h6>
+                {% endif %}
+            </div>
+
+            <div class="learning-resource-tags">
+                {% if node.field_learningresourcestags[0] %}
+                    <h6>
+                        <b>Tags: </b>
+                        {{labelList}}
+                    </h6>
+                {% endif %}
+            </div>
+            
         </div>
+
     </div>
 </div>
+
 {% endif %}
