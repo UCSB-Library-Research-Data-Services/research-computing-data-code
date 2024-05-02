@@ -1296,6 +1296,13 @@ select {
 
 
 /* css for learning resources page */
+#views-exposed-form-learningresources-view-block-1 .form--inline{
+  max-width: 1230px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+}
+
 .learning-resource-type-card {
   display: flex;
   justify-content: center;
@@ -1303,17 +1310,27 @@ select {
   max-width: 1165px;
   margin: auto;
   margin-bottom: 20px;
+
+  border: 1px solid #ddd;  
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);  
+  padding: 20px;  
+  border-radius: 8px;  
+  background-color: #ffffff;  
+
 }
 
 .learning-resource-row {
   display: flex;
-  align-items: start;
+  align-items: center;
   width: 100%;
 }
 
 .learning-resource-icon-container {
   flex-basis: 5%;
   text-align: center;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
 }
 
 .learning-resource-icon {
@@ -1322,32 +1339,52 @@ select {
   display: flex;
   justify-content: center;
   align-items: center; 
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .learning-resource-content {
-  flex-basis: 85%;
+  flex-basis: 95%;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 0px !important;
 }
 
-.learning-resource-link-container {
-  flex-basis: 10%;
+.learning-resource-title-link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  /* color: inherit;  */
+  text-decoration: none !important; 
+  flex-wrap: nowrap;
 }
 
-.learning-resource-link {
-  display: block;
-  background-color: #09847A;
-  color: #ffffff !important;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  padding-top: 20px;
+.learning-resource-title-link .learning-resource-title {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  margin-right: 5px; 
+  text-decoration: none !important; 
 }
+
+.learning-resource-title-link .link-icon {
+  flex: 0 0 30px;
+  width: 30px; 
+  height: 30px;
+  text-decoration: none !important; 
+}
+
+.learning-resource-date small {
+  font-weight: bold; 
+}
+
+.learning-resource-type-card a,
+.learning-resource-type-card a:hover,
+.learning-resource-type-card a:focus,
+.learning-resource-type-card a:active {
+  text-decoration: none !important;
+}
+
 
 
 
