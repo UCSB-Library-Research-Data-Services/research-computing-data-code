@@ -1395,6 +1395,9 @@ select {
   text-decoration: none !important;
 }
 
+#edit-field-learningresourcestags-target-id {
+  width: 15em; 
+}
 
 
 
