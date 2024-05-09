@@ -38,12 +38,19 @@ function ucsbwebrdhsub_preprocess_page(&$variables){
   if (strpos($current_path, '/our-members/') === 0) {
     $variables['#attached']['library'][] = 'ucsbwebrdhsub/our-members';
   }
-
-
+  
   if ($route_name === 'entity.node.canonical' && $node->getTitle() === 'Events') {
     $variables['#attached']['library'][] = 'ucsbwebrdhsub/calendar';
   }
 
+  // check if the current path starts with "/learning-resources/"
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/learning-resources/') === 0) {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/learning-resources';
+  }
+  if ($route_name === 'entity.node.canonical' && $node->getTitle() === 'Learning Resources') {
+    $variables['#attached']['library'][] = 'ucsbwebrdhsub/learning-resources';
+  }
 }
 
 function ucsbwebrdhsub_preprocess_node(&$variables) {

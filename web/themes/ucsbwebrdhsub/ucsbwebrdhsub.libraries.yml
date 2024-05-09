@@ -22,6 +22,11 @@ our-members:
   js:
     js/our-members.js: {}
 
+learning-resources:
+  version: 10
+  js:
+    js/learning-resources.js: {}
+
 bootstrap:
   js:
     https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js: { type: external, minified: true }
