@@ -20,6 +20,7 @@ matchers:
       result_description: '[media:url:relative]'
       bundles:
         document: document
+        image: image
       group_by_bundle: true
       metadata: '[media:url:relative]'
       substitution_type: canonical
