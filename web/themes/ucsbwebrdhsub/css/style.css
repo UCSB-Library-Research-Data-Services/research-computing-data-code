@@ -1399,11 +1399,51 @@ select {
   width: 15em; 
 }
 
+#edit-field-learningresourcestype-target-id {
+  width: 15em; 
+}
 
+.custom-button-container1{
+  display: inline-block;
+  width: 30px !important;
+  min-width: auto !important;
+  background-color: #047C91 !important;
+  color: #FFFFFF !important;
+}
 
+.custom-button1 {
+  display: inline-block; 
+  width: 95px; 
+  padding: 10px 15px; 
+  background-color: #047C91; 
+  color: #FFFFFF !important; 
+  text-align: center; 
+  text-decoration: none; 
+  font-size: 13px; 
+  transition: background-color 0.3s; 
+}
 
+.custom-button-container2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  width:auto;
+  color: #FFFFFF !important;
+}
 
-
+.custom-button2 {
+  justify-content: center;
+  display: inline-block; 
+  width: 100px; 
+  padding: 5px 10px; 
+  background-color: #047C91; 
+  color: #FFFFFF !important; 
+  text-align: center; 
+  text-decoration: none !important; 
+  font-size: 15px; 
+  transition: background-color 0.3s; 
+  margin: 5px;
+}
 
 
 /* for data literacy series gap between the cards */
