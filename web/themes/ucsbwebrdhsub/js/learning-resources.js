@@ -3,17 +3,17 @@
  * Overrride UI behaviors
  */
 
+
 (function ($) {
     $(document).ready(function() {
 
-        //   Render correct tag links
-        const tagBlocks = document.querySelectorAll('.dls-item-tags');
+        const tagBlocks = document.querySelectorAll('.learning-resource-tags');
         tagBlocks.forEach((tagBlock) => {
 
             const tags = tagBlock.querySelectorAll('a');
             tags.forEach((tag) => {
-                let tagName = tag.innerText;
-                tag.href = "/learning-resources?field_learningresourcestags_target_id=" + tagName
+                let tagName = tag.innerText.trim();
+                tag.href = "/learning-resources?field_learningresourcestags_target_id=" + encodeURIComponent(tagName);
             })
         })
         
