@@ -114,6 +114,26 @@ function ucsbweb_preprocess_page_title(&$variables) {
         $color = $color_field->color;
         $variables['has_background'] = 1;
       }
+      $field_hide_title = $node->get('field_hide_title');
+      if ($field_hide_title) {
+        $hidetitle = $field_hide_title->value;
+        $variables['hidetitle'] = $hidetitle;
+      }
+    }
+  }
+}
+
+function ucsbweb_preprocess_breadcrumb(&$variables) {
+  $nid = \Drupal::routeMatch()->getRawParameter('node');
+  if ($nid) {
+    $node = \Drupal\node\Entity\Node::load($nid);
+    $node_type = $node->getType();
+    if ($node_type == 'page') {
+      $field_hide_title = $node->get('field_hide_title');
+      if ($field_hide_title) {
+        $hidetitle = $field_hide_title->value;
+        $variables['hidetitle'] = $hidetitle;
+      }
     }
   }
 }
@@ -202,8 +222,10 @@ function ucsbweb_preprocess_page(&$variables, $hook) {
      if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') {
       $node = \Drupal::routeMatch()->getParameter('node');
       $node_type = $node->getType();
-      $variables['node_teaser'] = $node->get('body')->summary;
       $variables['node_type'] = $node_type;
+      if (isset($node->body)) {
+             $variables['node_teaser'] = $node->body->summary;
+          }
      }
   }
   else {

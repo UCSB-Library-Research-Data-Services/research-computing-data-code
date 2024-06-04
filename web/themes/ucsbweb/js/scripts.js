@@ -584,6 +584,21 @@
 
 })(jQuery, Drupal);
 
+// Hide the H1 for every front page using sr-only class
+(function (Drupal, once) {
+  Drupal.behaviors.addSrOnlyToH1 = {
+    attach: function (context, settings) {
+      once('addSrOnlyToH1', 'body.path-frontpage', context).forEach(function (element) {
+        if (element.classList.contains('path-frontpage')) {
+          var h1Element = document.querySelector('h1.page-header');
+          if (h1Element) {
+            h1Element.classList.add('sr-only');
+          }
+        }
+      });
+    }
+  };
+})(Drupal, once);
 
 //event listener: DOM ready
 function addLoadEvent(func) {
