@@ -114,10 +114,12 @@ function ucsbweb_preprocess_page_title(&$variables) {
         $color = $color_field->color;
         $variables['has_background'] = 1;
       }
-      $field_hide_title = $node->get('field_hide_title');
-      if ($field_hide_title) {
-        $hidetitle = $field_hide_title->value;
-        $variables['hidetitle'] = $hidetitle;
+      if ($node->hasField('field_hide_title')) {
+        $field_hide_title = $node->get('field_hide_title');
+        if ($field_hide_title) {
+          $hidetitle = $field_hide_title->value;
+          $variables['hidetitle'] = $hidetitle;
+        }
       }
     }
   }
@@ -129,10 +131,13 @@ function ucsbweb_preprocess_breadcrumb(&$variables) {
     $node = \Drupal\node\Entity\Node::load($nid);
     $node_type = $node->getType();
     if ($node_type == 'page') {
-      $field_hide_title = $node->get('field_hide_title');
-      if ($field_hide_title) {
-        $hidetitle = $field_hide_title->value;
-        $variables['hidetitle'] = $hidetitle;
+      if ($node->hasField('field_hide_title')) {
+
+        $field_hide_title = $node->get('field_hide_title');
+        if ($field_hide_title) {
+          $hidetitle = $field_hide_title->value;
+          $variables['hidetitle'] = $hidetitle;
+        }
       }
     }
   }
