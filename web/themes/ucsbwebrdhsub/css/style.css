@@ -1312,6 +1312,24 @@ select {
   align-items: stretch; 
 }
 
+/* for copy page */
+#views-exposed-form-duplicate-of-learningresources-view-block-1 .form--inline{
+  max-width: 1230px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+}
+
+.view-duplicate-of-learningresources-view .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center ;
+  max-width: 1230px;
+  margin: 0 auto;
+  align-items: stretch; 
+}
+/* copy page ends */
+
 .learning-resource-type-card {
   height: 280px;
   flex: 1 1 48%;
@@ -1443,6 +1461,74 @@ select {
   font-size: 15px; 
   transition: background-color 0.3s; 
   margin: 5px;
+}
+
+@media (max-width: 768px) {
+  #views-exposed-form-learningresources-view-block-1 .form--inline {
+      max-width: 100%;
+      padding-left: 15px; 
+      padding-right: 15px; 
+  }
+
+  .view-learningresources-view .view-content {
+      flex-direction: column; 
+      max-width: 100%;
+      align-items: stretch; 
+  }
+
+  .learning-resource-type-card {
+      flex: 1 1 100%;
+      width: 100%;
+      /* width: 200px; */
+      height: auto;
+      margin: 10px 0;
+      padding: 15px; 
+      border-radius: 5px; 
+  }
+
+  .view-learningresources-list .views-view-grid .views-col{
+    width: 100% !important;
+  }
+
+
+  .learning-resource-row {
+      flex-direction: column; 
+  }
+
+  .learning-resource-icon {
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      align-self: center; 
+  }
+
+  .learning-resource-content {
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  .learning-resource-title-link {
+      flex-direction: column; 
+      align-items: center; 
+  }
+
+  .learning-resource-title {
+      text-align: center;
+      margin-bottom: 5px; 
+  }
+
+  .learning-resource-title-link .link-icon {
+      align-self: center; 
+  }
+  
+  #edit-field-learningresourcestags-target-id,
+  #edit-field-learningresourcestype-target-id {
+      width: 100%;
+  }
+
+  .link-icon-hide-on-mobile {
+    display: none;
+  }
+
 }
 
 
