@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Contains ucsb_menu_overview_enhancements.module.
+ */
+
+use Drupal\node\Entity\Node;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_help().
+ */
+function ucsb_menu_overview_enhancements_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ucsb_menu_overview_enhancements module.
+    case 'help.page.ucsb_menu_overview_enhancements':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Adds bundle information to the menu links in the Menu Overview page.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+
+/**
+ * Implements hook_preprocess_table__menu_overview().
+ * Source: https://www.lilengine.co/articles/beef-your-menu-administration-govcms-saas
+ */
+function ucsb_menu_overview_enhancements_preprocess_table__menu_overview(&$variables) {
+
+  // Add a new header column for Content Title and Type.
+  $variables['header'][] = ['tag' => 'th', 'content' => 'Content Title and Type'];
+
+  foreach ($variables['rows'] as $rid => $row) {
+
+    // For the extra information column, default to an empty cell.
+    $meta = ['tag' => 'td', 'content' => ['#children' => '']];
+
+    foreach ($row['cells'] as $cid => $cell) {
+
+      // Carefully detect a cell in the "Operations" column and a Url object.
+      if (isset($cell['content']['#type']) && $cell['content']['#type'] == 'operations' && isset($cell['content']['#links']['edit']['url'])) {
+
+        // Example if the menu link URL object points to an internal object like a node.
+        /** @var Drupal\Core\Url $menu_link_url **/
+        $menu_link_url = $cell['content']['#links']['edit']['url'];
+        if ($menu_link_url->isRouted()) {
+          $params = $menu_link_url->getRouteParameters();
+          if (isset($params['menu_link_content'])) {
+            $menu_link = MenuLinkContent::load($params['menu_link_content']);
+
+            // The URL object knows its own route (eg entity.node.canonical) and the parameters for that route.
+            // However, to get the full entity object to play with we have to do a little work. An example in Drupal core
+            // is when Drupal adds preview text for a menu link autocomplete - it needs to load the node entity to display
+            // the text in the field and it only currently does this for nodes.
+            // @see https://git.drupalcode.org/project/drupal/-/blob/9.1.x/core/modules/link/src/Plugin/Field/FieldWidget/LinkWidget.php#L74-80
+            // So adapt the following to taste, in this case we're just adding a node edit link.
+
+            /** @var Drupal\Core\Url $url **/
+            $url = $menu_link->getUrlObject();
+
+            if ($url->isRouted()) {
+
+              switch ($url->getRouteName()) {
+                case 'entity.node.canonical':
+                  // Load the node that this menu link points to.
+                  $route_params = $url->getRouteParameters();
+                  $node = Node::load($route_params['node']);
+                  
+                  if ($node) {
+
+                    // 1. Add operations link.
+                    $edit_url = $node->toUrl('edit-form');
+                    $variables['rows'][$rid]['cells'][$cid]['content']['#links']['edit_node'] = [
+                      'title' => 'Edit Content',
+                      'url' => $edit_url,
+                    ];
+
+                    // 2. Add meta information.
+                    $bundle = $node->bundle();
+                    $bundle = $node->type->entity->label();
+                    $meta['content']['#children'] = $node->get('title')->value . ' <b>(' . $bundle . ')</b>';
+                  }
+                  break;
+
+                // Add any other internal route related links you might care for.
+                case 'entity.SOMETHINGELSE.canonical':
+                default:
+                  // Ignore everything else.
+                  break;
+              }
+            }
+          }
+        }
+      }
+    }
+    $variables['rows'][$rid]['cells'][] = $meta;
+  }
+}

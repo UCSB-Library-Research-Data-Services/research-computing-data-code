@@ -1,0 +1,8 @@
+name: 'UCSB Menu Overview Enhancements'
+type: module
+description: 'Adds bundle information to the menu links in the Menu Overview page.'
+core_version_requirement: ^10
+package: UCSB
+dependencies:
+  - node
+  - menu_ui
