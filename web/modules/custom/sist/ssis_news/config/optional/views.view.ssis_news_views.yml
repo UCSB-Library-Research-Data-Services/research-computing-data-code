@@ -1223,6 +1223,7 @@ display:
       css_class: 'latest-4-articles view-news'
       display_description: ''
       display_extenders: {  }
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
