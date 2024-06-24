@@ -68,20 +68,13 @@
     </div>
   {% endif %}
 
-  {% if rows %}
+  {% if rows|length > 4 %}
     <div class="view-content">     
-      {% if rows.0['#rows'].0['#row']._entity %}
-        <div class="views-row">{{ _self.generate_article(rows.0['#rows'].0['#row']._entity, 2, 2, img_path) }}</div>
-      {% endif %}
-      {% if rows.0['#rows'].1['#row']._entity %}
-        <div class="views-row">{{ _self.generate_article(rows.0['#rows'].1['#row']._entity, 1, 1, img_path) }}</div>
-      {% endif %}
-      {% if rows.0['#rows'].2['#row']._entity %}
-        <div class="views-row">{{ _self.generate_article(rows.0['#rows'].2['#row']._entity, 1, 1, img_path) }}</div>
-      {% endif %}
-      {% if rows.0['#rows'].3['#row']._entity %}
-        <div class="views-row">{{ _self.generate_article(rows.0['#rows'].3['#row']._entity, 2, 1, img_path) }}</div>
-      {% endif %}
+
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].0['#row']._entity, 2, 2, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].1['#row']._entity, 1, 1, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].2['#row']._entity, 1, 1, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].3['#row']._entity, 2, 1, img_path) }}</div>
 
     </div>
   {% elseif empty %}
