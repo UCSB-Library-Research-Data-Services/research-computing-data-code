@@ -352,7 +352,8 @@
         "drupal/search_api_solr": "^4.3",
         "drupal/search_api_pantheon": "^8.1",
         "drupal/facets": "^2.0",
-        "drupal/environment_indicator": "^4.0"
+        "drupal/environment_indicator": "^4.0",
+        "drupal/search_api_exclude": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
