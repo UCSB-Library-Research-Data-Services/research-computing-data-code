@@ -23,6 +23,8 @@ ucsbweb-scripts:
     js/scripts.js: {}
     js/masonry.pkgd.min.js: {}
     js/jquery.cookie.js: {}
+  dependencies:
+    - core/once
 
 webfonts:
   css:
