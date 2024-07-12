@@ -39,4 +39,4 @@ $settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config';
 /**
  * State service now uses a cache collector for performance. See https://www.drupal.org/node/3177901
  */
-$settings['state_cache'] = TRUE;
+//$settings['state_cache'] = TRUE;
