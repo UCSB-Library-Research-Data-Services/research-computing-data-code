@@ -111,6 +111,18 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "accessible360/accessible-slick",
+                "version": "1.0.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/Accessible360/accessible-slick/archive/refs/tags/v1.0.1.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -366,6 +378,7 @@
         "drupal/environment_indicator": "^4.0",
         "drupal/search_api_exclude": "^2.0",
         "kenwheeler/slick": "^1.6.0",
+        "accessible360/accessible-slick": "^1.0.1",
         "drupal/slick_entityreference": "^3.0"
     },
     "require-dev": {
@@ -401,6 +414,7 @@
             "web/libraries/link": ["ckeditor-plugin/link"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
             "web/libraries/slick": ["kenwheeler/slick"],
+            "web/libraries/accessible-slick": ["accessible360/accessible-slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
