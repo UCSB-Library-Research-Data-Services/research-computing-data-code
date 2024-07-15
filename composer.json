@@ -99,6 +99,18 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.6.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/refs/tags/1.6.0.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -352,7 +364,9 @@
         "drupal/search_api_pantheon": "^8.1",
         "drupal/facets": "^2.0",
         "drupal/environment_indicator": "^4.0",
-        "drupal/search_api_exclude": "^2.0"
+        "drupal/search_api_exclude": "^2.0",
+        "kenwheeler/slick": "^1.6.0",
+        "drupal/slick_entityreference": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -386,6 +400,7 @@
             "web/libraries/json2": ["douglascrockford/json-js"],
             "web/libraries/link": ["ckeditor-plugin/link"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
+            "web/libraries/slick": ["kenwheeler/slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
