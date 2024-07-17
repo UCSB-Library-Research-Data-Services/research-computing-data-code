@@ -25,11 +25,3 @@ ssis-category-views-style:
   css:
     theme:
       css/category-views-style.css: {}
-ssis-last-four-articles-view-style:
-  css:
-    theme:
-      css/last-four-articles-style.css: {}
-ssis-announcement-w-date-in-box-style:
-  css:
-    theme:
-      css/announcement-w-date-in-box.css: {}
