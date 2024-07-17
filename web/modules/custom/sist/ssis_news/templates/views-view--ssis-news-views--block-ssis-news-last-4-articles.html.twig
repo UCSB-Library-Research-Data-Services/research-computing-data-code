@@ -1,0 +1,162 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   JavaScript.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+
+
+  {{ attach_library('ssis_news/ssis-last-four-articles-view-style') }}
+
+
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    {{ title }}
+  {% endif %}
+  {{ title_suffix }}
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if exposed %}
+    <div class="view-filters form-group">
+      {{ exposed }}
+    </div>
+  {% endif %}
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {% if rows|length > 3 %}
+    <div class="view-content">     
+
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].0['#row']._entity, 2, 2, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].1['#row']._entity, 1, 1, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].2['#row']._entity, 1, 1, img_path) }}</div>
+      <div class="views-row">{{ _self.generate_article(rows.0['#rows'].3['#row']._entity, 2, 1, img_path) }}</div>
+
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+  {% if more %}
+    {{ more }}
+  {% endif %}
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+  {% if feed_icons %}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>
+
+
+
+{% macro generate_article(node, item_width, item_height, img_path) %}
+
+
+  {% set backgroundImageUrl = img_path %}
+  {# If there is a news article thumbnail render it #}
+  {% if node.field_ssis_thumbnail.entity.field_media_image is not empty %}
+        {% set backgroundImageUrl = file_url(node.field_ssis_thumbnail.entity.field_media_image.entity.uri.value) %}
+  {# ElseIf there is a news category thumbnail render it #}
+  {% elseif node.field_ssis_categories.0.entity.field_news_category_thumbnail.entity.field_media_image is not empty %}
+        {% set backgroundImageUrl = file_url(node.field_ssis_categories.0.entity.field_news_category_thumbnail.entity.field_media_image.entity.uri.value) %}
+  {% endif %}
+
+  
+  {% set background_color = node.field_ssis_categories.0.entity.field_news_color.0.color|lower %}
+  {% set overlay_background_color = node.field_ssis_categories.0.entity.field_news_color.0.color|lower %}
+  {% set white_text = 1 %}
+  {% set link = path('entity.node.canonical', {'node': node.id}) %}
+  {% set topic = node.field_ssis_categories.0.entity.name.0.value %}
+
+  {% set wrapper_attributes = create_attribute() %}
+
+  {% 
+    set wrapper_classes = [
+      'view-grid-item',
+      item_width ? 'item-width-' ~ item_width,
+      item_width ? 'item-height-' ~ item_height,
+    ]
+  %}
+
+  {%
+    set content_classes = [
+      'content',
+      overlay_background_color ? 'has-background background-color-' ~ overlay_background_color,
+    ]
+  %}
+
+  
+  <a href="{{ link }}"{{ wrapper_attributes.addClass(wrapper_classes) }}>
+    <article class="article is-promoted grid clearfix white-text top-padding-none"  style="background-image: url('{{ backgroundImageUrl }}')">
+      <div class="topic" >
+        <div class="field--item topic-caption has-background background-color-{{ overlay_background_color }}">{{ topic }}</div>
+      </div>
+      <div class="content">
+        <h3><span>{{ node.title.value }}</span></h3>
+        <p>{{ node.body.0.summary }}</p>
+      </div>
+    </article>
+  </a>
+  
+{% endmacro %}
+
+

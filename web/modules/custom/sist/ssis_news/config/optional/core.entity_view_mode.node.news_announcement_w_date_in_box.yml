@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_announcement_w_date_in_box
+label: 'News Announcement w Date in Box'
+description: 'Renders the news titles with dates placed in a box.'
+targetEntityType: node
+cache: true

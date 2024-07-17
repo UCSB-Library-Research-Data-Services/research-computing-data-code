@@ -1,0 +1,44 @@
+.announcement-content {
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.announcement-date-box {
+    background-color: #003660;
+    color: #fff;
+    margin-right: 3.5rem;
+    padding: .5em .75em .6em;
+    text-align: center;
+}
+
+.announcement-date-box span {
+    display: block;
+}
+
+.announcement-date-box span.day {
+    font-size: 1.75em;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.announcement-date-box span.month {
+    font-family: Produkt, serif;
+    font-weight: 400;
+}
+
+.announcement-date-box span.year {
+    color: #b3b3b3;
+    font-size: .9375em;
+    font-weight: normal;
+    margin-top: .15em;
+}
+
+@media (min-width: 768px) {
+    .announcement-title h3 {
+        margin-top: 0 !important;
+    }
+}
