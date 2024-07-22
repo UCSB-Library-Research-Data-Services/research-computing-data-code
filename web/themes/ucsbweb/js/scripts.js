@@ -567,6 +567,8 @@
          title = "Facebook";
        } else if (url.includes("twitter.com")) {
          title = "Twitter";
+       } else if (url.includes("x.com")) {
+         title = "X";
        } else if (url.includes("instagram.com")) {
          title = "Instagram";
        } else if (url.includes("issuu.com")) {
