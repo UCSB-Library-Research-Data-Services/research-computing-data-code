@@ -337,7 +337,7 @@
         "drupal/simple_gmap": "3.0.x-dev@dev",
         "drupal/flexslider": "^3.0@alpha",
         "drupal/insert": "^3.0@beta",
-        "drupal/lazy": "^3.12",
+        "drupal/lazy": "^4.0",
         "drupal/private_content": "^2.0",
         "drupal/tac_lite": "^1.7",
         "drupal/views_filters_populate": "^2.1",
