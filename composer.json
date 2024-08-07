@@ -168,7 +168,7 @@
         "drupal/ds": "^3.16",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/editor_advanced_link": "^2.1",
-        "drupal/embed": "^1.6",
+        "drupal/embed": "1.7.*",
         "drupal/encrypt": "^3.1",
         "drupal/entity_browser": "^2.9",
         "drupal/entity_print": "^2.11",
