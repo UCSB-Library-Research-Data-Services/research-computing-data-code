@@ -59,7 +59,7 @@ html, body {
 
 body {
   color: $lightgray-darken-60;
-  font-family: $avenir-font-stack;
+  font-family: $sans-serif-font-stack;
   font-weight: $sans-serif;
   font-style: normal;
   font-size: $base-font-size;
@@ -165,44 +165,44 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: $h1-font-size;
   letter-spacing: -0.1pt;
 }
 
 h2 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: $h2-font-size;
   letter-spacing: -0.1pt;
   margin: 26px 0 10px 0;
 }
 
 h3 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: $h3-font-size;
   margin: 20px 0 10px 0;
 }
 
 h4 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: $h4-font-size;
   margin: 16px 0 8px 0;
 }
 
 h5 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: $h5-font-size;
   text-transform: uppercase;
 }
 
 h6 {
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-medium;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-medium;
   font-size: $h6-font-size;
   text-transform: uppercase;
 }
@@ -240,8 +240,8 @@ ul {
 
 p, li, blockquote {
   b, strong {
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-black;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-black;
   }
 }
 
@@ -262,8 +262,8 @@ hr {
 
 .display-extra-large {
   color: $lightgray-darken-80;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-heavy;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-heavy;
   font-size: 6.8rem;
   @media all and (max-width: $screen-sm) {
     font-size: 5rem;
@@ -277,8 +277,8 @@ hr {
 
 .display-large {
   color: $lightgray-darken-80;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-heavy;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-heavy;
   font-size: 5rem !important;
   @media all and (max-width: $screen-xs) {
     font-size: 3.8rem !important;
@@ -292,8 +292,8 @@ hr {
 
 .display-medium {
   color: $lightgray-darken-80;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-heavy;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-heavy;
   font-size: 3.8rem;
   line-height: 1.5;
   &.serif, span.serif {
@@ -304,8 +304,8 @@ hr {
 
 .display-small {
   color: $lightgray-darken-80;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-heavy;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-heavy;
   font-size: 2.8rem;
   line-height: 1.5;
   &.serif, span.serif {
@@ -326,8 +326,8 @@ hr {
   border-radius: 0;
   color: $lightgray-darken-80;
   display: block;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-medium;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-medium;
   font-size: 1.4rem;
   line-height: 1.5;
   letter-spacing: 1pt;
@@ -339,23 +339,23 @@ hr {
 
 span.caption {
   color: $lightgray-darken-45;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-roman;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-roman;
   font-size: 1.2rem;
   line-height: 1.5;
 }
 
 p.caption, .caption {
   color: $lightgray-darken-45;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-roman;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-roman;
   font-size: 1.2rem;
   line-height: 1.5;
   margin-bottom: 12px;
 
   i, em {
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-roman;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-roman;
     font-style: italic;
   }
   & + p {
@@ -369,8 +369,8 @@ p.caption + p.caption, p + p.caption {
 
 .extra-small {
   color: $lightgray-darken-60;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-roman;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-roman;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -432,8 +432,8 @@ img {
     h2, h3 {
       background-color: #{$background-color};
       color: $header;
-      font-family: $avenir-font-stack;
-      font-weight: $avenir-roman;
+      font-family: $sans-serif-font-stack;
+      font-weight: $sans-serif-roman;
       font-size: 14px;
       letter-spacing: 1px;
       line-height: 1em;
@@ -755,14 +755,14 @@ header.container-fluid {
               }
             }
             h3 {
-              font-family: $avenir-font-stack;
-              font-weight: $avenir-heavy;
+              font-family: $sans-serif-font-stack;
+              font-weight: $sans-serif-heavy;
               margin-top: 0;
             }
           }
           .topic {
-            font-family: $avenir-font-stack;
-            font-weight: $avenir-roman;
+            font-family: $sans-serif-font-stack;
+            font-weight: $sans-serif-roman;
             font-size: $small-font-size;
             left: 0;
             top: 0;
@@ -1186,8 +1186,8 @@ header.container-fluid {
 // Page header.
 .page-header {
   border: 0;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-black;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-black;
   font-size: 40px;
   margin: 0;
   padding: 0;
@@ -1249,8 +1249,8 @@ header.container-fluid {
   .navbar {
     .nav>li {
       &>a {
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-heavy;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-heavy;
         padding: 16px 0;
       }
     }
@@ -1323,8 +1323,8 @@ header.container-fluid {
   #eyebrow {
     background-color: $base-navy;
     color: #fff;
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-light;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-light;
     font-size: $smallest-font-size;
     height: 36px;
     letter-spacing: 0.7pt;
@@ -1602,14 +1602,14 @@ header.container-fluid {
             }
             p a {
               text-transform: none !important;
-              font-family: $avenir-font-stack;
-              font-weight: $avenir-light;
+              font-family: $sans-serif-font-stack;
+              font-weight: $sans-serif-light;
               font-size: $small-font-size;
               letter-spacing: 1pt !important;
             }
             a {
-              font-family: $avenir-font-stack;
-              font-weight: $avenir-medium;
+              font-family: $sans-serif-font-stack;
+              font-weight: $sans-serif-medium;
               font-size: $base-font-size;
               text-decoration: underline;
               text-transform: none;
@@ -1789,8 +1789,8 @@ header.container-fluid {
           break-inside: avoid;
           list-style-type: none;
           a {
-            font-family: $avenir-font-stack;
-            font-weight: $avenir-roman;
+            font-family: $sans-serif-font-stack;
+            font-weight: $sans-serif-roman;
             svg {
               display: inline-block;
               margin: 0 4px;
@@ -2262,8 +2262,8 @@ form {
     }
   }
   label {
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-black;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-black;
     font-size: $h5-font-size;
     letter-spacing: 0.8pt;
     margin-bottom: 10px;
@@ -2463,8 +2463,8 @@ form {
     }
     p.image-right {
       color: $lightgray-darken-45;
-      font-family: $avenir-font-stack;
-      font-weight: $avenir-roman;
+      font-family: $sans-serif-font-stack;
+      font-weight: $sans-serif-roman;
       font-size: 12px;
       line-height: 18px;
       img {
@@ -2615,7 +2615,7 @@ form {
   .blog-title, .feature-label {
     color: $lightgray-darken-45;
     font-size: $h2-font-size;
-    font-weight: $avenir-black;
+    font-weight: $sans-serif-black;
   }
 
   .blog-description {
@@ -2731,8 +2731,8 @@ form {
 
   form#blog-topic-filter {
     label {
-      font-family: $avenir-font-stack;
-      font-weight: $avenir-black;
+      font-family: $sans-serif-font-stack;
+      font-weight: $sans-serif-black;
       margin-right: 20px;
     }
     .select-wrapper {
@@ -2923,8 +2923,8 @@ body.toolbar-tray-open {
     }
     @media all and (min-width: $screen-sm) {
       &:nth-child(1) {
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-heavy;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-heavy;
       }
     }
   }
@@ -2973,8 +2973,8 @@ table {
 .table>thead>tr>th {
   border-bottom: 1px solid $border-color-dark;
   color: #333333;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-roman;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-roman;
   font-size: $smallest-font-size;
   padding: 4px 30px 4px 0;
   text-transform: uppercase;
@@ -3106,8 +3106,8 @@ nav.pager-nav {
         border: none !important;
         color: $lightgray-darken-80;
         display: inline-block;
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-heavy;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-heavy;
         font-size: $h3-font-size;
         line-height: $h3-font-size;
         padding: 10px 0 8px;
@@ -3129,7 +3129,7 @@ nav.pager-nav {
   }
   .table>tbody>tr>td:nth-child(1) {
     p {
-      font-weight: $avenir-black;
+      font-weight: $sans-serif-black;
       line-height: normal !important;
     }
   }
@@ -3236,11 +3236,11 @@ nav.pager-nav {
       .panel-title {
         padding: 0;
         margin: 0;
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-heavy;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-heavy;
       }
       p {
-        font-weight: $avenir-heavy;
+        font-weight: $sans-serif-heavy;
         margin-bottom: 0;
         a {
           color: $link-color-light;
@@ -3314,8 +3314,8 @@ main .alert {
     padding: 18px 32px 24px 32px;
     width: 100%;
     h2 {
-      font-family: $avenir-font-stack;
-      font-weight: $avenir-medium;
+      font-family: $sans-serif-font-stack;
+      font-weight: $sans-serif-medium;
       margin: 0;
     }
   }
@@ -3409,8 +3409,8 @@ main .alert {
         line-height: normal !important;
       }
       a.btn.btn-default {
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-roman;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-roman;
         background-color: transparent;
         padding: 0 0 0 10px;
         text-decoration: underline;
@@ -3441,8 +3441,8 @@ main .alert {
 
 a.close {
   float: none;
-  font-family: $avenir-font-stack;
-  font-weight: $avenir-light;
+  font-family: $sans-serif-font-stack;
+  font-weight: $sans-serif-light;
   font-size: $smallest-font-size;
   opacity: 1 !important;
   padding-right: 9px;
@@ -3584,8 +3584,8 @@ ul#lwe {
           font-size: $small-font-size;
         }
         .day {
-          font-family: $avenir-font-stack;
-          font-weight: $avenir-black;
+          font-family: $sans-serif-font-stack;
+          font-weight: $sans-serif-black;
           font-size: $h2-font-size;
         }
       }
@@ -3706,8 +3706,8 @@ form.search-form {
         margin-left: 0;
       }
       p:first-child {
-        font-family: $avenir-font-stack;
-        font-weight: $avenir-black;
+        font-family: $sans-serif-font-stack;
+        font-weight: $sans-serif-black;
         margin-bottom: 0;
       }
     }
@@ -3860,8 +3860,8 @@ form.search-form {
       background-color: $base-navy;
       color: $white !important;
       display: block;
-      font-family: $avenir-font-stack;
-      font-weight: $avenir-roman;
+      font-family: $sans-serif-font-stack;
+      font-weight: $sans-serif-roman;
       font-size: $h3-font-size;
       padding: 16px 32px;
       text-decoration: none !important;
@@ -3920,7 +3920,7 @@ form.search-form {
         color: $white;
         display: inline-block;
         padding-left: 0;
-        font-family: $avenir-font-stack;
+        font-family: $sans-serif-font-stack;
         font-weight: $sans-serif;
         font-size: $base-font-size;
         text-transform: none;
@@ -3955,8 +3955,8 @@ form.search-form {
     vertical-align: top;
   }
   .name {
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-heavy;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-heavy;
   }
   .title {
     color: $lightgray-darken-45;
@@ -3974,8 +3974,8 @@ form.search-form {
   padding: 0 !important;
   font-family: inherit !important;
   .gs-title {
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-black !important;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-black !important;
     font-size: $h3-font-size !important;
     margin: 0 0 10px 0 !important;
     b {
@@ -3983,7 +3983,7 @@ form.search-form {
     }
   }
   .gs-snippet {
-    font-family: $avenir-font-stack;
+    font-family: $sans-serif-font-stack;
     font-weight: $sans-serif !important;
     font-size: $base-font-size !important;
     line-height: $p-line-height !important;
@@ -3997,8 +3997,8 @@ form.search-form {
   }
   .gs-webResult div.gs-visibleUrl, .gs-imageResult div.gs-visibleUrl {
     color: $lightgray-darken-45 !important;
-    font-family: $avenir-font-stack;
-    font-weight: $avenir-roman !important;
+    font-family: $sans-serif-font-stack;
+    font-weight: $sans-serif-roman !important;
     font-size: 12px !important;
     line-height: 18px !important;
     margin-bottom: 12px !important;
