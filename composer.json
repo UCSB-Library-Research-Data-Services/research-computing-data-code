@@ -441,6 +441,7 @@
                 "Unpublished content can be viewed by anonymous": "https://www.drupal.org/files/issues/2023-06-22/3169490-13.patch"
             },
             "drupal/core": {
+                "Claro Form Buttons Fix Patch": "patches/core/claro-display-fix.patch",
                 "Cannot create references to/from string offsets": "https://www.drupal.org/files/issues/2022-12-23/references_to_from_string-3023924-36.patch"
             },
             "drupal/gtranslate": {

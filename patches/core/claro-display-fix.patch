@@ -1,0 +1,49 @@
+diff --git a/core/themes/claro/css/components/dropbutton.css b/core/themes/claro/css/components/dropbutton.css
+index 52be1d3802..580bb3d1ba 100644
+--- a/core/themes/claro/css/components/dropbutton.css
++++ b/core/themes/claro/css/components/dropbutton.css
+@@ -48,6 +48,23 @@
+ .field-actions .dropbutton-wrapper {
+   margin: var(--space-xs) var(--space-m) var(--space-xs) 0;
+ }
++/*CLARO DISPLAY FIX*/
++.js .field--widget-entity-reference-paragraphs .dropbutton-wrapper {
++  display: inline-flex;
++  padding-right: 0em;
++  margin-right: 0em;
++  margin: 0 1em 0 0 !important;
++  /* Override 600px breakpoint from core. */
++  width: auto;
++}
++.js .field--widget-entity-reference-paragraphs .field-actions .placeholder {
++  margin-left: .25em;
++}
++.js .field--widget-entity-reference-paragraphs .dropbutton-widget {
++  position: relative;
++}
++
++/*END CLARO DISPLAY FIX*/
+ 
+ [dir="rtl"] .form-actions .dropbutton-wrapper,
+ [dir="rtl"] .field-actions .dropbutton-wrapper {
+
+diff --git a/core/themes/claro/css/components/form.css b/core/themes/claro/css/components/form.css
+index 8f5ee3f5e9..10c72b985d 100644
+--- a/core/themes/claro/css/components/form.css
++++ b/core/themes/claro/css/components/form.css
+@@ -33,7 +33,15 @@ tr .form-item,
+ .container-inline .form-item {
+   margin-block: var(--space-s);
+ }
++/*CLARO DISPLAY FIX*/
++tr .field-actions .form-item {
++  margin: -1.5em 1em 1.5em 0;
++}
+ 
++.field-actions {
++  margin: 2em 1em 0 0 !important;
++}
++/*END CLARO DISPLAY FIX*/
+ /**
+  * Form element label.
+  */
