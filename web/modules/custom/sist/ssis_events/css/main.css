@@ -81,7 +81,8 @@ a:focus > .blk-template {
         }
 
         .blk-template .blk-caption .day {
-            font-family: avenir-black,sans-serif;
+            font-family: "Nunito Sans", sans-serif;
+            font-weight:800; 
             font-size: 27px;
         }
 
@@ -102,7 +103,8 @@ a:focus > .blk-template {
         box-sizing: border-box;
         cursor: pointer;
         display: block;
-        font-family: avenir-book, sans-serif;
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 400;
         font-size: 16px;
         left: 0px;
         line-height: 1.42857;
