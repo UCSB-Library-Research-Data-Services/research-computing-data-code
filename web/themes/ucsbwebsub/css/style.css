@@ -54,11 +54,11 @@ Color field presets
 }
 @media all and (min-width: 992px) {
   .main-forum-content,
-.forum-container,
-.comment-comment-forum-form,
-.forum-forms,
-.node-revision-table,
-.forum-tips {
+  .forum-container,
+  .comment-comment-forum-form,
+  .forum-forms,
+  .node-revision-table,
+  .forum-tips {
     padding-left: 30px;
     padding-right: 30px;
   }
@@ -504,7 +504,7 @@ a.ucsb-button.btn {
 }
 
 a:focus .image-container img {
-  outline-color: #4d90fe;
+  outline-color: rgb(77, 144, 254);
   outline-offset: -5px;
   outline-style: auto;
   outline-width: 10px;
@@ -720,15 +720,12 @@ div.background-color-000000 div {
     width: 75%;
     height: auto;
   }
-
   .navbar .navbar-header .region-navigation .logo svg path {
     fill: #ffffff;
   }
-
   .navbar .block-search-form-block {
     margin-top: 15px;
   }
-
   .search-block-form .forum-forms {
     padding-bottom: 0;
   }
@@ -737,29 +734,24 @@ div.background-color-000000 div {
   .dropdown-menu ul:nth-child(1) {
     font-weight: inherit !important;
   }
-
   .dropdown-menu > ul:nth-child(1) {
     font-weight: 500 !important;
   }
-
   .dropdown-menu > ul > li > a {
     color: #005aa3;
     display: inline-block;
     font-size: 16px;
     padding-bottom: 1px;
   }
-
   .dropdown-menu ul li div li a {
     color: #005aa3;
     font-size: 14px;
   }
-
   .dropdown-menu > ul > li {
     list-style-type: none;
     padding: 11px 0 10px 0;
     white-space: nowrap;
   }
-
   .dropdown-menu > ul > li > div li {
     list-style-type: none;
     padding: 3px 0 2px 0;
