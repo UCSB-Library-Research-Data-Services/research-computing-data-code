@@ -360,7 +360,7 @@
         "drupal/image_url_formatter": "^1.1",
         "spatie/pdf-to-image": "^2.2",
         "drupal/media_pdf_thumbnail": "^6.1@beta",
-        "drupal/blazy": "^2.22",
+        "drupal/blazy": "^3.0",
         "drupal/big_pipe_sessionless": "^2.2",
         "drupal/colorbox_inline": "^2.0",
         "drupal/node_revision_delete": "^2.0@RC",
@@ -377,7 +377,8 @@
         "drupal/search_api_exclude": "^2.0",
         "kenwheeler/slick": "^1.6.0",
         "accessible360/accessible-slick": "^1.0.1",
-        "drupal/slick_entityreference": "^3.0"
+        "drupal/slick_entityreference": "^3.0",
+        "drupal/slick": "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
