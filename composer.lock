@@ -19629,7 +19629,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstream-configuration",
-                "reference": "9542d5ac59c22fe5b54868cc99367db9e9895f51"
+                "reference": "8f0ed84bdee567675c8e41c5ce8c993f71899fa5"
             },
             "type": "project",
             "extra": {
