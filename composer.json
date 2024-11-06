@@ -378,7 +378,9 @@
         "kenwheeler/slick": "^1.6.0",
         "accessible360/accessible-slick": "^1.0.1",
         "drupal/slick_entityreference": "^3.0",
-        "drupal/slick": "^3.0"
+        "drupal/slick": "^3.0",
+        "drupal/content_access_by_path": "^1.1",
+        "drupal/google_api_client": "^4.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
