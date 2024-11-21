@@ -2157,26 +2157,26 @@
         },
         {
             "name": "drupal/addtoany",
-            "version": "2.0.5",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/addtoany.git",
-                "reference": "2.0.5"
+                "reference": "2.0.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/addtoany-2.0.5.zip",
-                "reference": "2.0.5",
-                "shasum": "b3b26968548c1605a641b12ff25d03edc8497df6"
+                "url": "https://ftp.drupal.org/files/projects/addtoany-2.0.7.zip",
+                "reference": "2.0.7",
+                "shasum": "33bfb5f425134705f8208f7c2f6ac23382a87bb6"
             },
             "require": {
-                "drupal/core": "^9.4 || ^10.0"
+                "drupal/core": "^10.1 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.5",
-                    "datestamp": "1698825601",
+                    "version": "2.0.7",
+                    "datestamp": "1731984029",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3292,7 +3292,7 @@
             ],
             "authors": [
                 {
-                    "name": "Anybody",
+                    "name": "anybody",
                     "homepage": "https://www.drupal.org/user/291091"
                 },
                 {
@@ -3300,7 +3300,7 @@
                     "homepage": "https://www.drupal.org/user/1021502"
                 },
                 {
-                    "name": "Grevil",
+                    "name": "grevil",
                     "homepage": "https://www.drupal.org/user/3668491"
                 },
                 {
@@ -3316,7 +3316,7 @@
                     "homepage": "https://www.drupal.org/user/116002"
                 },
                 {
-                    "name": "RobLoach",
+                    "name": "robloach",
                     "homepage": "https://www.drupal.org/user/61114"
                 },
                 {
@@ -6580,7 +6580,7 @@
             ],
             "authors": [
                 {
-                    "name": "Berdir",
+                    "name": "berdir",
                     "homepage": "https://www.drupal.org/user/214652"
                 },
                 {
@@ -6701,7 +6701,7 @@
             ],
             "authors": [
                 {
-                    "name": "Lullabot",
+                    "name": "lullabot",
                     "homepage": "https://www.drupal.org/user/3815489"
                 },
                 {
@@ -6709,7 +6709,7 @@
                     "homepage": "https://www.drupal.org/user/1288796"
                 },
                 {
-                    "name": "seanB",
+                    "name": "seanb",
                     "homepage": "https://www.drupal.org/user/545912"
                 }
             ],
@@ -7588,27 +7588,27 @@
         },
         {
             "name": "drupal/field_group_link",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/field_group_link.git",
-                "reference": "8.x-3.1"
+                "reference": "8.x-3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/field_group_link-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "df300af8a31b183a400fff07a6a42ab99dca78ae"
+                "url": "https://ftp.drupal.org/files/projects/field_group_link-8.x-3.2.zip",
+                "reference": "8.x-3.2",
+                "shasum": "d3d11f943ff72da9f51bf3c56fd2ed5be137c1fc"
             },
             "require": {
-                "drupal/core": "^9.3 || ^10",
+                "drupal/core": "^9.3 || ^10 || ^11",
                 "drupal/field_group": "^3.4"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1672757039",
+                    "version": "8.x-3.2",
+                    "datestamp": "1731955416",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7624,6 +7624,10 @@
                     "name": "Leon Kessler",
                     "homepage": "https://www.drupal.org/user/595374",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "rodrigoaguilera",
+                    "homepage": "https://www.drupal.org/user/408170"
                 }
             ],
             "description": "Field Group Link",
@@ -8424,6 +8428,10 @@
                     "name": "Alexandre Mallet",
                     "homepage": "https://github.com/woprrr",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "Drupal media CI",
+                    "homepage": "https://www.drupal.org/user/3057985"
                 },
                 {
                     "name": "Drupal Media Team",
@@ -10681,17 +10689,17 @@
         },
         {
             "name": "drupal/migrate_plus",
-            "version": "6.0.4",
+            "version": "6.0.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_plus.git",
-                "reference": "6.0.4"
+                "reference": "6.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_plus-6.0.4.zip",
-                "reference": "6.0.4",
-                "shasum": "0357c416d2a9fd3f4211dd13c6585ed8072fabe7"
+                "url": "https://ftp.drupal.org/files/projects/migrate_plus-6.0.5.zip",
+                "reference": "6.0.5",
+                "shasum": "441e91086feaca7a6f1acf1735023fff0dfc5e1e"
             },
             "require": {
                 "drupal/core": ">=9.1",
@@ -10708,8 +10716,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.4",
-                    "datestamp": "1721745585",
+                    "version": "6.0.5",
+                    "datestamp": "1732124623",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -12113,6 +12121,10 @@
                     "homepage": "https://www.drupal.org/user/1557710"
                 },
                 {
+                    "name": "ptmkenny",
+                    "homepage": "https://www.drupal.org/user/97885"
+                },
+                {
                     "name": "rlhawk",
                     "homepage": "https://www.drupal.org/user/352283"
                 }
@@ -12912,17 +12924,17 @@
         },
         {
             "name": "drupal/search_api_pantheon",
-            "version": "8.2.0",
+            "version": "8.2.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_pantheon.git",
-                "reference": "8.2.0"
+                "reference": "8.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.2.0.zip",
-                "reference": "8.2.0",
-                "shasum": "642aa884bd0b341144775d6f3090c3353ee7fddf"
+                "url": "https://ftp.drupal.org/files/projects/search_api_pantheon-8.2.2.zip",
+                "reference": "8.2.2",
+                "shasum": "d850a1c64460301b715533bdeea2c464c4454090"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10",
@@ -12957,8 +12969,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.2.0",
-                    "datestamp": "1731619918",
+                    "version": "8.2.2",
+                    "datestamp": "1732037989",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -15188,7 +15200,7 @@
                     "homepage": "https://www.drupal.org/user/1463982"
                 },
                 {
-                    "name": "Manuel Garcia",
+                    "name": "manuel garcia",
                     "homepage": "https://www.drupal.org/user/213194"
                 }
             ],
@@ -15713,17 +15725,17 @@
         },
         {
             "name": "drupal/views_flipped_table",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_flipped_table.git",
-                "reference": "2.0.2"
+                "reference": "2.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_flipped_table-2.0.2.zip",
-                "reference": "2.0.2",
-                "shasum": "c3764e0259c7892f0f24472820344aaea904a6a5"
+                "url": "https://ftp.drupal.org/files/projects/views_flipped_table-2.0.3.zip",
+                "reference": "2.0.3",
+                "shasum": "e2381f4b92cfdde59fa5269138b34a56b3d3769a"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11"
@@ -15731,8 +15743,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.2",
-                    "datestamp": "1723051633",
+                    "version": "2.0.3",
+                    "datestamp": "1731870577",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -15745,26 +15757,31 @@
             ],
             "authors": [
                 {
-                    "name": "infojunkie",
-                    "homepage": "https://www.drupal.org/user/48424"
+                    "name": "Karl Shea (karlshea)",
+                    "homepage": "https://www.drupal.org/u/karlshea",
+                    "role": "Maintainer"
                 },
                 {
-                    "name": "karlshea",
-                    "homepage": "https://www.drupal.org/user/294283"
+                    "name": "Karim Ratib (infojunkie)",
+                    "homepage": "https://www.drupal.org/u/infojunkie",
+                    "role": "Maintainer"
                 },
                 {
-                    "name": "marcoka",
-                    "homepage": "https://www.drupal.org/user/255202"
+                    "name": "Marco (marcoka)",
+                    "homepage": "https://www.drupal.org/u/marcoka",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "naught101",
-                    "homepage": "https://www.drupal.org/user/44216"
+                    "homepage": "https://www.drupal.org/u/naught101",
+                    "role": "Maintainer"
                 }
             ],
-            "description": "Table style with rows and columns flipped.",
-            "homepage": "https://www.drupal.org/project/views_flipped_table",
+            "description": "Provides a Views table style with rows and columns flipped.",
+            "homepage": "https://drupal.org/project/views_flipped_table",
             "support": {
-                "source": "https://git.drupalcode.org/project/views_flipped_table"
+                "source": "https://git.drupalcode.org/project/views_flipped_table",
+                "issues": "https://www.drupal.org/project/issues/views_flipped_table"
             }
         },
         {
@@ -17255,16 +17272,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.381.0",
+            "version": "v0.382.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "e26fd3ea9c1931f205481843519b8fdc166e7026"
+                "reference": "9d9d154c8fc3c4b300c27e492f0e917d8ac35124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/e26fd3ea9c1931f205481843519b8fdc166e7026",
-                "reference": "e26fd3ea9c1931f205481843519b8fdc166e7026",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/9d9d154c8fc3c4b300c27e492f0e917d8ac35124",
+                "reference": "9d9d154c8fc3c4b300c27e492f0e917d8ac35124",
                 "shasum": ""
             },
             "require": {
@@ -17293,9 +17310,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.381.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.382.0"
             },
-            "time": "2024-11-11T01:08:23+00:00"
+            "time": "2024-11-15T01:10:24+00:00"
         },
         {
             "name": "google/auth",
@@ -19127,16 +19144,16 @@
         },
         {
             "name": "mpdf/mpdf",
-            "version": "v8.2.4",
+            "version": "v8.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "9e3ff91606fed11cd58a130eabaaf60e56fdda88"
+                "reference": "e175b05e3e00977b85feb96a8cccb174ac63621f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/9e3ff91606fed11cd58a130eabaaf60e56fdda88",
-                "reference": "9e3ff91606fed11cd58a130eabaaf60e56fdda88",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/e175b05e3e00977b85feb96a8cccb174ac63621f",
+                "reference": "e175b05e3e00977b85feb96a8cccb174ac63621f",
                 "shasum": ""
             },
             "require": {
@@ -19146,7 +19163,7 @@
                 "mpdf/psr-log-aware-trait": "^2.0 || ^3.0",
                 "myclabs/deep-copy": "^1.7",
                 "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
-                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "setasign/fpdi": "^2.1"
@@ -19194,7 +19211,7 @@
                 "utf-8"
             ],
             "support": {
-                "docs": "http://mpdf.github.io",
+                "docs": "https://mpdf.github.io",
                 "issues": "https://github.com/mpdf/mpdf/issues",
                 "source": "https://github.com/mpdf/mpdf"
             },
@@ -19204,7 +19221,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-06-14T16:06:41+00:00"
+            "time": "2024-11-18T15:30:42+00:00"
         },
         {
             "name": "mpdf/psr-http-message-shim",
