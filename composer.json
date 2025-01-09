@@ -434,9 +434,6 @@
             "drupal/tac_lite": {
                 "TypeError: count(): Argument #1 ($value) must be of type Countable": "https://www.drupal.org/files/issues/2022-09-05/tac_lite-3307744-5.patch"
             },
-            "drupal/view_mode_page": {
-                "Context exception when trying to create url (Drupal 10 is broken!)": "https://www.drupal.org/files/issues/2023-05-01/3300706-17-context_exception_when_trying_to_create_url_0.patch"
-            },
             "drupal/nodeaccess": {
                 "Unpublished content can be viewed by anonymous": "https://www.drupal.org/files/issues/2023-06-22/3169490-13.patch"
             },
