@@ -4,7 +4,8 @@
     display: none;
     box-sizing: border-box;
     cursor: pointer;
-    font-family: avenir-book, sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
     font-size: 16px;
     left: 0px;
     line-height: 1.42857;
@@ -20,7 +21,7 @@
 }
 
 .blk-summary p.eventtitle {
-    font-family: Avenir, "Century Gothic", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     font-weight: 600;
     font-size: 21px;
     margin: 20px 0 10px 0;

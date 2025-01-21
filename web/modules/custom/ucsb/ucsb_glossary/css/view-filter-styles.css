@@ -44,7 +44,8 @@ li a.bef-link {
     border: none !important;
     color: #111517;
     display: inline-block;
-    font-family: avenir-heavy,sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
     font-size: 21px;
     line-height: 21px;
     padding: 10px 0 8px;

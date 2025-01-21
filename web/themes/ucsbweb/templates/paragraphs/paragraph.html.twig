@@ -86,30 +86,30 @@
 
 {%
   set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    mobile_width ? 'col-sm-' ~ mobile_width,
-    paragraph.field_width ? 'col-md-' ~ paragraph.field_width.value,
-    paragraph.field_background_color.color ? 'has-background background-color-' ~ paragraph.field_background_color.color,
-    background_image ? 'has-background background-image height-' ~ image_height,
-    is_retina ? 'is-retina',
-    paragraph.field_top_padding.value ? 'top-padding-' ~ paragraph.field_top_padding.value,
-    paragraph.field_bottom_padding.value ? 'bottom-padding-' ~ paragraph.field_bottom_padding.value,
-    equal_height ? 'equal-height',
-    paragraph.field_css_classes.value ? paragraph.field_css_classes.value,
-    is_article ? 'article',
-    overlay_position ? 'overlay ' ~ overlay_position,
-    autoscroll,
-  ]
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  mobile_width ? 'col-sm-' ~ mobile_width,
+  paragraph.field_width ? 'col-md-' ~ paragraph.field_width.value,
+  paragraph.field_background_color.color ? 'has-background background-color-' ~ paragraph.field_background_color.color,
+  background_image ? 'has-background background-image height-' ~ image_height,
+  is_retina ? 'is-retina',
+  paragraph.field_top_padding.value ? 'top-padding-' ~ paragraph.field_top_padding.value,
+  paragraph.field_bottom_padding.value ? 'bottom-padding-' ~ paragraph.field_bottom_padding.value,
+  equal_height ? 'equal-height',
+  paragraph.field_css_classes.value ? paragraph.field_css_classes.value,
+  is_article ? 'article',
+  overlay_position ? 'overlay ' ~ overlay_position,
+  autoscroll,
+]
 %}
 
 {% set inner_attribute = create_attribute() %}
 {%
   set inner_classes = [
-    'inner',
-    paragraph.field_border_color.color ? 'has-border border-color-' ~ paragraph.field_border_color.color,
-  ]
+  'inner',
+  paragraph.field_border_color.color ? 'has-border border-color-' ~ paragraph.field_border_color.color,
+]
 %}
 
 
@@ -121,38 +121,38 @@
       {% set classes = classes|merge(['blade-background-image-overlay']) %}
     {% endif %}
 
-    <div{{ attributes.addClass(classes) }} style="background-image: url({{ file_url(paragraph.field_image.entity.fileuri) }});">    
+    <div{{ attributes.addClass(classes) }} style="background-image: url({{ file_url(paragraph.field_image.entity.fileuri) }});">
     {% if background_image and background_color and (paragraph.bundle == 'blade')  %}
       <div{{ attributes.addClass(classes, "blade-background-image-color-overlay").removeClass("blade-background-image-overlay") }}>
       </div>
     {% endif %}
-    
+
   {% else %}
     <div{{ attributes.addClass(classes) }}>
   {% endif %}
 
-    {% if paragraph.field_top_border.value == 1 %}
-      <div class="border"><div class="inner"></div></div>
-    {% endif %}
+  {% if paragraph.field_top_border.value == 1 %}
+    <div class="border"><div class="inner"></div></div>
+  {% endif %}
 
-    {% if paragraph.field_full_bleed.value != 1 %}
-    <div{{ inner_attribute.addClass(inner_classes) }}>
-    {% endif %}
-    {% if paragraph.field_image.entity.fileuri and (paragraph.bundle != 'blade') and (paragraph.bundle != 
+  {% if paragraph.field_full_bleed.value != 1 %}
+  <div{{ inner_attribute.addClass(inner_classes|join(' ')) }}>
+  {% endif %}
+  {% if paragraph.field_image.entity.fileuri and (paragraph.bundle != 'blade') and (paragraph.bundle !=
     'slide') %}
-      <div class="column-icon" style="float: {{ image_position }};"><img src="{{ file_url(paragraph.field_image.entity.fileuri) }}" alt="{{ paragraph.field_image.alt }}"></div>
-      <div style="padding-{{ image_position }}: 90px;">
-    {% endif %}
-        {% block content %}
-          {{ content }}
-        {% endblock %}
-    {% if paragraph.field_image.entity.fileuri  and (paragraph.bundle != 'blade') and (paragraph.bundle != 
+  <div class="column-icon" style="float: {{ image_position }};"><img src="{{ file_url(paragraph.field_image.entity.fileuri) }}" alt="{{ paragraph.field_image.alt }}"></div>
+  <div style="padding-{{ image_position }}: 90px;">
+  {% endif %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+  {% if paragraph.field_image.entity.fileuri  and (paragraph.bundle != 'blade') and (paragraph.bundle !=
     'slide') %}
-      </div>
-    {% endif %}
-    {% if paragraph.field_full_bleed.value != 1 %}
-    </div>
-    {% endif %}
+  </div>
+  {% endif %}
+  {% if paragraph.field_full_bleed.value != 1 %}
+  </div>
+  {% endif %}
 
   </div>
 {% endblock paragraph %}

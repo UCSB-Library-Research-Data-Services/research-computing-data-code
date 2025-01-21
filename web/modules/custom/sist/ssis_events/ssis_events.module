@@ -159,9 +159,9 @@ function ssis_events_theme($existing, $type, $theme, $path) {
  * Implements hook_preprocess().
  */
 function ssis_events_preprocess(&$variables, $hook) {
-  $module_relative_url = \Drupal::service('extension.list.module')->getPath('ssis_events') . '/images/ucsb-logo.png';
+  $module_relative_url = \Drupal::service('extension.list.module')->getPath('ssis_events') . '/images/ucsb-navy.png';
   $module_absolute_url = \Drupal::service('file_url_generator')->generateAbsoluteString($module_relative_url);
-  $variables['img_path'] = $module_absolute_url;
+  $variables['event_img_path'] = $module_absolute_url;
 }
 
 

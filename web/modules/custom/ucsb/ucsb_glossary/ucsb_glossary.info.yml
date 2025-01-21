@@ -7,12 +7,16 @@ package: ucsb
 dependencies:
   - better_exposed_filters
   - content_moderation
+  - entity_browser_entity_form
+  - entity_reference_revisions
   - ief_table_view_mode
+  - menu_ui
   - node
   - path
   - scheduler
   - scheduler_content_moderation_integration
   - taxonomy
+  - text
   - twig_tweak
   - user
   - views
