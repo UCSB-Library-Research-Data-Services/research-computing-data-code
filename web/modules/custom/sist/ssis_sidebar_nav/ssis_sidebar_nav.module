@@ -66,3 +66,16 @@ function ssis_sidebar_nav_theme_suggestions_page_alter(array &$suggestions, arra
         // if any other themes, do not display the sidebar nav
     }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function ssis_sidebar_nav_preprocess_block(&$variables) {
+  $blocks_to_cache = [
+    'block-sidebarnavmenublock',
+  ];
+  if (in_array($variables['attributes']['id'], $blocks_to_cache)) {
+    $variables['#cache']['max-age'] = 0;
+  }
+
+}

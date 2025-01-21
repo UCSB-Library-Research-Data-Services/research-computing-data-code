@@ -61,7 +61,9 @@ use Drupal\node\Entity\Node;
    */
   function ucsbwebsub_preprocess_block(&$variables){
     $block = \Drupal\block\Entity\Block::load($variables["elements"]["#id"]);
-    $variables['parent_region'] = $block->getRegion();
+    if($block){
+      $variables['parent_region'] = $block->getRegion();
+    }
   }
 
   

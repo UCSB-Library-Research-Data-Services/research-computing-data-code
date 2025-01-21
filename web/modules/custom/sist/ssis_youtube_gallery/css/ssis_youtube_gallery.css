@@ -43,7 +43,7 @@
 
 .playlist-item a.play-link .speaker-name {
 
-  font-family: Avenir, "Century Gothic", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -51,7 +51,7 @@
   text-transform: uppercase;
   font-size: 12px;
   text-decoration: none !important;
-  font-family: Avenir, "Century Gothic", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 500;
   background-repeat: no-repeat;
   background-position: left top;
@@ -67,7 +67,8 @@
   overflow: hidden;
 }
 .speaker-name {
-  font-family: avenir-heavy;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
 }
 .speaker-title {
   font-size: 12px;

@@ -14,7 +14,8 @@
 }
 
 .blk-template .blk-caption-bottom-position .day {
-    font-family: avenir-black, sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 800;
     font-size: 27px;
 }
 

@@ -289,7 +289,7 @@ a:focus>.actionpanel_bg {
 
 .actionpanel .actionpanel_list .actionpanel_subtitle {
   color: white;
-  font-family: avenir-book, sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
   transition: .25s;
   line-height: 1.75;
