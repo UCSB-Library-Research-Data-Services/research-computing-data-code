@@ -24,4 +24,4 @@
 ## used within the group or organization that manages the upstream. To allow
 ## the composer.lock file to be committed, ensure that the '!composer.lock'
 ## line below is uncommented.
-# !composer.lock
+!composer.lock
