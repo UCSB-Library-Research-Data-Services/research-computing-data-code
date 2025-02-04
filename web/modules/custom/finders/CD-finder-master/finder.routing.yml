@@ -1,8 +1,8 @@
 finder.content:
-  path: '/data-tool-explorer'
+  path: '/tool-explorer'
   defaults:
     _controller: '\Drupal\finder\Controller\FinderController::content'
-    _title: 'Data Tool Explorer'
+    _title: 'Tool/Software Explorer'
   requirements:
     _permission: 'access content'
 finder.facettree:

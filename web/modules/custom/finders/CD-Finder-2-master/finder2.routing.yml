@@ -1,8 +1,8 @@
 finder2.content:
-  path: '/data-storage-finder'
+  path: '/storage-finder'
   defaults:
     _controller: '\Drupal\finder2\Controller\FinderController::content'
-    _title: 'Data Storage Finder'
+    _title: 'Storage Finder'
   requirements:
     _permission: 'access content'
 finder2.facettree:
