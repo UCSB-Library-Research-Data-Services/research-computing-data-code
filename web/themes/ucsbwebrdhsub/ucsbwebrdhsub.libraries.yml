@@ -2,6 +2,7 @@ ucsbwebrdhsub-styling:
   css:
     theme:
       css/style.css: {}
+      css/font-awesome.min.css: {}
 
 data-literacy-series:
   version: 9
