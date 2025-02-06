@@ -275,6 +275,10 @@ select {
   font-size: 1.4em;
 }
 
+.community-container .flip-icon.fa.fa-info-circle::before {
+  content: "\f05a";
+}
+
 .fa {
   display: inline-block;
   font: normal normal normal 14px / 1 FontAwesome;
