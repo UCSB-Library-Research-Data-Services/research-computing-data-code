@@ -257,7 +257,13 @@ select {
   transform-origin: center; 
 }
 
-.community-container .flip-icon {
+
+.community-container .fa.fa-info-circle {
+  font-family: "FontAwesome";
+  text-decoration: none;
+  color: #757575;
+  font-weight: normal;
+  font-size: 1.4em;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -267,16 +273,8 @@ select {
   z-index: 10;
 }
 
-.community-container .fa.fa-info-circle {
-  font-family: "FontAwesome";
-  text-decoration: none;
-  color: #757575;
-  font-weight: normal;
-  font-size: 1.4em;
-}
-
-.community-container .flip-icon.fa.fa-info-circle::before {
-  content: "\f05a";
+.community-container .fa.fa-info-circle::before {
+  content: '\f05a';
 }
 
 .fa {

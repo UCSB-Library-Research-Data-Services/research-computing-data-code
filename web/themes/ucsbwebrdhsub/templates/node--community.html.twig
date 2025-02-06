@@ -65,6 +65,7 @@
  *   in different view modes.
  */
 #}
+{{ attach_library('ucsbwebrdhsub/fontawesome') }}
 {% set background_color = node.field_background_color.color ? node.field_background_color.color : ''%}
 {% set text_color = node.field_text_color.color %}
 {% set style = 'color: #'~ text_color ~';' %} 
@@ -98,11 +99,10 @@
 
 
 {% if view_mode == 'default' or view_mode == 'full' %}
-{{ attach_library('ucsbwebrdhsub/ucsbwebrdhsub-styling') }}
   <div{{ attributes.addClass(classes)}} >
-    <div class="flip-icon fa fa-info-circle" aria-hidden="true">
+    <span class="fas fa-info-circle" aria-hidden="true">
       
-    </div>
+    </span>
     <div class="card">
       <div class="card-front">
         <div class="card-content">
