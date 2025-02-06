@@ -267,6 +267,23 @@ select {
   z-index: 10;
 }
 
+.community-container .fa.fa-info-circle {
+  font-family: "FontAwesome";
+  text-decoration: none;
+  color: #757575;
+  font-weight: normal;
+  font-size: 1.4em;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px / 1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .community-container .flip-icon:hover ~ .card {
   transform: rotateY(180deg);
 }
