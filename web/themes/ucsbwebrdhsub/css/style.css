@@ -258,7 +258,7 @@ select {
 }
 
 
-.community-container .fa.fa-info-circle {
+.community-container .fas.fa-info-circle {
   font-family: "FontAwesome";
   text-decoration: none;
   color: #757575;
@@ -273,11 +273,7 @@ select {
   z-index: 10;
 }
 
-.community-container .fa.fa-info-circle::before {
-  content: '\f05a';
-}
-
-.fa {
+.fas {
   display: inline-block;
   font: normal normal normal 14px / 1 FontAwesome;
   font-size: inherit;
