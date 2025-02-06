@@ -260,7 +260,7 @@ select {
 .community-container .fas.fa-info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
-  color: #757575;
+  color: inherit;
   font-size: 1.4em;
   position: absolute;
   top: 10px;
@@ -278,7 +278,7 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.community-container .fas:hover ~ .card {
+.community-container .fas.fa-info-circle:hover ~ .card {
   transform: rotateY(180deg);
 }
 
