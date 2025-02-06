@@ -257,11 +257,10 @@ select {
   transform-origin: center; 
 }
 
-
 .community-container .fas.fa-info-circle {
+  font-family: "Font Awesome 5 Free";
   text-decoration: none;
   color: #757575;
-  font-weight: normal;
   font-size: 1.4em;
   position: absolute;
   top: 10px;
