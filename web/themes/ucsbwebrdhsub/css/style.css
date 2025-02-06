@@ -251,7 +251,7 @@ select {
   position: relative;
   width: 100%;
   text-align: center;
-  transition: transform 2s; 
+  transition: transform 1.25s; 
   transform-style: preserve-3d;
   background-color: #047C91 !important;
   transform-origin: center; 
