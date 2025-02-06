@@ -269,20 +269,18 @@ select {
   left: 10px;
   width: 20px;
   cursor: pointer;
-  background-color: inherit;
   z-index: 10;
 }
 
 .fas {
   display: inline-block;
-  font: normal normal normal 14px / 1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.community-container .flip-icon:hover ~ .card {
+.community-container .fas:hover ~ .card {
   transform: rotateY(180deg);
 }
 
