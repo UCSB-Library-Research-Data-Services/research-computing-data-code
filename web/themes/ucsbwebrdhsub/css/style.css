@@ -257,6 +257,20 @@ select {
   transform-origin: center; 
 }
 
+.community-container .flip-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  cursor: pointer;
+  background-color: inherit;
+  z-index: 10;
+}
+
+.community-container .flip-icon:hover ~ .card {
+  transform: rotateY(180deg);
+}
+
 .community-container .card .card-front,
 .community-container .card .card-back {
   display: flex;
@@ -272,10 +286,6 @@ select {
 .community-container .card .card-back {
   background-color: #09847A !important;
   transform: rotateY(180deg); /* flip the back side initially */
-}
-
-.community-container .card:hover {
-  transform: rotateY(180deg);
 }
 
 .card-content {
