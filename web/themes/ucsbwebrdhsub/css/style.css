@@ -257,7 +257,7 @@ select {
   transform-origin: center; 
 }
 
-.community-container .fas.fa-info-circle {
+.community-container .info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
   color: inherit;
@@ -278,7 +278,7 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.community-container a .fas.fa-info-circle:hover ~ .card {
+.community-container .info-circle:hover ~ .card {
   transform: rotateY(180deg);
 }
 
