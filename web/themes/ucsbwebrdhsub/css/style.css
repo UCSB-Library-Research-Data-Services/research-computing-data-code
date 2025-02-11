@@ -251,7 +251,7 @@ select {
   position: relative;
   width: 100%;
   text-align: center;
-  transition: transform 2.00s ease-out; 
+  transition: transform 1.75s ease-out; 
   transform-style: preserve-3d;
   background-color: #047C91 !important;
   transform-origin: center; 
@@ -279,6 +279,7 @@ select {
 }
 
 .community-container .fas.fa-info-circle:hover ~ .card {
+  transition-duration: 0.5s;
   transform: rotateY(180deg);
 }
 
