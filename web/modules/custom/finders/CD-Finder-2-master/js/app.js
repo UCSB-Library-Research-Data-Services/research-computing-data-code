@@ -30,7 +30,7 @@
         <li>\
         <div class='question-wrapper'>\
         <h4 id='question-{{id}}'>{{question}}</h4>\
-        <a aria-haspopup='true' class='popup' data-hidden='true' href='#explanation-{{id}}''>\
+        <a aria-haspopup='true' class='popup' data-hidden='true' href='#explanation-{{id}}'>\
             <span class='fa fa-info-circle' aria-hidden='true'></span>\
             <span class='sr-only'>More info about {{question}}</span>\
         </a>\
