@@ -278,7 +278,7 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.community-container .fas.fa-info-circle:hover ~ .card {
+.community-container a .fas.fa-info-circle:hover ~ .card {
   transform: rotateY(180deg);
 }
 
