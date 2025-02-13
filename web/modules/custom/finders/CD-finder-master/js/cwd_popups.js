@@ -333,7 +333,7 @@ jQuery(document).ready(function($) {
 			});
 		});
 	}
-	//popups(); // process the page
+	popups(); // process the page
 
 	/* Data Storage Tool: Delay popups init until the table is rendered by app.js */
   var popup_ran_once = false;

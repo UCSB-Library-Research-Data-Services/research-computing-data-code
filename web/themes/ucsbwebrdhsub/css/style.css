@@ -251,10 +251,36 @@ select {
   position: relative;
   width: 100%;
   text-align: center;
-  transition: transform 2s; 
+  transition: transform 2.75s ease-out; 
   transform-style: preserve-3d;
   background-color: #047C91 !important;
   transform-origin: center; 
+}
+
+.community-container .fas.fa-info-circle {
+  font-family: "Font Awesome 5 Free";
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.4em;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.fas {
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.community-container .fas.fa-info-circle:hover ~ .card {
+  transition-duration: 0.9s;
+  transform: rotateY(180deg);
 }
 
 .community-container .card .card-front,
@@ -272,10 +298,6 @@ select {
 .community-container .card .card-back {
   background-color: #09847A !important;
   transform: rotateY(180deg); /* flip the back side initially */
-}
-
-.community-container .card:hover {
-  transform: rotateY(180deg);
 }
 
 .card-content {

@@ -31,3 +31,8 @@ bootstrap:
   js:
     https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js: { type: external, minified: true }
 
+fontawesome:
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css: { type: external }
+
