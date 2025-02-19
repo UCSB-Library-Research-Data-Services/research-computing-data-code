@@ -685,7 +685,6 @@ select {
   }
 
   .partner-card-header {
-    height: auto; 
     padding: 0.5rem;
     display: flex;
     align-items: center;
