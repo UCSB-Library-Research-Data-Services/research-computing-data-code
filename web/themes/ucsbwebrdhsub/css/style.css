@@ -755,7 +755,6 @@ select {
   margin: 0 auto;
 }
 
-
 .view-resources .views-view-grid .views-row{
   display: flex;
   justify-content: center;
@@ -1393,7 +1392,6 @@ select {
 .learning-resource-title {
   overflow: hidden;
   text-overflow: ellipsis; 
-  white-space: nowrap;
   flex-grow: 1;
   margin-right: 10px; 
 }
@@ -1409,7 +1407,6 @@ select {
 
 .learning-resource-title-link .learning-resource-title {
   flex: 1 1 auto;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; 
   margin-right: 5px; 

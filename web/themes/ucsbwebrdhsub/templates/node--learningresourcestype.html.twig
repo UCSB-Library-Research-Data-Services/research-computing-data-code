@@ -16,6 +16,16 @@
   {% endfor %}
 {% endif %}
 
+{# for the formats #}
+{% set labelList1 = '' %}
+{% if content.field_learningresourcestype[0] %}
+  {% set labelList1 = content.field_learningresourcestype[0]['#title'] %}
+  {% for key, item in content.field_learningresourcestype %}
+    {% if key|first != '#' and key != 0 %}
+      {% set labelList1 = labelList1 ~ ', ' ~ item['#title'] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {%
   set classes = [
