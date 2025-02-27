@@ -16,16 +16,6 @@
   {% endfor %}
 {% endif %}
 
-{# for the formats #}
-{% set labelList1 = '' %}
-{% if content.field_learningresourcestype[0] %}
-  {% set labelList1 = content.field_learningresourcestype[0]['#title'] %}
-  {% for key, item in content.field_learningresourcestype %}
-    {% if key|first != '#' and key != 0 %}
-      {% set labelList1 = labelList1 ~ ', ' ~ item['#title'] %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
 
 {%
   set classes = [
@@ -70,11 +60,7 @@
                   {% endfor %}
                 </h6>
             </div>
-          
-            <div class="tester">
-              <h1>It is  a test</h1>
-            </div>
-            
+
             <div class="learning-resource-tags">
                 {% if node.field_learningresourcestype[0] %}
                     <h6>
