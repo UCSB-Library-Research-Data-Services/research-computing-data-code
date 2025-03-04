@@ -551,7 +551,8 @@ select {
 }
 
 .view-data-literacy-series-view .previous>a,
-.view-data-literacy-series-view .next>a {
+.view-data-literacy-series-view .next>a, .view-partners nav .previous>a, 
+.view-partners nav .next>a  {
   box-shadow: 5px 3px 3px grey;
   font-size: 22px;
   font-weight: bolder;
@@ -563,7 +564,8 @@ select {
 }
 
 .view-data-literacy-series-view .previous>a:hover,
-.view-data-literacy-series-view .next>a:hover {
+.view-data-literacy-series-view .next>a:hover, .view-partners nav .previous>a:hover, 
+.view-partners nav .next>a:hover{
   color: white !important;
   background: #369;
 }
@@ -606,7 +608,7 @@ select {
   border-bottom: 1px solid #DCE1E5;
   color: #3D4952 !important;
   cursor: pointer;
-  height: 70px;
+  height: 100px;
 }
 
 .partner-card-header h2 {
@@ -685,7 +687,6 @@ select {
   }
 
   .partner-card-header {
-    height: auto; 
     padding: 0.5rem;
     display: flex;
     align-items: center;
@@ -755,7 +756,6 @@ select {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 
 .view-resources .views-view-grid .views-row{
   display: flex;
@@ -1394,7 +1394,6 @@ select {
 .learning-resource-title {
   overflow: hidden;
   text-overflow: ellipsis; 
-  white-space: nowrap;
   flex-grow: 1;
   margin-right: 10px; 
 }
@@ -1410,7 +1409,6 @@ select {
 
 .learning-resource-title-link .learning-resource-title {
   flex: 1 1 auto;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; 
   margin-right: 5px; 
@@ -1559,4 +1557,8 @@ select {
   min-height: 0;
   padding-left: 1px;
   padding-right: 1px;
+}
+
+.btn {
+  white-space: normal;
 }
