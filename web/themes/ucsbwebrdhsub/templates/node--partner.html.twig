@@ -19,6 +19,7 @@
 {# Drupal has default classes that are for displaying the content type.  We get these with the following: #}
 {%
   set classes = [
+    'view-partners-view',
     node.bundle|clean_class,
     node.isPromoted() ? 'is-promoted',
     node.isSticky() ? 'is-sticky',

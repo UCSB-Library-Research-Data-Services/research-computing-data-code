@@ -551,7 +551,8 @@ select {
 }
 
 .view-data-literacy-series-view .previous>a,
-.view-data-literacy-series-view .next>a {
+.view-data-literacy-series-view .next>a, .view-partners-view .previous>a, 
+.view-partners-view .next>a  {
   box-shadow: 5px 3px 3px grey;
   font-size: 22px;
   font-weight: bolder;
@@ -563,7 +564,8 @@ select {
 }
 
 .view-data-literacy-series-view .previous>a:hover,
-.view-data-literacy-series-view .next>a:hover {
+.view-data-literacy-series-view .next>a:hover, .view-partners-view .previous>a:hover, 
+.view-partners-view .next>a:hover{
   color: white !important;
   background: #369;
 }
