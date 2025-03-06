@@ -109,6 +109,7 @@
               <div class='community-title'>
                 <center>{{ content.field_displayed_title_logo.0 }} </center>
               </div>
+              <a class='btn btn-tertiary btn-sm community-btn' role='button' target='_blank'  rel='noreferrer' href={{ content.field_url.0['#url'] }}>Visit Website</a>
             </div>
           </div>
         </div>
@@ -121,7 +122,6 @@
                 {{ content.body }}
               </div>
               <span class="community-footer">
-                <a class='btn btn-tertiary btn-sm community-btn' role='button' target='_blank'  rel='noreferrer' href={{ content.field_url.0['#url'] }}>Visit Website</a>
                 {% if content.field_community_mode[0] %}
                   <h6>
                   <b>MODE: </b>
