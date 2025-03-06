@@ -614,12 +614,13 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="region region-footer">
-        <div class="col-xs- 12 col-sm-12 copyright">
-          <span class="copyright">Copyright &copy; {{ 'now'|date('Y') }} The Regents of the University of California. All Rights Reserved.</span> <a href="https://www.ucsb.edu/terms-of-use" class="terms">Terms of Use</a> <a href="/accessibility" class="terms">Accessibility</a>
-        </div>
+  <div class="footer-bottom">
+    <div class="region region-footer">
+      <div class="col-xs- 12 col-sm-12 copyright">
+        <span class="copyright">Copyright &copy; {{ 'now'|date('Y') }} The Regents of the University of California. All Rights Reserved.</span> <a href="https://www.ucsb.edu/terms-of-use" class="terms">Terms of Use</a> <a href="/accessibility" class="terms">Accessibility</a>
+        {{ page.footer_links }}
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 {% endblock %}

@@ -1,0 +1,15 @@
+.region.region-footer div.copyright {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-bottom span,
+.footer-bottom div.copyright a {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.footer-bottom span,
+.footer-bottom div.copyright p {
+    line-height: 2.3rem;
+}

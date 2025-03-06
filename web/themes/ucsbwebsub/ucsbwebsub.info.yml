@@ -20,6 +20,7 @@ regions:
   forum: 'Forum Content'
   sidebar_first: 'Primary'
   sidebar_second: 'Secondary'
+  footer_links: 'Footer Links'
   footer: 'Footer'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
