@@ -251,12 +251,13 @@ select {
   position: relative;
   width: 100%;
   text-align: center;
-  transition: transform 2.75s ease-out; 
+  transition: transform 1.5s ease-in-out; 
   transform-style: preserve-3d;
   background-color: #047C91 !important;
   transform-origin: center; 
 }
 
+/* the info circle code, including interactive css effects */
 .community-container .fas.fa-info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
@@ -278,8 +279,8 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.community-container .fas.fa-info-circle:hover ~ .card {
-  transition-duration: 0.9s;
+.community-container .fas.fa-info-circle:active ~ .card {
+  transition-duration: 1.0s;
   transform: rotateY(180deg);
 }
 
