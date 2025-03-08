@@ -16,6 +16,13 @@ calendar:
   dependencies:
     - core/jquery
 
+communities:
+  version: 9
+  js: 
+    js/communities.js: {}
+  
+  dependencies:
+    - core/jquery
 
 our-members:
   version: 9

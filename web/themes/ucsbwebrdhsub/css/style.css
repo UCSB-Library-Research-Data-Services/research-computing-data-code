@@ -253,11 +253,16 @@ select {
   text-align: center;
   transition: transform 1.5s ease-in-out; 
   transform-style: preserve-3d;
+  transform: rotateY(0);
   background-color: #047C91 !important;
   transform-origin: center; 
 }
 
-/* the info circle code, including interactive css effects */
+.community-container .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* the info=circle styling */
 .community-container .fas.fa-info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
@@ -277,11 +282,6 @@ select {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.community-container .fas.fa-info-circle:active ~ .card {
-  transition-duration: 1.0s;
-  transform: rotateY(180deg);
 }
 
 .community-container .card .card-front,
@@ -332,7 +332,6 @@ select {
   align-items: center;
   flex-direction: column; /* will align the items vertically */
 }
-
 
 .community-column {
   flex: 50%;
