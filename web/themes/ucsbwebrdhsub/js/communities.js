@@ -9,7 +9,7 @@
         const infoCircles = document.querySelectorAll(".fa-info-circle");
         infoCircles.forEach((infoCircle) => {
             infoCircle.addEventListener("click", (e => {
-                let card = e.closest(".card");
+                let card = e.target.closest(".card");
                 if (card) {
                     card.classList.toggle(".flip-card");
                 }
