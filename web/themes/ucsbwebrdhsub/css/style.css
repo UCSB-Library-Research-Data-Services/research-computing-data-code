@@ -253,7 +253,6 @@ select {
   text-align: center;
   transition: transform 1.5s ease-in-out; 
   transform-style: preserve-3d;
-  transform: rotateY(0);
   background-color: #047C91 !important;
   transform-origin: center; 
 }
@@ -263,7 +262,7 @@ select {
 }
 
 /* the info=circle styling */
-.community-container .fas.fa-info-circle {
+.card .fas.fa-info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
   color: inherit;
