@@ -3,12 +3,19 @@
  * Overrride UI behaviors
  */
 
-(function ($, Drupal) {
-    Drupal.behaviors.communitiesFlip = {
-      attach: function (context, settings) {
-        $('.fa-info-circle', context).once('communitiesFlip').on('click', function () {
-          $(this).closest('.card').toggleClass('flip-card');
+(function ($) {
+    $(document).ready(function() {
+        
+        const infoCircles = document.querySelectorAll(".fa-info-circle");
+        infoCircles.forEach((infoCircle) => {
+            infoCircle.addEventListener("click", e => {
+                let card = e.target.closest(".card");
+                if (card) {
+                    card.classList.toggle("flip-card");
+                }
+                console.log("test");
+            })
         });
-      }
-    };
-})(jQuery, Drupal);
+    });
+
+})(jQuery);

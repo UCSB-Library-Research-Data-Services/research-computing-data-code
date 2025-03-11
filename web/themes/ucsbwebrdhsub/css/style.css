@@ -258,7 +258,7 @@ select {
   transform-origin: center; 
 }
 
-.community-container .flip-card {
+.flip-card {
   transform: rotateY(180deg);
 }
 
