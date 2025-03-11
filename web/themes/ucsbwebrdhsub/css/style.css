@@ -262,7 +262,7 @@ select {
 }
 
 /* the info=circle styling */
-.card .fas.fa-info-circle {
+.community-container .fas.fa-info-circle {
   font-family: "Font Awesome 5 Free";
   text-decoration: none;
   color: inherit;
