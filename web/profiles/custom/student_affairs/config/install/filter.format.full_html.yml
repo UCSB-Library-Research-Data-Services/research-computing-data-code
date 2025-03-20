@@ -20,6 +20,18 @@ name: 'Full HTML'
 format: full_html
 weight: -10
 filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: {  }
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 100
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -32,12 +44,6 @@ filters:
     status: false
     weight: 9
     settings: {  }
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
-    status: true
-    weight: 11
-    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -47,18 +53,19 @@ filters:
       allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ol start type> <li> <dl> <dt> <dd> <h5 id> <h6 id> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid data-align data-caption> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <h1> <pre> <u> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title class="offsite btn btn-default btn-secondary btn-tertiary"> <ul type class="columns columns-2 columns-3 inline"> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <p class="lead caption extra-small label image-right display-extra-large display-large display-medium display-small"> <h2 id class="display-extra-large display-large display-medium display-small"> <h3 id class="display-large display-medium display-small"> <h4 id class="display-small"> <div class="columns columns-2 columns-3"> <span class="serif caption">'
       filter_html_help: true
       filter_html_nofollow: false
-  entity_embed:
-    id: entity_embed
-    provider: entity_embed
-    status: true
-    weight: 100
-    settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
     weight: 10
     settings: {  }
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
   media_embed:
     id: media_embed
     provider: media
@@ -82,10 +89,3 @@ filters:
     status: true
     weight: 0
     settings: {  }
-  linkit:
-    id: linkit
-    provider: linkit
-    status: true
-    weight: 0
-    settings:
-      title: true

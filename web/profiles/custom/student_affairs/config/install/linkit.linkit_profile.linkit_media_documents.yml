@@ -8,14 +8,13 @@ third_party_settings:
   imce:
     use: false
     scheme: public
-id: linkit_media_documents
 label: 'Linkit Media Documents'
+id: linkit_media_documents
 description: 'Used for listing media entities'
 matchers:
   69536266-0d02-4294-b26f-5d740dcc4e81:
-    uuid: 69536266-0d02-4294-b26f-5d740dcc4e81
     id: 'entity:media'
-    weight: 0
+    uuid: 69536266-0d02-4294-b26f-5d740dcc4e81
     settings:
       result_description: '[media:url:relative]'
       bundles:
@@ -25,10 +24,10 @@ matchers:
       metadata: '[media:url:relative]'
       substitution_type: canonical
       limit: 100
-  e0b945db-f642-43cf-a360-fa1164254fc0:
-    uuid: e0b945db-f642-43cf-a360-fa1164254fc0
-    id: 'entity:node'
     weight: 0
+  e0b945db-f642-43cf-a360-fa1164254fc0:
+    id: 'entity:node'
+    uuid: e0b945db-f642-43cf-a360-fa1164254fc0
     settings:
       result_description: '[node:url:relative]'
       bundles:
@@ -38,4 +37,4 @@ matchers:
       metadata: '[node:url:relative]'
       substitution_type: canonical
       limit: 100
-
+    weight: 0
