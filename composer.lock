@@ -1533,26 +1533,29 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9"
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/31610dbb31faa98e6b5447b62340826f54fbc4e9",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
+            "conflict": {
+                "phpunit/phpunit": "<=7.5 || >=13"
+            },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^12",
-                "phpstan/phpstan": "1.4.10 || 2.0.3",
+                "doctrine/coding-standard": "^9 || ^12 || ^13",
+                "phpstan/phpstan": "1.4.10 || 2.1.11",
                 "phpstan/phpstan-phpunit": "^1.0 || ^2",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12",
                 "psr/log": "^1 || ^2 || ^3"
             },
             "suggest": {
@@ -1572,9 +1575,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/1.1.4"
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.5"
             },
-            "time": "2024-12-07T21:18:45+00:00"
+            "time": "2025-04-07T20:06:18+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -5868,17 +5871,17 @@
         },
         {
             "name": "drupal/eca",
-            "version": "1.1.11",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/eca.git",
-                "reference": "1.1.11"
+                "reference": "1.1.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/eca-1.1.11.zip",
-                "reference": "1.1.11",
-                "shasum": "a9bd14529fc98823b9df6f4197cfdbdb6e15fad5"
+                "url": "https://ftp.drupal.org/files/projects/eca-1.1.12.zip",
+                "reference": "1.1.12",
+                "shasum": "90e7cf7d15b384be2f145f0f3ce28a73ae4ad102"
             },
             "require": {
                 "dragonmantank/cron-expression": "^3.1",
@@ -5903,8 +5906,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.11",
-                    "datestamp": "1741965754",
+                    "version": "1.1.12",
+                    "datestamp": "1744218137",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -17313,16 +17316,16 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.18.2",
+            "version": "v2.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "d8d201ba8a189a3cd7fb34e4da569f2ed440eee7"
+                "reference": "4eee42d201eff054428a4836ec132944d271f051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/d8d201ba8a189a3cd7fb34e4da569f2ed440eee7",
-                "reference": "d8d201ba8a189a3cd7fb34e4da569f2ed440eee7",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/4eee42d201eff054428a4836ec132944d271f051",
+                "reference": "4eee42d201eff054428a4836ec132944d271f051",
                 "shasum": ""
             },
             "require": {
@@ -17376,9 +17379,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client/issues",
-                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.18.2"
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.18.3"
             },
-            "time": "2024-12-16T22:52:40+00:00"
+            "time": "2025-04-08T21:59:36+00:00"
         },
         {
             "name": "google/apiclient-services",
@@ -26716,16 +26719,16 @@
         },
         {
             "name": "open-telemetry/sdk",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/sdk.git",
-                "reference": "37eec0fe47ddd627911f318f29b6cd48196be0c0"
+                "reference": "0e7804c176c4b09d95b7985400aa38ce544cb7fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/37eec0fe47ddd627911f318f29b6cd48196be0c0",
-                "reference": "37eec0fe47ddd627911f318f29b6cd48196be0c0",
+                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/0e7804c176c4b09d95b7985400aa38ce544cb7fc",
+                "reference": "0e7804c176c4b09d95b7985400aa38ce544cb7fc",
                 "shasum": ""
             },
             "require": {
@@ -26802,7 +26805,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2025-01-29T21:40:28+00:00"
+            "time": "2025-04-08T09:55:41+00:00"
         },
         {
             "name": "open-telemetry/sem-conv",
@@ -30143,50 +30146,50 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/a11y_paragraphs_tabs": 10,
+        "pantheon-upstreams/upstream-configuration": 20,
         "drupal/block_field": 5,
-        "drupal/captcha": 10,
-        "drupal/cas_attributes": 10,
-        "drupal/colorbox_field_formatter": 20,
-        "drupal/computed_field": 15,
         "drupal/config_split": 5,
-        "drupal/config_update": 15,
         "drupal/default_content": 15,
-        "drupal/element_class_formatter": 10,
         "drupal/entity_usage": 10,
-        "drupal/entityreference_filter": 10,
-        "drupal/feeds": 10,
-        "drupal/feeds_ex": 10,
-        "drupal/feeds_tamper": 10,
         "drupal/filefield_paths": 10,
-        "drupal/flexslider": 15,
-        "drupal/inline_entity_form": 5,
-        "drupal/insert": 10,
+        "drupal/a11y_paragraphs_tabs": 10,
         "drupal/linkit": 5,
-        "drupal/media_entity_browser": 15,
-        "drupal/media_pdf_thumbnail": 10,
-        "drupal/menu_breadcrumb": 15,
-        "drupal/month_year": 20,
-        "drupal/node_revision_delete": 5,
-        "drupal/nodeaccess": 15,
-        "drupal/quicktabs": 15,
         "drupal/rabbit_hole": 10,
-        "drupal/search_exclude": 10,
-        "drupal/simple_gmap": 20,
         "drupal/site_settings": 20,
         "drupal/sitemap": 10,
         "drupal/tamper": 15,
-        "drupal/title_length": 5,
-        "drupal/tvi": 15,
+        "drupal/inline_entity_form": 5,
         "drupal/viewsreference": 10,
         "drupal/webform": 5,
+        "drupal/captcha": 10,
+        "drupal/config_update": 15,
+        "drupal/menu_breadcrumb": 15,
+        "drupal/cas_attributes": 10,
+        "drupal/computed_field": 15,
+        "drupal/element_class_formatter": 10,
+        "drupal/entityreference_filter": 10,
+        "drupal/nodeaccess": 15,
+        "drupal/quicktabs": 15,
+        "drupal/search_exclude": 10,
+        "drupal/title_length": 5,
         "drupal/webform_encrypt": 15,
-        "pantheon-upstreams/upstream-configuration": 20
+        "drupal/feeds": 10,
+        "drupal/feeds_tamper": 10,
+        "drupal/feeds_ex": 10,
+        "drupal/media_entity_browser": 15,
+        "drupal/simple_gmap": 20,
+        "drupal/flexslider": 15,
+        "drupal/insert": 10,
+        "drupal/colorbox_field_formatter": 20,
+        "drupal/month_year": 20,
+        "drupal/tvi": 15,
+        "drupal/media_pdf_thumbnail": 10,
+        "drupal/node_revision_delete": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
+    "platform": [],
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2"
     },
