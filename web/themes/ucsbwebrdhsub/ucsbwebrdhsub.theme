@@ -53,9 +53,9 @@ function ucsbwebrdhsub_preprocess_page(&$variables){
     $variables['#attached']['library'][] = 'ucsbwebrdhsub/our-members';
   }
 
-  // Check if the current path starts with "/our-team/".
+  // Check if the current path starts with "/rds/our-team/".
   $current_path = \Drupal::service('path.current')->getPath();
-  if (strpos($current_path, '/our-team/') === 0) {
+  if (strpos($current_path, '/rds/our-team') === 0) {
     $variables['#attached']['library'][] = 'ucsbwebrdhsub/our-members';
   }
   
