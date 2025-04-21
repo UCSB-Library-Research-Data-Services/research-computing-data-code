@@ -1075,7 +1075,7 @@ select {
   margin: 0 auto !important;
 }
 
-#views-exposed-form-rdc-member-view-block-1 .form--inline{
+#views-exposed-form-rdc-member-view-block-1 .form--inline, #views-exposed-form-duplicate-of-rdc-member-view-block-1 .form--inline {
   max-width: 1230px;
   margin-left: auto;
   margin-right: auto;
