@@ -60,7 +60,6 @@
 {% set show_give = site_settings.utility_bar.give_link.field_display_give_link %}
 {% set give_text = site_settings.utility_bar.give_link.field_link_text %}
 {% set give_url = site_settings.utility_bar.give_link.field_url.url %}
-{% set status_code = site_settings.sist_settings.statuspage_widget %}
 {% set show_highlighted = site_settings.utility_bar.highlighted_link ? 1 : 0 %}
 {% set highlighted_color = site_settings.utility_bar.highlighted_link.field_color.color %}
 
@@ -230,10 +229,7 @@
     </header>
   {% endblock %}
 {% endif %}
-{# SIST Settings #}
-{% if status_code %}
-  {{ status_code|raw }}
-{% endif %}
+
 {# Main #}
 {% block main %}
   <main>
@@ -247,7 +243,6 @@
           {% endblock %}
         {% endif %}
 
-          {% block hero %}
         {% if node.field_hero_image.entity.fileuri %}
 
           {% if node.field_hero_image.width > 1680 %}
@@ -255,6 +250,7 @@
           {% else %}
             {% set image_height = node.field_hero_image.height %}
           {% endif %}
+          {% block hero %}
 			{%
               set hero_classes = [
               'hero-image',
@@ -266,8 +262,7 @@
             {% if node.field_overlay_background_color.color is not null %}
               {% set overlay_color = ' has-background background-color-' ~ node.field_overlay_background_color.color %}
             {% endif %}
-          <div class="hero-image height-{{ image_height }}" style="background-image: url({{ file_url(node.field_hero_image.entity.fileuri) }});">
-          </div>
+            <div{{ attributes.addClass(hero_classes) }} style="background-image: url({{ file_url(node.field_hero_image.entity.fileuri) }});">
               {% if node.field_overlay %}
                 <div class="inner">
                   <div class="overlay-content{{ overlay_color }}{{ overlay_width }}">
@@ -278,70 +273,9 @@
                 </div>
               {% endif %}
             </div>
+          {% endblock %}
 		  
         {% endif %}
-          
-
-        {% if node.field_hero_image_media.entity.field_media_image.entity.uri.value %}
-        
-          {% set hero_image_width = node.field_hero_image_media.entity.field_media_image.width %}
-          {% set hero_image_height = node.field_hero_image_media.entity.field_media_image.height %}
-
-          {% if hero_image_width > 1680 %}
-            {% set image_height = hero_image_height / 2 %}
-          {% else %}
-            {% set image_height = hero_image_height %}
-          {% endif %} 
-
-          {% if image_height >= 1920 %}
-            {% set image_height = 1920 %}
-          {% elseif image_height >= 1560 and image_height < 1920 %}
-            {% set image_height = 1560 %}
-          {% elseif image_height >= 1440 and image_height < 1560 %}
-            {% set image_height = 1440 %}
-          {% elseif image_height >= 1200 and image_height < 1440 %}
-            {% set image_height = 1200 %}
-          {% elseif image_height >= 960 and image_height < 1200 %}
-            {% set image_height = 960 %}
-          {% elseif image_height >= 780 and image_height < 960 %}
-            {% set image_height = 780 %}
-          {% elseif image_height >= 720 and image_height < 780 %}
-            {% set image_height = 720 %}
-          {% elseif image_height >= 600 and image_height < 720 %}
-            {% set image_height = 600 %}
-          {% elseif image_height >= 500 and image_height < 600 %}
-            {% set image_height = 500 %}
-          {% elseif image_height >= 480 and image_height < 500 %}
-            {% set image_height = 480 %}
-          {% else %}
-            {% set image_height = 480 %}
-          {% endif %} 
-	
-            {%
-              set hero_classes = [
-              'hero-image',
-              image_height ? 'height-' ~ image_height,
-              overlay_position ? 'overlay ' ~ overlay_position,
-            ]
-            %}
-            {% set overlay_width = ' col-md-' ~ node.field_overlay_width.value %}
-            {% if node.field_overlay_background_color.color is not null %}
-              {% set overlay_color = ' has-background background-color-' ~ node.field_overlay_background_color.color %}
-            {% endif %}
-          <div{{ attributes.addClass(hero_classes) }} style="background-image: url({{ file_url(node.field_hero_image_media.entity.field_media_image.entity.uri.value) }});">
-		      {% if node.field_overlay %}
-                <div class="inner">
-                  <div class="overlay-content{{ overlay_color }}{{ overlay_width }}">
-                    {% autoescape false %}
-                      {{ node.field_overlay.value }}
-                    {% endautoescape %}
-                  </div>
-                </div>
-              {% endif %}
-          </div>
-
-        {% endif %}
-          {% endblock %}
 
         {% if node.field_hero_video.value %}
           <div class="hero-video">
