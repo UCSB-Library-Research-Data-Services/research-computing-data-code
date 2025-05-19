@@ -1,0 +1,6 @@
+people_profiles.admin:
+  title: 'SSIS People Profiles settings'
+  description: 'Specify which view_mode (template) to use for rendering the full content of the people profiles article.'
+  parent: system.admin_config_content
+  route_name: people_profiles.default_people_profiles_page_form
+  weight: 100

@@ -1,0 +1,86 @@
+{{ attach_library('people_profiles/staff-people-styling') }}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix',
+    'paragraph--type--column', 
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  <div class="profile-row field field--name-field-blades field--type-entity-reference-revisions field--label-hidden field--items">
+    <div class="paragraph paragraph--type--blade paragraph--view-mode--default top-padding-1 bottom-padding-none">
+        
+      <div class="columns">
+        <div class="inner">
+
+          <div class="col-md-3 col-sm-5 col-xs-12 ">
+            <div class="align-center squared-220 rounded">
+                
+              {# If profile photo exists #}
+              {% if node.field_photo.entity.field_media_image %}
+                    {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}                   
+              {% else %} 
+          
+                {# If no profile photo exists #}
+                {% if (not node.field_photo.entity.field_media_image) %}
+                      <img src="{{ people_cloud_img_path }}" alt=" " class="align-center">
+                {% endif %} 
+
+              {% endif %}   
+
+              <div class="col-sm-12 text-center">
+                {% if node.field_subtitle is not empty %}
+                  <p class="staff-subtitle">{{ node.field_subtitle.value }}</p>
+                {% endif %}
+
+                {% if node.field_email is not empty %}
+                  <p><strong><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></strong></p>
+                {% endif %}
+              </div>  
+
+            </div>
+          </div>
+
+          <div class="staff text-content col-md-9 col-sm-7 col-xs-12">
+              
+            <div class="title">
+              {% if node.title is not empty %}
+              <h2>{{ node.title.value }}{% if node.field_people_gender_pronouns is not empty %} | {{ node.field_people_gender_pronouns.value }}{% endif %}</h2>
+              {% endif %}
+
+              {% if node.field_title is not empty %}
+              <h3>{{ node.field_title.value }}</h3>
+              {% endif %}
+            </div>
+
+            <div class="description">
+              {% if node.body is not empty %}
+              <p>{{node.body.value | raw}}</p>
+              {% endif %}
+              
+
+              <div id="right-btn" class="col-6 col-md-6 col-sm-6 col-xs-12">
+                {% if node.field_phone is not empty %}
+                <ul class="gilist">
+                  <li class="gilist"><a href="tel:{{ node.field_phone.value }}">Call {{ node.title.value }}</a></li>
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+      
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</article>

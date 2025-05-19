@@ -1,0 +1,89 @@
+.view-content .row, .view-people-profiles .view-content .row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.view-people-profiles {
+    margin-bottom:25px;
+}
+
+.staff-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.staff-image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.staff-team-grid .squared-180 img {
+    width: 180px;
+    height: 180px;
+    max-width: 180px;
+    object-fit: cover;
+    object-position: top;
+    margin: 0 auto;
+}
+
+.squared-380 img {
+    width: 380px;
+    height: 380px;
+    max-width: 380px;
+    object-fit: cover;
+    object-position: top;
+    margin: 0 auto;
+}
+
+.staff-team-grid h2 {
+    font-size: 1.4em;
+    margin-top: 10px !important;
+    color: #003660;
+}
+
+.staff-team-grid .title {
+    font-size: 1.2em;
+    margin: 0px 0 10px 0;
+}
+
+.staff-team-grid .view-bio{
+    text-transform: uppercase;
+}
+
+.squared-325 img {
+    object-position: top;
+}
+
+
+.view-content .row, .view-people-profiles .view-content .row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.staff h1, .staff h2, .staff h3 { color:#003660; }
+.staff h2 {
+    font-size: 1.6em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.staff .email {
+    color: #003660;
+    margin-top: 20px;
+    font-weight: 800;
+}
+
+.squared-220 img {
+    object-position: top;
+}
+
+.squared-320 img { object-position: top; width:320px; height:320px; object-fit: cover; }
+.staff h1 { margin-bottom:0px; }
+.staff h2, .staff h3 { color:#003660; }
+.staff h2.lead { margin:0px; }
+.staff h3 { font-weight: initial; line-height: normal; margin-top:0px; }
+.staff-subtitle { color:#003660; margin-bottom:0px;}
+.text-center p { text-align:center; }
+.staff-bio-link { font-weight:800; text-transform: uppercase; }

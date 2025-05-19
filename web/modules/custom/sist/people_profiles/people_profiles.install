@@ -59,7 +59,34 @@ function people_profiles_uninstall() {
     $nodes = $storage_handler->loadByProperties(['type' => 'people_profile']);
     $storage_handler->delete($nodes);
 
+    // Delete the module configuration
+    Drupal::configFactory()->getEditable('people_profiles.settings')->delete();
+
     // Clear book data out of the cache.
     \Drupal::cache('data')->deleteAll();
   }
   
+
+/**
+ * Implements hook_update_N().
+ */
+function people_profiles_update_9001() {
+  // Create the configuration object.
+  $config = \Drupal::configFactory()->getEditable('people_profiles.settings');
+
+  // Set the default values.
+  $config->set('default_people_profiles_page_view_mode', 'full');
+  $config->set('default_people_profiles_form_display_mode', 'default');
+  $config->set('default_parent_page', '');
+
+  // Save the configuration.
+  $config->save();
+  // Clear the cache to ensure the new configuration is available.
+  \Drupal::service('cache_tags.invalidator')->invalidateTags(['config:people_profiles.settings']);
+  // Optionally, you can also clear the cache for the entire site.
+  \Drupal::service('cache_tags.invalidator')->invalidateTags(['rendered']);
+  // Clear the cache for the specific entity type if needed.
+  \Drupal::service('cache_tags.invalidator')->invalidateTags(['node_list']);
+  // Clear the cache for the specific entity type if needed.
+  \Drupal::service('cache_tags.invalidator')->invalidateTags(['node_view']);    
+}

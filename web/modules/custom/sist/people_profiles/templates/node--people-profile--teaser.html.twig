@@ -88,7 +88,7 @@
       <div class="column-icon" style="float: left;">
         <a href="{{ url }}">
           {% if node.field_photo.entity.field_media_image %}
-                {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy", style: "width:164px; height:164px; object-fit:cover;"}, true) }}   
+                {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy", style: "width:164px; height:164px; object-fit:cover; object-position: top;"}, true) }}   
           {% else %}    
                 <img style="width: 164px;" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background">             
           {% endif %} 

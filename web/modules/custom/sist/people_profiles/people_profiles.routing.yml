@@ -1,0 +1,14 @@
+people_profiles.default_people_profiles_page_form:
+  path: '/admin/config/people_profiles'
+  defaults:
+    _form: '\Drupal\people_profiles\Form\DefaultPeopleProfilePageForm'
+    _title: 'DefaultPeopleProfilePageForm'
+  requirements:
+    _permission: 'administer site configuration'
+people_profiles.autocomplete.load_pages:
+  path: '/admin/config/people_profiles/autocomplete/load_pages'
+  defaults:
+    _controller: '\Drupal\people_profiles\Controller\PagesAutocompleteController::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'administer site configuration'
