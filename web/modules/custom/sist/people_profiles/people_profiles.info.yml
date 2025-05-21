@@ -15,10 +15,11 @@ dependencies:
   - menu_ui
   - taxonomy
   - twig_tweak
-version: '1.0.0'
+version: '1.0.1'
 core_version_requirement: ^9 || ^10
 
 libraries:
   - 'people_profiles/adp-people-styling'
   - 'people_profiles/dsp-people-styling'
   - 'people_profiles/wellness-people-styling'
+  - 'people_profiles/staff-people-styling'

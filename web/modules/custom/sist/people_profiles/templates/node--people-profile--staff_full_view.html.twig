@@ -1,0 +1,80 @@
+{{ attach_library('people_profiles/staff-people-styling') }}
+<style>
+  .page-header {
+    display: none;
+  }
+</style>
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix', 
+    'staff',
+  ] 
+%}
+
+<article{{ attributes.addClass(classes, 'forum-forms', 'bottom-padding-none') }}>
+  <div class= "col-sm-12" style = "padding-top: 50px">
+    <div class="col-sm-12 col-md-5 align-center squared-380 rounded padding-bottom-1" style = "padding-left: 15px; padding-right: 15px;">
+     
+      <div class="staff-image-container">
+        {% if node.field_photo.entity.field_media_image %}
+              {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy", class: 'img-responsive'}, true) }}   
+        {% else %}    
+              <img src="{{ people_cloud_img_path }}" alt="" class="img-responsive">
+        {% endif %}
+      </div>
+      <div class="left-padding-1 right-padding-1">
+
+        {% if node.field_email is not empty %}
+          <p class="lead text-center email"><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></p>
+        {% endif %}
+
+        {% if node.field_address is not empty %}
+        <p class="text-center">{{ node.field_address.value|replace({'|': '<br/>'})|raw }}</p>
+        {% endif %}
+
+        {% if node.field_phone is not empty %}
+        <p class="text-center"><a href="tel:{{ node.field_phone.value }}">{{ node.field_phone.value }}</a></p>
+        {% endif %}
+        
+        {% if node.field_cv.value == true %}
+        <p class="text-center"><a href="{{ node.field_cv|file_url }}" title = "CV">See {{ node.title.value }}'s CV</a></p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-7" style = "padding-left: 25px;">
+      {% if node.title is not empty %}
+      <h1>{{ node.title.value }}</h1>
+      {% endif %}
+      
+      {% if node.field_people_gender_pronouns is not empty %}
+      <h2>{{ node.field_people_gender_pronouns.value }}</h2>
+      {% endif %}
+
+      {% if node.field_title is not empty %}
+      <h2 class="lead">{{ node.field_title.value }}</h2>
+      {% endif %}
+
+
+      {% if node.field_subtitle is not empty %}
+      <h3>{{ node.field_subtitle.value }}</h3>
+      {% endif %}
+      
+      <div class = "col-sm-12">
+        <div class="col-sm-12 col-md-12 lead">
+          <p>{{node.body.value | raw}}</p>
+        </div>
+      </div>    
+
+    </div>
+  </div>
+
+
+</article>

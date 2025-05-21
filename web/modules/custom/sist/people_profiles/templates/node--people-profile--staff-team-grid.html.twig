@@ -1,0 +1,58 @@
+{{ attach_library('people_profiles/staff-people-styling') }}
+<style>
+</style>
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    'text-center',
+    'paragraph--type--column',
+    'equal-height'
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+<div style= "padding: 0 0 36px 0">     
+     <div class="inner">
+      <div>
+        <div class="views-row ">
+            <div class="image-container squared-220 rounded align-center">
+                {# If avatar and profile photo exist #}
+                {% if node.field_photo.entity.field_media_image  %}
+                    <span class="views-field image-main">
+                        {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}
+                    </span>
+                {% else %} 
+                    {# If no profile photo exist #}
+                    {% if (not node.field_avatar.entity.field_media_image) and (not node.field_photo.entity.field_media_image) %}
+                          <img style="width: 220px;" src="{{ people_cloud_img_path }}" alt="">
+                    {% endif %} 
+                {% endif %}    
+            </div>
+        </div>  
+      </div>
+      <div class="text-center">
+        {% if node.title is not empty %}
+        <h2>
+          {{ node.title.value }}
+          {% if node.field_people_gender_pronouns is not empty %}
+            | {{ node.field_people_gender_pronouns.value }}
+          {% endif %}
+        </h2>
+        {% endif %} 
+      
+        {% if node.field_title is not empty %}
+        <h3 class="title">{{ node.field_title.value }}</h3>
+        {% endif %}
+
+        <p class="staff-bio-link">
+          <a href="{{ url }}">View bio <span class="sr-only">for {{ node.title.value }} </span></a>
+        </p>
+      </div>
+    </div>
+</div>
+</div>
+

@@ -12,3 +12,8 @@ adp-people-styling:
   css:
     theme:
       css/adp-style.css: {}
+
+staff-people-styling:
+  css:
+    theme:
+      css/staff-style.css: {}

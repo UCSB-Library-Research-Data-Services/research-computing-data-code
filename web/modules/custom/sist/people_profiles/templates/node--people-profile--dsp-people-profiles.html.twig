@@ -84,65 +84,64 @@
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
-<div style= "padding: 36px 0 36px 0">     
-     <div class="inner">
+  <div style="padding: 36px 0 36px 0">     
+    <div class="inner">
       <div class="col-md-3 col-sm-5 col-xs-12">
         <div class="views-row image-holder">
-            <div class="image-container">
-                <a href="{{ url }}">
-                {# If avatar and profile photo exist #}
-                {% if node.field_avatar.entity.field_media_image and node.field_photo.entity.field_media_image %}
-                    <span class="views-field image-main">
-                        {{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}
-                    </span>
-                    <span class="views-field image-hover">
-                        {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}
-                    </span>  
-                {% else %} 
-                
-                    {# If no avatar or profile photo exist #}
-                    {% if (not node.field_avatar.entity.field_media_image) and (not node.field_photo.entity.field_media_image) %}
-                          <img style="width: 270px;" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background">
-                    {% endif %} 
+          <div class="image-container">
+            <a href="{{ url }}">
+                      {# If avatar and profile photo exist #}
+                      {% if node.field_avatar.entity.field_media_image and node.field_photo.entity.field_media_image %}
+                          <span class="views-field image-main">
+                              {{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}
+                          </span>
+                          <span class="views-field image-hover">
+                              {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}
+                          </span>  
+                      {% else %} 
+                      
+                          {# If no avatar or profile photo exist #}
+                          {% if (not node.field_avatar.entity.field_media_image) and (not node.field_photo.entity.field_media_image) %}
+                                <img style="" src="{{ img_path }}" alt="Image with white UCSB logo on navy blue background">
+                          {% endif %} 
 
-                    {# If only avatar exists #}
-                    {% if node.field_avatar.entity.field_media_image %}
-                          {{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}
-                    {% endif %}   
+                          {# If only avatar exists #}
+                          {% if node.field_avatar.entity.field_media_image %}
+                                {{ drupal_image(node.field_avatar.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_avatar.entity.field_media_image.alt, loading: "lazy"}, true) }}
+                          {% endif %}   
 
-                    {# If only profile proto exists #}
-                    {% if node.field_photo.entity.field_media_image %}
-                          {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}                   
-                    {% endif %}  
+                          {# If only profile proto exists #}
+                          {% if node.field_photo.entity.field_media_image %}
+                                {{ drupal_image(node.field_photo.entity.field_media_image.entity.uri.value, 'wide', {alt: node.field_photo.entity.field_media_image.alt, loading: "lazy"}, true) }}                   
+                          {% endif %}  
 
-                {% endif %}                      
-                </a>
-            </div>
+                      {% endif %}                      
+            </a>
+          </div>
         </div>  
       </div>
       <div class="text-content col-md-9 col-sm-7 col-xs-12">
-        {% if node.title is not empty %}
-        <h3>
-          <strong><a href="{{ url }}">{{ node.title.value }}</a></strong>
-        </h3>
-        {% endif %}
+          {% if node.title is not empty %}
+          <h3>
+            <strong><a href="{{ url }}">{{ node.title.value }}</a></strong>
+          </h3>
+          {% endif %}
 
-        {% if node.field_title is not empty %}
-        <h4>{{ node.field_title.value }}</h4>
-        {% endif %}
+          {% if node.field_title is not empty %}
+          <h4>{{ node.field_title.value }}</h4>
+          {% endif %}
 
-        {% if node.field_email is not empty %}
-        <p><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></p>
-        {% endif %}
-        
-        <p>&nbsp;</p>
-        <div>
-        {% if node.body is not empty %}
-        <p>{{node.body.value | raw}}</p>
-        {% endif %}
-        </div>
-      
+          {% if node.field_email is not empty %}
+          <p><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></p>
+          {% endif %}
+          
+          <p>&nbsp;</p>
+          <div>
+            {% if node.body is not empty %}
+            <p>{{node.body.value | raw}}</p>
+            {% endif %}
+          </div>
       </div>
     </div>
-</div>
+  </div>
 </article>

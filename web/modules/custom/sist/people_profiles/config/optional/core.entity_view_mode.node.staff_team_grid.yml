@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.staff_team_grid
+label: 'Staff Team Grid'
+description: ''
+targetEntityType: node
+cache: true

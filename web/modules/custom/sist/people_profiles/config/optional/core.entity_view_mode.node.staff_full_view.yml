@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.staff_full_view
+label: 'Staff Full View'
+description: ''
+targetEntityType: node
+cache: true
