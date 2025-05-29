@@ -220,7 +220,7 @@
         "drupal/metatag_import_export_csv": "^1.2",
         "drupal/ng_lightbox": "^2.0",
         "drupal/override_node_options": "^2.7",
-        "drupal/pathauto": "^1.11",
+        "drupal/pathauto": "^1.13",
         "drupal/pdf_api": "^2.3",
         "drupal/private_files_download_permission": "^3.1",
         "drupal/protected_pages": "^1.6",
