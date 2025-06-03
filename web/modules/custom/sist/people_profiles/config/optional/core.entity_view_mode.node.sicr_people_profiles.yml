@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - people_profiles
+id: node.sicr_people_profiles
+label: 'SICR People Profiles'
+description: ''
+targetEntityType: node
+cache: true
