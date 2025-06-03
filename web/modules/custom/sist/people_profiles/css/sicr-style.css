@@ -1,0 +1,64 @@
+.sicr-people-profiles .text-content {
+    padding: 0px 15px 0px 25px;
+}
+
+.sicr-people-profiles .image-holder {
+    margin: 0 auto;
+    margin-bottom: 35px;
+    display: block;
+}
+
+.sicr-people-profiles .image-holder img {
+    /* width: 285px;
+    height: 355px; */
+    max-width: 285px;
+    max-height: 355px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.sicr-people-profiles .image-holder .image-main {
+    display: block;
+}
+
+.sicr-people-profiles .image-holder .image-hover {
+    display: none;
+}
+
+
+.sicr-people-profiles a:hover span.image-main {
+    display:none;
+} 
+
+.sicr-people-profiles a:hover span.image-hover {
+    display:block;
+} 
+
+.sicr-people-profiles a:focus span.image-main {
+    display:none;
+} 
+
+.sicr-people-profiles a:focus {
+    
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: 1px;
+}
+
+.sicr-people-profiles a:focus span.image-hover {
+    display:block;
+} 
+
+.sicr-people-profiles h4, .sicr-people-profiles h5{
+    margin:0px;
+}
+
+
+.view-content .row, .view-people-profiles .view-content .row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.view-people-profiles {
+    margin-bottom:25px;
+}
