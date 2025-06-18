@@ -101,6 +101,10 @@ function people_profiles_theme($existing, $type, $theme, $path) {
          'template' => 'node--people-profile--staff-full-view',
          'base hook' => 'node'
        ],
+       'node__people_profile__sicr_people_profiles' => [
+         'template' => 'node--people-profile--sicr-people-profiles',
+         'base hook' => 'node'
+       ],
   ];
 }
 
