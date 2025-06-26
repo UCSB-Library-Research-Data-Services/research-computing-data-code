@@ -3866,7 +3866,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ title }}<br/>\r\n{{ field_title }}<br/>\r\n{% if field_subtitle %}\r\n    {{ field_subtitle }}<br/>\r\n{% endif %}\r\n{{ field_people_gender_pronouns }}"
+            text: "<strong>{{ title }}</strong><br/>\r\n{{ field_title }}<br/>\r\n{% if field_subtitle %}\r\n    {{ field_subtitle }}<br/>\r\n{% endif %}\r\n{{ field_people_gender_pronouns }}"
             make_link: false
             path: ''
             absolute: false
@@ -3893,7 +3893,7 @@ display:
             html: false
           element_type: ''
           element_class: ''
-          element_label_type: h4
+          element_label_type: strong
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
@@ -4019,7 +4019,7 @@ display:
             html: false
           element_type: ''
           element_class: ''
-          element_label_type: h4
+          element_label_type: strong
           element_label_class: ''
           element_label_colon: true
           element_wrapper_type: ''

@@ -22,3 +22,6 @@ sicr-people-styling:
   css:
     theme:
       css/sicr-style.css: {}
+people-profiles-styling:
+  js:
+    js/scripts.js: {}
