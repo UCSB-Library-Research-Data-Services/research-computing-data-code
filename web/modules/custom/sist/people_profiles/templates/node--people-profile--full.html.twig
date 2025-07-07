@@ -38,6 +38,10 @@
       <p><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a></p>
       {% endif %}
 
+      {% if node.field_website is not empty %}
+      <p><a href="{{ node.field_website.value }}">{{ node.field_website.value }}</a></p>
+      {% endif %}
+
       {% if node.field_address is not empty %}
       <p>{{ node.field_address.value }}</p>
       {% endif %}
@@ -53,7 +57,7 @@
   </div>
     <div class = "col-sm-12" style = "padding-top: 36px">
       <div class="col-sm-12 col-md-12 has-background background-color-eef0f2" style="padding-right: 25px; padding-left:25px">
-        <p>{{node.body.value | raw}}</p>
+        <p>{{ content.body }}</p>
       </div>
     </div>
 
