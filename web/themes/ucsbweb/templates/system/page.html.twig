@@ -108,16 +108,6 @@
 {% endif %}
 
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
-{# Header #}
-{% if page.header %}
-  {% block header %}
-    <div{{ header_attributes.addClass(title_classes) }}>
-      {{ page.header }}
-    </div>
-
-  {% endblock %}
-{% endif %}
-
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
@@ -292,6 +282,16 @@
               {{ node.field_hero_video.value }}
             {% endautoescape %}
           </div>
+        {% endif %}
+
+        {# Header #}
+        {% if page.header %}
+          {% block header %}
+            <div{{ header_attributes.addClass(title_classes) }}>
+              {{ page.header }}
+            </div>
+
+          {% endblock %}
         {% endif %}
 
         {# Sidebar First #}
