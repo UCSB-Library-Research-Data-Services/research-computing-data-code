@@ -3823,7 +3823,7 @@ form.search-form {
 
 .footer {
   .paragraph--type--column:nth-child(1) {
-    p.label {
+    p.label, h2.label {
       margin-top: 36px;
       @media all and (min-width: $screen-md) {
         margin-top: 52px;
@@ -3832,7 +3832,7 @@ form.search-form {
   }
 
   .second-column {
-    p.label {
+    p.label, h2.label{
       border-bottom: 1px solid $white-opacity-50;
       margin-top: 0;
       padding-top: 36px;
