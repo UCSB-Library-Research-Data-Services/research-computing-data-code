@@ -2380,7 +2380,7 @@ form {
   padding-top: 35px !important;
   padding-bottom: 36px !important;
   text-align: left  !important;
-  div, p, h4, h5, h6, a {
+  div, p, h2, h4, h5, h6, a {
     border-color: $white;
     color: $white !important;
   }
@@ -2408,7 +2408,7 @@ form {
   .contact-info {
     line-height: 1.5;
   }
-  p.label {
+  p.label, h2.label {
     border-bottom: 1px solid $white-opacity-50;
     font-size: $h6-font-size;
     margin-bottom: 16px;
