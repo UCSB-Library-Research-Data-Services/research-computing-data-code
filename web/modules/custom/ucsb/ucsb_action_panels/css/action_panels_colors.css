@@ -1,4 +1,3 @@
-
 /* Text Colors */
 
 .paragraph--type--blade.background-color-ffffff .paragraph--type--action_panel_container p,
@@ -154,7 +153,16 @@
 .paragraph--type--blade.background-color-000000 .paragraph--type--action_panel_container li,
 .paragraph--type--blade.background-color-000000 .paragraph--type--action_panel_container label { color: #ffffff, #ffffff, #ffffff, #ffffff, #ffffff !important }
 
-
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container p,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container h2,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container h3,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container h4,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container h5,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container h6,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container li,
+.paragraph--type--blade.background-color- .paragraph--type--action_panel_container label { 
+  color: #ffffff, #ffffff, #ffffff, #ffffff, #ffffff !important 
+}
 
 /* Link colors */
 
@@ -226,12 +234,17 @@
     color: #ffffff !important
 }
 
+.background-color- .paragraph--type--action_panel_container .action_panel_item {
+    color: #ffffff !important
+}
+
 .background-color-09847a .paragraph--type--action_panel_container .action_panel_item,
 .background-color-000000 .paragraph--type--action_panel_container .action_panel_item,
 .background-color-c43424 .paragraph--type--action_panel_container .action_panel_item,
 .background-color-6d7d33 .paragraph--type--action_panel_container .action_panel_item,
 .background-color-003660 .paragraph--type--action_panel_container .action_panel_item,
-.background-color-047c91 .paragraph--type--action_panel_container .action_panel_item {
+.background-color-047c91 .paragraph--type--action_panel_container .action_panel_item,
+.background-color- .paragraph--type--action_panel_container .action_panel_item {
     border-bottom-color: #fff !important
 }
 
@@ -239,7 +252,6 @@
 .background-color-9cbebe .paragraph--type--action_panel_container .action_panel_item {
     border-bottom-color: #000 !important
 }
-
 
 /* Icon colors */
 
@@ -308,5 +320,9 @@
 }
 
 .background-color-000000 .paragraph--type--action_panel_container svg .uc-santa-barbara-icon {
+    fill: #ffffff !important
+}
+
+.background-color- .paragraph--type--action_panel_container svg .uc-santa-barbara-icon {
     fill: #ffffff !important
 }
