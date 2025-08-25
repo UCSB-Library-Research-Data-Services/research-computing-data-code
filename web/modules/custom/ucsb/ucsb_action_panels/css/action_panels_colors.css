@@ -326,3 +326,27 @@
 .background-color- .paragraph--type--action_panel_container svg .uc-santa-barbara-icon {
     fill: #ffffff !important
 }
+
+/* Title and Subtitle Text Colors */
+
+.paragraph--type--action-panel-container .actionpanel_item  .caption-text-color-febc11 span.actionpanel_title,
+.paragraph--type--action-panel-container .actionpanel_item  .caption-text-color-febc11 span.actionpanel_subtitle {
+    color: #111517 !important
+}
+
+.paragraph--type--action-panel-container .actionpanel_item  .caption-text-color-ef5645 span.actionpanel_title,
+.paragraph--type--action-panel-container .actionpanel_item  .caption-text-color-ef5645 span.actionpanel_subtitle {
+    color: #111517 !important
+}
+
+/* Background Hover Color */
+
+.actionpanel .actionpanel_list .actionpanel_item:hover .actionpanel_overlay.background-color-febc11,
+.actionpanel .actionpanel_list .actionpanel_item:focus .actionpanel_overlay.background-color-febc11  {
+  background: linear-gradient(transparent 25%, white);
+}
+
+.actionpanel .actionpanel_list .actionpanel_item:hover .actionpanel_overlay.background-color-ef5645,
+.actionpanel .actionpanel_list .actionpanel_item:focus .actionpanel_overlay.background-color-ef5645 {
+  background: linear-gradient(transparent 25%, white);
+}
