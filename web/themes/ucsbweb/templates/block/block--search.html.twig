@@ -44,7 +44,7 @@
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
-    <h2{{ title_attributes.addClass('visually-hidden') }}>{{ label }}</h2>
+    <p{{ title_attributes.addClass('visually-hidden') }}>{{ label }}</p>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
