@@ -60,7 +60,7 @@ function ssis_sidebar_nav_theme_suggestions_page_alter(array &$suggestions, arra
             $suggestions[] = 'page__subnav';
         }
         // If using ucsbweb theme, use their page.html.twig file with modifications for the sidebar nav
-        if (($type == 'page') && ($theme == 'ucsbweb') ){
+        if (($theme == 'ucsbweb') ){
             $suggestions[] = 'page__webtheme';
         }
         // if any other themes, do not display the sidebar nav
