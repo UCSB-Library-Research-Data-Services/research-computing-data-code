@@ -56,7 +56,7 @@ function ssis_sidebar_nav_theme_suggestions_page_alter(array &$suggestions, arra
     if(!empty($node)){
         $type = $node->getType();
         // If using ucsbwebsub theme, use their page.html.twig file with modifications for the sidebar nav
-        if (($type == 'page') && ($theme == 'ucsbwebsub') ){
+        if (($theme == 'ucsbwebsub') ){
             $suggestions[] = 'page__subnav';
         }
         // If using ucsbweb theme, use their page.html.twig file with modifications for the sidebar nav
