@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d33ee20e835b5d7678f25060a3916449",
+    "content-hash": "c7cf76f5815773e5fad023091a167028",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -14868,6 +14868,52 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/toolbar_menu",
                 "issues": "https://www.drupal.org/project/issues/toolbar_menu"
+            }
+        },
+        {
+            "name": "drupal/turnstile",
+            "version": "1.1.23",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/turnstile.git",
+                "reference": "1.1.23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/turnstile-1.1.23.zip",
+                "reference": "1.1.23",
+                "shasum": "9e4a274f00bc55dd7b8a5cd5fd675b1d2ac7110d"
+            },
+            "require": {
+                "drupal/captcha": "*",
+                "drupal/core": "^9.4 || ^10 || ^11",
+                "drupal/key": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.23",
+                    "datestamp": "1756412167",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "greatmatter",
+                    "homepage": "https://www.drupal.org/user/1199320"
+                }
+            ],
+            "description": "Adds Cloudflare's Turnstile product as an option to the CAPTCHA module.",
+            "homepage": "https://www.drupal.org/project/turnstile",
+            "support": {
+                "source": "https://git.drupalcode.org/project/turnstile"
             }
         },
         {
