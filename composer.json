@@ -381,7 +381,9 @@
         "drupal/slick": "^3.0",
         "drupal/content_access_by_path": "^1.1",
         "drupal/google_api_client": "^4.3",
-        "drupal/calendar_view": "^2.1"
+        "drupal/calendar_view": "^2.1",
+        "drupal/autoban": "^1.12",
+        "drupal/advban": "^1.8"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
