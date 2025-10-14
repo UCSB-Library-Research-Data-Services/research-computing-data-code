@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7cf76f5815773e5fad023091a167028",
+    "content-hash": "206c1e095bebe233cde59127801474bb",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -2371,26 +2371,26 @@
         },
         {
             "name": "drupal/advban",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/advban.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/advban-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "c6613d8ec09074d40186be8078fbf083d3486a6c"
+                "url": "https://ftp.drupal.org/files/projects/advban-8.x-1.9.zip",
+                "reference": "8.x-1.9",
+                "shasum": "e464f9d60f34020cd674a9b9796f2f0ec557e8f5"
             },
             "require": {
-                "drupal/core": "^10.1 || ^11"
+                "drupal/core": "^10.1 || ^11 || ^12"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1742204718",
+                    "version": "8.x-1.9",
+                    "datestamp": "1760175609",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
