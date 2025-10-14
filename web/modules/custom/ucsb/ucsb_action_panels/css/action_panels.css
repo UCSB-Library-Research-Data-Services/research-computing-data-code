@@ -470,3 +470,12 @@ div.background-color-000000 div.month,
 div.background-color-000000 div.day {
   color: #ffffff;
 }
+
+div.background-color- {
+  background-color: #003660;
+}
+
+div.background-color- div.month,
+div.background-color- div.day {
+  color: #ffffff;
+}
