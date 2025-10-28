@@ -31,12 +31,15 @@ function playVideo(id, name, title, desc) {
 
   var player_placeholder = document.getElementById("player_placeholder");
   // Add the video name
+  // SECURITY: Use textContent for plain text fields (prevents XSS)
   var speaker_name = player_placeholder.getElementsByClassName('speaker-name')[0];
-  speaker_name.innerHTML = name;
+  speaker_name.textContent = name;
   // Add the title
   var speaker_title = player_placeholder.getElementsByClassName('speaker-title')[0];
-  speaker_title.innerHTML = title;
+  speaker_title.textContent = title;
   // Add the video description
+  // SECURITY: field_youtube_video_description is a Drupal formatted text field
+  // that is sanitized server-side by Drupal's XSS filter, so innerHTML is safe here
   var speaker_desc = player_placeholder.getElementsByClassName('speaker-desc')[0];
   speaker_desc.innerHTML = desc;
 
