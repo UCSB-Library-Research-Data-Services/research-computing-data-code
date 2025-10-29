@@ -21,7 +21,7 @@ use Drupal\Core\Menu\MenuTreeParameters;
  * Attach Bootstrap 3.4.1 security patches to all pages.
  * These patches mitigate CVE-2025-1647 and CVE-2024-6485.
  */
-function ucsbweb_page_attachments(array &$attachments) {
+function ucsbweb_page_attachments_alter(array &$attachments) {
   // Attach Bootstrap security patches library
   $attachments['#attached']['library'][] = 'ucsbweb/bootstrap-security-patches';
 }
