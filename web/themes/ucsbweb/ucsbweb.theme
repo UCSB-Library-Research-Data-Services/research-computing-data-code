@@ -15,7 +15,16 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 use Drupal\Core\Menu\MenuTreeParameters;
 
-
+/**
+ * Implements hook_page_attachments().
+ *
+ * Attach Bootstrap 3.4.1 security patches to all pages.
+ * These patches mitigate CVE-2025-1647 and CVE-2024-6485.
+ */
+function ucsbweb_page_attachments(array &$attachments) {
+  // Attach Bootstrap security patches library
+  $attachments['#attached']['library'][] = 'ucsbweb/bootstrap-security-patches';
+}
 
 function _blog_topics() {
   $vars = [];
