@@ -351,10 +351,20 @@ jQuery(document).ready(function($) {
   }
   // If anchors already exist at DOM ready, bind immediately.
   initPopupsOnce();
-  // Bind when questions render.
-  jQuery('#questionlist').on('DOMSubtreeModified', initPopupsOnce);
-  // Bind when comparison chart renders (original behavior).
-  jQuery('#comparisonchart').on('DOMSubtreeModified', initPopupsOnce);
+  // Prefer MutationObserver to watch for dynamic renders; fallback to DOMSubtreeModified.
+  (function(){
+    var MO = window.MutationObserver || window.WebKitMutationObserver;
+    if (MO) {
+      var observer = new MO(function(){ initPopupsOnce(); });
+      var nodes = [document.getElementById('questionlist'), document.getElementById('comparisonchart')];
+      for (var i=0; i<nodes.length; i++) {
+        if (nodes[i]) { observer.observe(nodes[i], { childList: true, subtree: true }); }
+      }
+    }
+    else {
+      jQuery('#questionlist, #comparisonchart').on('DOMSubtreeModified', initPopupsOnce);
+    }
+  })();
 
 	/* -----------------------------------------------------------------------------------------
 		Generate Popup Controls
@@ -499,7 +509,6 @@ jQuery(document).ready(function($) {
 
 // End jQuery(document).ready
 });
-
 
 
 

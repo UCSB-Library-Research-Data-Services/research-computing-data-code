@@ -335,14 +335,38 @@ jQuery(document).ready(function($) {
 	}
 	//popups(); // process the page
 
-	/* Data Storage Tool: Delay popups init until the table is rendered by app.js */
+	/* Data Storage Tool: Delay popups init until dynamic content is rendered by app.js
+	   The info buttons (anchors with class 'popup') are inserted into the page
+	   when the question list is rendered, well before the comparison chart
+	   populates. To ensure the click handlers are bound regardless of which
+	   section renders first, initialize once when either area updates or when
+	   anchors already exist. Prefer MutationObserver; fall back to
+	   DOMSubtreeModified for older browsers. */
   var popup_ran_once = false;
-  $('#comparisonchart').on('DOMSubtreeModified', function(){
-    if (!popup_ran_once) {
+  function initPopupsOnce() {
+    if (popup_ran_once) { return; }
+    if (jQuery('a.popup').length) {
       popups();
       popup_ran_once = true;
     }
-  });
+  }
+  // If anchors already exist at DOM ready, bind immediately.
+  initPopupsOnce();
+  // Prefer MutationObserver to watch for dynamic renders.
+  (function(){
+    var MO = window.MutationObserver || window.WebKitMutationObserver;
+    if (MO) {
+      var observer = new MO(function(){ initPopupsOnce(); });
+      var nodes = [document.getElementById('questionlist'), document.getElementById('comparisonchart')];
+      for (var i=0; i<nodes.length; i++) {
+        if (nodes[i]) { observer.observe(nodes[i], { childList: true, subtree: true }); }
+      }
+    }
+    else {
+      // Fallback for very old browsers.
+      jQuery('#questionlist, #comparisonchart').on('DOMSubtreeModified', initPopupsOnce);
+    }
+  })();
 
 	/* -----------------------------------------------------------------------------------------
 		Generate Popup Controls
@@ -487,7 +511,6 @@ jQuery(document).ready(function($) {
 
 // End jQuery(document).ready
 });
-
 
 
 
