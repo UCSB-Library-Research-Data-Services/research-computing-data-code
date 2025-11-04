@@ -26,6 +26,7 @@ ckeditor_stylesheets:
 libraries:
   - 'ucsbweb/global-styling'
   - 'ucsbweb/ucsbweb-scripts'
+  - 'ucsbweb/bootstrap-security-patches'
   - 'ucsbweb/webfonts'
 
 libraries-extend:
