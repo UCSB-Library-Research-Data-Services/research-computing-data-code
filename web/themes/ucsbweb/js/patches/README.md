@@ -1,6 +1,6 @@
-# Bootstrap 3.4.1 Security Patches
+# Bootstrap 3.4.1 Security Patches & JavaScript Fixes
 
-This directory contains security patches for known CVEs in Bootstrap 3.4.1.
+This directory contains security patches for Bootstrap 3.4.1 CVEs and documentation of JavaScript compatibility fixes.
 
 ## Overview
 
@@ -46,84 +46,69 @@ Bootstrap 3.4.1 reached End-of-Life (EOL) in 2024 and contains known security vu
 
 ## Installation
 
-These patches are automatically loaded via the `ucsbweb.libraries.yml` file:
+### Library Definition
+
+The patches are defined in `ucsbweb.libraries.yml`:
 
 ```yaml
 bootstrap-security-patches:
   version: 1.0
   js:
-    js/patches/bootstrap-cve-2025-1647.patch.js: { weight: -10 }
-    js/patches/bootstrap-cve-2024-6485.patch.js: { weight: -10 }
-    js/patches/bootstrap-runtime-disable.js: { weight: -9 }
+    js/patches/bootstrap-cve-2025-1647.patch.js: {}
+    js/patches/bootstrap-cve-2024-6485.patch.js: {}
+    js/patches/bootstrap-runtime-disable.js: {}
   dependencies:
-    - ucsbweb/bootstrap
     - core/drupal
     - core/jquery
+    - ucsbweb/bootstrap-scripts
 ```
 
-The patches load with negative weight to ensure they execute before Bootstrap components are initialized.
+### Automatic Loading
 
-## Security Impact
+The patches are automatically attached to the Bootstrap framework via `ucsbweb.info.yml`:
 
-### Without Patches
-- 🚨 Tooltips/popovers vulnerable to XSS via malicious data-content/data-title
-- 🚨 Buttons vulnerable to XSS via data-loading-text and similar attributes
-- 🚨 DOM clobbering can bypass Bootstrap's built-in sanitization
-- 🚨 Carousel IDs vulnerable to XSS injection
-- 🚨 Custom modules vulnerable to innerHTML/outerHTML XSS
+```yaml
+libraries-extend:
+  bootstrap/framework:
+    - 'ucsbweb/bootstrap-scripts'
+    - 'ucsbweb/bootstrap-security-patches'
+```
 
-### With Patches
-- ✅ Tooltips/popovers sanitize HTML before insertion
-- ✅ Button state text is HTML-escaped
-- ✅ Runtime monitoring prevents dynamic injection
-- ✅ Carousel IDs validated and sanitized
-- ✅ Custom module XSS vulnerabilities fixed
-- ✅ Defense-in-depth: multiple layers of protection
+This configuration ensures the patches load automatically whenever Bootstrap is loaded on any page, providing site-wide protection without requiring manual library attachment.
+
 
 ## Current Implementation Status
 
-Based on security audit and fixes applied (as of 2025-10-28):
-
-| Component/Module | Location | Vulnerability | Risk Level | Status | Fix Details |
-|------------------|----------|---------------|------------|--------|-------------|
+| Component/Module | Location | Vulnerability/Issue | Status | Fix Details |
+|------------------|----------|---------------------|--------|-------------|
 | **Bootstrap Components (CVE-2025-1647, CVE-2024-6485)** |
-| Tooltips | ucsbweb theme | XSS via data-content | High | ✅ **Patched** | DOM-based XSS sanitization |
-| Popovers | ucsbweb theme | XSS via data-content | High | ✅ **Patched** | DOM-based XSS sanitization |
-| Button States | ucsbweb theme | XSS via data-*-text | High | ✅ **Patched** | HTML entity escaping |
-| Carousels | ucsbweb theme | XSS via carousel IDs | Medium | ✅ **Hardened** | ID validation + `clean_class` filter<br>Commit: `b235f54` |
+| Tooltips | ucsbweb theme | XSS via data-content | ✅ **Patched** | DOM-based XSS sanitization |
+| Popovers | ucsbweb theme | XSS via data-content | ✅ **Patched** | DOM-based XSS sanitization |
+| Button States | ucsbweb theme | XSS via data-*-text | ✅ **Patched** | HTML entity escaping |
+| Carousels | ucsbweb theme | XSS via carousel IDs | ✅ **Hardened** | ID validation + `clean_class` filter |
 | **Custom Modules (innerHTML/outerHTML XSS)** |
-| CKEditor Icons | `ckeditor_ucsbicon` | innerHTML XSS (4 instances) | High | ✅ **Fixed** | Replaced innerHTML with safe DOM methods<br>Commit: `f863d7f` |
-| YouTube Gallery | `ssis_youtube_gallery` | innerHTML XSS (3 instances) | High | ✅ **Fixed** | Replaced innerHTML with textContent<br>Commit: `ccd49f6` |
-| News Module | `ssis_news` | outerHTML XSS (unsafe concatenation) | Critical | ✅ **Fixed** | Safe DOM manipulation methods<br>Commit: `571c05a` |
-| Sidebar Navigation | `ssis_sidebar_nav` | Collapse component usage | Low | ✅ **Safe** | No user input, safe implementation |
+| CKEditor Icons | `ckeditor_ucsbicon` | innerHTML XSS | ✅ **Fixed** | Replaced with safe DOM methods |
+| YouTube Gallery | `ssis_youtube_gallery` | innerHTML XSS | ✅ **Fixed** | Replaced with textContent |
+| News Module | `ssis_news` | outerHTML XSS | ✅ **Fixed** | Safe DOM manipulation |
+| **JavaScript Compatibility** |
+| Jumplink Function | `scripts.js` | jQuery selector error | ✅ **Fixed** | Excluded `href="#/"` from selector |
+| YouTube Gallery | Template | jQuery selector error | ✅ **Fixed** | Changed to `href="#"` + `return false;` |
 
 ### Security Assessment Summary
 
-✅ **All known vulnerabilities have been addressed**
+✅ **All known vulnerabilities and compatibility issues resolved**
 
-**Bootstrap CVE Protection:**
-1. Theme-level patches intercept Bootstrap component initialization
-2. Runtime monitoring prevents dynamic injection attempts
+**Protection Layers:**
+1. Theme-level patches intercept Bootstrap initialization
+2. Runtime monitoring prevents dynamic injection
 3. Template-level sanitization for carousels
-4. Defense-in-depth: multiple protection layers
-
-**Custom Module XSS Protection:**
-1. All innerHTML/outerHTML usage replaced with safe DOM methods
-2. User input properly escaped before DOM insertion
-3. Carousel IDs validated before Bootstrap initialization
-4. No remaining unsafe string concatenation patterns
-
-**Coverage:**
-- ✅ Theme components protected via patches
-- ✅ Custom modules audited and fixed
-- ✅ Sub-themes inherit protection via theme inheritance
-- ✅ All pages protected via `hook_page_attachments()`
+4. Custom modules use safe DOM methods
+5. jQuery selectors exclude problematic patterns
 
 ## Maintenance
 
 ### When to Update
 - New Bootstrap CVEs are discovered
-- HeroDevs releases updated patches (if monitoring their solutions)
 - Bootstrap 4/5 upgrade is planned (patches become unnecessary)
 
 ### How to Disable
@@ -135,48 +120,17 @@ To temporarily disable patches for testing:
 
 **⚠️ WARNING**: Only disable for testing in development environments!
 
-### Future CVEs
-If new CVEs are discovered:
-
-1. Create new patch file: `bootstrap-cve-XXXX-XXXX.patch.js`
-2. Add to `ucsbweb.libraries.yml`
-3. Update this README
-4. Test thoroughly
-5. Clear caches
-
 ## Alternative Solutions
 
-### HeroDevs NES (Never-Ending Support)
-- **Cost**: $2,000-5,000/year (estimated)
-- **Benefit**: Professional patches maintained by HeroDevs
-- **Trade-off**: Ongoing cost vs DIY maintenance
-
 ### Bootstrap 4/5 Upgrade
-- **Cost**: Significant development time
 - **Benefit**: Modern, supported framework
 - **Trade-off**: Major theme refactor required
 - **Status**: Recommended long-term solution
 
-### Accept Risk + Defense-in-Depth
-- **Cost**: Free (current approach)
-- **Benefit**: Components not used = no attack surface
-- **Trade-off**: Library contains vulnerabilities even if unexploitable
-- **Mitigation**: CSP headers + these patches + runtime monitoring
-
-## Compliance & Audit Trail
-
-**Risk Assessment Date**: January 28, 2025  
-**Scan Results**: No vulnerable component usage found in custom themes  
-**Mitigation Strategy**: DIY patches + runtime monitoring + defense-in-depth  
-**Residual Risk**: Low (vulnerabilities exist but not exploitable)
-
-## Support & Questions
-
-For questions or issues:
-1. Check console for error messages
-2. Review test page results
-3. Verify patches are loading (check Network tab in DevTools)
-4. Consult `BOOTSTRAP_CVE_PATCHES.md` in theme root for more details
+### HeroDevs NES (Never-Ending Support)
+- **Cost**: $2,000-5,000/year
+- **Benefit**: Professional patches maintained by HeroDevs
+- **Trade-off**: Ongoing cost vs DIY maintenance
 
 ## References
 
