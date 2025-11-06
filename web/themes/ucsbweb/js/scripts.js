@@ -266,16 +266,25 @@
   }
 
   $.fn.initializeCarousel = function() {
-
+    // Security: Validate carousel IDs before initialization (CVE-2024-6485, CVE-2025-1647)
+    // Only initialize carousels with properly formatted IDs to prevent XSS
     $('.carousel-static').find('.carousel').each(function () {
-      $(this).carousel({
-        pause: true,
-        interval: false
-      });
+      var carouselId = $(this).attr('id');
+      // Validate ID format: must be 'carousel-' followed by alphanumeric/hyphen/underscore
+      if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
+        $(this).carousel({
+          pause: true,
+          interval: false
+        });
+      }
     });
 
     $('.carousel-autoscroll').find('.carousel').each(function () {
-      $(this).carousel();
+      var carouselId = $(this).attr('id');
+      // Validate ID format before initialization
+      if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
+        $(this).carousel();
+      }
     });
 
   }

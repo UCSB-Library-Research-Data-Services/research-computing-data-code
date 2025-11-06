@@ -57,7 +57,7 @@
           <div id="playlist">
             {% for item in paragraph_name['#items'] %}
               <div class="playlist-item">
-                <a class="play-link" href="#/" id="{{ item.entity.field_youtube_id.value }}" onclick="playVideo('{{ item.entity.field_youtube_id.value }}', '{{ item.entity.field_video_name.value|e('js')|raw }}', '{{ item.entity.field_video_title.value|e('js')|raw }}', '{{ item.entity.field_youtube_video_description.value|e('js')|raw }}')">
+                <a class="play-link" href="#" id="{{ item.entity.field_youtube_id.value }}" onclick="playVideo('{{ item.entity.field_youtube_id.value }}', '{{ item.entity.field_video_name.value|e('js')|raw }}', '{{ item.entity.field_video_title.value|e('js')|raw }}', '{{ item.entity.field_youtube_video_description.value|e('js')|raw }}'); return false;">
                   <div class="speaker-thumbnail">
                     {% if item.entity.field_video_image_thumbnail is not empty %}
                       <img src="{{ file_url(item.entity.field_video_image_thumbnail.entity.field_media_image.entity.fileuri) }}" alt="{{ item.entity.field_video_name.value }}">
