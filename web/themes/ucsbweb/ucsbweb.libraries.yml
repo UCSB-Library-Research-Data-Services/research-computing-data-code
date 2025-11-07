@@ -26,6 +26,17 @@ ucsbweb-scripts:
   dependencies:
     - core/once
 
+bootstrap-security-patches:
+  version: 1.0
+  js:
+    js/patches/bootstrap-cve-2025-1647.patch.js: {}
+    js/patches/bootstrap-cve-2024-6485.patch.js: {}
+    js/patches/bootstrap-runtime-disable.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - ucsbweb/bootstrap-scripts
+
 webfonts:
   css:
     theme:

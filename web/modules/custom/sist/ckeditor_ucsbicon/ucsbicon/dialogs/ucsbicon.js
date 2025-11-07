@@ -244,26 +244,47 @@
 	});
 
 	
-	function assignIconClickEvent(){
+function assignIconClickEvent(){
 
-		document.querySelectorAll('.icon-img').forEach(item => {
-			item.addEventListener('click', function(){					
-				var previewIcons = document.getElementsByClassName("preview-icon");
-				var itemHTML = item.innerHTML.replace(/title/g,"label");
-				
-				for (let previewIcon of previewIcons) {
-					previewIcon.innerHTML = itemHTML;
-					previewIcon.getElementsByTagName("label")[0].setAttribute("class", "sr-only");
-					previewIcon.getElementsByTagName("label")[0].innerHTML = previewIcon.getElementsByTagName("label")[0].innerHTML.replace(/-/g," ");
-					var groupTags = previewIcon.getElementsByTagName("g");
-					for (let gtag of groupTags){
-						gtag.removeAttribute("id");
-					}
-
-				}
-			}, false);
-		});
-	}
+  document.querySelectorAll('.icon-img').forEach(item => {
+    item.addEventListener('click', function(){
+      var previewIcons = document.getElementsByClassName("preview-icon");
+      
+      for (let previewIcon of previewIcons) {
+        // SECURITY FIX: Clone only the SVG element, not the wrapper div
+        while (previewIcon.firstChild) {
+          previewIcon.removeChild(previewIcon.firstChild);
+        }
+        
+        // Get the SVG element from inside the icon-img div
+        var svg = item.querySelector('svg');
+        if (svg) {
+          var clonedSvg = svg.cloneNode(true);
+          
+          // Update title tags to label tags
+          var titles = clonedSvg.getElementsByTagName("title");
+          while (titles.length > 0) {
+            var title = titles[0];
+            var label = document.createElement("label");
+            label.setAttribute("class", "sr-only");
+            // Use textContent for safe text handling
+            label.textContent = title.textContent.replace(/-/g," ");
+            title.parentNode.replaceChild(label, title);
+          }
+          
+          // Remove id attributes from g tags
+          var groupTags = clonedSvg.getElementsByTagName("g");
+          for (let gtag of groupTags){
+            gtag.removeAttribute("id");
+          }
+          
+          // Append just the cleaned SVG
+          previewIcon.appendChild(clonedSvg);
+        }
+      }
+    }, false);
+  });
+}
 
 	function assignColorButtonClickEvent(){
 		
@@ -350,13 +371,21 @@
 								var cell = document.createElement("td");
 
 
-								if ((i * count + j) < (category_files.length - 1)) {
-									var img = document.createElement("div");
-									img.setAttribute("class", "icon-img");
-									img.innerHTML = category_files[i * count + j]['content'];
+              if ((i * count + j) < (category_files.length - 1)) {
+                var img = document.createElement("div");
+                img.setAttribute("class", "icon-img");
+                
+                // SECURITY FIX: Parse and insert SVG as DOM instead of HTML string
+                var parser = new DOMParser();
+                var svgDoc = parser.parseFromString(category_files[i * count + j]['content'], 'image/svg+xml');
+                var svgElement = svgDoc.documentElement;
+                
+                if (svgElement && svgElement.nodeName === 'svg') {
+                  img.appendChild(document.importNode(svgElement, true));
+                }
 
-									cell.appendChild(img);
-								}
+                cell.appendChild(img);
+}
 								row.appendChild(cell);
 
 							}
@@ -369,11 +398,18 @@
 					iconList.appendChild(icon_table);
 					document.body.appendChild(iconList);
 
-					//populate CKEditor dialogs
-					var icon_containers = document.getElementsByClassName("icon-container");
-					for (let element of icon_containers) {
-						element.innerHTML = iconTable.innerHTML;
-					}
+            //populate CKEditor dialogs
+            // SECURITY FIX: Clone DOM nodes instead of using HTML strings
+            var icon_containers = document.getElementsByClassName("icon-container");
+            for (let element of icon_containers) {
+              while (element.firstChild) {
+                element.removeChild(element.firstChild);
+              }
+              var clonedTable = iconTable.cloneNode(true);
+              while (clonedTable.firstChild) {
+                element.appendChild(clonedTable.firstChild);
+              }
+            }
 
 					
 					assignIconClickEvent();
@@ -381,18 +417,25 @@
 				}
 				
 			});
-		} else {
-			
-			//populate CKEditor dialogs
-			var icon_containers = document.getElementsByClassName("icon-container");
-			for (let element of icon_containers) {
-				element.innerHTML = iconTable.innerHTML;
-			}
+  } else {
 
-			assignIconClickEvent();
-			assignColorButtonClickEvent();
-			
-		}
+    //populate CKEditor dialogs
+    // SECURITY FIX: Clone DOM nodes instead of using HTML strings
+    var icon_containers = document.getElementsByClassName("icon-container");
+    for (let element of icon_containers) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
+      }
+      var clonedTable = iconTable.cloneNode(true);
+      while (clonedTable.firstChild) {
+        element.appendChild(clonedTable.firstChild);
+      }
+    }
+
+assignIconClickEvent();
+assignColorButtonClickEvent();
+
+}
 	}
 
 })(jQuery, Drupal, CKEDITOR);

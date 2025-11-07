@@ -520,7 +520,7 @@
                     {% endif %}
                   </div>
                   {% if site_settings.footer.social_media %}
-                    <p class="label">Connect</p>
+                    <h2 class="label">Connect</h2>
                     <ul class="columns columns-{{ smcolumns }}">
                       {% for item in social_media %}
                         <li><a href="{{ item.uri }}">
@@ -577,7 +577,7 @@
               <div class="paragraph paragraph--type--column paragraph--view-mode--default col-sm-6 col-md-{{ flcolumns }} second-column">
                 <div class="inner">
                   <div class="field field--name-field-body field--type-text-long field--label-hidden field--item">
-                    <p class="label">{{ item.field_label }}</p>
+                    <h2 class="label">{{ item.field_label }}</h2>
                     {% if item.field_link.0 is not null %}
                       {% for link in item.field_link %}
                         {% if link.title is not null %}

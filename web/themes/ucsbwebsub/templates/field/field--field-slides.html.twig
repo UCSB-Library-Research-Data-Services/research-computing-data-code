@@ -56,7 +56,9 @@
 
 
 {% if multiple %}
-  <div id="carousel-{{ field_id }}" class="carousel slide"  data-ride="carousel" data-interval="5000">
+  {# Security: Sanitize field_id to prevent XSS via data-* attributes (CVE-2024-6485, CVE-2025-1647) #}
+  {# IMPORTANT: Auto-initialization attribute removed for manual initialization control #}
+  <div id="carousel-{{ field_id|clean_class }}" class="carousel slide" data-interval="5000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       {% set id_counter = 0 %}
@@ -75,7 +77,8 @@
               id_active ? id_active,
             ]
           %}
-          <li{{ id_attribute.addClass(id_classes) }} data-target="#carousel-{{ field_id }}" data-slide-to="{{id_counter}}"></li>
+          {# Security: Sanitize data-target and ensure numeric data-slide-to #}
+          <li{{ id_attribute.addClass(id_classes) }} data-target="#carousel-{{ field_id|clean_class }}" data-slide-to="{{ id_counter|number_format(0, '', '') }}"></li>
           {% set id_counter = id_counter + 1 %}
         {% endfor %}
       {% endfor %}
@@ -115,11 +118,12 @@
       {% endfor %}
     </div>
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#carousel-{{ field_id }}" data-slide="prev">
+    {# Security: Sanitize href targets to prevent XSS #}
+    <a class="left carousel-control" href="#carousel-{{ field_id|clean_class }}" data-slide="prev">
       <svg width="60px" height="60px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.3535534,17.6464466 C15.5488155,17.8417088 15.5488155,18.1582912 15.3535534,18.3535534 C15.1582912,18.5488155 14.8417088,18.5488155 14.6464466,18.3535534 L8.64644661,12.3535534 C8.45118446,12.1582912 8.45118446,11.8417088 8.64644661,11.6464466 L14.6464466,5.64644661 C14.8417088,5.45118446 15.1582912,5.45118446 15.3535534,5.64644661 C15.5488155,5.84170876 15.5488155,6.15829124 15.3535534,6.35355339 L9.70710678,12 L15.3535534,17.6464466 Z"></path></svg>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#carousel-{{ field_id }}" data-slide="next">
+    <a class="right carousel-control" href="#carousel-{{ field_id|clean_class }}" data-slide="next">
       <svg width="60px" height="60px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M8.64644661,17.6464466 C8.45118446,17.8417088 8.45118446,18.1582912 8.64644661,18.3535534 C8.84170876,18.5488155 9.15829124,18.5488155 9.35355339,18.3535534 L15.3535534,12.3535534 C15.5488155,12.1582912 15.5488155,11.8417088 15.3535534,11.6464466 L9.35355339,5.64644661 C9.15829124,5.45118446 8.84170876,5.45118446 8.64644661,5.64644661 C8.45118446,5.84170876 8.45118446,6.15829124 8.64644661,6.35355339 L14.2928932,12 L8.64644661,17.6464466 Z"></path></svg>
       <span class="sr-only">Next</span>
     </a>

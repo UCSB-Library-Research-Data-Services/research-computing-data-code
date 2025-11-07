@@ -420,7 +420,6 @@
         {% endif %}
 
         {% if node_type == 'blog_post' %}
-      </div>
       <div class="article-header">
         {% if node.field_image.entity.fileuri %}
           <div class="article-image">
@@ -437,7 +436,6 @@
           </div>
         </div>
       </div>
-      <div{{ content_attributes.addClass(content_classes) }}>
         {% endif %}
 
         {# Content #}

@@ -31,3 +31,4 @@ libraries:
 libraries-extend:
   bootstrap/framework:
     - 'ucsbweb/bootstrap-scripts'
+    - 'ucsbweb/bootstrap-security-patches'
