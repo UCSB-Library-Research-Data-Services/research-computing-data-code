@@ -1,0 +1,191 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for UCSB Core module.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Implements hook_install().
+ */
+function ucsb_core_install() {
+  // Add installation logic here if needed.
+}
+
+/**
+ * Implements hook_update_10001().
+ */
+function ucsb_core_update_10001() {
+  $messages = [];
+  $processed_count = 0;
+  $error_count = 0;
+
+  // Get the site settings service.
+  $site_settings = \Drupal::service('site_settings.loader');
+  $settings = $site_settings->loadAll();
+
+  // Get the site name.
+  $site_name = \Drupal::config('system.site')->get('name');
+  $full_site_name = !empty($site_name) ? $site_name : 'UC Santa Barbara Department Name Here';
+
+  // Check if wordmark logo exists in settings.
+  if (isset($settings['wordmark']['logo']['field_image']['uri']) && !empty($settings['wordmark']['logo']['field_image']['uri'])) {
+    $svg_uri = $settings['wordmark']['logo']['field_image']['uri'];
+
+    try {
+      // Get the full file path.
+      $file_system = \Drupal::service('file_system');
+      $svg_path = $file_system->realpath($svg_uri);
+
+      if (file_exists($svg_path)) {
+        // Read the SVG content.
+        $svg_content = file_get_contents($svg_path);
+
+        if ($svg_content !== FALSE) {
+          // Process the SVG to add accessibility attributes.
+          $updated_svg = _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name);
+
+          if ($updated_svg !== FALSE) {
+            // Write the updated SVG back to the file.
+            if (file_put_contents($svg_path, $updated_svg) !== FALSE) {
+              $processed_count++;
+              $messages[] = "Successfully updated wordmark SVG: {$svg_uri}";
+            }
+            else {
+              $error_count++;
+              $messages[] = "Failed to write updated SVG: {$svg_uri}";
+            }
+          }
+          else {
+            $error_count++;
+            $messages[] = "Failed to process SVG content: {$svg_uri}";
+          }
+        }
+        else {
+          $error_count++;
+          $messages[] = "Failed to read SVG file: {$svg_uri}";
+        }
+      }
+      else {
+        $error_count++;
+        $messages[] = "SVG file not found: {$svg_path}";
+      }
+    }
+    catch (Exception $e) {
+      $error_count++;
+      $messages[] = "Error processing SVG {$svg_uri}: " . $e->getMessage();
+    }
+  }
+  else {
+    $messages[] = "No wordmark logo found in site settings";
+  }
+
+  // Log the results.
+  \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed. Processed: @processed, Errors: @errors', [
+    '@processed' => $processed_count,
+    '@errors' => $error_count,
+  ]);
+
+  // Return update messages.
+  if ($processed_count > 0) {
+    $messages[] = "Update completed successfully. Processed {$processed_count} SVG file(s).";
+  }
+  if ($error_count > 0) {
+    $messages[] = "Encountered {$error_count} error(s) during processing.";
+  }
+
+  return implode(' ', $messages);
+}
+
+/**
+ * Helper function to add accessibility attributes to SVG content.
+ *
+ * @param string $svg_content
+ *   The original SVG content.
+ * @param string $full_site_name
+ *   The full site name to use in the title.
+ *
+ * @return string|false
+ *   The updated SVG content, or FALSE on error.
+ */
+function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name) {
+  try {
+    // Load the SVG content into DOMDocument.
+    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom->preserveWhiteSpace = FALSE;
+    $dom->formatOutput = TRUE;
+
+    // Suppress errors for malformed HTML/XML.
+    libxml_use_internal_errors(TRUE);
+
+    // Load the SVG content.
+    if (!$dom->loadXML($svg_content)) {
+      \Drupal::logger('ucsb_core')->error('Failed to parse SVG XML content');
+      return FALSE;
+    }
+
+    // Get the SVG element.
+    $svg_elements = $dom->getElementsByTagName('svg');
+    if ($svg_elements->length === 0) {
+      \Drupal::logger('ucsb_core')->error('No SVG element found in content');
+      return FALSE;
+    }
+
+    $svg_element = $svg_elements->item(0);
+
+    // Add role="img" if not already present.
+    if (!$svg_element->hasAttribute('role')) {
+      $svg_element->setAttribute('role', 'img');
+    }
+
+    // Add aria-labelledby="departmentname" if not already present.
+    if (!$svg_element->hasAttribute('aria-labelledby')) {
+      $svg_element->setAttribute('aria-labelledby', 'departmentname');
+    }
+
+    // Handle title elements for accessibility.
+    $title_elements = $svg_element->getElementsByTagName('title');
+
+    if ($title_elements->length > 0) {
+      // Use the first existing title element.
+      $title_element = $title_elements->item(0);
+
+      // Ensure it has the proper id for accessibility.
+      if (!$title_element->hasAttribute('id') || $title_element->getAttribute('id') !== 'departmentname') {
+        $title_element->setAttribute('id', 'departmentname');
+      }
+
+      // Update the content to the site name.
+      $title_element->nodeValue = htmlspecialchars($full_site_name, ENT_XML1);
+
+      // Remove any additional title elements (should only be one).
+      for ($i = $title_elements->length - 1; $i > 0; $i--) {
+        $extra_title = $title_elements->item($i);
+        $extra_title->parentNode->removeChild($extra_title);
+      }
+    }
+    else {
+      // No title exists, create one.
+      $title_element = $dom->createElement('title', htmlspecialchars($full_site_name, ENT_XML1));
+      $title_element->setAttribute('id', 'departmentname');
+
+      // Insert title as the first child of SVG.
+      if ($svg_element->firstChild) {
+        $svg_element->insertBefore($title_element, $svg_element->firstChild);
+      }
+      else {
+        $svg_element->appendChild($title_element);
+      }
+    }
+
+    // Return the updated SVG content.
+    return $dom->saveXML();
+
+  }
+  catch (Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error processing SVG: @error', ['@error' => $e->getMessage()]);
+    return FALSE;
+  }
+}

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains ucsb_core.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ucsb_core_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ucsb_core module.
+    case 'help.page.ucsb_core':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Core module for UCSB theme updates and configurations.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
