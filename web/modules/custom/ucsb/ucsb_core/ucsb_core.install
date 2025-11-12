@@ -92,21 +92,27 @@ function _ucsb_core_process_wordmarks() {
     }
   }
   else {
+    \Drupal::logger('ucsb_core')->info('No wordmark logo found in site settings');
     $messages[] = "No wordmark logo found in site settings";
   }
 
   // Log the results.
-  \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed. Processed: @processed, Errors: @errors', [
-    '@processed' => $processed_count,
-    '@errors' => $error_count,
-  ]);
+  if ($processed_count > 0) {
+    \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed successfully');
+  }
+  else {
+    \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed - no wordmark configured');
+  }
 
   // Return update messages.
   if ($processed_count > 0) {
-    $messages[] = "Update completed successfully. Processed {$processed_count} SVG file(s).";
+    $messages[] = "Wordmark processed successfully.";
   }
-  if ($error_count > 0) {
+  elseif ($error_count > 0) {
     $messages[] = "Encountered {$error_count} error(s) during processing.";
+  }
+  else {
+    $messages[] = "No wordmark configured.";
   }
 
   return implode(' ', $messages);
