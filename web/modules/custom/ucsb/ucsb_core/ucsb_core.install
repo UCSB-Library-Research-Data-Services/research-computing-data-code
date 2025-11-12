@@ -11,13 +11,26 @@ use Drupal\Core\File\FileSystemInterface;
  * Implements hook_install().
  */
 function ucsb_core_install() {
-  // Add installation logic here if needed.
+  // Process wordmarks during installation.
+  _ucsb_core_process_wordmarks();
 }
 
 /**
  * Implements hook_update_10001().
  */
 function ucsb_core_update_10001() {
+  // Process wordmarks via update hook.
+  return _ucsb_core_process_wordmarks();
+}
+
+/**
+ * Helper function to process wordmark SVGs for accessibility.
+ *
+ * @return string
+ *   Status messages from the processing.
+ */
+function _ucsb_core_process_wordmarks() {
+  \Drupal::logger('ucsb_core')->info('Starting wordmark SVG accessibility processing');
   $messages = [];
   $processed_count = 0;
   $error_count = 0;
