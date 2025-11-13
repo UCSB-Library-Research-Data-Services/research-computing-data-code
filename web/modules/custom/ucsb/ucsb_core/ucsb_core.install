@@ -5,8 +5,6 @@
  * Install, update and uninstall hooks for UCSB Core module.
  */
 
-use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\node\Entity\NodeType;
@@ -178,6 +176,26 @@ function ucsb_core_update_10002() {
       ->getViewDisplay('node', 'page', 'default');
     $view_display->removeComponent('field_hide_title')->save();
   }
+  return 'Hide Title field successfully added to Basic page content type.';
+}
+
+/**
+ * Implements hook_update_10003().
+ *
+ * Disables Big Pipe module and enables Pantheon Advanced Page Cache.
+ */
+function ucsb_core_update_10003() {
+  // Disable Big Pipe module which can cause caching issues on Pantheon.
+  if (\Drupal::moduleHandler()->moduleExists('big_pipe')) {
+    \Drupal::service('module_installer')->uninstall(['big_pipe']);
+  }
+
+  // Enable Pantheon Advanced Page Cache module.
+  if (!\Drupal::moduleHandler()->moduleExists('pantheon_advanced_page_cache')) {
+    \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
+  }
+
+  return 'Disabled Big Pipe module and enabled Pantheon Advanced Page Cache.';
 }
 
 /**

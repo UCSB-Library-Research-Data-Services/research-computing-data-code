@@ -13,6 +13,11 @@ Processes SVG wordmark logos to add accessibility attributes for screen readers:
 ### Hide Title Field (Update 10002)
 Adds a "Hide Title" boolean field to Basic pages that allows content editors to hide page titles on individual pages.
 
+### Pantheon Performance (Update 10003)
+Optimizes Drupal performance for Pantheon hosting:
+- Disables Big Pipe module to prevent caching conflicts
+- Enables Pantheon Advanced Page Cache module for optimal caching performance
+
 ## Dependencies
 
 This module depends on the following modules:
