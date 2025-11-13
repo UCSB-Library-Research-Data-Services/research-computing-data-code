@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\node\Entity\NodeType;
 
 /**
  * Implements hook_install().
@@ -13,6 +17,8 @@ use Drupal\Core\File\FileSystemInterface;
 function ucsb_core_install() {
   // Process wordmarks during installation.
   _ucsb_core_process_wordmarks();
+  // Add hide title field during installation.
+  _ucsb_core_add_hide_title_field();
 }
 
 /**
@@ -21,6 +27,14 @@ function ucsb_core_install() {
 function ucsb_core_update_10001() {
   // Process wordmarks via update hook.
   return _ucsb_core_process_wordmarks();
+}
+
+/**
+ * Implements hook_update_10002().
+ */
+function ucsb_core_update_10002() {
+  // Add hide title field via update hook.
+  _ucsb_core_add_hide_title_field();
 }
 
 /**
@@ -116,6 +130,66 @@ function _ucsb_core_process_wordmarks() {
   }
 
   return implode(' ', $messages);
+}
+
+/**
+ * Helper function to add the hide title field to Basic pages.
+ */
+function _ucsb_core_add_hide_title_field() {
+  // Check if the Basic page content type exists.
+  if (NodeType::load('page')) {
+    // Check if the field storage already exists.
+    if (!FieldStorageConfig::loadByName('node', 'field_hide_title')) {
+      // Create the field storage.
+      FieldStorageConfig::create([
+        'field_name' => 'field_hide_title',
+        'entity_type' => 'node',
+        'type' => 'boolean',
+        'settings' => [],
+        'module' => 'boolean',
+        'cardinality' => 1,
+        'translatable' => FALSE,
+      ])->save();
+    }
+
+    // Check if the field is already added to the Basic page content type.
+    if (!FieldConfig::loadByName('node', 'page', 'field_hide_title')) {
+      // Add the field to the Basic page content type.
+      FieldConfig::create([
+        'field_storage' => FieldStorageConfig::loadByName('node', 'field_hide_title'),
+        'bundle' => 'page',
+        'label' => 'Hide Title',
+        'settings' => [],
+        'required' => FALSE,
+        'translatable' => FALSE,
+        'default_value' => [
+          ['value' => 0],
+        ],
+      ])->save();
+
+      // Get the form display for the Basic page content type.
+      $form_display = \Drupal::service('entity_display.repository')
+        ->getFormDisplay('node', 'page', 'default');
+
+      // Find the weight of the field_title_background_color field.
+      $weight = 0;
+      $components = $form_display->getComponents();
+      if (isset($components['field_title_background_color'])) {
+        $weight = $components['field_title_background_color']['weight'] + 1;
+      }
+
+      // Make the Hide Title field visible on the node form below field_title_background_color.
+      $form_display->setComponent('field_hide_title', [
+        'type' => 'boolean_checkbox',
+        'weight' => $weight,
+      ])->save();
+
+      // Hide the Hide Title field from the node view.
+      $view_display = \Drupal::service('entity_display.repository')
+        ->getViewDisplay('node', 'page', 'default');
+      $view_display->removeComponent('field_hide_title')->save();
+    }
+  }
 }
 
 /**
