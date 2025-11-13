@@ -185,17 +185,52 @@ function ucsb_core_update_10002() {
  * Disables Big Pipe module and enables Pantheon Advanced Page Cache.
  */
 function ucsb_core_update_10003() {
+  $messages = [];
+  $errors = [];
+
   // Disable Big Pipe module which can cause caching issues on Pantheon.
   if (\Drupal::moduleHandler()->moduleExists('big_pipe')) {
-    \Drupal::service('module_installer')->uninstall(['big_pipe']);
+    try {
+      \Drupal::service('module_installer')->uninstall(['big_pipe']);
+      $messages[] = 'Disabled Big Pipe module';
+    }
+    catch (Exception $e) {
+      $error_msg = $e->getMessage();
+      \Drupal::logger('ucsb_core')->error('Failed to disable Big Pipe module: @error', ['@error' => $error_msg]);
+      $errors[] = "Failed to disable Big Pipe: $error_msg";
+    }
+  }
+  else {
+    $messages[] = 'Big Pipe module was already disabled';
   }
 
   // Enable Pantheon Advanced Page Cache module.
   if (!\Drupal::moduleHandler()->moduleExists('pantheon_advanced_page_cache')) {
-    \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
+    try {
+      \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
+      $messages[] = 'Enabled Pantheon Advanced Page Cache module';
+    }
+    catch (Exception $e) {
+      $error_msg = $e->getMessage();
+      \Drupal::logger('ucsb_core')->error('Failed to enable Pantheon Advanced Page Cache module: @error', ['@error' => $error_msg]);
+      $errors[] = "Failed to enable Pantheon Advanced Page Cache: $error_msg";
+    }
+  }
+  else {
+    $messages[] = 'Pantheon Advanced Page Cache module was already enabled';
   }
 
-  return 'Disabled Big Pipe module and enabled Pantheon Advanced Page Cache.';
+  // Return appropriate message based on results.
+  if (count($messages) > 0) {
+    $message = implode(', ', $messages);
+    if (count($errors) > 0) {
+      $message .= '. Warnings: ' . implode(', ', $errors);
+    }
+    return $message . '.';
+  }
+  else {
+    return 'No module changes were made. Errors: ' . implode(', ', $errors) . '. Check logs for details.';
+  }
 }
 
 /**
