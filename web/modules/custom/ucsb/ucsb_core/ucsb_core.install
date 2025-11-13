@@ -15,35 +15,18 @@ use Drupal\node\Entity\NodeType;
  * Implements hook_install().
  */
 function ucsb_core_install() {
-  // Process wordmarks during installation.
-  _ucsb_core_process_wordmarks();
-  // Add hide title field during installation.
-  _ucsb_core_add_hide_title_field();
+  // Reset schema version so update hooks are detected as pending.
+  \Drupal::service('update.update_hook_registry')->setInstalledVersion('ucsb_core', 10000);
 }
 
 /**
  * Implements hook_update_10001().
+ *
+ * Processes wordmark SVG files to add accessibility attributes for screen
+ * readers.
+ * Adds role="img", aria-labelledby, and proper title elements to SVG logos.
  */
 function ucsb_core_update_10001() {
-  // Process wordmarks via update hook.
-  return _ucsb_core_process_wordmarks();
-}
-
-/**
- * Implements hook_update_10002().
- */
-function ucsb_core_update_10002() {
-  // Add hide title field via update hook.
-  _ucsb_core_add_hide_title_field();
-}
-
-/**
- * Helper function to process wordmark SVGs for accessibility.
- *
- * @return string
- *   Status messages from the processing.
- */
-function _ucsb_core_process_wordmarks() {
   \Drupal::logger('ucsb_core')->info('Starting wordmark SVG accessibility processing');
   $messages = [];
   $processed_count = 0;
@@ -133,9 +116,13 @@ function _ucsb_core_process_wordmarks() {
 }
 
 /**
- * Helper function to add the hide title field to Basic pages.
+ * Implements hook_update_10002().
+ *
+ * Creates and configures a "Hide Title" boolean field for Basic pages.
+ * Adds the field to the page content type with proper form and view display
+ * settings.
  */
-function _ucsb_core_add_hide_title_field() {
+function ucsb_core_update_10002() {
   // Check if the Basic page content type exists.
   if (NodeType::load('page')) {
     // Check if the field storage already exists.
@@ -166,29 +153,30 @@ function _ucsb_core_add_hide_title_field() {
           ['value' => 0],
         ],
       ])->save();
-
-      // Get the form display for the Basic page content type.
-      $form_display = \Drupal::service('entity_display.repository')
-        ->getFormDisplay('node', 'page', 'default');
-
-      // Find the weight of the field_title_background_color field.
-      $weight = 0;
-      $components = $form_display->getComponents();
-      if (isset($components['field_title_background_color'])) {
-        $weight = $components['field_title_background_color']['weight'] + 1;
-      }
-
-      // Make the Hide Title field visible on the node form below field_title_background_color.
-      $form_display->setComponent('field_hide_title', [
-        'type' => 'boolean_checkbox',
-        'weight' => $weight,
-      ])->save();
-
-      // Hide the Hide Title field from the node view.
-      $view_display = \Drupal::service('entity_display.repository')
-        ->getViewDisplay('node', 'page', 'default');
-      $view_display->removeComponent('field_hide_title')->save();
     }
+
+    // Always configure displays, even if field config already existed.
+    // Get the form display for the Basic page content type.
+    $form_display = \Drupal::service('entity_display.repository')
+      ->getFormDisplay('node', 'page', 'default');
+
+    // Find the weight of the field_title_background_color field.
+    $weight = 0;
+    $components = $form_display->getComponents();
+    if (isset($components['field_title_background_color'])) {
+      $weight = $components['field_title_background_color']['weight'] + 1;
+    }
+
+    // Make the Hide Title field visible on the node form below field_title_background_color.
+    $form_display->setComponent('field_hide_title', [
+      'type' => 'boolean_checkbox',
+      'weight' => $weight,
+    ])->save();
+
+    // Hide the Hide Title field from the node view.
+    $view_display = \Drupal::service('entity_display.repository')
+      ->getViewDisplay('node', 'page', 'default');
+    $view_display->removeComponent('field_hide_title')->save();
   }
 }
 
