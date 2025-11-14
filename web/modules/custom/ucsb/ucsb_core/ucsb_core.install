@@ -292,7 +292,7 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
       }
 
       // Update the content to the site name.
-      $title_element->nodeValue = htmlspecialchars($full_site_name, ENT_XML1);
+      $title_element->textContent = $full_site_name;
 
       // Remove any additional title elements (should only be one).
       for ($i = $title_elements->length - 1; $i > 0; $i--) {
@@ -302,8 +302,9 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
     }
     else {
       // No title exists, create one.
-      $title_element = $dom->createElement('title', htmlspecialchars($full_site_name, ENT_XML1));
+      $title_element = $dom->createElement('title');
       $title_element->setAttribute('id', 'departmentname');
+      $title_element->textContent = $full_site_name;
 
       // Insert title as the first child of SVG.
       if ($svg_element->firstChild) {
