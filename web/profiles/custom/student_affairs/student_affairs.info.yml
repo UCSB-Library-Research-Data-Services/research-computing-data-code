@@ -111,6 +111,7 @@ install:
   - twig_tweak
   - update
   - user
+  - ucsb_core
   - ucsb_login_page
   - ucsb_utilitybar_footer
   - video_embed_field

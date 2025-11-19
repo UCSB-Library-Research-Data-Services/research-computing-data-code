@@ -46,6 +46,7 @@ function student_affairs_install_content() {
     \Drupal::service('module_installer')->install(['ucsb_web_theme_overlay']);
 
     \Drupal::service('module_installer')->install(['ssis_core']);
+    \Drupal::service('module_installer')->install(['ucsb_core']);
 
     \Drupal::service('module_installer')->uninstall(['demo_content']);
     \Drupal::service('module_installer')->uninstall(['default_content']);
