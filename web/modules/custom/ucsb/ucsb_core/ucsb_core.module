@@ -16,7 +16,48 @@ function ucsb_core_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.ucsb_core':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Core module for UCSB theme updates and configurations.') . '</p>';
+      $output .= '<p>' . t('This module provides core functionality for UCSB Drupal sites, including wordmark accessibility improvements and content editing enhancements.') . '</p>';
+
+      $output .= '<h3>' . t('Features') . '</h3>';
+
+      $output .= '<h4>' . t('Wordmark Accessibility') . '</h4>';
+      $output .= '<p>' . t('Processes SVG wordmark logos to add accessibility attributes for screen readers:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('Adds <code>role="img"</code> attribute') . '</li>';
+      $output .= '<li>' . t('Adds <code>aria-labelledby="departmentname"</code> attribute') . '</li>';
+      $output .= '<li>' . t('Creates or updates <code><title id="departmentname"></code> elements with site name') . '</li>';
+      $output .= '</ul>';
+
+      $output .= '<h4>' . t('Hide Title Field') . '</h4>';
+      $output .= '<p>' . t('Adds a "Hide Title" boolean field to Basic pages that allows content editors to hide page titles on individual pages.') . '</p>';
+
+      $output .= '<h4>' . t('Pantheon Performance') . '</h4>';
+      $output .= '<p>' . t('Optimizes Drupal performance for Pantheon hosting:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('Disables Big Pipe module to prevent caching conflicts') . '</li>';
+      $output .= '<li>' . t('Enables Pantheon Advanced Page Cache module for optimal caching performance') . '</li>';
+      $output .= '</ul>';
+
+      $output .= '<h3>' . t('Dependencies') . '</h3>';
+      $output .= '<p>' . t('This module depends on the following module:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('site_settings') . '</li>';
+      $output .= '</ul>';
+
+      $output .= '<h3>' . t('Installation') . '</h3>';
+      $output .= '<p>' . t('To install this module please use the following drush command:') . '</p>';
+      $output .= '<pre><code>drush en ucsb_core</code></pre>';
+      $output .= '<p>' . t('After installation, run database updates to apply the functionality:') . '</p>';
+      $output .= '<pre><code>drush updatedb</code></pre>';
+
+      $output .= '<h3>' . t('Usage') . '</h3>';
+
+      $output .= '<h4>' . t('Wordmark Processing') . '</h4>';
+      $output .= '<p>' . t('The module automatically processes wordmark SVGs configured in site settings when database updates run. Check the logs for processing results.') . '</p>';
+
+      $output .= '<h4>' . t('Hide Title Field') . '</h4>';
+      $output .= '<p>' . t('After database updates run, a "Hide Title" checkbox will appear on Basic page edit forms (below the title background color field). Content editors can check this box to hide the page title on individual pages.') . '</p>';
+
       return $output;
 
     default:
