@@ -45,7 +45,9 @@ The module automatically processes wordmark SVGs for accessibility compliance:
 - During database updates (update hook 10001)
 - Automatically when logos are saved via site settings (presave hook)
 
-SVG processing happens before the file is saved to ensure optimal performance. Check the logs for processing results.
+SVG processing happens before the file is saved to ensure optimal performance. **After uploading new logos, clear the site cache to see the accessibility improvements:** `drush cr`
+
+Check the logs for processing results.
 
 ### Hide Title Field
 After update 10002 runs, a "Hide Title" checkbox will appear on Basic page edit forms (below the title background color field). Content editors can check this box to hide the page title on individual pages.
