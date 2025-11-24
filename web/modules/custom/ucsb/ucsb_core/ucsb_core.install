@@ -227,9 +227,7 @@ function ucsb_core_update_10003() {
       $message .= '. Warnings: ' . implode(', ', $errors);
     }
     // Avoid double period since error messages may already end with periods.
-    return rtrim($message) . (substr(rtrim($message), -1) === '.' ? '' : '.');
-  }
-  else {
-    return 'No module changes were made. Errors: ' . implode(', ', $errors) . '. Check logs for details.';
+    $trimmed_message = rtrim($message);
+    return $trimmed_message . (substr($trimmed_message, -1) === '.' ? '' : '.');
   }
 }
