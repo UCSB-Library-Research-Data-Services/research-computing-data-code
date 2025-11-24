@@ -4,11 +4,12 @@ This module provides core functionality for UCSB Drupal sites, including wordmar
 
 ## Features
 
-### Wordmark Accessibility (Update 10001)
+### Wordmark Accessibility (Update 10001 + Automatic Processing)
 Processes SVG wordmark logos to add accessibility attributes for screen readers:
 - Adds `role="img"` attribute
 - Adds `aria-labelledby="departmentname"` attribute
 - Creates or updates `<title id="departmentname">` elements with site name
+- **Automatic Processing**: Runs automatically when logos are saved via site settings (presave hook for optimal performance)
 
 ### Hide Title Field (Update 10002)
 Adds a "Hide Title" boolean field to Basic pages that allows content editors to hide page titles on individual pages.
@@ -40,7 +41,11 @@ drush updatedb
 ## Usage
 
 ### Wordmark Processing
-The module automatically processes wordmark SVGs configured in site settings when update 10001 runs. Check the logs for processing results.
+The module automatically processes wordmark SVGs for accessibility compliance:
+- During database updates (update hook 10001)
+- Automatically when logos are saved via site settings (presave hook)
+
+SVG processing happens before the file is saved to ensure optimal performance. Check the logs for processing results.
 
 ### Hide Title Field
 After update 10002 runs, a "Hide Title" checkbox will appear on Basic page edit forms (below the title background color field). Content editors can check this box to hide the page title on individual pages.

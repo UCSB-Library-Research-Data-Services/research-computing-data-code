@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\site_settings\SiteSettingEntityInterface;
 
 /**
  * Implements hook_help().
@@ -53,7 +54,12 @@ function ucsb_core_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<h3>' . t('Usage') . '</h3>';
 
       $output .= '<h4>' . t('Wordmark Processing') . '</h4>';
-      $output .= '<p>' . t('The module automatically processes wordmark SVGs configured in site settings when database updates run. Check the logs for processing results.') . '</p>';
+      $output .= '<p>' . t('The module automatically processes wordmark SVGs for accessibility compliance:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('During database updates (update hook 10001)') . '</li>';
+      $output .= '<li>' . t('Automatically when logos are saved via site settings (presave hook)') . '</li>';
+      $output .= '</ul>';
+      $output .= '<p>' . t('SVG processing happens before the file is saved to ensure optimal performance. Check the logs for processing results.') . '</p>';
 
       $output .= '<h4>' . t('Hide Title Field') . '</h4>';
       $output .= '<p>' . t('After database updates run, a "Hide Title" checkbox will appear on Basic page edit forms (below the title background color field). Content editors can check this box to hide the page title on individual pages.') . '</p>';
@@ -62,5 +68,183 @@ function ucsb_core_help($route_name, RouteMatchInterface $route_match) {
 
     default:
       return NULL;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for site_setting_entity.
+ */
+function ucsb_core_site_setting_entity_presave(SiteSettingEntityInterface $entity) {
+  // Process logo uploads for accessibility before saving.
+  if ($entity->getType() === 'logo') {
+    ucsb_core_process_wordmark_logo_presave($entity);
+  }
+}
+
+/**
+ * Processes a wordmark logo for accessibility compliance before save.
+ *
+ * @param \Drupal\site_settings\SiteSettingEntityInterface $entity
+ *   The site setting entity containing the logo.
+ */
+function ucsb_core_process_wordmark_logo_presave(SiteSettingEntityInterface $entity) {
+  // Get the site name for accessibility attributes.
+  $site_name = \Drupal::config('system.site')->get('name');
+  $full_site_name = !empty($site_name) ? $site_name : 'UC Santa Barbara Department Name Here';
+
+  // Check if the entity has a logo field.
+  if (!$entity->hasField('field_image') || $entity->get('field_image')->isEmpty()) {
+    \Drupal::logger('ucsb_core')->debug('No image field found in wordmark entity during presave');
+    return;
+  }
+
+  // Get the file entity.
+  $file_field = $entity->get('field_image')->first();
+  if (!$file_field || !$file_field->entity) {
+    \Drupal::logger('ucsb_core')->debug('No file entity found in wordmark entity during presave');
+    return;
+  }
+
+  $file = $file_field->entity;
+  $file_uri = $file->getFileUri();
+
+  // Only process SVG files.
+  if ($file->getMimeType() !== 'image/svg+xml') {
+    \Drupal::logger('ucsb_core')->debug('Skipping non-SVG file in wordmark entity: @mime', [
+      '@mime' => $file->getMimeType(),
+    ]);
+    return;
+  }
+
+  try {
+    // Get the full file path.
+    $file_system = \Drupal::service('file_system');
+    $svg_path = $file_system->realpath($file_uri);
+
+    if (!file_exists($svg_path)) {
+      \Drupal::logger('ucsb_core')->error('SVG file not found during presave: @path', ['@path' => $svg_path]);
+      return;
+    }
+
+    // Read the SVG content.
+    $svg_content = file_get_contents($svg_path);
+    if ($svg_content === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to read SVG file during presave: @path', ['@path' => $svg_path]);
+      return;
+    }
+
+    // Process the SVG to add accessibility attributes.
+    $updated_svg = _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name);
+    if ($updated_svg === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to process SVG content during presave: @uri', ['@uri' => $file_uri]);
+      return;
+    }
+
+    // Write the updated SVG content back to the file before save.
+    if (file_put_contents($svg_path, $updated_svg) === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to write updated SVG during presave: @path', ['@path' => $svg_path]);
+      return;
+    }
+
+    \Drupal::logger('ucsb_core')->info('Successfully processed wordmark SVG for accessibility during presave: @uri', ['@uri' => $file_uri]);
+
+  }
+  catch (Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error processing wordmark SVG during presave @uri: @error', [
+      '@uri' => $file_uri,
+      '@error' => $e->getMessage(),
+    ]);
+  }
+}
+
+/**
+ * Helper function to add accessibility attributes to SVG content.
+ *
+ * @param string $svg_content
+ *   The original SVG content.
+ * @param string $full_site_name
+ *   The full site name to use in the title.
+ *
+ * @return string|false
+ *   The updated SVG content, or FALSE on error.
+ */
+function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name) {
+  try {
+    // Load the SVG content into DOMDocument.
+    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom->preserveWhiteSpace = FALSE;
+    $dom->formatOutput = TRUE;
+
+    // Suppress errors for malformed HTML/XML.
+    libxml_use_internal_errors(TRUE);
+
+    // Load the SVG content.
+    if (!$dom->loadXML($svg_content)) {
+      \Drupal::logger('ucsb_core')->error('Failed to parse SVG XML content');
+      return FALSE;
+    }
+
+    // Get the SVG element.
+    $svg_elements = $dom->getElementsByTagName('svg');
+    if ($svg_elements->length === 0) {
+      \Drupal::logger('ucsb_core')->error('No SVG element found in content');
+      return FALSE;
+    }
+
+    $svg_element = $svg_elements->item(0);
+
+    // Add role="img" if not already present.
+    if (!$svg_element->hasAttribute('role')) {
+      $svg_element->setAttribute('role', 'img');
+    }
+
+    // Add aria-labelledby="departmentname" if not already present.
+    if (!$svg_element->hasAttribute('aria-labelledby')) {
+      $svg_element->setAttribute('aria-labelledby', 'departmentname');
+    }
+
+    // Handle title elements for accessibility.
+    $title_elements = $svg_element->getElementsByTagName('title');
+
+    if ($title_elements->length > 0) {
+      // Use the first existing title element.
+      $title_element = $title_elements->item(0);
+
+      // Ensure it has the proper id for accessibility.
+      if (!$title_element->hasAttribute('id') || $title_element->getAttribute('id') !== 'departmentname') {
+        $title_element->setAttribute('id', 'departmentname');
+      }
+
+      // Update the content to the site name.
+      $title_element->textContent = $full_site_name;
+
+      // Remove any additional title elements (should only be one).
+      for ($i = $title_elements->length - 1; $i > 0; $i--) {
+        $extra_title = $title_elements->item($i);
+        $extra_title->parentNode->removeChild($extra_title);
+      }
+    }
+    else {
+      // No title exists, create one.
+      $title_element = $dom->createElement('title');
+      $title_element->setAttribute('id', 'departmentname');
+      $title_element->textContent = $full_site_name;
+
+      // Insert title as the first child of SVG.
+      if ($svg_element->firstChild) {
+        $svg_element->insertBefore($title_element, $svg_element->firstChild);
+      }
+      else {
+        $svg_element->appendChild($title_element);
+      }
+    }
+
+    // Return the updated SVG content.
+    return $dom->saveXML();
+
+  }
+  catch (Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error processing SVG: @error', ['@error' => $e->getMessage()]);
+    return FALSE;
   }
 }
