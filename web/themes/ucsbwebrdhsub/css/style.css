@@ -345,8 +345,10 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 64px;
-  margin-bottom: 10px;
+  min-height: 64px;
+  height: auto;
+  margin-bottom: 18px;
+  text-align: center;
 }
 
 .community-title p{
