@@ -3,20 +3,24 @@
     "description": "Install Drupal 9 with Composer on Pantheon.",
     "type": "project",
     "license": "MIT",
-    "repositories": [
-        {
+    "repositories": {
+        "digital_asset_inventory": {
+            "type": "vcs",
+            "url": "https://github.com/ucsb/digital_asset_inventory"
+        },
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        {
+        "upstream-configuration": {
             "type": "path",
             "url": "upstream-configuration"
         },
-        {
+        "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        {
+        "malsup/cycle": {
             "type": "package",
             "package": {
                 "name": "malsup/cycle",
@@ -28,7 +32,7 @@
                 }
             }
         },
-        {
+        "briancherne/jquery-hoverintent": {
             "type": "package",
             "package": {
                 "name": "briancherne/jquery-hoverintent",
@@ -40,7 +44,7 @@
                 }
             }
         },
-        {
+        "douglascrockford/json-js": {
             "type": "package",
             "package": {
                 "name": "douglascrockford/json-js",
@@ -52,7 +56,7 @@
                 }
             }
         },
-        {
+        "tobia/pause": {
             "type": "package",
             "package": {
                 "name": "tobia/pause",
@@ -64,7 +68,7 @@
                 }
             }
         },
-        {
+        "ckeditor-plugin/link": {
             "type": "package",
             "package": {
                 "name": "ckeditor-plugin/link",
@@ -76,7 +80,7 @@
                 }
             }
         },
-        {
+        "authorizenet/authorizenet": {
             "type": "package",
             "package": {
                 "name": "authorizenet/authorizenet",
@@ -88,7 +92,7 @@
                 }
             }
         },
-        {
+        "select2/select2": {
             "type": "package",
             "package": {
                 "name": "select2/select2",
@@ -100,7 +104,7 @@
                 }
             }
         },
-        {
+        "kenwheeler/slick": {
             "type": "package",
             "package": {
                 "name": "kenwheeler/slick",
@@ -112,7 +116,7 @@
                 }
             }
         },
-        {
+        "accessible360/accessible-slick": {
             "type": "package",
             "package": {
                 "name": "accessible360/accessible-slick",
@@ -124,7 +128,7 @@
                 }
             }
         }
-    ],
+    },
     "require": {
         "authorizenet/authorizenet": "^2.0",
         "bower-asset/jquery-simple-color": "^1.2",
@@ -383,7 +387,8 @@
         "drupal/calendar_view": "^2.1",
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
-        "drupal/advban": "^1.9"
+        "drupal/advban": "^1.9",
+        "ucsb/digital_asset_inventory": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -420,6 +425,7 @@
             "web/libraries/slick": ["kenwheeler/slick"],
             "web/libraries/accessible-slick": ["accessible360/accessible-slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
+            "web/modules/custom/digital_asset_inventory": ["ucsb/digital_asset_inventory"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
