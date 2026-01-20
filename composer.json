@@ -4,10 +4,6 @@
     "type": "project",
     "license": "MIT",
     "repositories": {
-        "digital_asset_inventory": {
-            "type": "vcs",
-            "url": "https://github.com/ucsb/digital_asset_inventory"
-        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -127,6 +123,10 @@
                     "type": "zip"
                 }
             }
+        },
+        "digital_asset_inventory": {
+            "type": "vcs",
+            "url": "https://github.com/ucsb/digital_asset_inventory"
         }
     },
     "require": {
@@ -425,12 +425,11 @@
             "web/libraries/slick": ["kenwheeler/slick"],
             "web/libraries/accessible-slick": ["accessible360/accessible-slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
-            "web/modules/custom/digital_asset_inventory": ["ucsb/digital_asset_inventory"],
+            "web/modules/custom/{$name}": ["ucsb/digital_asset_inventory", "type:drupal-custom-module"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
             "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
