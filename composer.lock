@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11515e0d63e0668851f90513ca3a33a5",
+    "content-hash": "dfd860cafd0419fef5f1e898426619fa",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -25548,6 +25548,69 @@
                 }
             ],
             "time": "2025-12-14T11:28:47+00:00"
+        },
+        {
+            "name": "ucsb/digital_asset_inventory",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ucsb/digital_asset_inventory.git",
+                "reference": "3e7a1a2fe135c59647938d5a2ba12bacf90f40ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ucsb/digital_asset_inventory/zipball/3e7a1a2fe135c59647938d5a2ba12bacf90f40ae",
+                "reference": "3e7a1a2fe135c59647938d5a2ba12bacf90f40ae",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/better_exposed_filters": "*",
+                "drupal/csv_serialization": "*",
+                "drupal/responsive_tables_filter": "*",
+                "drupal/views_data_export": "*",
+                "php": ">=8.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Information Technology Services (ITS), UC Santa Barbara (UCSB)",
+                    "homepage": "https://github.com/ucsb",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Elda Schaffield",
+                    "homepage": "https://github.com/uceap-web",
+                    "role": "Author"
+                }
+            ],
+            "description": "Site-wide digital asset scanning, usage tracking, exportable reports, and ADA Title II–compliant archiving tools.",
+            "homepage": "https://github.com/ucsb/digital_asset_inventory",
+            "keywords": [
+                "accessibility",
+                "ada",
+                "ada-title-ii",
+                "archive",
+                "compliance",
+                "digital-assets",
+                "drupal",
+                "files",
+                "inventory",
+                "media",
+                "wcag"
+            ],
+            "support": {
+                "issues": "https://github.com/ucsb/digital_asset_inventory/issues",
+                "source": "https://github.com/ucsb/digital_asset_inventory"
+            },
+            "time": "2026-01-20T20:06:06+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
