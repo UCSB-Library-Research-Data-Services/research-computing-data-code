@@ -35,6 +35,7 @@ install:
   - datetime
   - dblog
   - default_content
+  - digital_asset_inventory
   - dynamic_page_cache
   - editor
   - editor_advanced_link
