@@ -388,7 +388,7 @@
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
         "drupal/advban": "^1.9",
-        "ucsb/digital_asset_inventory": "^1.0"
+        "ucsb/digital_asset_inventory": "*"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
