@@ -25558,16 +25558,16 @@
         },
         {
             "name": "ucsb/digital_asset_inventory",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ucsb/digital_asset_inventory.git",
-                "reference": "3e7a1a2fe135c59647938d5a2ba12bacf90f40ae"
+                "reference": "807155a178f8ccbfe5862e843a1b4f5602e84673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ucsb/digital_asset_inventory/zipball/3e7a1a2fe135c59647938d5a2ba12bacf90f40ae",
-                "reference": "3e7a1a2fe135c59647938d5a2ba12bacf90f40ae",
+                "url": "https://api.github.com/repos/ucsb/digital_asset_inventory/zipball/807155a178f8ccbfe5862e843a1b4f5602e84673",
+                "reference": "807155a178f8ccbfe5862e843a1b4f5602e84673",
                 "shasum": ""
             },
             "require": {
@@ -25617,7 +25617,7 @@
                 "issues": "https://github.com/ucsb/digital_asset_inventory/issues",
                 "source": "https://github.com/ucsb/digital_asset_inventory"
             },
-            "time": "2026-01-20T20:06:06+00:00"
+            "time": "2026-01-22T16:14:57+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
