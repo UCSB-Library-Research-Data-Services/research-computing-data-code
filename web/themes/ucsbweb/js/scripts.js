@@ -3,7 +3,7 @@
  * UI behaviors
  */
 
- (function ($, Drupal) {
+(function ($, Drupal) {
 
   'use strict';
 
@@ -127,7 +127,7 @@
       if ($('.block-search-form-block input.form-search').is(':focus')) {
         e.preventDefault();
       }
-      $('#eyebrow .search').removeClass('expanded');
+      $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
       $('#block-quicklinks').append(quicklinksRegion);
@@ -146,7 +146,9 @@
         $('#eyebrow').removeClass('quick-links-expanded');
         $('#block-quicklinks').append(quicklinksRegion);
       } else {
-        $('#eyebrow .search').removeClass('expanded');
+        // Accessibility Update: Ensure search is marked closed if we open quicklinks
+        $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+        
         $('#eyebrow .quick-links').addClass('expanded');
         $('#eyebrow').addClass('quick-links-expanded');
         $('#eyebrow').removeClass('search-expanded');
@@ -159,18 +161,37 @@
     $('#search-block-form #edit-actions').attr('id','block-edit-actions');
     $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
     var searchFormRegion = $('.block-search-form-block');
-    $('#eyebrow .search svg').click(function( e ) {
+    
+    // ACCESSIBILITY FIX: Target the container .search (which should be a button now)
+    // instead of the SVG. This allows keyboard Enter/Space activation.
+    $('#eyebrow .search').click(function( e ) {
       e.preventDefault();
-      if ($('#eyebrow .search').hasClass('expanded')) {
-        $('#eyebrow .search').removeClass('expanded');
+      var $toggle = $(this);
+
+      if ($toggle.hasClass('expanded')) {
+        // CLOSE SEARCH
+        $toggle.removeClass('expanded');
         $('#eyebrow').removeClass('search-expanded');
+        
+        // Update ARIA state
+        $toggle.attr('aria-expanded', 'false');
+        
         $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
+        
+        // Return focus to the toggle button so keyboard user isn't lost
+        $toggle.focus();
       } else {
+        // OPEN SEARCH
         $('#eyebrow .quick-links').removeClass('expanded');
-        $('#eyebrow .search').addClass('expanded');
+        
+        $toggle.addClass('expanded');
         $('#eyebrow').addClass('search-expanded');
         $('#eyebrow').removeClass('quick-links-expanded');
-        $('#eyebrow .search').append(searchFormRegion);
+        
+        // Update ARIA state
+        $toggle.attr('aria-expanded', 'true');
+        
+        $toggle.append(searchFormRegion);
         $( "#edit-keys" ).focus();
       }
     });
@@ -183,13 +204,16 @@
   }
 
   $.closeStuff = function () {
+    var searchFormRegion = $('.block-search-form-block');
     if ($('#eyebrow .quick-links').hasClass('expanded')) {
+      // Logic for quicklinks (missing quicklinksRegion scope here in original code, but leaving as is)
+      var quicklinksRegion = $('.region-navigation-quicklinks ul.menu.nav'); // Added re-select for safety
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#eyebrow').removeClass('quick-links-expanded');
       $('#block-quicklinks').append(quicklinksRegion);
     }
     if ($('#eyebrow .search').hasClass('expanded')) {
-      $('#eyebrow .search').removeClass('expanded');
+      $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
       $('#eyebrow').removeClass('search-expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
     }
