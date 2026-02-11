@@ -11,6 +11,7 @@
  * @param $variables
  */
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 
@@ -98,4 +99,86 @@ function mytheme_preprocess_node(&$variables) {
       $variables['url'] = '/debug-url';
     }
   }
+}
+
+/**
+ * Detect whether a blade is the homepage resources tiles section.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph|null $paragraph
+ *   The current paragraph owning field_columns.
+ *
+ * @return bool
+ *   TRUE when this field row should receive the resources-tile wrapper class.
+ */
+function _ucsbwebrdhsub_is_home_resource_tiles_blade($paragraph) {
+  if (!$paragraph || !method_exists($paragraph, 'bundle') || $paragraph->bundle() !== 'blade') {
+    return FALSE;
+  }
+
+  // Optional manual opt-in from paragraph CSS classes.
+  if ($paragraph->hasField('field_css_classes')) {
+    $manual_classes = (string) $paragraph->get('field_css_classes')->value;
+    if (preg_match('/(^|\\s)rcd-home-resource-tiles(\\s|$)/', $manual_classes)) {
+      return TRUE;
+    }
+  }
+
+  if (!$paragraph->hasField('field_columns') || $paragraph->get('field_columns')->isEmpty()) {
+    return FALSE;
+  }
+
+  $expected_titles = [
+    'artificial intelligence',
+    'data resources',
+    'computing resources',
+    'regulated research',
+  ];
+
+  $columns_with_body = 0;
+  $matched_columns = 0;
+
+  foreach ($paragraph->get('field_columns')->referencedEntities() as $column) {
+    if (!$column->hasField('field_body') || $column->get('field_body')->isEmpty()) {
+      continue;
+    }
+
+    $columns_with_body++;
+    $body = strtolower(trim(strip_tags((string) $column->get('field_body')->value)));
+    foreach ($expected_titles as $title) {
+      if (strpos($body, $title) !== FALSE) {
+        $matched_columns++;
+        break;
+      }
+    }
+  }
+
+  // Supports one blade with 4 items or two blades with 2 items each.
+  return $columns_with_body >= 2 && $matched_columns === $columns_with_body;
+}
+
+/**
+ * Adds a scoped wrapper class for homepage resource tiles rows.
+ */
+function ucsbwebrdhsub_preprocess_field(&$variables) {
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+
+  if (($variables['field_name'] ?? '') !== 'field_columns') {
+    return;
+  }
+
+  $paragraph = $variables['element']['#object'] ?? NULL;
+  if (!_ucsbwebrdhsub_is_home_resource_tiles_blade($paragraph)) {
+    return;
+  }
+
+  if (isset($variables['attributes']) && is_array($variables['attributes'])) {
+    $variables['attributes'] = new Attribute($variables['attributes']);
+  }
+  elseif (!isset($variables['attributes']) || !($variables['attributes'] instanceof Attribute)) {
+    $variables['attributes'] = new Attribute();
+  }
+
+  $variables['attributes']->addClass('rcd-home-resource-tiles');
 }
