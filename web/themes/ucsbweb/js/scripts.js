@@ -67,8 +67,11 @@
 
   $(document).on('keyup',function(evt) {
     if (evt.keyCode == 27) {
-      //alert('Esc key pressed.');
+      var searchWasOpen = $('#eyebrow .search').hasClass('expanded');
       $.closeStuff();
+      if (searchWasOpen) {
+        $('#eyebrow .search').focus();
+      }
     }
   });
 
@@ -116,6 +119,7 @@
       anotherList.append(firstHalf);
     });
   }
+
   // Put the search form in the eybrow menu
   $.fn.resetEybrowStuff = function() {
     var $window = $(window);
@@ -124,9 +128,6 @@
     var quicklinksRegion = $('.quick-links ul.menu.nav');
     if (windowsize < 768) {
       $('.block-search-form-block input.form-search').attr("placeholder", "Search...");
-      if ($('.block-search-form-block input.form-search').is(':focus')) {
-        e.preventDefault();
-      }
       $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
@@ -146,13 +147,11 @@
         $('#eyebrow').removeClass('quick-links-expanded');
         $('#block-quicklinks').append(quicklinksRegion);
       } else {
-        // Accessibility Update: Ensure search is marked closed if we open quicklinks
         $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
-        
         $('#eyebrow .quick-links').addClass('expanded');
         $('#eyebrow').addClass('quick-links-expanded');
         $('#eyebrow').removeClass('search-expanded');
-        $('#eyebrow .quick-links').append(quicklinksRegion);
+        $('#eyebrow').find('.region-navigation-quicklinks').append(quicklinksRegion);
       }
     });
   }
@@ -162,37 +161,39 @@
     $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
     var searchFormRegion = $('.block-search-form-block');
     
-    // ACCESSIBILITY FIX: Target the container .search (which should be a button now)
-    // instead of the SVG. This allows keyboard Enter/Space activation.
-    $('#eyebrow .search').click(function( e ) {
-      e.preventDefault();
+    $('#eyebrow .search').on('click', function( e ) {
       var $toggle = $(this);
+      
+      if ($(e.target).closest('.block-search-form-block').length) {
+          return; 
+      }
+
+      e.preventDefault();
 
       if ($toggle.hasClass('expanded')) {
-        // CLOSE SEARCH
         $toggle.removeClass('expanded');
         $('#eyebrow').removeClass('search-expanded');
-        
-        // Update ARIA state
         $toggle.attr('aria-expanded', 'false');
-        
         $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
-        
-        // Return focus to the toggle button so keyboard user isn't lost
         $toggle.focus();
       } else {
-        // OPEN SEARCH
         $('#eyebrow .quick-links').removeClass('expanded');
-        
         $toggle.addClass('expanded');
         $('#eyebrow').addClass('search-expanded');
         $('#eyebrow').removeClass('quick-links-expanded');
-        
-        // Update ARIA state
         $toggle.attr('aria-expanded', 'true');
-        
         $toggle.append(searchFormRegion);
-        $( "#edit-keys" ).focus();
+
+        // FOCUS FIX FOR MULTIPLE SEARCH BARS
+        setTimeout(function() {
+          $toggle.find('input[id^="edit-keys"]').focus();
+        }, 100);
+      }
+    });
+
+    $(document).on('keydown', '.block-search-form-block input.form-search', function(event) {
+      if (event.which == 13) { 
+        $(this).closest('form').submit();
       }
     });
   }
@@ -206,8 +207,7 @@
   $.closeStuff = function () {
     var searchFormRegion = $('.block-search-form-block');
     if ($('#eyebrow .quick-links').hasClass('expanded')) {
-      // Logic for quicklinks (missing quicklinksRegion scope here in original code, but leaving as is)
-      var quicklinksRegion = $('.region-navigation-quicklinks ul.menu.nav'); // Added re-select for safety
+      var quicklinksRegion = $('.region-navigation-quicklinks ul.menu.nav');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#eyebrow').removeClass('quick-links-expanded');
       $('#block-quicklinks').append(quicklinksRegion);
@@ -259,10 +259,6 @@
       })
           .height(maxHeight);
     });
-    // var divs = $('.views-view-grid.horizontal .views-col');
-    // for(var i = 0; i < divs.length; i+=3) {
-    //   divs.slice(i, i+3).wrapAll('<div class="wrapper"></div>');
-    // }
   }
 
   $.fn.equalHeightSlides = function() {
@@ -290,11 +286,8 @@
   }
 
   $.fn.initializeCarousel = function() {
-    // Security: Validate carousel IDs before initialization (CVE-2024-6485, CVE-2025-1647)
-    // Only initialize carousels with properly formatted IDs to prevent XSS
     $('.carousel-static').find('.carousel').each(function () {
       var carouselId = $(this).attr('id');
-      // Validate ID format: must be 'carousel-' followed by alphanumeric/hyphen/underscore
       if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
         $(this).carousel({
           pause: true,
@@ -305,12 +298,10 @@
 
     $('.carousel-autoscroll').find('.carousel').each(function () {
       var carouselId = $(this).attr('id');
-      // Validate ID format before initialization
       if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
         $(this).carousel();
       }
     });
-
   }
 
   $.fn.logoSize = function() {
@@ -377,8 +368,6 @@
       var navheight = $('#navbar').outerHeight();
       $('#body').css('margin-top', navheight); 
     } 
-
-  
   }
 
   $.fn.alertMobile = function() {
@@ -410,7 +399,6 @@
       $('body').topOffset();
       $.cookie('ucsb_alert', 'collapsed', { expires: 1 });
     });
-
   }
 
   $.fn.blogTopicFilter = function() {
@@ -487,8 +475,8 @@
       }
     });
   }
-  $.fn.jumplink = function() {
 
+  $.fn.jumplink = function() {
     var viewportWidth = $(window).width();
     var headerHeight = 0;
 
@@ -526,7 +514,6 @@
     if (target.length) {
       $('html,body').stop().animate({scrollTop: target.offset().top - headerHeight}, 'slow');
     }
-
   }
 
   $.fn.menuScrollTop = function() {
@@ -558,7 +545,6 @@
 
       for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
-
         if (sParameterName[0] === sParam) {
           return sParameterName[1] === undefined ? true : sParameterName[1];
         }
@@ -566,28 +552,19 @@
     };
 
     var searchTerms = getUrlParameter('q');
-
     $('.content .form-search').attr('value', searchTerms);
-
     $('.gsc-results-wrapper-nooverlay').prepend('<h2>Search Results</h2>')
-
   }
 
  $(function (){
    $("iframe").each(function (){
      var iframe = $(this);
-
-     //remove the width HTML attribute
      iframe.removeAttr("width");
      iframe.removeAttr("frameborder");
-     //set a CSS width attribute
      iframe.css("width","100%");
      if ((iframe.attr("title") == undefined) || (iframe.attr("title") == "")) {
-
        var url = iframe.prop("src");
-       var hostname = $('<a>').prop('href', url).prop('hostname');
        var title ="";
-
        if (url.includes("statuspage.io")) {
          title = "System Status Announcements";
        } else if (url.includes("google.com/maps")) {
@@ -611,7 +588,6 @@
        } else if (url.includes("ucsb.dserec.com")) {
          title = "Recreation";
        }
-
        iframe.attr("title",title);
      }
    });
@@ -619,7 +595,6 @@
 
 })(jQuery, Drupal);
 
-// Hide the H1 for every front page using sr-only class
 (function (Drupal, once) {
   Drupal.behaviors.addSrOnlyToH1 = {
     attach: function (context, settings) {
@@ -635,7 +610,6 @@
   };
 })(Drupal, once);
 
-//event listener: DOM ready
 function addLoadEvent(func) {
   var oldonload = window.onload;
   if (typeof window.onload != 'function') {
