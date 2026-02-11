@@ -99,3 +99,77 @@ function mytheme_preprocess_node(&$variables) {
     }
   }
 }
+
+/**
+ * Detects the homepage "Resources" blade rows.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The blade paragraph that owns the field_columns field.
+ *
+ * @return bool
+ *   TRUE when the blade should receive the resource tiles layout wrapper class.
+ */
+function _ucsbwebrdhsub_is_home_resource_tiles_blade($paragraph) {
+  if (!$paragraph || !method_exists($paragraph, 'bundle') || $paragraph->bundle() !== 'blade') {
+    return FALSE;
+  }
+
+  // Allow explicit opt-in from the paragraph CSS classes field.
+  if ($paragraph->hasField('field_css_classes')) {
+    $manual_classes = (string) $paragraph->get('field_css_classes')->value;
+    if (preg_match('/(^|\\s)rcd-home-resource-tiles(\\s|$)/', $manual_classes)) {
+      return TRUE;
+    }
+  }
+
+  if (!$paragraph->hasField('field_columns') || $paragraph->get('field_columns')->isEmpty()) {
+    return FALSE;
+  }
+
+  $expected_titles = [
+    'artificial intelligence',
+    'data resources',
+    'computing resources',
+    'regulated research',
+  ];
+
+  $columns_with_body = 0;
+  $matched_columns = 0;
+  foreach ($paragraph->get('field_columns')->referencedEntities() as $column) {
+    if (!$column->hasField('field_body') || $column->get('field_body')->isEmpty()) {
+      continue;
+    }
+
+    $columns_with_body++;
+    $body = strtolower(trim(strip_tags((string) $column->get('field_body')->value)));
+    foreach ($expected_titles as $title) {
+      if (strpos($body, $title) !== FALSE) {
+        $matched_columns++;
+        break;
+      }
+    }
+  }
+
+  // Supports one blade with 4 tiles or two blades with 2 tiles each.
+  return $columns_with_body >= 2 && $matched_columns === $columns_with_body;
+}
+
+/**
+ * Adds a unique class wrapper around homepage resource tile rows.
+ *
+ * This allows scoped 2x2 grid CSS without impacting other blades.
+ */
+function ucsbwebrdhsub_preprocess_field(&$variables) {
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+
+  if (($variables['field_name'] ?? '') !== 'field_columns') {
+    return;
+  }
+
+  $paragraph = $variables['element']['#object'] ?? NULL;
+  if (_ucsbwebrdhsub_is_home_resource_tiles_blade($paragraph)) {
+    $variables['attributes']->addClass('rcd-home-resource-tiles');
+  }
+}
