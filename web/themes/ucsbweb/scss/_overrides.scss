@@ -1497,14 +1497,26 @@ header.container-fluid {
 
     }
 
+    #search-toggle-container {
+      border: none !important;
+      background: transparent !important;
+      height: 100% !important;
+      vertical-align: middle;
+      cursor: pointer;
+      outline-offset: -4px;
+    }
+
     .search {
       .toggle-button {
         cursor: pointer;
         padding-left: 13px;
         padding-right: 13px;
-        display: table-cell;
-        height: 36px;
         vertical-align: middle;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        height: 100%;
+        transform: translateY(1px);
       }
       svg {
         height: 24px;
