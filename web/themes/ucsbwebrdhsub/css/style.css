@@ -726,37 +726,6 @@ select {
 /* Resources Page */
 /* *************************************** */
 
-/* Homepage Resource Tiles (2x2) */
-.path-frontpage .field--name-field-columns.columns.rcd-home-resource-tiles {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px 28px;
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.path-frontpage .field--name-field-columns.columns.rcd-home-resource-tiles > .paragraph--type--column {
-  float: none;
-  width: auto;
-  max-width: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.path-frontpage .field--name-field-columns.columns.rcd-home-resource-tiles > .paragraph--type--column h2,
-.path-frontpage .field--name-field-columns.columns.rcd-home-resource-tiles > .paragraph--type--column h3 {
-  font-size: 2.7rem;
-  line-height: 1.2;
-}
-
-@media (max-width: 767px) {
-  .path-frontpage .field--name-field-columns.columns.rcd-home-resource-tiles {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
 .view-computing-resources-view .view-content {
   display: flex;
   flex-wrap: wrap;
