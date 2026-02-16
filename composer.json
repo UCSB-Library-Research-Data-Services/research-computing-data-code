@@ -124,7 +124,7 @@
                 }
             }
         },
-        "digital_asset_inventory": {
+        "ucsb/digital_asset_inventory": {
             "type": "vcs",
             "url": "https://github.com/ucsb/digital_asset_inventory"
         }
@@ -388,7 +388,7 @@
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
         "drupal/advban": "^1.9",
-        "ucsb/digital_asset_inventory": "*"
+        "ucsb/digital_asset_inventory": "^1.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
