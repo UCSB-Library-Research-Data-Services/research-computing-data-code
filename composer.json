@@ -23,7 +23,7 @@
                 "version": "3.0.3",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/malsup/cycle/blob/master/jquery.cycle.all.js",
+                    "url": "https://raw.githubusercontent.com/malsup/cycle/master/jquery.cycle.all.js",
                     "type": "file"
                 }
             }
@@ -59,7 +59,7 @@
                 "version": "3.0.3",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/tobia/Pause/blob/master/jquery.pause.js",
+                    "url": "https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js",
                     "type": "file"
                 }
             }
@@ -123,10 +123,6 @@
                     "type": "zip"
                 }
             }
-        },
-        "ucsb/digital_asset_inventory": {
-            "type": "vcs",
-            "url": "https://github.com/ucsb/digital_asset_inventory"
         }
     },
     "require": {
@@ -387,8 +383,7 @@
         "drupal/calendar_view": "^2.1",
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
-        "drupal/advban": "^1.9",
-        "ucsb/digital_asset_inventory": "^1.1"
+        "drupal/advban": "^1.9"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -425,7 +420,7 @@
             "web/libraries/slick": ["kenwheeler/slick"],
             "web/libraries/accessible-slick": ["accessible360/accessible-slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
-            "web/modules/custom/{$name}": ["ucsb/digital_asset_inventory", "type:drupal-custom-module"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
