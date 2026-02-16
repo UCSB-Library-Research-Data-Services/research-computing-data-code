@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "929939157b72b6f4c0adb418e705445a",
+    "content-hash": "a7790a7339998f61414f1dc004702b56",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -25563,16 +25563,16 @@
         },
         {
             "name": "ucsb/digital_asset_inventory",
-            "version": "v1.0.4",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ucsb/digital_asset_inventory.git",
-                "reference": "b88ab28705c06e321878c3e72128d171034f00b2"
+                "reference": "857092b19e0b1dec66bac405ab4bbf12fcccbfda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ucsb/digital_asset_inventory/zipball/b88ab28705c06e321878c3e72128d171034f00b2",
-                "reference": "b88ab28705c06e321878c3e72128d171034f00b2",
+                "url": "https://api.github.com/repos/ucsb/digital_asset_inventory/zipball/857092b19e0b1dec66bac405ab4bbf12fcccbfda",
+                "reference": "857092b19e0b1dec66bac405ab4bbf12fcccbfda",
                 "shasum": ""
             },
             "require": {
@@ -25621,7 +25621,7 @@
                 "issues": "https://github.com/ucsb/digital_asset_inventory/issues",
                 "source": "https://github.com/ucsb/digital_asset_inventory"
             },
-            "time": "2026-02-02T17:49:47+00:00"
+            "time": "2026-02-13T17:35:33+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
