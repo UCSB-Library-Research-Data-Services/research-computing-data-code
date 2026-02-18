@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32b1efbe1366c43f8eac53158dc529d7",
+    "content-hash": "02c0f3c86567fd3da1bdfaf46a4d6dc1",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -24957,15 +24957,6 @@
                 "source": "https://github.com/thinkshout/mailchimp-api-php/tree/v3.1.3"
             },
             "time": "2025-12-30T19:54:56+00:00"
-        },
-        {
-            "name": "tobia/pause",
-            "version": "3.0.3",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "twig/twig",
