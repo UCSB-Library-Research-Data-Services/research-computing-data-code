@@ -1621,17 +1621,22 @@ select {
 }
 
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title {
-  margin-top: 12px;
-  margin-bottom: 8px;
+  margin: 14px 0 10px;
+  font-size: 2.1rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #111111;
 }
 
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .resource-card-header {
-  margin: 12px 0 8px;
+  margin: 14px 0 10px;
   padding: 0;
   height: auto;
   background: transparent;
 }
 
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title .field-content,
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title .field-content a,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title a,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title h2,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-title h3,
@@ -1641,17 +1646,21 @@ select {
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .resource-card-header h4 {
   margin: 0;
   color: inherit;
+  display: block;
   font-size: 2.1rem;
-  line-height: 1.3;
+  line-height: 1.25;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-body,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-field-summary,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .resource-card-body {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   padding: 0;
   height: auto;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
 
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-body p,
@@ -1664,7 +1673,18 @@ select {
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-nothing,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-field-url,
 .path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-field-link {
-  margin-top: 8px;
+  margin-top: 12px;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-view-node a,
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-nothing a,
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-field-url a,
+.path-frontpage .rcd-home-resource-tiles-view .views-view-grid .views-col .views-field-field-link a {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 1.4;
 }
 
 @media (max-width: 767px) {
