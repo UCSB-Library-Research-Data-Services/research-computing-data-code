@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Theme override to display a node teaser.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ * - label: The title of the node.
+ * - content: All node items.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ * - title_attributes: HTML attributes for the title.
+ * - content_attributes: HTML attributes for the content.
+ * - author_attributes: HTML attributes for the author.
+ * - title_prefix: Additional output populated by modules.
+ * - title_suffix: Additional output populated by modules.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state.
+ * - page: Flag for the full page state.
+ *
+ * @ingroup templates
+ */
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    node.field_top_padding.value ? 'top-padding-' ~ node.field_top_padding.value,
+    node.field_bottom_padding.value ? 'bottom-padding-' ~ node.field_bottom_padding.value,
+    'clearfix',
+  ]
+%}
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {# Submitted metadata intentionally removed for teaser/listing contexts. #}
+
+  <div{{ content_attributes.addClass('content') }}>
+    {{ content }}
+  </div>
+
+</article>

@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a single search result.
+ *
+ * Available variables:
+ * - title: Search result title.
+ * - url: Search result URL.
+ * - snippet: Search result excerpt.
+ * - info: Optional metadata string (author/date/time, etc.).
+ * - title_prefix: Additional output populated by modules.
+ * - title_suffix: Additional output populated by modules.
+ *
+ * @ingroup templates
+ */
+#}
+<h3>
+  {{ title_prefix }}
+  <a href="{{ url }}">{{ title }}</a>
+  {{ title_suffix }}
+</h3>
+
+{% if snippet %}
+  <p>{{ snippet }}</p>
+{% endif %}
+
+{# Search result submitted metadata intentionally removed. #}
