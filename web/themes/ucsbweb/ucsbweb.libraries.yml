@@ -41,3 +41,11 @@ webfonts:
   css:
     theme:
         'https://webfonts.brand.ucsb.edu/webfont.min.css': { type: external, minified: true }
+
+jquery_pause:
+  version: 3.0.3
+  js:
+    libraries/jquery.pause/jquery.pause.js: {}
+  dependencies:
+    - core/jquery
+
