@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7866583535a62dfbd5667a73b9536fee",
+    "content-hash": "02c0f3c86567fd3da1bdfaf46a4d6dc1",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -2297,17 +2297,17 @@
         },
         {
             "name": "drupal/aggregator",
-            "version": "2.2.2",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/aggregator.git",
-                "reference": "2.2.2"
+                "reference": "2.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/aggregator-2.2.2.zip",
-                "reference": "2.2.2",
-                "shasum": "f0b4ebe398f84cd05ec9ea0a101289cc565056f1"
+                "url": "https://ftp.drupal.org/files/projects/aggregator-2.2.3.zip",
+                "reference": "2.2.3",
+                "shasum": "a5339669cd0fdfdf486492bd36c882919cd46882"
             },
             "require": {
                 "drupal/core": "^10.2 || ^11",
@@ -2316,8 +2316,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.2",
-                    "datestamp": "1722919252",
+                    "version": "2.2.3",
+                    "datestamp": "1771280901",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -14346,17 +14346,17 @@
         },
         {
             "name": "drupal/tac_lite",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/tac_lite.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tac_lite-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "aee2ed107fc33af92f2674711a6ada0159e777fb"
+                "url": "https://ftp.drupal.org/files/projects/tac_lite-8.x-1.9.zip",
+                "reference": "8.x-1.9",
+                "shasum": "d26a712f5d8de7b2c88858e06ca6c692281a8371"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10"
@@ -14364,8 +14364,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1754430656",
+                    "version": "8.x-1.9",
+                    "datestamp": "1771378096",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -24959,15 +24959,6 @@
             "time": "2025-12-30T19:54:56+00:00"
         },
         {
-            "name": "tobia/pause",
-            "version": "3.0.3",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js"
-            },
-            "type": "drupal-library"
-        },
-        {
             "name": "twig/twig",
             "version": "v3.22.2",
             "source": {
@@ -30711,5 +30702,5 @@
     "platform-overrides": {
         "php": "8.3"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
