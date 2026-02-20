@@ -67,31 +67,41 @@
 
   $(document).on('keyup',function(evt) {
     if (evt.key === 'Escape') {
-      var searchWasOpen = $('#eyebrow .search').hasClass('expanded');
-      $.closeStuff();
-      if (searchWasOpen) {
-        $('#eyebrow .search').focus();
+      // Close one panel per Escape press, in priority order
+
+      if ($('#eyebrow .search').hasClass('expanded')) {
+        $.closeStuff();
+        $('#search-toggle-container').focus();
+        return;
+      }
+
+      if ($('#eyebrow .quick-links').hasClass('expanded')) {
+        $.closeStuff();
+        return;
       }
 
       // Clean up submenu-open class (Bootstrap handles the dropdown close)
-      $('header#navbar').removeClass('submenu-open');
+      if ($('header#navbar').hasClass('submenu-open')) {
+        $('header#navbar').removeClass('submenu-open');
+        return;
+      }
 
-      // Close expanded subnav
       if ($('.secondary-navigation').hasClass('expanded')) {
         var secondaryHeaderHeight = $('.secondary-navigation').outerHeight();
         $('.secondary-navigation .subnav-toggle').removeClass('open');
         $('.secondary-navigation').removeClass('expanded');
         $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
         $('.secondary-navigation .subnav-toggle').focus();
+        return;
       }
 
-      // Close mobile menu
       if ($('body').hasClass('mobile-menu')) {
         $('body').removeClass('mobile-menu');
         $('body').addClass('no-menu');
         $('body').topOffset();
         $('#navbar-collapse').collapse('hide');
         $('.navbar-toggle').attr('aria-expanded', 'false').focus();
+        return;
       }
     }
   });
