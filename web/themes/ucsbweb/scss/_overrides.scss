@@ -1298,6 +1298,10 @@ header.container-fluid {
   right: 0;
   top: 12px;
   min-height: 16px;
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
   .icon-bar {
     background-color: $white !important;
     -webkit-transition: all .15s ease-in;
