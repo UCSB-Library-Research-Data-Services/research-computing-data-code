@@ -192,6 +192,10 @@
   }
 
   $.fn.searchForm = function() {
+    if (!$('.block-search-form-block').length) {
+      $('#eyebrow .search').hide();
+      return;
+    }
     $('#search-block-form #edit-actions').attr('id','block-edit-actions');
     $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
     var searchFormRegion = $('.block-search-form-block');
