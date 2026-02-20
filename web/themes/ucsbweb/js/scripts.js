@@ -185,7 +185,7 @@
         $('#navbar-collapse .region-navigation-collapsible').prepend($('.block-search-form-block'));
         $('#eyebrow .quick-links').addClass('expanded');
         $('#eyebrow').addClass('quick-links-expanded');
-        $('#eyebrow').find('.region-navigation-quicklinks').append(quicklinksRegion);
+        $('#eyebrow .quick-links').append(quicklinksRegion);
       }
     });
   }
