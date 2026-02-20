@@ -465,6 +465,7 @@
     });
     $('.secondary-navigation ul.menu.nav>li>a').click(function() {
       if ($('.secondary-navigation').hasClass('expanded')) {
+        var secondaryHeaderHeight = $('.secondary-navigation').outerHeight();
         $('.secondary-navigation .subnav-toggle').removeClass('open');
         $('.secondary-navigation').removeClass('expanded');
         $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
