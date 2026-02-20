@@ -82,6 +82,12 @@ class LibraryInstaller
         {
             if(isset($repo->package->type) && $repo->package->type == 'drupal-library')
             {
+                // Skip packages that use source (git) instead of dist (download)
+                if(!isset($repo->package->dist))
+                {
+                    if($this->debug) echo "Skipping {$repo->package->name}: no dist URL (uses source).\n";
+                    continue;
+                }
                 $libraries[] = $repo->package;
             }
         }
@@ -96,11 +102,30 @@ class LibraryInstaller
      * @param $libraries
      * @return void
      */
+    protected function getLibraryName(stdClass $library): ?string
+    {
+        if(isset($library->extra->{'installer-name'}))
+        {
+            return $library->extra->{'installer-name'};
+        }
+        // Fall back to package name (part after vendor/)
+        if(isset($library->name) && strpos($library->name, '/') !== false)
+        {
+            return explode('/', $library->name, 2)[1];
+        }
+        return null;
+    }
+
     protected function mergeLibraries($libraries)
     {
         foreach($libraries as $library)
         {
-            $name = $library->extra->{'installer-name'};
+            $name = $this->getLibraryName($library);
+            if(!$name)
+            {
+                if($this->debug) echo "Skipping library with no name.\n";
+                continue;
+            }
             if(isset($this->libraries[$name]))
             {
                 $v1 = str_replace('v', '', $library->version);
@@ -138,7 +163,8 @@ class LibraryInstaller
      */
     protected function downloadLibrary($library)
     {
-        $where = $this->tmp_dir . '/' . $library->extra->{'installer-name'};
+        $name = $this->getLibraryName($library);
+        $where = $this->tmp_dir . '/' . $name;
         if(!mkdir($where, 0777, true)) return false;
 
         //the compressed file name
@@ -148,7 +174,9 @@ class LibraryInstaller
 
         if($this->debug) echo "\ndownloading to $dist_file\n";
 
-        `curl --location --output {$dist_file} {$library->dist->url}`;
+        $safe_dist = escapeshellarg($dist_file);
+        $safe_url = escapeshellarg($library->dist->url);
+        `curl --location --output {$safe_dist} {$safe_url}`;
 
         return file_exists($dist_file) ? $dist_file : false;
     }
@@ -182,7 +210,10 @@ class LibraryInstaller
 
         $location = dirname($compressed_library);
         $compressed_file = basename($compressed_library);
-        `cd {$location} && {$command} {$compressed_file} && rm {$compressed_library}`;
+        $safe_location = escapeshellarg($location);
+        $safe_compressed_file = escapeshellarg($compressed_file);
+        $safe_compressed_library = escapeshellarg($compressed_library);
+        `cd {$safe_location} && {$command} {$safe_compressed_file} && rm {$safe_compressed_library}`;
 
         //try to figure out what the dist got expanded to
         //if there is a common file in the top directory, that's the library
@@ -210,24 +241,39 @@ class LibraryInstaller
      */
     protected function placeLibrary(stdClass $library, $expanded_library)
     {
-        $library_name = $library->dist->url == 'file'
+        $name = $this->getLibraryName($library);
+        $library_name = $library->dist->type == 'file'
             ? basename($library->dist->url)
-            : $library->extra->{'installer-name'};
+            : $name;
 
         //its versioned, something like "tippyjs/5.x"
-        if(strpos($library->extra->{'installer-name'}, '/') !== false)
+        if(strpos($name, '/') !== false)
         {
-            $path = $library->extra->{'installer-name'};
-            mkdir("{$this->libraries_path}/{$path}", 0755, true);
+            mkdir("{$this->libraries_path}/{$name}", 0755, true);
         }
 
-        if($this->debug) echo "Moving {$expanded_library} to {$this->libraries_path}/{$library_name}.\n";
-        `mv {$expanded_library} {$this->libraries_path}/{$library_name}`;
+        $target = "{$this->libraries_path}/{$library_name}";
+
+        // Remove existing directory so mv doesn't fail
+        if(is_dir($target))
+        {
+            $safe_target = escapeshellarg($target);
+            `rm -rf {$safe_target}`;
+        }
+
+        if($this->debug) echo "Moving {$expanded_library} to {$target}.\n";
+        $safe_src = escapeshellarg($expanded_library);
+        $safe_dest = escapeshellarg($target);
+        `mv {$safe_src} {$safe_dest}`;
     }
 
     protected function cleanUp()
     {
-        @rmdir($this->tmp_dir);
+        if(is_dir($this->tmp_dir))
+        {
+            $safe_dir = escapeshellarg($this->tmp_dir);
+            `rm -rf {$safe_dir}`;
+        }
     }
 
     /**
