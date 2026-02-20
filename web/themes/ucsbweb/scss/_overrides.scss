@@ -1429,6 +1429,10 @@ header.container-fluid {
       padding-right: 16px;
       position: relative;
       z-index: 100;
+      & > a:focus {
+        outline: 2px solid $white;
+        outline-offset: -3px;
+      }
       & > svg {
         cursor: pointer;
         position: absolute;

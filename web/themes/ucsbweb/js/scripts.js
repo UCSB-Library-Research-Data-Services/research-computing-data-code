@@ -77,6 +77,7 @@
 
       if ($('#eyebrow .quick-links').hasClass('expanded')) {
         $.closeStuff();
+        $('#eyebrow .quick-links a').first().focus();
         return;
       }
 
