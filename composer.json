@@ -12,9 +12,173 @@
             "type": "path",
             "url": "upstream-configuration"
         },
-        "asset-packagist": {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
+        "bower-asset/jquery-simple-color": {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/jquery-simple-color",
+                "version": "1.2.3",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/recurser/jquery-simple-color/archive/refs/tags/v1.2.3.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "bower-asset/lazysizes": {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/lazysizes",
+                "version": "5.3.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/aFarkas/lazysizes/archive/refs/tags/5.3.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "bower-asset/spectrum": {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/spectrum",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/bgrins/spectrum/archive/refs/tags/1.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "npm-asset/a11y-accordion-tabs": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/a11y-accordion-tabs",
+                "version": "1.0.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/a11y-accordion-tabs/-/a11y-accordion-tabs-1.0.2.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/cropper": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/cropper",
+                "version": "4.1.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/cropper/-/cropper-4.1.0.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/dompurify": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/dompurify",
+                "version": "3.3.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/dompurify/-/dompurify-3.3.1.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/dropzone": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/dropzone",
+                "version": "5.9.3",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/dropzone/-/dropzone-5.9.3.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/fakeobjects": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/fakeobjects",
+                "version": "4.15.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/fakeobjects/-/fakeobjects-4.15.0.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/flexslider": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/flexslider",
+                "version": "2.7.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/flexslider/-/flexslider-2.7.2.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/imagesloaded": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/imagesloaded",
+                "version": "5.0.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/imagesloaded/-/imagesloaded-5.0.0.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/jquery-colorbox": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/jquery-colorbox",
+                "version": "1.6.4",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/jquery-colorbox/-/jquery-colorbox-1.6.4.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/jquery-ui-touch-punch": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/jquery-ui-touch-punch",
+                "version": "0.2.3",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/jquery-ui-touch-punch/-/jquery-ui-touch-punch-0.2.3.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/masonry-layout": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/masonry-layout",
+                "version": "3.3.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/masonry-layout/-/masonry-layout-3.3.2.tgz",
+                    "type": "tar"
+                }
+            }
+        },
+        "npm-asset/fonticonpicker--fonticonpicker": {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/fonticonpicker--fonticonpicker",
+                "version": "3.1.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://registry.npmjs.org/@fonticonpicker/fonticonpicker/-/fonticonpicker-3.1.1.tgz",
+                    "type": "tar"
+                }
+            }
         },
         "malsup/cycle": {
             "type": "package",
@@ -23,7 +187,7 @@
                 "version": "3.0.3",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/malsup/cycle/blob/master/jquery.cycle.all.js",
+                    "url": "https://raw.githubusercontent.com/malsup/cycle/master/jquery.cycle.all.js",
                     "type": "file"
                 }
             }
@@ -59,7 +223,7 @@
                 "version": "3.0.3",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://github.com/tobia/Pause/blob/master/jquery.pause.js",
+                    "url": "https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js",
                     "type": "file"
                 }
             }
@@ -123,10 +287,6 @@
                     "type": "zip"
                 }
             }
-        },
-        "digital_asset_inventory": {
-            "type": "vcs",
-            "url": "https://github.com/ucsb/digital_asset_inventory"
         }
     },
     "require": {
@@ -387,8 +547,7 @@
         "drupal/calendar_view": "^2.1",
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
-        "drupal/advban": "^1.9",
-        "ucsb/digital_asset_inventory": "*"
+        "drupal/advban": "^1.9"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -425,7 +584,7 @@
             "web/libraries/slick": ["kenwheeler/slick"],
             "web/libraries/accessible-slick": ["accessible360/accessible-slick"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
-            "web/modules/custom/{$name}": ["ucsb/digital_asset_inventory", "type:drupal-custom-module"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
