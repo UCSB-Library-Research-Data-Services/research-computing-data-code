@@ -1693,3 +1693,8 @@ select {
     row-gap: 28px;
   }
 }
+
+/* Keep breathing room above the footer on search pages (including no results). */
+.path-search .main-container {
+  padding-bottom: 4rem;
+}
