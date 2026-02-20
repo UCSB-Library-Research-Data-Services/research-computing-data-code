@@ -72,6 +72,18 @@
       if (searchWasOpen) {
         $('#eyebrow .search').focus();
       }
+
+      // Clean up submenu-open class (Bootstrap handles the dropdown close)
+      $('header#navbar').removeClass('submenu-open');
+
+      // Close expanded subnav
+      if ($('.secondary-navigation').hasClass('expanded')) {
+        var secondaryHeaderHeight = $('.secondary-navigation').outerHeight();
+        $('.secondary-navigation .subnav-toggle').removeClass('open');
+        $('.secondary-navigation').removeClass('expanded');
+        $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
+        $('.secondary-navigation .subnav-toggle').focus();
+      }
     }
   });
 
