@@ -1500,10 +1500,9 @@ header.container-fluid {
     #search-toggle-container {
       border: none !important;
       background: transparent !important;
-      height: 100% !important;
-      vertical-align: middle;
+      padding: 0;
       cursor: pointer;
-      outline-offset: -4px;
+      outline-offset: 2px;
     }
 
     .search {
@@ -1511,12 +1510,9 @@ header.container-fluid {
         cursor: pointer;
         padding-left: 13px;
         padding-right: 13px;
-        vertical-align: middle;
         display: inline-flex;
         align-items: center;
         gap: 4px;
-        height: 100%;
-        transform: translateY(-3px);
       }
       svg {
         height: 24px;
