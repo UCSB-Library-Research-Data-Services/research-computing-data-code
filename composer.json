@@ -216,18 +216,6 @@
                 }
             }
         },
-        "tobia/pause": {
-            "type": "package",
-            "package": {
-                "name": "tobia/pause",
-                "version": "3.0.3",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js",
-                    "type": "file"
-                }
-            }
-        },
         "ckeditor-plugin/link": {
             "type": "package",
             "package": {
@@ -370,7 +358,6 @@
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/masonry-layout": "^3.3",
         "malsup/cycle": "^3.0",
-        "tobia/pause": "^3.0",
         "drupal/linkit": "^7",
         "drupal/linkit_media_library": "^2.0",
         "drupal/mailchimp": "^2.2",
@@ -577,7 +564,6 @@
             "web/libraries/fonticonpicker--fonticonpicker": ["npm-asset/fonticonpicker--fonticonpicker"],
             "web/libraries/jquery.cycle": ["malsup/cycle"],
             "web/libraries/jquery.hoverIntent": ["briancherne/jquery-hoverintent"],
-            "web/libraries/jquery.pause": ["tobia/pause"],
             "web/libraries/json2": ["douglascrockford/json-js"],
             "web/libraries/link": ["ckeditor-plugin/link"],
             "web/libraries/masonry": ["npm-asset/masonry-layout"],
@@ -598,9 +584,6 @@
             "drupal/core": "-p2"
         },
         "patches": {
-            "drupal/tac_lite": {
-                "TypeError: count(): Argument #1 ($value) must be of type Countable": "https://www.drupal.org/files/issues/2022-09-05/tac_lite-3307744-5.patch"
-            },
             "drupal/core": {
                 "Claro Form Buttons Fix Patch": "patches/core/claro-display-fix.patch",
                 "Cannot create references to/from string offsets": "https://www.drupal.org/files/issues/2022-12-23/references_to_from_string-3023924-36.patch"
