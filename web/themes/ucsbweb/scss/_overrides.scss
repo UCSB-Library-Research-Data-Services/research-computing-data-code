@@ -1506,7 +1506,10 @@ header.container-fluid {
       background: transparent !important;
       padding: 0;
       cursor: pointer;
-      outline-offset: -3px;
+      &:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+      }
     }
 
     .search {
