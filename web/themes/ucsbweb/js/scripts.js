@@ -66,7 +66,7 @@
   });
 
   $(document).on('keyup',function(evt) {
-    if (evt.keyCode == 27) {
+    if (evt.key === 'Escape') {
       var searchWasOpen = $('#eyebrow .search').hasClass('expanded');
       $.closeStuff();
       if (searchWasOpen) {
