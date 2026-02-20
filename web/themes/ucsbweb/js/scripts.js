@@ -84,6 +84,15 @@
         $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
         $('.secondary-navigation .subnav-toggle').focus();
       }
+
+      // Close mobile menu
+      if ($('body').hasClass('mobile-menu')) {
+        $('body').removeClass('mobile-menu');
+        $('body').addClass('no-menu');
+        $('body').topOffset();
+        $('#navbar-collapse').collapse('hide');
+        $('.navbar-toggle').attr('aria-expanded', 'false').focus();
+      }
     }
   });
 
@@ -141,6 +150,7 @@
     if (windowsize < 768) {
       $('.block-search-form-block input.form-search').attr("placeholder", "Search...");
       $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+      $('#search-toggle-container').attr('aria-expanded', 'false');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
       $('#block-quicklinks').append(quicklinksRegion);
@@ -160,6 +170,7 @@
         $('#block-quicklinks').append(quicklinksRegion);
       } else {
         $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+        $('#search-toggle-container').attr('aria-expanded', 'false');
         $('#eyebrow').removeClass('search-expanded');
         $('#navbar-collapse .region-navigation-collapsible').prepend($('.block-search-form-block'));
         $('#eyebrow .quick-links').addClass('expanded');
@@ -174,32 +185,30 @@
     $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
     var searchFormRegion = $('.block-search-form-block');
     
-    $('#eyebrow .search').on('click', function( e ) {
-      var $toggle = $(this);
-      
-      if ($(e.target).closest('.block-search-form-block').length) {
-          return; 
-      }
+    $('#search-toggle-container').on('click', function( e ) {
+      var $button = $(this);
+      var $searchWrapper = $button.closest('.search');
 
       e.preventDefault();
 
-      if ($toggle.hasClass('expanded')) {
-        $toggle.removeClass('expanded');
+      if ($searchWrapper.hasClass('expanded')) {
+        $searchWrapper.removeClass('expanded');
         $('#eyebrow').removeClass('search-expanded');
-        $toggle.attr('aria-expanded', 'false');
+        $searchWrapper.attr('aria-expanded', 'false');
+        $button.attr('aria-expanded', 'false');
         $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
-        $toggle.focus();
+        $button.focus();
       } else {
         $('#eyebrow .quick-links').removeClass('expanded');
-        $toggle.addClass('expanded');
+        $searchWrapper.addClass('expanded');
         $('#eyebrow').addClass('search-expanded');
         $('#eyebrow').removeClass('quick-links-expanded');
-        $toggle.attr('aria-expanded', 'true');
-        $toggle.append(searchFormRegion);
+        $searchWrapper.attr('aria-expanded', 'true');
+        $button.attr('aria-expanded', 'true');
+        $searchWrapper.append(searchFormRegion);
 
-        // FOCUS FIX FOR MULTIPLE SEARCH BARS
         setTimeout(function() {
-          $toggle.find('input[id^="edit-keys"]').focus();
+          $searchWrapper.find('input[id^="edit-keys"]').focus();
         }, 100);
       }
     });
@@ -222,6 +231,7 @@
     }
     if ($('#eyebrow .search').hasClass('expanded')) {
       $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+      $('#search-toggle-container').attr('aria-expanded', 'false');
       $('#eyebrow').removeClass('search-expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
     }
@@ -345,9 +355,11 @@
       if ($('body').hasClass('no-menu')) {
         $('body').removeClass('no-menu');
         $('body').addClass('mobile-menu');
+        $(this).attr('aria-expanded', 'true');
       } else {
         $('body').addClass('no-menu');
         $('body').removeClass('mobile-menu');
+        $(this).attr('aria-expanded', 'false');
       }
       $('body').topOffset();
     });
