@@ -81,7 +81,7 @@ function ucsb_core_update_10001() {
         $messages[] = "SVG file not found: {$svg_path}";
       }
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $error_count++;
       $messages[] = "Error processing SVG {$svg_uri}: " . $e->getMessage();
     }
@@ -131,7 +131,7 @@ function ucsb_core_update_10002() {
         'entity_type' => 'node',
         'type' => 'boolean',
         'settings' => [],
-        'module' => 'boolean',
+        'module' => 'core',
         'cardinality' => 1,
         'translatable' => FALSE,
       ])->save();
@@ -194,7 +194,7 @@ function ucsb_core_update_10003() {
       \Drupal::service('module_installer')->uninstall(['big_pipe']);
       $messages[] = 'Disabled Big Pipe module';
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $error_msg = $e->getMessage();
       \Drupal::logger('ucsb_core')->error('Failed to disable Big Pipe module: @error', ['@error' => $error_msg]);
       $errors[] = "Failed to disable Big Pipe: $error_msg";
@@ -210,7 +210,7 @@ function ucsb_core_update_10003() {
       \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
       $messages[] = 'Enabled Pantheon Advanced Page Cache module';
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $error_msg = $e->getMessage();
       \Drupal::logger('ucsb_core')->error('Failed to enable Pantheon Advanced Page Cache module: @error', ['@error' => $error_msg]);
       $errors[] = "Failed to enable Pantheon Advanced Page Cache: $error_msg";

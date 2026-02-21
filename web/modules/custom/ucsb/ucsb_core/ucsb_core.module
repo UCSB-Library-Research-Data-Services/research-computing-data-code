@@ -149,7 +149,7 @@ function ucsb_core_process_wordmark_logo_presave(SiteSettingEntityInterface $ent
     \Drupal::logger('ucsb_core')->info('Successfully processed wordmark SVG for accessibility during presave: @uri', ['@uri' => $file_uri]);
 
   }
-  catch (Exception $e) {
+  catch (\Exception $e) {
     \Drupal::logger('ucsb_core')->error('Error processing wordmark SVG during presave @uri: @error', [
       '@uri' => $file_uri,
       '@error' => $e->getMessage(),
@@ -176,13 +176,18 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
     $dom->formatOutput = TRUE;
 
     // Suppress errors for malformed HTML/XML.
-    libxml_use_internal_errors(TRUE);
+    $previous_errors = libxml_use_internal_errors(TRUE);
 
     // Load the SVG content.
     if (!$dom->loadXML($svg_content)) {
+      libxml_clear_errors();
+      libxml_use_internal_errors($previous_errors);
       \Drupal::logger('ucsb_core')->error('Failed to parse SVG XML content');
       return FALSE;
     }
+
+    libxml_clear_errors();
+    libxml_use_internal_errors($previous_errors);
 
     // Get the SVG element.
     $svg_elements = $dom->getElementsByTagName('svg');
@@ -239,11 +244,11 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
       }
     }
 
-    // Return the updated SVG content.
-    return $dom->saveXML();
+    // Return the updated SVG content (without XML declaration for inline use).
+    return $dom->saveXML($dom->documentElement);
 
   }
-  catch (Exception $e) {
+  catch (\Exception $e) {
     \Drupal::logger('ucsb_core')->error('Error processing SVG: @error', ['@error' => $e->getMessage()]);
     return FALSE;
   }
