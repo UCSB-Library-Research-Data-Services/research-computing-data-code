@@ -9,15 +9,17 @@ Processes SVG wordmark logos to add accessibility attributes for screen readers:
 - Adds `role="img"` attribute
 - Adds `aria-labelledby="departmentname"` attribute
 - Creates or updates `<title id="departmentname">` elements with site name
+- Cleans up SVG bloat from editors like Adobe Illustrator (comments, metadata, empty groups, unnecessary namespace declarations)
 - **Automatic Processing**: Runs automatically when logos are saved via site settings (presave hook for optimal performance)
 
 ### Hide Title Field (Update 10002)
 Adds a "Hide Title" boolean field to Basic pages that allows content editors to hide page titles on individual pages.
 
-### Pantheon Performance (Update 10003)
-Optimizes Drupal performance for Pantheon hosting:
-- Disables Big Pipe module to prevent caching conflicts
-- Enables Pantheon Advanced Page Cache module for optimal caching performance
+### Disable Big Pipe (Update 10003)
+Disables Big Pipe module to prevent caching conflicts on Pantheon hosting.
+
+### Enable Pantheon Advanced Page Cache (Update 10004)
+Enables Pantheon Advanced Page Cache module for optimal caching performance.
 
 ## Dependencies
 
@@ -58,3 +60,4 @@ To uninstall this module please use the following drush command
 
 ```bash
 drush pmu ucsb_core
+```

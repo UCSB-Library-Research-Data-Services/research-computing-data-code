@@ -25,92 +25,73 @@ function ucsb_core_install() {
  * Adds role="img", aria-labelledby, and proper title elements to SVG logos.
  */
 function ucsb_core_update_10001() {
-  \Drupal::logger('ucsb_core')->info('Starting wordmark SVG accessibility processing');
-  $messages = [];
-  $processed_count = 0;
-  $error_count = 0;
+  // Verify site_settings module is enabled before using its service.
+  if (!\Drupal::moduleHandler()->moduleExists('site_settings')) {
+    \Drupal::logger('ucsb_core')->info('Site settings module not enabled, skipping wordmark processing');
+    return 'Site settings module not enabled, skipping wordmark processing.';
+  }
 
   // Get the site settings service.
   $site_settings = \Drupal::service('site_settings.loader');
   $settings = $site_settings->loadAll();
 
-  // Get the site name.
-  $site_name = \Drupal::config('system.site')->get('name');
-  $full_site_name = !empty($site_name) ? $site_name : 'UC Santa Barbara Department Name Here';
-
   // Check if wordmark logo exists in settings.
-  if (isset($settings['wordmark']['logo']['field_image']['uri']) && !empty($settings['wordmark']['logo']['field_image']['uri'])) {
-    $svg_uri = $settings['wordmark']['logo']['field_image']['uri'];
-
-    try {
-      // Get the full file path.
-      $file_system = \Drupal::service('file_system');
-      $svg_path = $file_system->realpath($svg_uri);
-
-      if (file_exists($svg_path)) {
-        // Read the SVG content.
-        $svg_content = file_get_contents($svg_path);
-
-        if ($svg_content !== FALSE) {
-          // Process the SVG to add accessibility attributes.
-          $updated_svg = _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name);
-
-          if ($updated_svg !== FALSE) {
-            // Write the updated SVG back to the file.
-            if (file_put_contents($svg_path, $updated_svg) !== FALSE) {
-              $processed_count++;
-              $messages[] = "Successfully updated wordmark SVG: {$svg_uri}";
-            }
-            else {
-              $error_count++;
-              $messages[] = "Failed to write updated SVG: {$svg_uri}";
-            }
-          }
-          else {
-            $error_count++;
-            $messages[] = "Failed to process SVG content: {$svg_uri}";
-          }
-        }
-        else {
-          $error_count++;
-          $messages[] = "Failed to read SVG file: {$svg_uri}";
-        }
-      }
-      else {
-        $error_count++;
-        $messages[] = "SVG file not found: {$svg_path}";
-      }
-    }
-    catch (\Exception $e) {
-      $error_count++;
-      $messages[] = "Error processing SVG {$svg_uri}: " . $e->getMessage();
-    }
-  }
-  else {
+  if (empty($settings['wordmark']['logo']['field_image']['uri'])) {
     \Drupal::logger('ucsb_core')->info('No wordmark logo found in site settings');
-    $messages[] = "No wordmark logo found in site settings";
+    return 'No wordmark logo found in site settings.';
   }
 
-  // Log the results.
-  if ($processed_count > 0) {
+  $svg_uri = $settings['wordmark']['logo']['field_image']['uri'];
+
+  // Only process SVG files.
+  if (pathinfo($svg_uri, PATHINFO_EXTENSION) !== 'svg') {
+    \Drupal::logger('ucsb_core')->info('Wordmark is not an SVG file, skipping: @uri', ['@uri' => $svg_uri]);
+    return 'Wordmark is not an SVG file, skipping.';
+  }
+
+  try {
+    // Get the full file path.
+    $file_system = \Drupal::service('file_system');
+    $svg_path = $file_system->realpath($svg_uri);
+
+    if (!file_exists($svg_path)) {
+      \Drupal::logger('ucsb_core')->error('SVG file not found: @path', ['@path' => $svg_path]);
+      return "SVG file not found: {$svg_path}";
+    }
+
+    $svg_content = file_get_contents($svg_path);
+    if ($svg_content === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to read SVG file: @uri', ['@uri' => $svg_uri]);
+      return "Failed to read SVG file: {$svg_uri}";
+    }
+
+    // Get the site name for accessibility attributes.
+    $site_name = \Drupal::config('system.site')->get('name');
+    $full_site_name = !empty($site_name) ? $site_name : 'UC Santa Barbara Department Name Here';
+
+    // Process the SVG to add accessibility attributes.
+    $updated_svg = _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name);
+    if ($updated_svg === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to process SVG content: @uri', ['@uri' => $svg_uri]);
+      return "Failed to process SVG content: {$svg_uri}";
+    }
+
+    // Write the updated SVG back to the file.
+    if (file_put_contents($svg_path, $updated_svg) === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to write updated SVG: @uri', ['@uri' => $svg_uri]);
+      return "Failed to write updated SVG: {$svg_uri}";
+    }
+
     \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed successfully');
+    return "Successfully updated wordmark SVG: {$svg_uri}";
   }
-  else {
-    \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed - no wordmark configured');
+  catch (\Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error processing SVG @uri: @error', [
+      '@uri' => $svg_uri,
+      '@error' => $e->getMessage(),
+    ]);
+    return "Error processing SVG {$svg_uri}: " . $e->getMessage();
   }
-
-  // Return update messages.
-  if ($processed_count > 0) {
-    $messages[] = "Wordmark processed successfully.";
-  }
-  elseif ($error_count > 0) {
-    $messages[] = "Encountered {$error_count} error(s) during processing.";
-  }
-  else {
-    $messages[] = "No wordmark configured.";
-  }
-
-  return implode(' ', $messages);
 }
 
 /**
@@ -175,59 +156,47 @@ function ucsb_core_update_10002() {
     $view_display = \Drupal::service('entity_display.repository')
       ->getViewDisplay('node', 'page', 'default');
     $view_display->removeComponent('field_hide_title')->save();
+
+    return 'Hide Title field successfully added to Basic page content type.';
   }
-  return 'Hide Title field successfully added to Basic page content type.';
+
+  return 'Basic page content type not found, skipping Hide Title field.';
 }
 
 /**
  * Implements hook_update_10003().
  *
- * Disables Big Pipe module and enables Pantheon Advanced Page Cache.
+ * Disables Big Pipe module to prevent caching issues on Pantheon.
  */
 function ucsb_core_update_10003() {
-  $messages = [];
-  $errors = [];
-
-  // Disable Big Pipe module which can cause caching issues on Pantheon.
   if (\Drupal::moduleHandler()->moduleExists('big_pipe')) {
     try {
       \Drupal::service('module_installer')->uninstall(['big_pipe']);
-      $messages[] = 'Disabled Big Pipe module';
+      return 'Disabled Big Pipe module.';
     }
     catch (\Exception $e) {
-      $error_msg = $e->getMessage();
-      \Drupal::logger('ucsb_core')->error('Failed to disable Big Pipe module: @error', ['@error' => $error_msg]);
-      $errors[] = "Failed to disable Big Pipe: $error_msg";
+      \Drupal::logger('ucsb_core')->error('Failed to disable Big Pipe module: @error', ['@error' => $e->getMessage()]);
+      return 'Failed to disable Big Pipe module: ' . $e->getMessage();
     }
   }
-  else {
-    $messages[] = 'Big Pipe module was already disabled';
-  }
+  return 'Big Pipe module was already disabled.';
+}
 
-  // Enable Pantheon Advanced Page Cache module.
+/**
+ * Implements hook_update_10004().
+ *
+ * Enables Pantheon Advanced Page Cache module for optimal caching performance.
+ */
+function ucsb_core_update_10004() {
   if (!\Drupal::moduleHandler()->moduleExists('pantheon_advanced_page_cache')) {
     try {
       \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
-      $messages[] = 'Enabled Pantheon Advanced Page Cache module';
+      return 'Enabled Pantheon Advanced Page Cache module.';
     }
     catch (\Exception $e) {
-      $error_msg = $e->getMessage();
-      \Drupal::logger('ucsb_core')->error('Failed to enable Pantheon Advanced Page Cache module: @error', ['@error' => $error_msg]);
-      $errors[] = "Failed to enable Pantheon Advanced Page Cache: $error_msg";
+      \Drupal::logger('ucsb_core')->error('Failed to enable Pantheon Advanced Page Cache module: @error', ['@error' => $e->getMessage()]);
+      return 'Failed to enable Pantheon Advanced Page Cache module: ' . $e->getMessage();
     }
   }
-  else {
-    $messages[] = 'Pantheon Advanced Page Cache module was already enabled';
-  }
-
-  // Return appropriate message based on results.
-  if (count($messages) > 0) {
-    $message = implode(', ', $messages);
-    if (count($errors) > 0) {
-      $message .= '. Warnings: ' . implode(', ', $errors);
-    }
-    // Avoid double period since error messages may already end with periods.
-    $trimmed_message = rtrim($message);
-    return $trimmed_message . (substr($trimmed_message, -1) === '.' ? '' : '.');
-  }
+  return 'Pantheon Advanced Page Cache module was already enabled.';
 }

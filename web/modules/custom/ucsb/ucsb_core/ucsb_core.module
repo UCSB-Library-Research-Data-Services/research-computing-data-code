@@ -27,17 +27,17 @@ function ucsb_core_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<li>' . t('Adds <code>role="img"</code> attribute') . '</li>';
       $output .= '<li>' . t('Adds <code>aria-labelledby="departmentname"</code> attribute') . '</li>';
       $output .= '<li>' . t('Creates or updates <code><title id="departmentname"></code> elements with site name') . '</li>';
+      $output .= '<li>' . t('Cleans up SVG bloat from editors like Adobe Illustrator (comments, metadata, empty groups, unnecessary namespace declarations)') . '</li>';
       $output .= '</ul>';
 
       $output .= '<h4>' . t('Hide Title Field') . '</h4>';
       $output .= '<p>' . t('Adds a "Hide Title" boolean field to Basic pages that allows content editors to hide page titles on individual pages.') . '</p>';
 
-      $output .= '<h4>' . t('Pantheon Performance') . '</h4>';
-      $output .= '<p>' . t('Optimizes Drupal performance for Pantheon hosting:') . '</p>';
-      $output .= '<ul>';
-      $output .= '<li>' . t('Disables Big Pipe module to prevent caching conflicts') . '</li>';
-      $output .= '<li>' . t('Enables Pantheon Advanced Page Cache module for optimal caching performance') . '</li>';
-      $output .= '</ul>';
+      $output .= '<h4>' . t('Disable Big Pipe') . '</h4>';
+      $output .= '<p>' . t('Disables Big Pipe module to prevent caching conflicts on Pantheon hosting.') . '</p>';
+
+      $output .= '<h4>' . t('Pantheon Advanced Page Cache') . '</h4>';
+      $output .= '<p>' . t('Enables Pantheon Advanced Page Cache module for optimal caching performance.') . '</p>';
 
       $output .= '<h3>' . t('Dependencies') . '</h3>';
       $output .= '<p>' . t('This module depends on the following module:') . '</p>';
@@ -171,7 +171,7 @@ function ucsb_core_process_wordmark_logo_presave(SiteSettingEntityInterface $ent
 function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name) {
   try {
     // Load the SVG content into DOMDocument.
-    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom = new \DOMDocument('1.0', 'UTF-8');
     $dom->preserveWhiteSpace = FALSE;
     $dom->formatOutput = TRUE;
 
@@ -244,6 +244,9 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
       }
     }
 
+    // Clean up SVG bloat from editors like Adobe Illustrator.
+    _ucsb_core_cleanup_svg($dom, $svg_element);
+
     // Return the updated SVG content (without XML declaration for inline use).
     return $dom->saveXML($dom->documentElement);
 
@@ -251,5 +254,83 @@ function _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_na
   catch (\Exception $e) {
     \Drupal::logger('ucsb_core')->error('Error processing SVG: @error', ['@error' => $e->getMessage()]);
     return FALSE;
+  }
+}
+
+/**
+ * Cleans up SVG bloat from editors like Adobe Illustrator.
+ *
+ * Removes comments, metadata elements, empty groups, and unnecessary
+ * namespace attributes while preserving styles, defs, and visible content.
+ *
+ * @param \DOMDocument $dom
+ *   The DOM document containing the SVG.
+ * @param \DOMElement $svg_element
+ *   The root SVG element to clean up.
+ */
+function _ucsb_core_cleanup_svg(\DOMDocument $dom, \DOMElement $svg_element) {
+  // Remove all XML comments (e.g., "Generator: Adobe Illustrator").
+  $xpath = new \DOMXPath($dom);
+  $comments = $xpath->query('//comment()');
+  for ($i = $comments->length - 1; $i >= 0; $i--) {
+    $comment = $comments->item($i);
+    $comment->parentNode->removeChild($comment);
+  }
+
+  // Remove metadata elements (Adobe Illustrator, Inkscape, etc.).
+  $metadata_tags = ['metadata'];
+  foreach ($metadata_tags as $tag) {
+    $elements = $svg_element->getElementsByTagName($tag);
+    for ($i = $elements->length - 1; $i >= 0; $i--) {
+      $el = $elements->item($i);
+      $el->parentNode->removeChild($el);
+    }
+  }
+
+  // Remove elements from non-SVG namespaces (e.g., i:pgf from Illustrator).
+  $non_svg_elements = $xpath->query('//*[contains(name(), ":")]');
+  for ($i = $non_svg_elements->length - 1; $i >= 0; $i--) {
+    $el = $non_svg_elements->item($i);
+    // Keep elements that are in the SVG namespace (xlink:href, etc.).
+    if ($el->namespaceURI !== 'http://www.w3.org/2000/svg') {
+      $el->parentNode->removeChild($el);
+    }
+  }
+
+  // Remove empty <g> elements (groups with no children after cleanup).
+  // Run multiple passes since removing inner groups may leave outer ones empty.
+  for ($pass = 0; $pass < 3; $pass++) {
+    $groups = $svg_element->getElementsByTagName('g');
+    $removed = FALSE;
+    for ($i = $groups->length - 1; $i >= 0; $i--) {
+      $group = $groups->item($i);
+      // Check if group has any element children or text content.
+      $has_content = FALSE;
+      foreach ($group->childNodes as $child) {
+        if ($child->nodeType === XML_ELEMENT_NODE || ($child->nodeType === XML_TEXT_NODE && trim($child->textContent) !== '')) {
+          $has_content = TRUE;
+          break;
+        }
+      }
+      if (!$has_content) {
+        $group->parentNode->removeChild($group);
+        $removed = TRUE;
+      }
+    }
+    if (!$removed) {
+      break;
+    }
+  }
+
+  // Remove unnecessary attributes and namespace declarations from the SVG element.
+  // Keep xmlns (SVG) and xmlns:xlink; remove Adobe-specific ones.
+  $removable_attributes = [
+    'xmlns:x', 'xmlns:i', 'xmlns:graph',
+    'xml:space',
+  ];
+  foreach ($removable_attributes as $attr) {
+    if ($svg_element->hasAttribute($attr)) {
+      $svg_element->removeAttribute($attr);
+    }
   }
 }
