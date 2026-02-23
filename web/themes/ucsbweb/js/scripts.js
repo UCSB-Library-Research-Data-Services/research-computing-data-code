@@ -3,7 +3,7 @@
  * UI behaviors
  */
 
- (function ($, Drupal) {
+(function ($, Drupal) {
 
   'use strict';
 
@@ -66,9 +66,44 @@
   });
 
   $(document).on('keyup',function(evt) {
-    if (evt.keyCode == 27) {
-      //alert('Esc key pressed.');
-      $.closeStuff();
+    if (evt.key === 'Escape') {
+      // Close one panel per Escape press, in priority order
+
+      if ($('#eyebrow .search').hasClass('expanded')) {
+        $.closeStuff();
+        $('#search-toggle-container').focus();
+        return;
+      }
+
+      if ($('#eyebrow .quick-links').hasClass('expanded')) {
+        $.closeStuff();
+        $('#eyebrow .quick-links a').first().focus();
+        return;
+      }
+
+      // Clean up submenu-open class (Bootstrap handles the dropdown close)
+      if ($('header#navbar').hasClass('submenu-open')) {
+        $('header#navbar').removeClass('submenu-open');
+        return;
+      }
+
+      if ($('.secondary-navigation').hasClass('expanded')) {
+        var secondaryHeaderHeight = $('.secondary-navigation').outerHeight();
+        $('.secondary-navigation .subnav-toggle').removeClass('open');
+        $('.secondary-navigation').removeClass('expanded');
+        $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
+        $('.secondary-navigation .subnav-toggle').focus();
+        return;
+      }
+
+      if ($('body').hasClass('mobile-menu')) {
+        $('body').removeClass('mobile-menu');
+        $('body').addClass('no-menu');
+        $('body').topOffset();
+        $('#navbar-collapse').collapse('hide');
+        $('.navbar-toggle').attr('aria-expanded', 'false').focus();
+        return;
+      }
     }
   });
 
@@ -116,6 +151,7 @@
       anotherList.append(firstHalf);
     });
   }
+
   // Put the search form in the eybrow menu
   $.fn.resetEybrowStuff = function() {
     var $window = $(window);
@@ -124,10 +160,8 @@
     var quicklinksRegion = $('.quick-links ul.menu.nav');
     if (windowsize < 768) {
       $('.block-search-form-block input.form-search').attr("placeholder", "Search...");
-      if ($('.block-search-form-block input.form-search').is(':focus')) {
-        e.preventDefault();
-      }
-      $('#eyebrow .search').removeClass('expanded');
+      $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+      $('#search-toggle-container').attr('aria-expanded', 'false');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
       $('#block-quicklinks').append(quicklinksRegion);
@@ -146,34 +180,54 @@
         $('#eyebrow').removeClass('quick-links-expanded');
         $('#block-quicklinks').append(quicklinksRegion);
       } else {
-        $('#eyebrow .search').removeClass('expanded');
+        $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+        $('#search-toggle-container').attr('aria-expanded', 'false');
+        $('#eyebrow').removeClass('search-expanded');
+        $('#navbar-collapse .region-navigation-collapsible').prepend($('.block-search-form-block'));
         $('#eyebrow .quick-links').addClass('expanded');
         $('#eyebrow').addClass('quick-links-expanded');
-        $('#eyebrow').removeClass('search-expanded');
         $('#eyebrow .quick-links').append(quicklinksRegion);
       }
     });
   }
 
   $.fn.searchForm = function() {
+    if (!$('.block-search-form-block').length) {
+      $('#eyebrow .search').hide();
+      return;
+    }
     $('#search-block-form #edit-actions').attr('id','block-edit-actions');
     $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
     var searchFormRegion = $('.block-search-form-block');
-    $('#eyebrow .search svg').click(function( e ) {
+    
+    $('#search-toggle-container').on('click', function( e ) {
+      var $button = $(this);
+      var $searchWrapper = $button.closest('.search');
+
       e.preventDefault();
-      if ($('#eyebrow .search').hasClass('expanded')) {
-        $('#eyebrow .search').removeClass('expanded');
+
+      if ($searchWrapper.hasClass('expanded')) {
+        $searchWrapper.removeClass('expanded');
         $('#eyebrow').removeClass('search-expanded');
+        $searchWrapper.attr('aria-expanded', 'false');
+        $button.attr('aria-expanded', 'false');
         $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
+        $button.focus();
       } else {
         $('#eyebrow .quick-links').removeClass('expanded');
-        $('#eyebrow .search').addClass('expanded');
+        $searchWrapper.addClass('expanded');
         $('#eyebrow').addClass('search-expanded');
         $('#eyebrow').removeClass('quick-links-expanded');
-        $('#eyebrow .search').append(searchFormRegion);
-        $( "#edit-keys" ).focus();
+        $searchWrapper.attr('aria-expanded', 'true');
+        $button.attr('aria-expanded', 'true');
+        $searchWrapper.append(searchFormRegion);
+
+        setTimeout(function() {
+          $searchWrapper.find('input[id^="edit-keys"]').focus();
+        }, 100);
       }
     });
+
   }
 
   $.fn.closeMenus = function() {
@@ -183,13 +237,16 @@
   }
 
   $.closeStuff = function () {
+    var searchFormRegion = $('.block-search-form-block');
     if ($('#eyebrow .quick-links').hasClass('expanded')) {
+      var quicklinksRegion = $('.region-navigation-quicklinks ul.menu.nav');
       $('#eyebrow .quick-links').removeClass('expanded');
       $('#eyebrow').removeClass('quick-links-expanded');
       $('#block-quicklinks').append(quicklinksRegion);
     }
     if ($('#eyebrow .search').hasClass('expanded')) {
-      $('#eyebrow .search').removeClass('expanded');
+      $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
+      $('#search-toggle-container').attr('aria-expanded', 'false');
       $('#eyebrow').removeClass('search-expanded');
       $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
     }
@@ -235,10 +292,6 @@
       })
           .height(maxHeight);
     });
-    // var divs = $('.views-view-grid.horizontal .views-col');
-    // for(var i = 0; i < divs.length; i+=3) {
-    //   divs.slice(i, i+3).wrapAll('<div class="wrapper"></div>');
-    // }
   }
 
   $.fn.equalHeightSlides = function() {
@@ -266,11 +319,8 @@
   }
 
   $.fn.initializeCarousel = function() {
-    // Security: Validate carousel IDs before initialization (CVE-2024-6485, CVE-2025-1647)
-    // Only initialize carousels with properly formatted IDs to prevent XSS
     $('.carousel-static').find('.carousel').each(function () {
       var carouselId = $(this).attr('id');
-      // Validate ID format: must be 'carousel-' followed by alphanumeric/hyphen/underscore
       if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
         $(this).carousel({
           pause: true,
@@ -281,12 +331,10 @@
 
     $('.carousel-autoscroll').find('.carousel').each(function () {
       var carouselId = $(this).attr('id');
-      // Validate ID format before initialization
       if (carouselId && /^carousel-[\w-]+$/.test(carouselId)) {
         $(this).carousel();
       }
     });
-
   }
 
   $.fn.logoSize = function() {
@@ -322,9 +370,11 @@
       if ($('body').hasClass('no-menu')) {
         $('body').removeClass('no-menu');
         $('body').addClass('mobile-menu');
+        $(this).attr('aria-expanded', 'true');
       } else {
         $('body').addClass('no-menu');
         $('body').removeClass('mobile-menu');
+        $(this).attr('aria-expanded', 'false');
       }
       $('body').topOffset();
     });
@@ -353,8 +403,6 @@
       var navheight = $('#navbar').outerHeight();
       $('#body').css('margin-top', navheight); 
     } 
-
-  
   }
 
   $.fn.alertMobile = function() {
@@ -386,7 +434,6 @@
       $('body').topOffset();
       $.cookie('ucsb_alert', 'collapsed', { expires: 1 });
     });
-
   }
 
   $.fn.blogTopicFilter = function() {
@@ -457,14 +504,15 @@
     });
     $('.secondary-navigation ul.menu.nav>li>a').click(function() {
       if ($('.secondary-navigation').hasClass('expanded')) {
+        var secondaryHeaderHeight = $('.secondary-navigation').outerHeight();
         $('.secondary-navigation .subnav-toggle').removeClass('open');
         $('.secondary-navigation').removeClass('expanded');
         $('.secondary-navigation').attr('style', 'height: ' + secondaryHeaderHeight + 'px;');
       }
     });
   }
-  $.fn.jumplink = function() {
 
+  $.fn.jumplink = function() {
     var viewportWidth = $(window).width();
     var headerHeight = 0;
 
@@ -502,7 +550,6 @@
     if (target.length) {
       $('html,body').stop().animate({scrollTop: target.offset().top - headerHeight}, 'slow');
     }
-
   }
 
   $.fn.menuScrollTop = function() {
@@ -534,7 +581,6 @@
 
       for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
-
         if (sParameterName[0] === sParam) {
           return sParameterName[1] === undefined ? true : sParameterName[1];
         }
@@ -542,28 +588,19 @@
     };
 
     var searchTerms = getUrlParameter('q');
-
     $('.content .form-search').attr('value', searchTerms);
-
     $('.gsc-results-wrapper-nooverlay').prepend('<h2>Search Results</h2>')
-
   }
 
  $(function (){
    $("iframe").each(function (){
      var iframe = $(this);
-
-     //remove the width HTML attribute
      iframe.removeAttr("width");
      iframe.removeAttr("frameborder");
-     //set a CSS width attribute
      iframe.css("width","100%");
      if ((iframe.attr("title") == undefined) || (iframe.attr("title") == "")) {
-
        var url = iframe.prop("src");
-       var hostname = $('<a>').prop('href', url).prop('hostname');
        var title ="";
-
        if (url.includes("statuspage.io")) {
          title = "System Status Announcements";
        } else if (url.includes("google.com/maps")) {
@@ -587,7 +624,6 @@
        } else if (url.includes("ucsb.dserec.com")) {
          title = "Recreation";
        }
-
        iframe.attr("title",title);
      }
    });
@@ -595,7 +631,6 @@
 
 })(jQuery, Drupal);
 
-// Hide the H1 for every front page using sr-only class
 (function (Drupal, once) {
   Drupal.behaviors.addSrOnlyToH1 = {
     attach: function (context, settings) {
@@ -611,7 +646,6 @@
   };
 })(Drupal, once);
 
-//event listener: DOM ready
 function addLoadEvent(func) {
   var oldonload = window.onload;
   if (typeof window.onload != 'function') {
