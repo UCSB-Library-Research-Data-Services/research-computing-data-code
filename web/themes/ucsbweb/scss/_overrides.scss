@@ -1298,6 +1298,10 @@ header.container-fluid {
   right: 0;
   top: 12px;
   min-height: 16px;
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: 4px;
+  }
   .icon-bar {
     background-color: $white !important;
     -webkit-transition: all .15s ease-in;
@@ -1429,6 +1433,10 @@ header.container-fluid {
       padding-right: 16px;
       position: relative;
       z-index: 100;
+      & > a:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+      }
       & > svg {
         cursor: pointer;
         position: absolute;
@@ -1497,14 +1505,25 @@ header.container-fluid {
 
     }
 
+    #search-toggle-container {
+      border: none !important;
+      background: transparent !important;
+      padding: 0;
+      cursor: pointer;
+      &:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+      }
+    }
+
     .search {
       .toggle-button {
         cursor: pointer;
         padding-left: 13px;
         padding-right: 13px;
-        display: table-cell;
-        height: 36px;
-        vertical-align: middle;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
       }
       svg {
         height: 24px;
