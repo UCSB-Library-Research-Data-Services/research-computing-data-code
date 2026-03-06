@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02c0f3c86567fd3da1bdfaf46a4d6dc1",
+    "content-hash": "40caa6c0274816ef25330d9619e379d1",
     "packages": [
         {
             "name": "accessible360/accessible-slick",
@@ -1718,16 +1718,16 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "db712c90c5b9868df3600e64e68da62e78a34623"
+                "reference": "f11ead23a8a76d0ff9bbc6c7c8fd7e05ca328496"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/db712c90c5b9868df3600e64e68da62e78a34623",
-                "reference": "db712c90c5b9868df3600e64e68da62e78a34623",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/f11ead23a8a76d0ff9bbc6c7c8fd7e05ca328496",
+                "reference": "f11ead23a8a76d0ff9bbc6c7c8fd7e05ca328496",
                 "shasum": ""
             },
             "require": {
@@ -1776,9 +1776,9 @@
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/dompdf/dompdf/issues",
-                "source": "https://github.com/dompdf/dompdf/tree/v3.1.4"
+                "source": "https://github.com/dompdf/dompdf/tree/v3.1.5"
             },
-            "time": "2025-10-29T12:43:30+00:00"
+            "time": "2026-03-03T13:54:37+00:00"
         },
         {
             "name": "dompdf/php-font-lib",
@@ -4614,16 +4614,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "10.6.3",
+            "version": "10.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "ae94f40fbf0f4bd59a5145654dc336e38dfe57a7"
+                "reference": "4dc10f806a28ee427fb8934d14c4dcdce72f3d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/ae94f40fbf0f4bd59a5145654dc336e38dfe57a7",
-                "reference": "ae94f40fbf0f4bd59a5145654dc336e38dfe57a7",
+                "url": "https://api.github.com/repos/drupal/core/zipball/4dc10f806a28ee427fb8934d14c4dcdce72f3d89",
+                "reference": "4dc10f806a28ee427fb8934d14c4dcdce72f3d89",
                 "shasum": ""
             },
             "require": {
@@ -4773,13 +4773,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/10.6.3"
+                "source": "https://github.com/drupal/core/tree/10.6.4"
             },
-            "time": "2026-02-05T08:14:57+00:00"
+            "time": "2026-03-05T09:46:53+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "10.6.3",
+            "version": "10.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -4823,22 +4823,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.6.3"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.6.4"
             },
             "time": "2024-08-22T14:31:30+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "10.6.3",
+            "version": "10.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "107b1f64e3ac03fea1abf0c0a23b7f5d83ec6b4f"
+                "reference": "9456a351e1bba3cc0fc26525600b201efa573152"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/107b1f64e3ac03fea1abf0c0a23b7f5d83ec6b4f",
-                "reference": "107b1f64e3ac03fea1abf0c0a23b7f5d83ec6b4f",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/9456a351e1bba3cc0fc26525600b201efa573152",
+                "reference": "9456a351e1bba3cc0fc26525600b201efa573152",
                 "shasum": ""
             },
             "require": {
@@ -4846,7 +4846,7 @@
                 "composer/semver": "~3.4.4",
                 "doctrine/deprecations": "~1.1.5",
                 "doctrine/lexer": "~2.1.1",
-                "drupal/core": "10.6.3",
+                "drupal/core": "10.6.4",
                 "egulias/email-validator": "~4.0.4",
                 "guzzlehttp/guzzle": "~7.10.0",
                 "guzzlehttp/promises": "~2.3.0",
@@ -4906,9 +4906,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/10.6.3"
+                "source": "https://github.com/drupal/core-recommended/tree/10.6.4"
             },
-            "time": "2026-02-05T08:14:57+00:00"
+            "time": "2026-03-05T09:46:53+00:00"
         },
         {
             "name": "drupal/crop",
@@ -5588,6 +5588,78 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/diff",
                 "issues": "https://www.drupal.org/project/issues/diff"
+            }
+        },
+        {
+            "name": "drupal/digital_asset_inventory",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/digital_asset_inventory.git",
+                "reference": "1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/digital_asset_inventory-1.1.0.zip",
+                "reference": "1.1.0",
+                "shasum": "b1578780e9d91dec1150c9f2ab16fcad0bd9c83b"
+            },
+            "require": {
+                "drupal/better_exposed_filters": "^6 || ^7",
+                "drupal/core": "^10 || ^11",
+                "drupal/csv_serialization": "^4",
+                "drupal/views_data_export": "^1",
+                "php": ">=8.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.0",
+                    "datestamp": "1772742100",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    },
+                    "core-compatibility": "^10 || ^11"
+                },
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "University of California Santa Barbara (UCSB)",
+                    "homepage": "https://www.drupal.org/project/digital_asset_inventory",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Elda Schaffield",
+                    "homepage": "https://www.drupal.org/u/emscha",
+                    "role": "Author"
+                }
+            ],
+            "description": "Site-wide digital asset scanning, usage tracking, exportable reports, and ADA Title II–compliant archiving tools.",
+            "homepage": "https://www.drupal.org/project/digital_asset_inventory",
+            "keywords": [
+                "accessibility",
+                "ada",
+                "archive",
+                "compliance",
+                "digital-assets",
+                "drupal",
+                "drupal-module",
+                "files",
+                "inventory",
+                "media",
+                "wcag"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/digital_asset_inventory",
+                "issues": "https://www.drupal.org/project/issues/digital_asset_inventory"
             }
         },
         {
@@ -15083,17 +15155,17 @@
         },
         {
             "name": "drupal/userprotect",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/userprotect.git",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/userprotect-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "93a34941254e687e8ca0c0a131336867e426cbf5"
+                "url": "https://ftp.drupal.org/files/projects/userprotect-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "fec856255469590aa61882e6051891939f1391f4"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10 || ^11"
@@ -15104,8 +15176,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1720107439",
+                    "version": "8.x-1.4",
+                    "datestamp": "1772647193",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -15133,7 +15205,7 @@
                 "User Management"
             ],
             "support": {
-                "source": "http://cgit.drupalcode.org/userprotect",
+                "source": "https://git.drupalcode.org/project/userprotect",
                 "issues": "https://www.drupal.org/project/issues/userprotect"
             }
         },
@@ -15945,17 +16017,17 @@
         },
         {
             "name": "drupal/views_flipped_table",
-            "version": "2.0.3",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_flipped_table.git",
-                "reference": "2.0.3"
+                "reference": "2.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_flipped_table-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "e2381f4b92cfdde59fa5269138b34a56b3d3769a"
+                "url": "https://ftp.drupal.org/files/projects/views_flipped_table-2.0.5.zip",
+                "reference": "2.0.5",
+                "shasum": "b8b83c812e4c5ee9d1e0e74505511a8aacc3c5e6"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11"
@@ -15963,8 +16035,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1731870577",
+                    "version": "2.0.5",
+                    "datestamp": "1772568296",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -18360,16 +18432,16 @@
         },
         {
             "name": "laminas/laminas-feed",
-            "version": "2.26.0",
+            "version": "2.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-feed.git",
-                "reference": "76f537d457bace6d57aa483fccfc676198d5fca7"
+                "reference": "8b651d72f2a4ce0df53e1999de3fe16c78e37a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-feed/zipball/76f537d457bace6d57aa483fccfc676198d5fca7",
-                "reference": "76f537d457bace6d57aa483fccfc676198d5fca7",
+                "url": "https://api.github.com/repos/laminas/laminas-feed/zipball/8b651d72f2a4ce0df53e1999de3fe16c78e37a2c",
+                "reference": "8b651d72f2a4ce0df53e1999de3fe16c78e37a2c",
                 "shasum": ""
             },
             "require": {
@@ -18437,7 +18509,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2025-12-19T11:28:10+00:00"
+            "time": "2026-03-03T09:55:19+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -20246,6 +20318,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Console_Getopt",
                 "source": "https://github.com/pear/Console_Getopt"
             },
+            "abandoned": true,
             "time": "2019-11-20T18:27:48+00:00"
         },
         {
@@ -21447,16 +21520,16 @@
         },
         {
             "name": "sabberworm/php-css-parser",
-            "version": "v9.2.0",
+            "version": "v9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
-                "reference": "59373045e11ad47b5c18fc615feee0219e42f6d3"
+                "reference": "88dbd0f7f91abbfe4402d0a3071e9ff4d81ed949"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/59373045e11ad47b5c18fc615feee0219e42f6d3",
-                "reference": "59373045e11ad47b5c18fc615feee0219e42f6d3",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/88dbd0f7f91abbfe4402d0a3071e9ff4d81ed949",
+                "reference": "88dbd0f7f91abbfe4402d0a3071e9ff4d81ed949",
                 "shasum": ""
             },
             "require": {
@@ -21483,7 +21556,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "9.3.x-dev"
+                    "dev-main": "9.4.x-dev"
                 }
             },
             "autoload": {
@@ -21521,9 +21594,9 @@
             ],
             "support": {
                 "issues": "https://github.com/MyIntervals/PHP-CSS-Parser/issues",
-                "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/v9.2.0"
+                "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/v9.3.0"
             },
-            "time": "2026-02-21T17:12:03+00:00"
+            "time": "2026-03-03T17:31:43+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -24709,16 +24782,16 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.11.0",
+            "version": "6.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "81172e58edb1cfae4019ef150ccbdc0e9a8c85c9"
+                "reference": "e1e2ade18e574e963473f53271591edd8c0033ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/81172e58edb1cfae4019ef150ccbdc0e9a8c85c9",
-                "reference": "81172e58edb1cfae4019ef150ccbdc0e9a8c85c9",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/e1e2ade18e574e963473f53271591edd8c0033ec",
+                "reference": "e1e2ade18e574e963473f53271591edd8c0033ec",
                 "shasum": ""
             },
             "require": {
@@ -24768,7 +24841,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.11.0"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.11.2"
             },
             "funding": [
                 {
@@ -24776,7 +24849,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-03-01T09:35:25+00:00"
+            "time": "2026-03-03T08:58:10+00:00"
         },
         {
             "name": "thecodingmachine/safe",
@@ -26217,7 +26290,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "10.6.3",
+            "version": "10.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
@@ -26267,7 +26340,7 @@
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-dev/tree/10.6.3"
+                "source": "https://github.com/drupal/core-dev/tree/10.6.4"
             },
             "time": "2026-02-04T09:04:26+00:00"
         },

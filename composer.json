@@ -358,7 +358,7 @@
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/masonry-layout": "^3.3",
         "malsup/cycle": "^3.0",
-        "drupal/linkit": "^7",
+        "drupal/linkit": "7.0.12",
         "drupal/linkit_media_library": "^2.0",
         "drupal/mailchimp": "^2.2",
         "drupal/maxlength": "^2.1",
@@ -534,7 +534,8 @@
         "drupal/calendar_view": "^2.1",
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
-        "drupal/advban": "^1.9"
+        "drupal/advban": "^1.9",
+        "drupal/digital_asset_inventory": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
