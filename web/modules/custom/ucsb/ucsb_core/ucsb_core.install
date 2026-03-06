@@ -200,3 +200,71 @@ function ucsb_core_update_10004() {
   }
   return 'Pantheon Advanced Page Cache module was already enabled.';
 }
+
+/**
+ * Implements hook_update_10005().
+ *
+ * Adds Linkit configuration to Full HTML text format editor settings.
+ * Only applies to CKEditor 4 editors without existing Linkit configuration.
+ * Enables linkit_enabled and sets linkit_profile to linkit_media_documents.
+ */
+function ucsb_core_update_10005() {
+  $config_factory = \Drupal::configFactory();
+  $editor_config = $config_factory->getEditable('editor.editor.full_html');
+
+  if ($editor_config->isNew()) {
+    \Drupal::logger('ucsb_core')->info('Full HTML editor configuration not found.');
+    return 'Full HTML editor configuration not found, skipping Linkit configuration.';
+  }
+
+  // Check if this is CKEditor 4 (not CKEditor 5).
+  $editor = $editor_config->get('editor');
+  if ($editor !== 'ckeditor') {
+    \Drupal::logger('ucsb_core')->info('Editor is not CKEditor 4 (@editor), skipping Linkit configuration.', ['@editor' => $editor]);
+    return "Editor is not CKEditor 4 ({$editor}), skipping Linkit configuration.";
+  }
+
+  // Check if Linkit module is enabled.
+  if (!\Drupal::moduleHandler()->moduleExists('linkit')) {
+    \Drupal::logger('ucsb_core')->info('Linkit module not enabled, skipping configuration.');
+    return 'Linkit module not enabled, skipping configuration.';
+  }
+
+  // Get current plugin settings.
+  $plugins = $editor_config->get('settings.plugins') ?: [];
+
+  // Check if drupallink settings already exist.
+  if (isset($plugins['drupallink']['linkit_enabled'])) {
+    \Drupal::logger('ucsb_core')->info('Linkit already configured for Full HTML editor, preserving existing settings.');
+    return 'Linkit already configured for Full HTML editor, preserving existing settings.';
+  }
+
+  // Check if the linkit profile exists.
+  try {
+    $linkit_profile = \Drupal::entityTypeManager()
+      ->getStorage('linkit_profile')
+      ->load('linkit_media_documents');
+
+    if (!$linkit_profile) {
+      \Drupal::logger('ucsb_core')->warning('Linkit profile "linkit_media_documents" not found.');
+      return 'Linkit profile "linkit_media_documents" not found, skipping configuration.';
+    }
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error checking Linkit profile: @error', ['@error' => $e->getMessage()]);
+    return 'Error checking Linkit profile: ' . $e->getMessage();
+  }
+
+  // Add drupallink settings.
+  $plugins['drupallink'] = [
+    'linkit_enabled' => TRUE,
+    'linkit_profile' => 'linkit_media_documents',
+  ];
+
+  // Save the updated configuration.
+  $editor_config->set('settings.plugins', $plugins);
+  $editor_config->save();
+
+  \Drupal::logger('ucsb_core')->info('Linkit configuration added to Full HTML editor.');
+  return 'Successfully added Linkit configuration to Full HTML editor.';
+}
