@@ -1,3 +1,0 @@
-# Ignore all test artifacts (debug dumps, SQLite databases, etc.)
-*
-!.gitignore
