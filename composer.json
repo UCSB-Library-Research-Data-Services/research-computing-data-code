@@ -358,7 +358,7 @@
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/masonry-layout": "^3.3",
         "malsup/cycle": "^3.0",
-        "drupal/linkit": "^7",
+        "drupal/linkit": "7.0.12",
         "drupal/linkit_media_library": "^2.0",
         "drupal/mailchimp": "^2.2",
         "drupal/maxlength": "^2.1",
