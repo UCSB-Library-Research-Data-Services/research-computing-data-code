@@ -289,10 +289,14 @@ h2.sub-heading.heading-services {
     color: #84653d;
     font-weight: bold;
     font-size: 1.4em;
-    margin-bottom: 1em;
+    margin-bottom: 0.55em;
     margin-left: 2px; }
   #questionlist .question-wrapper {
-    margin: 10px 0; }
+    margin: 8px 0 4px; }
+  #questionlist .checkbox {
+    margin: 0.5em 0; }
+  #questionlist fieldset {
+    margin-bottom: 0; }
     #questionlist .question-wrapper a {
       font-size: 0.8em; }
       #questionlist .question-wrapper a .fa {
