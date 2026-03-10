@@ -535,7 +535,8 @@
         "drupal/turnstile": "^1.1",
         "drupal/autoban": "^1.12",
         "drupal/advban": "^1.9",
-        "drupal/digital_asset_inventory": "^1.0"
+        "drupal/digital_asset_inventory": "^1.0",
+        "drupal/url_restriction_by_role": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
