@@ -1,0 +1,5 @@
+services:
+  people_profiles_migrator.route_subscriber:
+    class: Drupal\people_profiles_migrator\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

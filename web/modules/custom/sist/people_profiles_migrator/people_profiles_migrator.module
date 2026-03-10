@@ -1,0 +1,145 @@
+<?php
+
+/**
+ * @file
+ * Contains people_profiles_migrator.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+
+/**
+ * Implements hook_help().
+ */
+function people_profiles_migrator_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.people_profiles_migrator':
+      $output = '';
+      $output .= '<h3>' . t('SSIS People Migrator') . '</h3>';
+      $output .= '<p>' . t('Provides migration functionality for SSIS people profiles with scheduling capabilities.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function people_profiles_migrator_cron() {
+  $config = \Drupal::config('people_profiles.settings');
+  
+  // Check if cron is enabled for migration
+  if (!$config->get('ssis_cron_enabled')) {
+    return;
+  }
+  
+  $interval = $config->get('ssis_cron_interval') ?? 86400; // Default to daily
+  $last_run = \Drupal::state()->get('people_profiles_migrator.last_run') ?? 0;
+  $current_time = \Drupal::time()->getRequestTime();
+  
+  // Check if it's time to run the migration
+  if (($current_time - $last_run) >= $interval) {
+    try {
+      // Get the migration plugin manager
+      $migration_plugin_manager = \Drupal::service('plugin.manager.migration');
+      
+      // Get all migrations in the ssis_people group
+      $migration_ids = ['ssis_people_cv_media', 'ssis_people_photos_media', 'ssis_people_avatar_media', 'ssis_people_profiles'];
+      $successful_migrations = 0;
+      $total_migrations = count($migration_ids);
+      
+      foreach ($migration_ids as $migration_id) {
+        try {
+          /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+          $migration = $migration_plugin_manager->createInstance($migration_id);
+          
+          if ($migration) {
+            // Check if external URL is configured and override if needed
+            $external_url = $config->get('ssis_external_source_url');
+            if (!empty($external_url)) {
+              $source_config = $migration->getSourceConfiguration();
+              $source_config['urls'] = [$external_url];
+              
+              // Create a new migration instance with updated source configuration
+              $migration_definition = $migration->getPluginDefinition();
+              $migration_definition['source'] = $source_config;
+              
+              // Create a new migration instance with the updated definition
+              $migration = $migration_plugin_manager->createInstance($migration_id, $migration_definition);
+            }
+            
+            // Check if migrate_tools is available
+            if (class_exists('\Drupal\migrate_tools\MigrateExecutable')) {
+              $executable = new \Drupal\migrate_tools\MigrateExecutable($migration, new \Drupal\migrate\MigrateMessage());
+            } else {
+              // Fallback to core migrate executable
+              $executable = new \Drupal\migrate\MigrateExecutable($migration, new \Drupal\migrate\MigrateMessage());
+            }
+            
+            // Enable update mode by clearing the migration's processed items
+            // This forces the migration to re-process all items instead of skipping processed ones
+            $migration->getIdMap()->prepareUpdate();
+            
+            $result = $executable->import();
+            
+            if ($result == MigrationInterface::RESULT_COMPLETED) {
+              $successful_migrations++;
+            }
+          }
+        } catch (\Exception $e) {
+          \Drupal::logger('people_profiles_migrator')->error('Scheduled migration @id failed: @error', [
+            '@id' => $migration_id,
+            '@error' => $e->getMessage()
+          ]);
+        }
+      }
+      
+      // Update last run time using State API
+      \Drupal::state()->set('people_profiles_migrator.last_run', $current_time);
+      
+      // Log the result
+      $logger = \Drupal::logger('people_profiles_migrator');
+      if ($successful_migrations == $total_migrations) {
+        $logger->info('Scheduled SSIS people migrations completed successfully. @successful of @total migrations completed.', [
+          '@successful' => $successful_migrations,
+          '@total' => $total_migrations
+        ]);
+      } else {
+        $logger->warning('Scheduled SSIS people migrations completed with issues. @successful of @total migrations completed.', [
+          '@successful' => $successful_migrations,
+          '@total' => $total_migrations
+        ]);
+      }
+      
+    } catch (\Exception $e) {
+      \Drupal::logger('people_profiles_migrator')->error('Scheduled migration failed: @error', ['@error' => $e->getMessage()]);
+    }
+  }
+}
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function people_profiles_migrator_migration_plugins_alter(array &$migrations) {
+  $config = \Drupal::config('people_profiles.settings');
+  $external_url = $config->get('ssis_external_source_url');
+  
+  // If external URL is configured, override the source URLs for our migrations
+  if (!empty($external_url)) {
+    $ssis_migration_ids = [
+      'ssis_people_profiles',
+      'ssis_people_cv_media',
+      'ssis_people_photos_media',
+      'ssis_people_avatar_media'
+    ];
+    
+    foreach ($ssis_migration_ids as $migration_id) {
+      if (isset($migrations[$migration_id])) {
+        if (isset($migrations[$migration_id]['source']['urls'])) {
+          $migrations[$migration_id]['source']['urls'] = [$external_url];
+        }
+      }
+    }
+  }
+}

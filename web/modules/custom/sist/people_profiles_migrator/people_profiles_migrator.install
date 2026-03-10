@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the people_profiles_migrator module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function people_profiles_migrator_install() {
+  // Set default configuration values for SSIS migrator settings.
+  $config = \Drupal::configFactory()->getEditable('people_profiles.settings');
+  
+  // Only set defaults if they don't already exist
+  if (!$config->get('ssis_external_source_url')) {
+    $config->set('ssis_external_source_url', '');
+  }
+  
+  if (!$config->get('ssis_cron_enabled')) {
+    $config->set('ssis_cron_enabled', FALSE);
+  }
+  
+  if (!$config->get('ssis_cron_interval')) {
+    $config->set('ssis_cron_interval', 86400); // Default to daily
+  }
+  
+  if (!$config->get('ssis_last_migration_run')) {
+    $config->set('ssis_last_migration_run', 0);
+  }
+  
+  $config->save();
+  
+  // Set module weight to ensure our route subscriber runs after people_profiles
+  module_set_weight('people_profiles_migrator', 1);
+  
+  // Clear router cache to ensure route override takes effect
+  \Drupal::service('router.builder')->rebuild();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function people_profiles_migrator_uninstall() {
+  // Clean up configuration when module is uninstalled.
+  $config = \Drupal::configFactory()->getEditable('people_profiles.settings');
+  
+  $config->clear('ssis_external_source_url')
+    ->clear('ssis_cron_enabled')
+    ->clear('ssis_cron_interval')
+    ->clear('ssis_last_migration_run')
+    ->save();
+    
+  // Clear router cache to restore original route
+  \Drupal::service('router.builder')->rebuild();
+}

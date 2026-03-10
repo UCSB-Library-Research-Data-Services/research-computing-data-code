@@ -1,0 +1,25 @@
+people_profiles.settings:
+  type: config_object
+  label: 'People Profiles settings'
+  mapping:
+    default_people_profiles_page_view_mode:
+      type: string
+      label: 'Default view mode for people profiles page'
+    default_people_profiles_form_display_mode:
+      type: string
+      label: 'Default form display mode for people profiles'
+    default_parent_page:
+      type: string
+      label: 'Default parent page URL'
+    ssis_external_source_url:
+      type: uri
+      label: 'External source URL for SSIS people migration'
+    ssis_cron_enabled:
+      type: boolean
+      label: 'Enable SSIS people migration via cron'
+    ssis_cron_interval:
+      type: integer
+      label: 'SSIS migration cron interval in seconds'
+    ssis_last_migration_run:
+      type: timestamp
+      label: 'Last time SSIS migration was run'

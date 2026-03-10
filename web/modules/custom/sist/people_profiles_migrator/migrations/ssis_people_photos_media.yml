@@ -1,0 +1,46 @@
+id: ssis_people_photos_media
+label: 'Migrate People Photos to Media'
+migration_group: ssis_people
+
+# Note: This migration uses URI as the ID, which means duplicate photo URLs
+# (where multiple people share the same photo) will be skipped automatically.
+# Only one media entity will be created per unique photo URL.
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  urls:
+    - ''
+  item_selector: '/response/person[uri!="" and uri]'
+  fields:
+    - name: uri
+      label: Photo URL
+      selector: 'uri'
+    - name: title
+      label: Name
+      selector: 'title'
+  ids:
+    uri:
+      type: string
+  
+  # Skip duplicate photo URLs since multiple people can share the same photo
+  skip_on_duplicate: true
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: image
+  name: title
+  status:
+    plugin: default_value
+    default_value: 1
+  field_media_image:
+    - plugin: relative_to_absolute_url
+      source: uri
+    - plugin: file_import
+
+destination:
+  plugin: entity:media
+  default_bundle: image
+  

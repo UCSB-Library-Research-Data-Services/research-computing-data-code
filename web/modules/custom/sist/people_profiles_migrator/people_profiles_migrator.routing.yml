@@ -1,0 +1,7 @@
+people_profiles_migrator.settings:
+  path: '/admin/config/people/people-profiles-migrator'
+  defaults:
+    _form: '\Drupal\people_profiles_migrator\Form\DefaultPeopleProfilePageForm'
+    _title: 'People Profiles Migrator Settings'
+  requirements:
+    _permission: 'administer site configuration'
