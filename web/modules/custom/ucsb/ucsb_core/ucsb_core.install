@@ -1,0 +1,270 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for UCSB Core module.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\node\Entity\NodeType;
+
+/**
+ * Implements hook_install().
+ */
+function ucsb_core_install() {
+  // Reset schema version so update hooks are detected as pending.
+  \Drupal::service('update.update_hook_registry')->setInstalledVersion('ucsb_core', 10000);
+}
+
+/**
+ * Implements hook_update_10001().
+ *
+ * Processes wordmark SVG files to add accessibility attributes for screen
+ * readers.
+ * Adds role="img", aria-labelledby, and proper title elements to SVG logos.
+ */
+function ucsb_core_update_10001() {
+  // Verify site_settings module is enabled before using its service.
+  if (!\Drupal::moduleHandler()->moduleExists('site_settings')) {
+    \Drupal::logger('ucsb_core')->info('Site settings module not enabled, skipping wordmark processing');
+    return 'Site settings module not enabled, skipping wordmark processing.';
+  }
+
+  // Get the site settings service.
+  $site_settings = \Drupal::service('site_settings.loader');
+  $settings = $site_settings->loadAll();
+
+  // Check if wordmark logo exists in settings.
+  if (empty($settings['wordmark']['logo']['field_image']['uri'])) {
+    \Drupal::logger('ucsb_core')->info('No wordmark logo found in site settings');
+    return 'No wordmark logo found in site settings.';
+  }
+
+  $svg_uri = $settings['wordmark']['logo']['field_image']['uri'];
+
+  // Only process SVG files.
+  if (pathinfo($svg_uri, PATHINFO_EXTENSION) !== 'svg') {
+    \Drupal::logger('ucsb_core')->info('Wordmark is not an SVG file, skipping: @uri', ['@uri' => $svg_uri]);
+    return 'Wordmark is not an SVG file, skipping.';
+  }
+
+  try {
+    // Get the full file path.
+    $file_system = \Drupal::service('file_system');
+    $svg_path = $file_system->realpath($svg_uri);
+
+    if (!file_exists($svg_path)) {
+      \Drupal::logger('ucsb_core')->error('SVG file not found: @path', ['@path' => $svg_path]);
+      return "SVG file not found: {$svg_path}";
+    }
+
+    $svg_content = file_get_contents($svg_path);
+    if ($svg_content === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to read SVG file: @uri', ['@uri' => $svg_uri]);
+      return "Failed to read SVG file: {$svg_uri}";
+    }
+
+    // Get the site name for accessibility attributes.
+    $site_name = \Drupal::config('system.site')->get('name');
+    $full_site_name = !empty($site_name) ? $site_name : 'UC Santa Barbara Department Name Here';
+
+    // Process the SVG to add accessibility attributes.
+    $updated_svg = _ucsb_core_add_svg_accessibility_attributes($svg_content, $full_site_name);
+    if ($updated_svg === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to process SVG content: @uri', ['@uri' => $svg_uri]);
+      return "Failed to process SVG content: {$svg_uri}";
+    }
+
+    // Write the updated SVG back to the file.
+    if (file_put_contents($svg_path, $updated_svg) === FALSE) {
+      \Drupal::logger('ucsb_core')->error('Failed to write updated SVG: @uri', ['@uri' => $svg_uri]);
+      return "Failed to write updated SVG: {$svg_uri}";
+    }
+
+    \Drupal::logger('ucsb_core')->info('Wordmark SVG accessibility update completed successfully');
+    return "Successfully updated wordmark SVG: {$svg_uri}";
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error processing SVG @uri: @error', [
+      '@uri' => $svg_uri,
+      '@error' => $e->getMessage(),
+    ]);
+    return "Error processing SVG {$svg_uri}: " . $e->getMessage();
+  }
+}
+
+/**
+ * Implements hook_update_10002().
+ *
+ * Creates and configures a "Hide Title" boolean field for Basic pages.
+ * Adds the field to the page content type with proper form and view display
+ * settings.
+ */
+function ucsb_core_update_10002() {
+  // Check if the Basic page content type exists.
+  if (NodeType::load('page')) {
+    // Check if the field storage already exists.
+    if (!FieldStorageConfig::loadByName('node', 'field_hide_title')) {
+      // Create the field storage.
+      FieldStorageConfig::create([
+        'field_name' => 'field_hide_title',
+        'entity_type' => 'node',
+        'type' => 'boolean',
+        'settings' => [],
+        'module' => 'core',
+        'cardinality' => 1,
+        'translatable' => FALSE,
+      ])->save();
+    }
+
+    // Check if the field is already added to the Basic page content type.
+    if (!FieldConfig::loadByName('node', 'page', 'field_hide_title')) {
+      // Add the field to the Basic page content type.
+      FieldConfig::create([
+        'field_storage' => FieldStorageConfig::loadByName('node', 'field_hide_title'),
+        'bundle' => 'page',
+        'label' => 'Hide Title',
+        'settings' => [],
+        'required' => FALSE,
+        'translatable' => FALSE,
+        'default_value' => [
+          ['value' => 0],
+        ],
+      ])->save();
+    }
+
+    // Always configure displays, even if field config already existed.
+    // Get the form display for the Basic page content type.
+    $form_display = \Drupal::service('entity_display.repository')
+      ->getFormDisplay('node', 'page', 'default');
+
+    // Find the weight of the field_title_background_color field.
+    $weight = 0;
+    $components = $form_display->getComponents();
+    if (isset($components['field_title_background_color'])) {
+      $weight = $components['field_title_background_color']['weight'] + 1;
+    }
+
+    // Make the Hide Title field visible on the node form below field_title_background_color.
+    $form_display->setComponent('field_hide_title', [
+      'type' => 'boolean_checkbox',
+      'weight' => $weight,
+    ])->save();
+
+    // Hide the Hide Title field from the node view.
+    $view_display = \Drupal::service('entity_display.repository')
+      ->getViewDisplay('node', 'page', 'default');
+    $view_display->removeComponent('field_hide_title')->save();
+
+    return 'Hide Title field successfully added to Basic page content type.';
+  }
+
+  return 'Basic page content type not found, skipping Hide Title field.';
+}
+
+/**
+ * Implements hook_update_10003().
+ *
+ * Disables Big Pipe module to prevent caching issues on Pantheon.
+ */
+function ucsb_core_update_10003() {
+  if (\Drupal::moduleHandler()->moduleExists('big_pipe')) {
+    try {
+      \Drupal::service('module_installer')->uninstall(['big_pipe']);
+      return 'Disabled Big Pipe module.';
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('ucsb_core')->error('Failed to disable Big Pipe module: @error', ['@error' => $e->getMessage()]);
+      return 'Failed to disable Big Pipe module: ' . $e->getMessage();
+    }
+  }
+  return 'Big Pipe module was already disabled.';
+}
+
+/**
+ * Implements hook_update_10004().
+ *
+ * Enables Pantheon Advanced Page Cache module for optimal caching performance.
+ */
+function ucsb_core_update_10004() {
+  if (!\Drupal::moduleHandler()->moduleExists('pantheon_advanced_page_cache')) {
+    try {
+      \Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
+      return 'Enabled Pantheon Advanced Page Cache module.';
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('ucsb_core')->error('Failed to enable Pantheon Advanced Page Cache module: @error', ['@error' => $e->getMessage()]);
+      return 'Failed to enable Pantheon Advanced Page Cache module: ' . $e->getMessage();
+    }
+  }
+  return 'Pantheon Advanced Page Cache module was already enabled.';
+}
+
+/**
+ * Implements hook_update_10005().
+ *
+ * Adds Linkit configuration to Full HTML text format editor settings.
+ * Only applies to CKEditor 4 editors without existing Linkit configuration.
+ * Enables linkit_enabled and sets linkit_profile to linkit_media_documents.
+ */
+function ucsb_core_update_10005() {
+  $config_factory = \Drupal::configFactory();
+  $editor_config = $config_factory->getEditable('editor.editor.full_html');
+
+  if ($editor_config->isNew()) {
+    \Drupal::logger('ucsb_core')->info('Full HTML editor configuration not found.');
+    return 'Full HTML editor configuration not found, skipping Linkit configuration.';
+  }
+
+  // Check if this is CKEditor 4 (not CKEditor 5).
+  $editor = $editor_config->get('editor');
+  if ($editor !== 'ckeditor') {
+    \Drupal::logger('ucsb_core')->info('Editor is not CKEditor 4 (@editor), skipping Linkit configuration.', ['@editor' => $editor]);
+    return "Editor is not CKEditor 4 ({$editor}), skipping Linkit configuration.";
+  }
+
+  // Check if Linkit module is enabled.
+  if (!\Drupal::moduleHandler()->moduleExists('linkit')) {
+    \Drupal::logger('ucsb_core')->info('Linkit module not enabled, skipping configuration.');
+    return 'Linkit module not enabled, skipping configuration.';
+  }
+
+  // Get current plugin settings.
+  $plugins = $editor_config->get('settings.plugins') ?: [];
+
+  // Check if drupallink settings already exist.
+  if (isset($plugins['drupallink']['linkit_enabled'])) {
+    \Drupal::logger('ucsb_core')->info('Linkit already configured for Full HTML editor, preserving existing settings.');
+    return 'Linkit already configured for Full HTML editor, preserving existing settings.';
+  }
+
+  // Check if the linkit profile exists.
+  try {
+    $linkit_profile = \Drupal::entityTypeManager()
+      ->getStorage('linkit_profile')
+      ->load('linkit_media_documents');
+
+    if (!$linkit_profile) {
+      \Drupal::logger('ucsb_core')->warning('Linkit profile "linkit_media_documents" not found.');
+      return 'Linkit profile "linkit_media_documents" not found, skipping configuration.';
+    }
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('ucsb_core')->error('Error checking Linkit profile: @error', ['@error' => $e->getMessage()]);
+    return 'Error checking Linkit profile: ' . $e->getMessage();
+  }
+
+  // Add drupallink settings.
+  $plugins['drupallink'] = [
+    'linkit_enabled' => TRUE,
+    'linkit_profile' => 'linkit_media_documents',
+  ];
+
+  // Save the updated configuration.
+  $editor_config->set('settings.plugins', $plugins);
+  $editor_config->save();
+
+  \Drupal::logger('ucsb_core')->info('Linkit configuration added to Full HTML editor.');
+  return 'Successfully added Linkit configuration to Full HTML editor.';
+}
