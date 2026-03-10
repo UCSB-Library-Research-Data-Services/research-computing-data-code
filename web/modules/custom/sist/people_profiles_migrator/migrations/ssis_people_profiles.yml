@@ -1,0 +1,138 @@
+id: ssis_people_profiles
+label: 'Migrate People Profiles from XML'
+migration_group: ssis_people
+
+migration_dependencies:
+  # Using 'optional' for media migrations because:
+  # 1. Multiple people can share the same photo URL
+  # 2. The photos migration will have "unprocessed" items for duplicates
+  # 3. The migration_lookup with no_stub will handle missing media gracefully
+  optional:
+    - ssis_people_photos_media
+    - ssis_people_avatar_media
+    - ssis_people_cv_media
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  urls:
+    - ''
+  item_selector: '/response/person'
+  fields:
+    - name: uuid
+      label: uuid
+      selector: 'uuid'
+    - name: title
+      label: Name
+      selector: 'title'
+    - name: field_gender_pronouns
+      label: Gender Pronouns
+      selector: 'field_people_gender_pronouns'
+    - name: field_title
+      label: Title
+      selector: 'field_title'
+    - name: field_subtitle
+      label: Subtitle
+      selector: 'field_subtitle'
+    - name: field_profile_featured
+      label: Featured
+      selector: 'field_people_profile_featured'
+    - name: field_address
+      label: Address
+      selector: 'field_address'
+    - name: field_email
+      label: Email
+      selector: 'field_email'
+    - name: field_phone
+      label: Phone
+      selector: 'field_phone'
+    - name: field_website
+      label: Website
+      selector: 'field_website'
+    - name: body
+      label: About
+      selector: 'body'
+    - name: uri
+      label: Photo URL
+      selector: 'uri'
+    - name: field_sortorder
+      label: SortOrder
+      selector: 'field_sortorder'
+    - name: status
+      label: Status
+      selector: 'status'
+    - name: field_team
+      label: Team
+      selector: 'field_team'
+
+  ids:
+    uuid:
+      type: string
+
+process:
+  uuid: uuid
+  title:
+    plugin: callback
+    callable: html_entity_decode
+    source: title
+  field_gender_pronouns: field_gender_pronouns
+  field_title:
+    plugin: callback
+    callable: html_entity_decode
+    source: field_title
+  field_subtitle:
+    plugin: callback
+    callable: html_entity_decode
+    source: field_subtitle
+  field_profile_featured: field_profile_featured
+  field_address: 
+    plugin: callback
+    callable: html_entity_decode
+    source: field_address
+  field_email: field_email
+  field_phone: field_phone
+  field_website: field_website
+  body/value: body
+  field_photo:
+    plugin: migration_lookup
+    migration: ssis_people_photos_media
+    source: uri
+    no_stub: true
+  field_cv:
+    plugin: migration_lookup
+    migration: ssis_people_cv_media
+    source: title
+    no_stub: true
+  field_avatar:
+    plugin: migration_lookup
+    migration: ssis_people_avatar_media
+    source: title
+    no_stub: true
+  field_sortorder: field_sortorder
+  moderation_state:
+    plugin: static_map
+    source: status
+    map:
+      'True': published
+      'False': draft
+      '1': published
+      '0': draft
+    default_value: draft
+  field_team:
+    - plugin: explode
+      source: field_team
+      delimiter: '| #'
+    - plugin: callback
+      callable: trim
+    - plugin: entity_lookup
+      entity_type: taxonomy_term
+      value_key: name
+      bundle_key: vid
+      bundle: team
+
+
+
+destination:
+  plugin: entity:node
+  default_bundle: people_profile

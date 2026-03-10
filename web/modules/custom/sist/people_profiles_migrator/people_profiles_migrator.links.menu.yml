@@ -1,0 +1,6 @@
+people_profiles_migrator.admin_settings:
+  title: 'People Profiles Migrator'
+  description: 'Configure People Profiles migration settings including external source URL and cron scheduling.'
+  route_name: people_profiles_migrator.settings
+  parent: system.admin_config_people
+  weight: 10

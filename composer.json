@@ -536,7 +536,8 @@
         "drupal/autoban": "^1.12",
         "drupal/advban": "^1.9",
         "drupal/digital_asset_inventory": "^1.0",
-        "drupal/url_restriction_by_role": "^2.0"
+        "drupal/url_restriction_by_role": "^2.0",
+        "drupal/migrate_file": "^2.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

@@ -1,0 +1,13 @@
+name: 'People Profiles Migrator'
+type: module
+description: 'Migrate people profiles from XML feed.'
+core_version_requirement: ^9 || ^10
+package: ITS
+version: '1.0.0'
+dependencies:
+  - drupal:migrate
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:migrate_file
+  - drupal:people_profiles
+  - drupal:views_data_export
