@@ -537,7 +537,8 @@
         "drupal/advban": "^1.9",
         "drupal/digital_asset_inventory": "^1.0",
         "drupal/url_restriction_by_role": "^2.0",
-        "drupal/migrate_file": "^2.1"
+        "drupal/migrate_file": "^2.1",
+        "drupal/gin": "^4.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
