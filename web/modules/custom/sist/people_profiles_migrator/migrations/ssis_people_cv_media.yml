@@ -1,0 +1,47 @@
+id: ssis_people_cv_media
+label: 'Migrate People CVs to Media'
+migration_group: ssis_people
+
+# Note: This migration uses URI as the ID, which means duplicate document URLs
+# (where multiple people share the same document) will be skipped automatically.
+# Only one media entity will be created per unique document URL.
+
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  urls:
+    - ''
+  item_selector: '/response/person[uri_1!="" and uri_1]'
+  fields:
+    - name: title
+      label: Name
+      selector: 'title'
+    - name: uri_1
+      label: CV URL
+      selector: 'uri_1'
+  ids:
+    title:
+      type: string
+  
+  # Skip duplicate photo URLs since multiple people can share the same photo
+  skip_on_duplicate: true
+
+process:
+  bundle:
+    plugin: default_value
+    default_value: document
+  name: title
+  status:
+    plugin: default_value
+    default_value: 1
+  field_media_document:
+    - plugin: callback
+      callable: trim
+      source: uri_1
+    - plugin: relative_to_absolute_url
+    - plugin: file_import
+
+destination:
+  plugin: entity:media
+  default_bundle: document

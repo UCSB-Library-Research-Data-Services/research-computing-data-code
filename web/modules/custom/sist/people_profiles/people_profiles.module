@@ -70,23 +70,23 @@ function people_profiles_theme($existing, $type, $theme, $path) {
        'base hook' => 'node'
      ],
      'node__people_profile__dsp_people_profiles' => [
-        'template' => 'node--people-profile--dsp-people-profiles',
+        'template' => 'node--people-profile--dsp_people_profiles',
         'base hook' => 'node'
       ],
       'node__people_profile__wellness_people_profiles' => [
-         'template' => 'node--people-profile--wellness-people-profiles',
+         'template' => 'node--people-profile--wellness_people_profiles',
          'base hook' => 'node'
        ],
       'node__people_profile__grad_div_featured_staff' => [
-        'template' => 'node--people-profile--grad-div-featured-staff',
+        'template' => 'node--people-profile--grad_div_featured_staff',
         'base hook' => 'node'
       ],
       'node__people_profile__people_profile_team_grid' => [
-        'template' => 'node--people-profile--people-profile-team-grid',
+        'template' => 'node--people-profile--people_profile_team_grid',
         'base hook' => 'node'
       ],
       'node__people_profile__adp_people_profiles' => [
-         'template' => 'node--people-profile--adp-people-profiles',
+         'template' => 'node--people-profile--adp_people_profiles',
          'base hook' => 'node'
        ],
        'node__people_profile__staff_people_profiles' => [
@@ -94,15 +94,15 @@ function people_profiles_theme($existing, $type, $theme, $path) {
          'base hook' => 'node'
        ],
         'node__people_profile__staff_team_grid' => [
-         'template' => 'node--people-profile--staff-team-grid',
+         'template' => 'node--people-profile--staff_team_grid',
          'base hook' => 'node'
        ],
        'node__people_profile__staff_full_view' => [
-         'template' => 'node--people-profile--staff-full-view',
+         'template' => 'node--people-profile--staff_full_view',
          'base hook' => 'node'
        ],
        'node__people_profile__sicr_people_profiles' => [
-         'template' => 'node--people-profile--sicr-people-profiles',
+         'template' => 'node--people-profile--sicr_people_profiles',
          'base hook' => 'node'
        ],
   ];

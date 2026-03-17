@@ -163,7 +163,11 @@
       $('#eyebrow .search').removeClass('expanded').attr('aria-expanded', 'false');
       $('#search-toggle-container').attr('aria-expanded', 'false');
       $('#eyebrow .quick-links').removeClass('expanded');
-      $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
+      if (!$('#navbar-collapse .region-navigation-collapsible').find('.block-search-form-block').length) {
+        setTimeout(function() {
+          $('#navbar-collapse .region-navigation-collapsible').prepend(searchFormRegion);
+        }, 50);
+      }
       $('#block-quicklinks').append(quicklinksRegion);
     } else {
       $('.block-search-form-block input.form-search').attr("placeholder", "Type keywords and press enter...");
