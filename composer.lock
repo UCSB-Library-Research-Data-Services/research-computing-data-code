@@ -5596,17 +5596,17 @@
         },
         {
             "name": "drupal/digital_asset_inventory",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/digital_asset_inventory.git",
-                "reference": "1.1.0"
+                "reference": "1.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/digital_asset_inventory-1.1.0.zip",
-                "reference": "1.1.0",
-                "shasum": "b1578780e9d91dec1150c9f2ab16fcad0bd9c83b"
+                "url": "https://ftp.drupal.org/files/projects/digital_asset_inventory-1.1.1.zip",
+                "reference": "1.1.1",
+                "shasum": "7111536ae38cb5a524f3660589270f81d6477530"
             },
             "require": {
                 "drupal/better_exposed_filters": "^6 || ^7",
@@ -5618,8 +5618,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.0",
-                    "datestamp": "1772742100",
+                    "version": "1.1.1",
+                    "datestamp": "1773755796",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -12303,17 +12303,17 @@
         },
         {
             "name": "drupal/rabbit_hole",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/rabbit_hole.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rabbit_hole-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "7ee2b73b4c9d762fc7e8725e97a5dd84e2fbb252"
+                "url": "https://ftp.drupal.org/files/projects/rabbit_hole-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "9fee0b55182c09fa2e3a14da965dbde323e4eb9a"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10 || ^11"
@@ -12328,8 +12328,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1768284683",
+                    "version": "8.x-1.2",
+                    "datestamp": "1773704444",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -18173,21 +18173,21 @@
         },
         {
             "name": "gravitypdf/querypath",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GravityPDF/querypath.git",
-                "reference": "32b08b5b5295fa3b84baeb91685c66ca86b1c591"
+                "reference": "6599a112e2f0759c6a05b364641dfcff7247ab7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GravityPDF/querypath/zipball/32b08b5b5295fa3b84baeb91685c66ca86b1c591",
-                "reference": "32b08b5b5295fa3b84baeb91685c66ca86b1c591",
+                "url": "https://api.github.com/repos/GravityPDF/querypath/zipball/6599a112e2f0759c6a05b364641dfcff7247ab7e",
+                "reference": "6599a112e2f0759c6a05b364641dfcff7247ab7e",
                 "shasum": ""
             },
             "require": {
                 "masterminds/html5": "^2.0",
-                "php": "^7.1 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
+                "php": "^7.1 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0"
             },
             "replace": {
                 "arthurkushman/query-path": "3.1.4",
@@ -18213,7 +18213,7 @@
             "license": [
                 "MIT"
             ],
-            "description": "PHP library for HTML(5)/XML querying (CSS 4 or XPath) and processing (like jQuery) with PHP8.3 support",
+            "description": "PHP library for HTML(5)/XML querying (CSS 4 or XPath) and processing (like jQuery) with PHP 7.0 to 8.5 support",
             "homepage": "https://github.com/gravitypdf/querypath",
             "keywords": [
                 "css",
@@ -18233,7 +18233,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2025-02-04T05:00:04+00:00"
+            "time": "2026-03-17T06:14:13+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -19226,16 +19226,16 @@
         },
         {
             "name": "mck89/peast",
-            "version": "v1.17.4",
+            "version": "v1.17.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "c6a63f32410d2e4ee2cd20fe94b35af147fb852d"
+                "reference": "e19a8bd896b7f04941a38fd38a140c9a6531c84f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/c6a63f32410d2e4ee2cd20fe94b35af147fb852d",
-                "reference": "c6a63f32410d2e4ee2cd20fe94b35af147fb852d",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/e19a8bd896b7f04941a38fd38a140c9a6531c84f",
+                "reference": "e19a8bd896b7f04941a38fd38a140c9a6531c84f",
                 "shasum": ""
             },
             "require": {
@@ -19248,7 +19248,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17.4-dev"
+                    "dev-master": "1.17.5-dev"
                 }
             },
             "autoload": {
@@ -19269,9 +19269,9 @@
             "description": "Peast is PHP library that generates AST for JavaScript code",
             "support": {
                 "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.17.4"
+                "source": "https://github.com/mck89/peast/tree/v1.17.5"
             },
-            "time": "2025-10-10T12:53:17+00:00"
+            "time": "2026-03-15T10:47:07+00:00"
         },
         {
             "name": "mglaman/phpstan-drupal",
@@ -20581,7 +20581,6 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Console_Getopt",
                 "source": "https://github.com/pear/Console_Getopt"
             },
-            "abandoned": true,
             "time": "2019-11-20T18:27:48+00:00"
         },
         {
@@ -21938,16 +21937,16 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.6.5",
+            "version": "v2.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "fe203627e68a6c794d2434dee32d83a7bf78ed32"
+                "reference": "de0cf35911be3e9ea63b48e0f307883b1c7c48ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/fe203627e68a6c794d2434dee32d83a7bf78ed32",
-                "reference": "fe203627e68a6c794d2434dee32d83a7bf78ed32",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/de0cf35911be3e9ea63b48e0f307883b1c7c48ac",
+                "reference": "de0cf35911be3e9ea63b48e0f307883b1c7c48ac",
                 "shasum": ""
             },
             "require": {
@@ -21998,7 +21997,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.6.5"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.6"
             },
             "funding": [
                 {
@@ -22006,7 +22005,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-11T08:36:14+00:00"
+            "time": "2026-03-13T08:38:20+00:00"
         },
         {
             "name": "simshaun/recurr",
